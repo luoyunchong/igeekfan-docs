@@ -1,0 +1,82 @@
+const sidebar = require('./config/sidebar')
+const nav = require('./config/nav')
+const path = require('path')
+
+module.exports = {
+    title: 'IGeekFan的文档',
+    description: '小楼昨夜又东风',
+    // 注入到当前页面的 HTML <head> 中的标签
+    head: [
+        ['link', { rel: 'icon', href: '/favicon.ico' }], // 增加一个自定义的 favicon(网页标签的图标)
+        ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
+    ],
+    base: '/vovo-docs/', // 这是部署到github相关的配置 下面会讲
+    markdown: {
+        lineNumbers: true // 代码块显示行号
+    },
+    theme: 'reco',
+    themeConfig: {
+        authorAvatar: 'head.jpg',//首页右侧头像
+        lastUpdated: '最后更新时间',
+        search: true,
+        searchMaxSuggestions: 10,
+        activeHeaderLinks: true,
+        displayAllHeaders: false,
+        startYear: '2019',
+        author: 'IGeekFan',
+        record: '苏ICP备16046457号-1',
+        // 文档仓库
+        docsRepo: 'https://github.com/luoyunchong/vovo-docs',
+        // 假如文档不是放在仓库的根目录下：
+        docsDir: 'docs',
+        // 假如文档放在一个特定的分支下：
+        docsBranch: 'master',
+        // 默认是 false, 设置为 true 来启用
+        editLinks: true,
+        // 默认为 "Edit this page"
+        editLinkText: '在 GitHub 上编辑此页',
+        sidebarDepth: 2,
+        nav: nav,
+        sidebar: sidebar
+    },
+    plugins: [
+        [
+            '@vuepress/pwa',
+            {
+                serviceWorker: true,
+                updatePopup: {
+                    message: "发现新内容可用",
+                    buttonText: "刷新"
+                }
+            }
+        ],
+        // [
+        //     '@vuepress/google-analytics',
+        //     {
+        //         ga: 'UA-149716079-1'
+        //     }
+        // ],
+        // [
+        //     '@vuepress/plugin-register-components',
+        //     {
+        //         components: [
+        //             {
+        //                 name: 'reco-home-page-one',
+        //                 path: path.resolve(__dirname, './components/HomePageOne.vue')
+        //             }
+        //         ],
+        //         componentsDir: path.resolve(__dirname, './demo')
+        //     }
+        // ],
+        '@vuepress-reco/extract-code',
+        'flowchart',
+        ['sitemap', {
+            hostname: 'https://igeekfan.cn'
+        }],
+        ['@vuepress-reco/rss', {
+            site_url: 'https://igeekfan.cn',
+            copyright: ''
+        }],
+        // require('./plugins/notification/index')
+    ]
+};
