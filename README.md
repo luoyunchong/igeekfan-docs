@@ -1,9 +1,6 @@
 ## 简介
 项目使用vuepress，其可专注于文档构建
 
-## 文档源码
-[https://github.com/luoyunchong/vovo-docs](https://github.com/luoyunchong/vovo-docs)
-[https://gitee.com/igeekfan/vovo-docs](httpsgiteegithub.com/igeekfan/vovo-docs)
 
 ## vuepress
 
@@ -11,11 +8,16 @@
 
 - [https://github.com/vuejs/vuepress](https://github.com/vuejs/vuepress)
 - [https://vuepress-theme-reco.recoluan.com/](https://vuepress-theme-reco.recoluan.com/)
+
+## 文档源码
+- [https://github.com/luoyunchong/vovo-docs](https://github.com/luoyunchong/vovo-docs)
+- [https://gitee.com/igeekfan/vovo-docs](httpsgiteegithub.com/igeekfan/vovo-docs)
+
 ## 完整文档
 
 - [https://luoyunchong.github.io/vovo-docs/](https://luoyunchong.github.io/vovo-docs)
-- [https://igeekfan.gitee.io/vovo-docs/](https://igeekfan.github.io/vovo-docs)
-
+- [https://igeekfan.gitee.io/vovo-docs/](https://igeekfan.gitee.io/vovo-docs)
+- [https://igeekfan.gitee.io/vovo-docs/](https://igeekfan.gitee.io/vovo-docs)
 
 ## 如何构建运行
 前提
