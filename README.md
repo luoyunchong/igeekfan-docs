@@ -60,11 +60,14 @@ package.json有这些命令
 ```
 
 所以我们可以 yarn dev或yarn build 
-其他的，暂时还不会跑
 
-bash无法推送
-ssh: connect to host github.com port 22: No route to host
-fatal: Could not read from remote repository.
+bash无法推送,这个命令要在git bash中执行
 ``` 
 yarn deploy
+```
+
+
+## 自动发布 至github pages
+```
+.\deploy.ps1
 ```
