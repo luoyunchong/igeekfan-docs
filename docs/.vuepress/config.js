@@ -13,9 +13,10 @@ module.exports = {
     markdown: {
         lineNumbers: true // 代码块显示行号
     },
-    base: '/vovo-docs',
+    base: '/vovo-docs/',
     theme: 'reco',
     themeConfig: {
+        huawei: true,
         lastUpdated: '最后更新时间',
         search: true,
         searchMaxSuggestions: 10,
@@ -24,6 +25,7 @@ module.exports = {
         startYear: '2019',
         author: 'IGeekFan',
         record: '苏ICP备16046457号-1',
+        recordLink: 'http://www.beian.miit.gov.cn/',
         // 文档仓库
         docsRepo: 'https://github.com/luoyunchong/vovo-docs',
         // 假如文档不是放在仓库的根目录下：
@@ -79,10 +81,6 @@ module.exports = {
         'flowchart',
         ['sitemap', {
             hostname: 'https://igeekfan.cn'
-        }],
-        ['@vuepress-reco/rss', {
-            site_url: 'https://igeekfan.cn',
-            copyright: ''
         }],
         // require('./plugins/notification/index')
     ]

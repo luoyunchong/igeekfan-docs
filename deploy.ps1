@@ -12,3 +12,4 @@ git init
 git add -A
 git commit -m 'deploy'
 git push -f git@github.com:luoyunchong/vovo-docs.git master:gh-pages
+Set-Location ../../../ 

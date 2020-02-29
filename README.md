@@ -63,13 +63,69 @@ package.json有这些命令
 
 所以我们可以 yarn dev或yarn build 
 
-bash无法推送,这个命令要在git bash中执行
+# 自动发布 至github pages
+## 在git bash中执行
 ``` 
 yarn deploy
 ```
+或
 
-
-## 自动发布 至github pages
+## powershell中执行如下内容
 ```
 .\deploy.ps1
+```
+
+
+## 自动发布至 linux
+
+根目录创建deploy文件夹，新增一个index.js文件。里面放至如下代码，修改自己的ip，用户名，密码，目录
+```
+'use strict'
+// 引入scp2模块
+var client = require('scp2');
+const ora = require('ora')
+const spinner = ora('正在发布到生产服务器...')
+spinner.start()
+client.scp('docs/.vuepress/dist/', {
+    "host": "ip",
+    "username": "username",
+    "password": "password",
+    "port": "22",
+    "path": "目录"
+}, function (err) {
+    spinner.stop()
+    if (!err) {
+        console.log("npm run build-scp2: scp2工具上传完毕,远端服务路径：/var/www/html/vovo-docs")
+    } else {
+        console.log("err", err)
+    }
+})
+```
+执行如下代码
+```
+yarn deploy:linux
+```
+
+nginx相关配置，/etc/nginx/conf.d/新建一个以.conf为后缀的文件即可。
+```bash
+touch vovo-docs.conf
+```
+```conf
+server {  
+    listen 80;
+    server_name www.igeekfan.cn;
+    root /var/www/html/vovo-docs;	
+    charset utf-8;
+    location /  {
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   Host      $http_host;
+    }
+}
+```
+
+```
+# 判断配置是否有效
+nginx -t
+# 加载配置项
+nginx -s reload
 ```
