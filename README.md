@@ -13,11 +13,11 @@
 - [https://github.com/luoyunchong/vovo-docs](https://github.com/luoyunchong/vovo-docs)
 - [https://gitee.com/igeekfan/vovo-docs](httpsgiteegithub.com/igeekfan/vovo-docs)
 
-## 完整文档
+## 部署地址
 
 - [https://luoyunchong.github.io/vovo-docs/](https://luoyunchong.github.io/vovo-docs)
 - [https://igeekfan.gitee.io/vovo-docs/](https://igeekfan.gitee.io/vovo-docs)
-- [https://igeekfan.gitee.io/vovo-docs/](https://igeekfan.gitee.io/vovo-docs)
+- [https://igeekfan.cn](https://igeekfan.cn)
 
 ## 如何构建运行
 前提

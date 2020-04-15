@@ -1,6 +1,6 @@
 
-## 开源lin-cms-dotnetcore
-- 地址：https://github.com/luoyunchong/lin-cms-dotnetcore
+## 开源介绍
+- 地址：[https://github.com/luoyunchong/lin-cms-dotnetcore](https://github.com/luoyunchong/lin-cms-dotnetcore)
 
 1.什么是cms？
 
@@ -19,7 +19,7 @@ Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套内容
 前后端分离，提供后端接口，更少的依赖，后续将实现模块化安装与卸载。
 - 用户管理、分组管理、分组权限管理、日志系统、文件上传等
 - 更多功能（自定义扩展-模块系统）
-
+- 博客模块，类掘金专栏，用户中心，标签、个人专栏、技术频道（首页分类）
 
 
 ## 设计如下
@@ -69,8 +69,4 @@ BaseType有一条数据，TypeCode为 字符串category、FullName文章类别�
 
 使用FreeSql实现时，如果二个表之间没有导航属性，是更复杂的。
 
-
-
-## 前端cms
-扩展实现一个博客，项目地址：[https://github.com/luoyunchong/lin-cms-vue](https://github.com/luoyunchong/lin-cms-vue)
 

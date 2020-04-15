@@ -3,9 +3,152 @@
 
 ## 项目结构
 
-无
-
-## 类库使用介绍
+- framework
+   - VoVo.CAP.MySql：为CAP实现了配合FreeSql的事务一致性扩展
+- identityserver4
+   - LinCms.IdentityServer4:使用id4授权登录
+- src
+  - LinCms.Web：接口API（ASP.NET Core)、中间件，权限验证
+  - LinCms.Application:应用服务
+  - LinCms.Application.Contracts:DTO,数据传输对象,应用服务接口
+  - LinCms.Infrastructure:基础设施，数据库持久性的操作，仓储接口的实现
+  - LinCms.Core:该应用的核心，实体类，通用操作类，AOP扩展，分页对象，基础依赖对象接口，时间扩展方法，当前用户信息，异常类，值对象，仓储接口
+  - LinCms.Plugins 使用单项目实现某个业务的扩展，不需要主要项目结构，可暂时忽略。
+- test
+  - LinCms.Test:对仓储，应用服务或工具类进行测试
+```
+├─framework
+│  └─src
+│      └─VoVo.CAP.MySql
+├─identityserver4
+│  └─LinCms.IdentityServer4
+│      ├─Controllers
+│      ├─IdentityServer4
+├─src
+│  ├─LinCms.Application
+│  │  ├─AutoMapper
+│  │  │  ├─Base
+│  │  │  ├─Blog
+│  │  │  └─Cms
+│  │  ├─Blog
+│  │  │  ├─Articles
+│  │  │  ├─Channels
+│  │  │  ├─Classifies
+│  │  │  ├─Comments
+│  │  │  ├─Notifications
+│  │  │  ├─Tags
+│  │  │  └─UserSubscribes
+│  │  ├─Cms
+│  │  │  ├─Admin
+│  │  │  ├─Files
+│  │  │  ├─Groups
+│  │  │  ├─Logs
+│  │  │  ├─Permissions
+│  │  │  ├─Settings
+│  │  │  └─Users
+│  │  └─v1
+│  │      └─Books
+│  ├─LinCms.Application.Contracts
+│  │  ├─Base
+│  │  │  ├─BaseItems
+│  │  │  │  └─Dtos
+│  │  │  └─BaseTypes
+│  │  │      └─Dtos
+│  │  ├─Blog
+│  │  │  ├─ArticleDrafts
+│  │  │  │  └─Dtos
+│  │  │  ├─Articles
+│  │  │  │  └─Dtos
+│  │  │  ├─Channels
+│  │  │  │  └─Dtos
+│  │  │  ├─Classifys
+│  │  │  │  └─Dtos
+│  │  │  ├─Comments
+│  │  │  │  └─Dtos
+│  │  │  ├─MessageBoards
+│  │  │  │  └─Dtos
+│  │  │  ├─Notifications
+│  │  │  │  └─Dtos
+│  │  │  ├─Tags
+│  │  │  │  └─Dtos
+│  │  │  ├─UserLikes
+│  │  │  │  └─Dtos
+│  │  │  ├─UserSubscribes
+│  │  │  │  └─Dtos
+│  │  │  └─UserTags
+│  │  │      └─Dtos
+│  │  ├─Cms
+│  │  │  ├─Account
+│  │  │  ├─Admins
+│  │  │  │  └─Dtos
+│  │  │  ├─Files
+│  │  │  │  └─Dtos
+│  │  │  ├─Groups
+│  │  │  │  └─Dtos
+│  │  │  ├─Logs
+│  │  │  │  └─Dtos
+│  │  │  ├─Permissions
+│  │  │  │  └─Dtos
+│  │  │  ├─Settings
+│  │  │  │  └─Dtos
+│  │  │  └─Users
+│  │  │      └─Dtos
+│  │  └─v1
+│  │      └─Books
+│  │          └─Dtos
+│  ├─LinCms.Core
+│  │  ├─Aop
+│  │  ├─Common
+│  │  ├─Data
+│  │  │  └─Enums
+│  │  ├─Dependency
+│  │  ├─Entities
+│  │  │  ├─Base
+│  │  │  ├─Blog
+│  │  │  └─Settings
+│  │  ├─Exceptions
+│  │  ├─Extensions
+│  │  ├─IRepositories
+│  │  ├─LinCms
+│  │  │  └─Core
+│  │  ├─Middleware
+│  │  └─Security
+│  ├─LinCms.Infrastructure
+│  │  └─Repositories
+│  ├─LinCms.Plugins
+│  │  └─Poem
+│  │      ├─AutoMapper
+│  │      ├─Controllers
+│  │      └─Models
+│  └─LinCms.Web
+│      ├─Configs
+│      ├─Controllers
+│      │  ├─Base
+│      │  ├─Blog
+│      │  ├─Cms
+│      │  └─v1
+│      ├─Data
+│      │  └─Authorization
+│      ├─Properties
+│      ├─SnakeCaseQuery
+│      ├─Uow
+│      ├─Utils
+│      └─wwwroot
+└─test
+    └─LinCms.Test
+        ├─Controller
+        │  ├─Blog
+        │  ├─Cms
+        │  └─v1
+        ├─Properties
+        ├─Repositories
+        │  └─Blog
+        ├─Service
+        │  ├─Blog
+        │  └─Cms
+        └─Utils
+```
+## 相关技术
 
 ### FreeSql
 

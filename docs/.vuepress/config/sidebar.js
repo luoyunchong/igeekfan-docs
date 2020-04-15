@@ -2,16 +2,16 @@
 module.exports = {
     '/dotnetcore/examples/': [
         {
-            title: 'Examples',
+            title: '.NET Core示例',
             collapsable: true,
             children: [
-                'Console-Hello-World',
-                'Console-News-Types',
-                'FreeSql-in-asp.net-core-webapi-how-to-use',
-                'FreeSql-sample-blog-RESTful-use-automapper',
-                'IdentityServer4',
-                'Qiniu-Object-Storage',
-                'ImCore-Chat'
+                'console-hello-world',
+                'console-news-types',
+                'freesql-in-asp.net-core-webapi-how-to-use',
+                'freesql-sample-blog-restful-use-automapper',
+                'identityserver4',
+                'qiniu-object-storage',
+                'imcore-chat'
             ]
         }
     ],
@@ -21,22 +21,22 @@ module.exports = {
         children: [
             'dotnetcore-start.md',
             'vue-start.md',
-            'Open-source-road.md',
-            'Production-Design.md',
+            'open-source-road.md',
             'pm-design-modules.md',
+            'production-design.md',
+            'devops-ci-cd.md',
         ]
     }, {
         title: '开发者文档',
         collapsable: true,
         children: [
             'dev-start',
-            'Newtonsoft.Json-question',
+            'newtonsoft-json-question',
             'dependency-injection',
             'dynamic-authorization-in-asp-net-core',
-            'Reflex-Assembly-Get-Controller-Methods-Attribute',
-            'IdentityServer4-JWT',
-            'ToolGood.Words',
-            'StopWords',
+            'reflex-assembly-get-controller-methods-attribute',
+            'identityserver4-jwt',
+            'stopwords',
             'spa-github-login'
         ]
     }],

@@ -1,4 +1,15 @@
-## GitHub第三方授权登录
+---
+title: GitHub第三方授权登录
+date: 2019-12-27 23:12
+tags:
+- 开源
+- .NET Core
+- lin-cms
+- GitHub
+category:
+- lin-cms-dotnetcore
+---
+
 使用SPA+.NET Core3.1实现 GitHub第三方授权登录 类似使用AspNet.Security.OAuth.GitHub，前端使用如下：VUE+Vue-Router+axios
 
 ## AspNet.Security.OAuth.GitHub
