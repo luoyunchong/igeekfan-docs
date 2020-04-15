@@ -9,21 +9,24 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: npm run build💕
-            - uses: actions/checkout@v1
-            - run: |
-                   npm install
-                   npm run build
+            - uses: actions/checkout@v2
+            - name: Setup Node
+              uses: actions/setup-node@v1
+              with:
+                node-version: '12.x'
+
+            - name: Setup Elm
+              run: |
+                  npm install
+                  npm run build
               
             - name: GitHub Pages action💕
               uses: peaceiris/actions-gh-pages@v3.5.7
-              env:
-                ACTIONS_DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-                EXTERNAL_REPOSITORY: luoyunchong/luoyunchong.github.io #
-                PUBLISH_BRANCH: master
-                PUBLISH_DIR: docs/.vuepress/dist
               with:
-                  emptyCommits: false
+                personal_token: ${{ secrets.SSH_PRIVATE_KEY }}
+                cname: luoyunchong/luoyunchong.github.io #
+                PUBLISH_BRANCH: master
+                publish_dir: docs/.vuepress/dist
 
             - name: Sync to Gitee 💕
               uses: wearerequired/git-mirror-action@master
