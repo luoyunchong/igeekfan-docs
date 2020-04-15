@@ -23,9 +23,8 @@ jobs:
             - name: GitHub Pages action💕
               uses: peaceiris/actions-gh-pages@v3.5.7
               with:
-                personal_token: ${{ secrets.SSH_PRIVATE_KEY }}
-                cname: luoyunchong/luoyunchong.github.io #
-                PUBLISH_BRANCH: master
+                deploy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+                cname: luoyunchong/luoyunchong.github.io
                 publish_dir: docs/.vuepress/dist
 
             - name: Sync to Gitee 💕
