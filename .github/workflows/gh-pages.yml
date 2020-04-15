@@ -9,17 +9,13 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: Sync to Gitee 💕
-              uses: wearerequired/git-mirror-action@master
-              env:
-                  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-              with:
-                  source-repo: "git@github.com:luoyunchong/vovo-docs.git"
-                  destination-repo: "git@gitee.com:igeekfan/vovo-docs.git"
+            - name: npm run build💕
             - uses: actions/checkout@v1
-            - run: npm ci # 相当于npm install
-            - run: npm run build
-            - name: GitHub Pages action
+            - run: |
+                   npm install
+                   npm run build
+              
+            - name: GitHub Pages action💕
               uses: peaceiris/actions-gh-pages@v3.5.7
               env:
                 ACTIONS_DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -28,3 +24,11 @@ jobs:
                 PUBLISH_DIR: docs/.vuepress/dist
               with:
                   emptyCommits: false
+
+            - name: Sync to Gitee 💕
+              uses: wearerequired/git-mirror-action@master
+              env:
+                  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+              with:
+                  source-repo: "git@github.com:luoyunchong/vovo-docs.git"
+                  destination-repo: "git@gitee.com:igeekfan/vovo-docs.git"
