@@ -16,3 +16,15 @@ jobs:
               with:
                   source-repo: "git@github.com:luoyunchong/vovo-docs.git"
                   destination-repo: "git@gitee.com:igeekfan/vovo-docs.git"
+            - uses: actions/checkout@v1
+            - run: npm ci # 相当于npm install
+            - run: npm run build
+            - name: GitHub Pages action
+              uses: peaceiris/actions-gh-pages@v3.5.7
+              env:
+                ACTIONS_DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+                EXTERNAL_REPOSITORY: luoyunchong/luoyunchong.github.io #
+                PUBLISH_BRANCH: master
+                PUBLISH_DIR: docs/.vuepress/dist
+              with:
+                  emptyCommits: false
