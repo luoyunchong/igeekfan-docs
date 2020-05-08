@@ -26,8 +26,6 @@
 │      ├─IdentityServer4
 ├─src
 │  ├─LinCms.Application
-│  │  ├─AutoMapper
-│  │  │  └─Cms
 │  │  ├─Cms
 │  │  │  ├─Admin
 │  │  │  ├─Files
@@ -36,8 +34,6 @@
 │  │  │  ├─Permissions
 │  │  │  ├─Settings
 │  │  │  └─Users
-│  │  └─v1
-│  │      └─Books
 │  ├─LinCms.Application.Contracts
 │  │  ├─Cms
 │  │  │  ├─Account
@@ -55,9 +51,6 @@
 │  │  │  │  └─Dtos
 │  │  │  └─Users
 │  │  │      └─Dtos
-│  │  └─v1
-│  │      └─Books
-│  │          └─Dtos
 │  ├─LinCms.Core
 │  │  ├─Aop
 │  │  ├─Common
@@ -84,7 +77,6 @@
 │      ├─Configs
 │      ├─Controllers
 │      │  ├─Cms
-│      │  └─v1
 │      ├─Data
 │      │  └─Authorization
 │      ├─Properties
@@ -97,6 +89,7 @@
         ├─Controller
         │  ├─Cms
         ├─Properties
+        ├─Service
         │  └─Cms
         └─Utils
 ```
