@@ -26,18 +26,6 @@
 │      ├─IdentityServer4
 ├─src
 │  ├─LinCms.Application
-│  │  ├─AutoMapper
-│  │  │  ├─Base
-│  │  │  ├─Blog
-│  │  │  └─Cms
-│  │  ├─Blog
-│  │  │  ├─Articles
-│  │  │  ├─Channels
-│  │  │  ├─Classifies
-│  │  │  ├─Comments
-│  │  │  ├─Notifications
-│  │  │  ├─Tags
-│  │  │  └─UserSubscribes
 │  │  ├─Cms
 │  │  │  ├─Admin
 │  │  │  ├─Files
@@ -46,37 +34,7 @@
 │  │  │  ├─Permissions
 │  │  │  ├─Settings
 │  │  │  └─Users
-│  │  └─v1
-│  │      └─Books
 │  ├─LinCms.Application.Contracts
-│  │  ├─Base
-│  │  │  ├─BaseItems
-│  │  │  │  └─Dtos
-│  │  │  └─BaseTypes
-│  │  │      └─Dtos
-│  │  ├─Blog
-│  │  │  ├─ArticleDrafts
-│  │  │  │  └─Dtos
-│  │  │  ├─Articles
-│  │  │  │  └─Dtos
-│  │  │  ├─Channels
-│  │  │  │  └─Dtos
-│  │  │  ├─Classifys
-│  │  │  │  └─Dtos
-│  │  │  ├─Comments
-│  │  │  │  └─Dtos
-│  │  │  ├─MessageBoards
-│  │  │  │  └─Dtos
-│  │  │  ├─Notifications
-│  │  │  │  └─Dtos
-│  │  │  ├─Tags
-│  │  │  │  └─Dtos
-│  │  │  ├─UserLikes
-│  │  │  │  └─Dtos
-│  │  │  ├─UserSubscribes
-│  │  │  │  └─Dtos
-│  │  │  └─UserTags
-│  │  │      └─Dtos
 │  │  ├─Cms
 │  │  │  ├─Account
 │  │  │  ├─Admins
@@ -93,9 +51,6 @@
 │  │  │  │  └─Dtos
 │  │  │  └─Users
 │  │  │      └─Dtos
-│  │  └─v1
-│  │      └─Books
-│  │          └─Dtos
 │  ├─LinCms.Core
 │  │  ├─Aop
 │  │  ├─Common
@@ -123,10 +78,7 @@
 │  └─LinCms.Web
 │      ├─Configs
 │      ├─Controllers
-│      │  ├─Base
-│      │  ├─Blog
 │      │  ├─Cms
-│      │  └─v1
 │      ├─Data
 │      │  └─Authorization
 │      ├─Properties
@@ -137,14 +89,9 @@
 └─test
     └─LinCms.Test
         ├─Controller
-        │  ├─Blog
         │  ├─Cms
-        │  └─v1
         ├─Properties
-        ├─Repositories
-        │  └─Blog
         ├─Service
-        │  ├─Blog
         │  └─Cms
         └─Utils
 ```

@@ -20,6 +20,7 @@ module.exports = {
         collapsable: true,
         children: [
             'dotnetcore-start.md',
+            'technology.md',
             'vue-start.md',
             'open-source-road.md',
             'pm-design-modules.md',

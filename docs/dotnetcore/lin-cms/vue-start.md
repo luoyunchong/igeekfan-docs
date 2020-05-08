@@ -3,16 +3,8 @@
 
 ## 开源地址
 
-- [https://github.com/luoyunchong/lin-cms-vvlog](https://github.com/luoyunchong/lin-cms-vvlog)
-- [https://github.com/luoyunchong/lin-cms-vue](https://github.com/luoyunchong/lin-cms-vue)
-
-## 文档地址
-- 介绍 [http://doc.cms.7yue.pro/](http://doc.cms.7yue.pro/)
-- 前端 [http://doc.cms.7yue.pro/lin/client/](http://doc.cms.7yue.pro/lin/client/s)
-
-## 官方预览地址
-
-- [http://face.cms.7yue.pro/](http://face.cms.7yue.pro/)
+- 管理端UI [https://github.com/luoyunchong/lin-cms-vue](https://github.com/luoyunchong/lin-cms-vue)
+- 用户端UI [https://github.com/luoyunchong/lin-cms-vvlog](https://github.com/luoyunchong/lin-cms-vvlog)
 
 ## 博客模块线上地址 
 - 后端swagger地址 [https://baimocore.cn/swagger/index.html](https://baimocore.cn/swagger/index.html)
@@ -127,6 +119,7 @@ server {
 1. 配置 api 地址： 打开配置文件 src/config/index.js 配置 baseUrl ，本地开发阶段配置本地虚拟域名(https://localhost:5001/)，线上部署生产域名。
 
 
+2. 用户名：**admin**  密码 **123qwe**
 
 
 
