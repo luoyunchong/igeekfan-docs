@@ -5,7 +5,7 @@
 .NET Core下集成 七牛云下的对象存储
 
 ## 开源地址
-[https://github.com/luoyunchong/dotnetcore-examples/tree/master/asp.net-core-qiniu](https://github.com/luoyunchong/dotnetcore-examples/tree/master/asp.net-core-qiniu)
+[https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-qiniu](https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-qiniu)
 
 ## 集成类库
 | 基础类库集成方案                                                                                     | 开源地址                                                                                            | 文档                                                       | 说明                                                                                              |
@@ -148,6 +148,6 @@ docker run -d -p 5000:80 igeekfan/qiniu  # 生成 container 并运行在5000端�
 ## 参考
 
 - .NET Core版本七牛云SDK使用[https://www.cnblogs.com/OMango/p/8447480.html](https://www.cnblogs.com/OMango/p/8447480.html)
-- .NET Core部署至Linux 下的Docker [http://blog.igeekfan.cn/2019/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Docker-Ubuntu/](http://blog.igeekfan.cn/2019/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Docker-Ubuntu/)
+- .NET Core部署至Linux 下的Docker [http://blog.igeekfan.cn/2019/06/09/dotnetcore/aspnetcore-Deploy-To-Docker-Ubuntu/](http://blog.igeekfan.cn/2019/06/09/dotnetcore/aspnetcore-Deploy-To-Docker-Ubuntu/)
 
 

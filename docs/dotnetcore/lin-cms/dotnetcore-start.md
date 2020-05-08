@@ -32,7 +32,7 @@ identityserver4/LinCms.IdentityServer4/appsettings.Development.json 数据库配
 ```
 
 ## 数据迁移
-该项目使用[FreeSql](https://github.com/2881099/FreeSql)，默认自动迁移数据表结构，**需要自己创建数据库，名字为LinCms**，无须用户操作，但无数据，而且只有访问到表时才会创建某个表，所以用户可将[备份SQL](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/docs/sql/lincms.sql)放到Mysql中生成，还原表结构及数据。
+该项目使用[FreeSql](https://github.com/2881099/FreeSql)，默认自动迁移数据表结构，**需要自己创建数据库，名字为LinCms**，无须用户操作，但无数据，而且只有访问到表时才会创建某个表，所以用户可将[备份SQL](https://github.com/luoyunchong/lin-cms-dotnetcore/tree/master/docs/sql/%E6%95%B0%E6%8D%AE%E5%BA%93.zip)放到Mysql中生成，还原表结构及数据。
 
 
 ## visual studio 2019运行项目
@@ -56,13 +56,9 @@ LinCms.Web运行效果：
 
 
 
-## 部署至linux(Ubuntu16.06)
-
-- [https://blog.igeekfan.cn/2019/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Ubuntu/](https://blog.igeekfan.cn/2019/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Ubuntu/)
-
-## 部署至Docker
-
-- [https://blog.igeekfan.cn/2019/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Docker-Ubuntu/](https://blog.igeekfan.cn/2019/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Docker-Ubuntu/)
+## 部署
+- [部署至Linux(Ubuntu16.06)](https://blog.igeekfan.cn/2019/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Ubuntu)
+- [部署至Linux(Ubuntu16.06)下的Docker](https://blog.igeekfan.cn/2019/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Docker-Ubuntu/)
 
 ## 部署前准备
 因为该项目基于IdentityServer4,实现的授权认证服务，

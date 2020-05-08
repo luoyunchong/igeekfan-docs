@@ -1,11 +1,10 @@
 
-# 依赖注入
+# 依赖注入scrutor
 
 官网介绍
 
 [https://docs.microsoft.com/zh-cn/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.2](https://docs.microsoft.com/zh-cn/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-2.2)
 
-## Scrutor
 - 开源地址[https://github.com/khellang/Scrutor](https://github.com/khellang/Scrutor)
 - 参考文档 [https://www.cnblogs.com/catcher1994/p/10316928.html](https://www.cnblogs.com/catcher1994/p/10316928.html)
 手动管理依赖注入过于麻烦,当有多个仓储，服务，无法统一注入，Scrutor能帮助我们简化ASP.NET Core的DI注册。

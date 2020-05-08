@@ -3,9 +3,9 @@
 本文使用ASP .NET Core的WEB API，构建一个RESTful风格的接口，使用Freesql访问MySQL数据库，实现二个表的简单博客，并集成AutoMapper。
 
 接上一篇 
-- [FreeSql在ASP.NTE Core WebApi中如何使用的教程](http://blog.igeekfan.cn/2019/06/30/re-start/FreeSql-asp.net-core-how-to-use/)
+- [FreeSql在ASP.NTE Core WebApi中如何使用的教程](http://blog.igeekfan.cn/2019/06/30/re-start/FreeSql-aspnetcore-how-to-use/)
 
-- 项目源码 [https://github.com/luoyunchong/dotnetcore-examples/tree/master/asp.net-core-freesql](https://github.com/luoyunchong/dotnetcore-examples/tree/master/asp.net-core-freesql)
+- 项目源码 [https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-freesql](https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-freesql)
 
 <!-- more -->
 
@@ -135,7 +135,7 @@ namespace RESTful.FreeSql.Models.Blogs
 我们是在ASP .NET Core下使用AutoMapper [官网介绍，如何依赖注入中使用](https://automapper.readthedocs.io/en/latest/Dependency-injection.html)
 
 ### Setup
-先cd到dotnetcore-examples\asp.net-core-freesql\RESTful.FreeSql目录
+先cd到dotnetcore-examples\aspnetcore-freesql\RESTful.FreeSql目录
 ```PowerShell
 PS > dotnet add package AutoMapper
 PS > dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version 6.1.1

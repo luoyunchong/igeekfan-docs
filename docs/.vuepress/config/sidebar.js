@@ -7,7 +7,7 @@ module.exports = {
             children: [
                 'console-hello-world',
                 'console-news-types',
-                'freesql-in-asp.net-core-webapi-how-to-use',
+                'freesql-in-aspnetcore-webapi-how-to-use',
                 'freesql-sample-blog-restful-use-automapper',
                 'identityserver4',
                 'qiniu-object-storage',
@@ -32,12 +32,13 @@ module.exports = {
         children: [
             'dev-start',
             'newtonsoft-json-question',
-            'dependency-injection',
-            'dynamic-authorization-in-asp-net-core',
+            'dependency-injection-scrutor',
+            'dynamic-authorization-in-aspnetcore',
             'reflex-assembly-get-controller-methods-attribute',
             'identityserver4-jwt',
             'stopwords',
-            'spa-github-login'
+            'spa-github-login',
+            'rabbitmq'
         ]
     }],
     '/colorui/': [

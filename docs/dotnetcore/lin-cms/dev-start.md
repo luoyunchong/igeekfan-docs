@@ -27,17 +27,7 @@
 ├─src
 │  ├─LinCms.Application
 │  │  ├─AutoMapper
-│  │  │  ├─Base
-│  │  │  ├─Blog
 │  │  │  └─Cms
-│  │  ├─Blog
-│  │  │  ├─Articles
-│  │  │  ├─Channels
-│  │  │  ├─Classifies
-│  │  │  ├─Comments
-│  │  │  ├─Notifications
-│  │  │  ├─Tags
-│  │  │  └─UserSubscribes
 │  │  ├─Cms
 │  │  │  ├─Admin
 │  │  │  ├─Files
@@ -49,34 +39,6 @@
 │  │  └─v1
 │  │      └─Books
 │  ├─LinCms.Application.Contracts
-│  │  ├─Base
-│  │  │  ├─BaseItems
-│  │  │  │  └─Dtos
-│  │  │  └─BaseTypes
-│  │  │      └─Dtos
-│  │  ├─Blog
-│  │  │  ├─ArticleDrafts
-│  │  │  │  └─Dtos
-│  │  │  ├─Articles
-│  │  │  │  └─Dtos
-│  │  │  ├─Channels
-│  │  │  │  └─Dtos
-│  │  │  ├─Classifys
-│  │  │  │  └─Dtos
-│  │  │  ├─Comments
-│  │  │  │  └─Dtos
-│  │  │  ├─MessageBoards
-│  │  │  │  └─Dtos
-│  │  │  ├─Notifications
-│  │  │  │  └─Dtos
-│  │  │  ├─Tags
-│  │  │  │  └─Dtos
-│  │  │  ├─UserLikes
-│  │  │  │  └─Dtos
-│  │  │  ├─UserSubscribes
-│  │  │  │  └─Dtos
-│  │  │  └─UserTags
-│  │  │      └─Dtos
 │  │  ├─Cms
 │  │  │  ├─Account
 │  │  │  ├─Admins
@@ -103,8 +65,6 @@
 │  │  │  └─Enums
 │  │  ├─Dependency
 │  │  ├─Entities
-│  │  │  ├─Base
-│  │  │  ├─Blog
 │  │  │  └─Settings
 │  │  ├─Exceptions
 │  │  ├─Extensions
@@ -123,8 +83,6 @@
 │  └─LinCms.Web
 │      ├─Configs
 │      ├─Controllers
-│      │  ├─Base
-│      │  ├─Blog
 │      │  ├─Cms
 │      │  └─v1
 │      ├─Data
@@ -137,14 +95,8 @@
 └─test
     └─LinCms.Test
         ├─Controller
-        │  ├─Blog
         │  ├─Cms
-        │  └─v1
         ├─Properties
-        ├─Repositories
-        │  └─Blog
-        ├─Service
-        │  ├─Blog
         │  └─Cms
         └─Utils
 ```
@@ -152,9 +104,9 @@
 
 ### FreeSql
 
-- [主要在介绍FreeSql在ASP.NTE Core WebApi中如何使用的过程，完成一个最简单的博客系统的后端接口](https://luoyunchong.github.io/vuepress-docs/dotnetcore/examples/FreeSql-in-asp.net-core-webapi-how-to-use.html)
+- [主要在介绍FreeSql在ASP.NTE Core WebApi中如何使用的过程，完成一个最简单的博客系统的后端接口](/dotnetcore/examples/freesql-in-aspnetcore-webapi-how-to-use.html)
 
-- [本文使用ASP .NET Core的WEB API，构建一个RESTful风格的接口，使用Freesql访问MySQL数据库，实现二个表的简单博客，并集成AutoMapper。](https://luoyunchong.github.io/vuepress-docs/dotnetcore/examples/FreeSql-sample-blog-RESTful-use-automapper.html)
+- [本文使用ASP .NET Core的WEB API，构建一个RESTful风格的接口，使用Freesql访问MySQL数据库，实现二个表的简单博客，并集成AutoMapper。](/dotnetcore/examples/freesql-sample-blog-restful-use-automapper.html)
 
 ### IdentityServer4
 
