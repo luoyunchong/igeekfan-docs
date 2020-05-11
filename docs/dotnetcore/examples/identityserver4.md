@@ -5,7 +5,7 @@
 IdentityServer4 实现单点登录授权token验证
 
 ## 源码
-代码托管在GitHub上 [https://github.com/luoyunchong/dotnetcore-examples/tree/master/asp.net-core-identityserver4](https://github.com/luoyunchong/dotnetcore-examples/tree/master/asp.net-core-identityserver4)
+代码托管在GitHub上 [https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-identityserver4](https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-identityserver4)
 
 
 ## 参考 

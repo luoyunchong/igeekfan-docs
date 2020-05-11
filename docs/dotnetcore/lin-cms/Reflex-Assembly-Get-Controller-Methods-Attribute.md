@@ -8,7 +8,7 @@
 
 ## LinCmsAuthorizeAttribute是什么
 其代码非常简单，用于自定义权限验证，通过重写OnAuthorizationAsync方法，实现固定权限可分配给动态角色（也能分配给动态用户）。主要就**基于权限的授权**的实现进行研究，实现方法级别的权限验证。
-- [https://www.cnblogs.com/RainingNight/p/dynamic-authorization-in-asp-net-core.html](https://www.cnblogs.com/RainingNight/p/dynamic-authorization-in-asp-net-core.html)
+- [https://www.cnblogs.com/RainingNight/p/dynamic-authorization-in-aspnetcore.html](https://www.cnblogs.com/RainingNight/p/dynamic-authorization-in-aspnetcore.html)
 
 当然，这个只是部分代码，完整代码请查看最下方开源地址，其中LinCmsAuthorizeAttribute继承AuthorizeAttribute，拥有指定角色权限控制，当Permission未指定时，当过滤器与Authorize功能相同。Module是指模块，即多个权限，属于同一个模块，方便前台展示为树型结构。Permission属性的值不可重复。
 

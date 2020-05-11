@@ -7,7 +7,7 @@
 国人写的一个功能强大的ORM,FreeSql 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite，特点：轻量级、可扩展、基于 .NET Standard 跨平台。
 
 ## 源码
-代码托管在GitHub上 [https://github.com/luoyunchong/dotnetcore-examples/tree/master/asp.net-core-freesql](https://github.com/luoyunchong/dotnetcore-examples/tree/master/asp.net-core-freesql)
+代码托管在GitHub上 [https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-freesql](https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-freesql)
 
 ## 参考
 - FreeSql github [https://github.com/2881099/FreeSql](https://github.com/2881099/FreeSql) 
@@ -19,22 +19,22 @@
 ## 项目准备
 - Mysql 5.6
 - Visual Studio 2019或2017、Visual Studio code
-- .NET Core 2.2+
+- .NET Core 3.1+
 - PowerShell
 - 懂点mvc，该教程不会教你如何使用 ASP .NET Core MVC、RESTful
 
 
 ### 创建项目
-使用dotnet 命令行创建一个webapi项目，起名为RESTful.FreeSql
+使用dotnet 命令行创建一个webapi项目，起名为OvOv.FreeSql
 ```
-PS dotnetcore-examples\asp.net-core-freesql> dotnet new webapi -n RESTful.FreeSql
+PS dotnetcore-examples\aspnetcore-freesql> dotnet new webapi -n OvOv.FreeSql
 The template "ASP.NET Core Web API" was created successfully.
 ```
 
-然后cd 到RESTful.FreeSql目录，通过dotnet run 命令运行项目
+然后cd 到OvOv.FreeSql目录，通过dotnet run 命令运行项目
 ```PowerShell
-PS dotnetcore-examples\asp.net-core-freesql> cd .\RESTful.FreeSql\
-PS dotnetcore-examples\asp.net-core-freesql\RESTful.FreeSql> dotnet run
+PS dotnetcore-examples\aspnetcore-freesql> cd .\OvOv.FreeSql\
+PS dotnetcore-examples\aspnetcore-freesql\OvOv.FreeSql> dotnet run
 
 info: Microsoft.Hosting.Lifetime[0]
       Now listening on: https://localhost:5001
@@ -45,7 +45,7 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Development
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: D:\code\github\dotnetcore-examples\asp.net-core-freesql\RESTful.FreeSql
+      Content root path: D:\code\github\dotnetcore-examples\aspnetcore-freesql\OvOv.FreeSql
 ```
 
 打开浏览器 https://localhost:5001 会出现404
@@ -59,10 +59,10 @@ info: Microsoft.Hosting.Lifetime[0]
 
 - 官网文档 [http://freesql.net/doc](http://freesql.net/doc)
 ## Install
-要先cd到RESTful.FreeSql目录中。
+要先cd到OvOv.FreeSql目录中。
 ~~~PowerShell
-PS \asp.net-core-freesql\RESTful.FreeSql> dotnet add package FreeSql
-PS \asp.net-core-freesql\RESTful.FreeSql> dotnet add package FreeSql.Provider.MySql
+PS \aspnetcore-freesql\OvOv.FreeSql> dotnet add package FreeSql
+PS \aspnetcore-freesql\OvOv.FreeSql> dotnet add package FreeSql.Provider.MySql
 ~~~
 
 
@@ -155,7 +155,7 @@ public class Blog {
 using FreeSql.DataAnnotations;
 using System;
 
-namespace RESTful.FreeSql.Domain
+namespace OvOv.FreeSql.Domain
 {
     public class Blog
     {
@@ -178,7 +178,7 @@ namespace RESTful.FreeSql.Domain
 using FreeSql.DataAnnotations;
 using System;
 
-namespace RESTful.FreeSql.Domain
+namespace OvOv.FreeSql.Domain
 {
     public class Post
     {
@@ -200,7 +200,7 @@ namespace RESTful.FreeSql.Domain
 
 这里初始化FreeSql，并使用单例模式，注入到默认的依赖中，这样在Controller中即可直接注入。
 ~~~csharp
-namespace RESTful.FreeSql
+namespace OvOv.FreeSql
 {
     public class Startup
     {
@@ -233,9 +233,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using FreeSql;
 using Microsoft.AspNetCore.Mvc;
-using RESTful.FreeSql.Domain;
+using OvOv.FreeSql.Domain;
 
-namespace RESTful.FreeSql.Controllers
+namespace OvOv.FreeSql.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

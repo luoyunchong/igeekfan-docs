@@ -2,7 +2,7 @@
 ## 全局敏感词处理
 
 基于ToolGood.Words类库，配合敏感字的文本文件，写的API接口。
-- [https://github.com/luoyunchong/dotnetcore-examples/tree/master/asp.net-core-%E6%95%8F%E6%84%9F%E8%AF%8D%E5%A4%84%E7%90%86](https://github.com/luoyunchong/dotnetcore-examples/tree/master/asp.net-core-%E6%95%8F%E6%84%9F%E8%AF%8D%E5%A4%84%E7%90%86)
+- [https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-stopwords](https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-stopwords)
 
 一共二种方式
 

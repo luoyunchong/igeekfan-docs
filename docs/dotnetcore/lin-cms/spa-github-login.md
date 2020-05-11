@@ -414,7 +414,7 @@ public static void AddJwtConfiguration(this IServiceCollection services, IConfig
 }
 ```
 
-[前端LoginResult.vue代码](https://github.com/luoyunchong/dotnetcore-examples/blob/master/dotnetcore3.1/VoVo.AspNetCore.OAuth2/spa-vue-oauth2/src/components/LoginResult.vue)
+[前端LoginResult.vue代码](https://github.com/luoyunchong/dotnetcore-examples/blob/master/aspnetcore-oatuth2/spa-vue-oauth2/src/components/LoginResult.vue)
 
 前端运行
 ```
@@ -439,6 +439,6 @@ OpenId?provider=GitHub则得不到数据，只能浏览器直接请求https://lo
 - [用户系统设计：第三方授权、账号绑定及解绑（下）](http://www.woshipm.com/pd/509712.html)
 
 ## Demo  示例
-- GitHub [https://github.com/luoyunchong/dotnetcore-examples/tree/master/dotnetcore3.1/VoVo.AspNetCore.OAuth2](https://github.com/luoyunchong/dotnetcore-examples/tree/master/dotnetcore3.1/VoVo.AspNetCore.OAuth2)
+- GitHub [https://github.com/luoyunchong/dotnetcore-examples/blob/master/aspnetcore-oatuth2](https://github.com/luoyunchong/dotnetcore-examples/blob/master/aspnetcore-oatuth2)
 
 
