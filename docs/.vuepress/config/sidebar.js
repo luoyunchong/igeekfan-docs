@@ -16,7 +16,7 @@ module.exports = {
         }
     ],
     '/dotnetcore/lin-cms/': [{
-        title: 'lin-cms-dotnetcore起步',
+        title: '起步',
         collapsable: true,
         children: [
             'dotnetcore-start.md',
@@ -26,6 +26,14 @@ module.exports = {
             'pm-design-modules.md',
             'production-design.md',
             'devops-ci-cd.md',
+        ]
+    },{
+        title: '.NET Core',
+        collapsable: true,
+        children: [
+            'file-upload.md',
+            'logger.md',
+            'table.md',
         ]
     }, {
         title: '开发者文档',
@@ -39,6 +47,7 @@ module.exports = {
             'identityserver4-jwt',
             'stopwords',
             'spa-github-login',
+            'qq-login',
             'rabbitmq'
         ]
     }],
