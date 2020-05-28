@@ -27,13 +27,14 @@ module.exports = {
             'production-design.md',
             'devops-ci-cd.md',
         ]
-    },{
+    }, {
         title: '.NET Core',
         collapsable: true,
         children: [
             'file-upload.md',
             'logger.md',
             'table.md',
+            'authorize.md'
         ]
     }, {
         title: '开发者文档',
