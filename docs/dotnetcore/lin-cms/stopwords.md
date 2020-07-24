@@ -1,5 +1,5 @@
 
-## 全局敏感词处理
+# 全局敏感词处理
 
 基于ToolGood.Words类库，配合敏感字的文本文件，写的API接口。
 - [https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-stopwords](https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-stopwords)

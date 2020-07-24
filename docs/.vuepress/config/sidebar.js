@@ -20,12 +20,13 @@ module.exports = {
         collapsable: true,
         children: [
             'dotnetcore-start.md',
+            'cms-start.md',
             'technology.md',
             'vue-start.md',
             'open-source-road.md',
             'pm-design-modules.md',
             'production-design.md',
-            'devops-ci-cd.md',
+            'github-actions.md',
         ]
     }, {
         title: '.NET Core',

@@ -2,7 +2,7 @@
 
 ## Server 端必备环境
 * 安装软件开发包 [.NET Core SDK 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)   
-* 安装开发工具  [Visual Studio 2019](https://visualstudio.microsoft.com/zh-hans/vs/?rr=https%3A%2F%2Fcn.bing.com%2F)  
+* 安装开发工具  [Visual Studio 2019](https://visualstudio.microsoft.com/zh-hans/vs/?rr=https%3A%2F%2Fcn.bing.com%2F)  或 [Rider](https://www.jetbrains.com/rider/)
 * 安装MySQL（version： 5.6+,别装8.0+，未测试）
 * Redis 4.0.14.2 for Windows [https://github.com/tporadowski/redis/releases](https://github.com/tporadowski/redis/releases)
 

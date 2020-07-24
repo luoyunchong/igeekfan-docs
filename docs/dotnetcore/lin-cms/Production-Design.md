@@ -65,8 +65,6 @@ order by (a.`view_hits` + a.`likes_quantity` * 20 + a.`comment_quantity` * 30) D
 ### 个人设置
 用户信息、密码修改
 
-## 
-
 ## 更多参考
 - [万字长文深度分析：产品排行榜的设计和玩法](http://www.woshipm.com/pd/1255548.html)
 - [想知道谁是你的最佳用户？基于Redis实现排行榜周期榜与最近N期榜](https://zhuanlan.zhihu.com/p/52322777)

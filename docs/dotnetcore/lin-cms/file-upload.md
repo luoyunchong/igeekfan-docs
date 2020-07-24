@@ -1,4 +1,4 @@
-## 文件上传系统
+# 文件上传系统
 
 lin-cms-dotnetcore 默认集成了文件上传功能，并可自由切换存储位置，前端也有相应的组件匹配使用.
 
@@ -22,7 +22,7 @@ public interface IFileService
 
 配置项 appsettings.json
 
-### 本地文件上传
+## 本地文件上传
 
 - PrefixPath：默认为wwwroot下的文件目录配置项，assets，多级目录，前后不要加**/**，如assets/file
 - Host:  文件上传后，访问域名配置，这里配置https://localhost:5001/
@@ -49,7 +49,7 @@ public interface IFileService
   },
 ```
 
-### 七牛云文件上传
+## 七牛云文件上传
 SERVICE为QiniuService时，系统将需要使用如下配置项，
 
 - AK :七牛云密钥AccessKey
@@ -89,9 +89,9 @@ lin-cms 默认对外暴露了cms/file/作为文件上传接口，通过该接口
 [https://localhost:5001/swagger/index.html](https://localhost:5001/swagger/index.html)
 
 
-请求方式 | 路径|功能
----|---|---
-HttpPost |  /cms/file/upload|单文件上传
+| 请求方式 | 路径             | 功能       |
+| -------- | ---------------- | ---------- |
+| HttpPost | /cms/file/upload | 单文件上传 |
 
 直接可通过swagger选择文件后，输入key为0，执行Execute
 
@@ -105,9 +105,9 @@ HttpPost |  /cms/file/upload|单文件上传
 ```
 
  
- 请求方式 | 路径|功能
----|---|---
-HttpPost |  /cms/file|多文件上传
+ | 请求方式 | 路径      | 功能       |
+ | -------- | --------- | ---------- |
+ | HttpPost | /cms/file | 多文件上传 |
 
 由于swagger-ui的规范，目前多文件无法正确显示，即时正常显示出选择多文件，后台却得不到请求的数据。。
 
@@ -135,12 +135,12 @@ HttpPost |  /cms/file|多文件上传
 ]
 ```
 
-name | 说明| 类型
----|---|---
-key | 文件上传的key| string
-id  | 文件存储到数据库的id| string
-path  | 文件存储的路径path| string
-url	|可访问的 url|	string
+| name | 说明                 | 类型   |
+| ---- | -------------------- | ------ |
+| key  | 文件上传的key        | string |
+| id   | 文件存储到数据库的id | string |
+| path | 文件存储的路径path   | string |
+| url  | 可访问的 url         | string |
 
 >TIP
 >系统会自动帮助我们上传的文件做md5，因此你大可不必担心文件重复上传，如果你上传了 重复的文件，服务器会返回已传文件的数据。

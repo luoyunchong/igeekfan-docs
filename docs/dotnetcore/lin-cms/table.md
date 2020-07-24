@@ -5,15 +5,15 @@
 
 ### 1. 用户表 lin_user
 
-字段| 备注|类型
----|---|---|
-id	|主键Id	|bigint
-username|	用户名|	varchar
-nickname|	昵称|	varchar
-phone_number|	手机号|	varchar
-avatar|	用户默认生成图像，为null、头像url|	varchar
-email|	电子邮箱|	varchar
-active	|1激活 2  非激活|	int
+| 字段         | 备注                              | 类型    |
+| ------------ | --------------------------------- | ------- |
+| id           | 主键Id                            | bigint  |
+| username     | 用户名                            | varchar |
+| nickname     | 昵称                              | varchar |
+| phone_number | 手机号                            | varchar |
+| avatar       | 用户默认生成图像，为null、头像url | varchar |
+| email        | 电子邮箱                          | varchar |
+| active       | 1激活 2  非激活                   | int     |
 
 <!--
 introduction|	个人介绍|	varchar
@@ -22,56 +22,56 @@ blog_address|	个人主页|	varchar
 -->
 
 ### 2. 分组表 lin_group
-字段| 备注|类型
----|---|---|
-id	|主键Id|bigint
-name |权限组名称|	varchar
-info|	权限组描述|varchar
-is_static|	是否是静态分组|bit
+| 字段      | 备注           | 类型    |
+| --------- | -------------- | ------- |
+| id        | 主键Id         | bigint  |
+| name      | 权限组名称     | varchar |
+| info      | 权限组描述     | varchar |
+| is_static | 是否是静态分组 | bit     |
 
 ### 3. 用户分组表 lin_user_group
 
 用户分组表。用于用户和分组表的关联。可配置一个用户属于多个分组。
 
-字段| 备注|类型
----|---|---|
-id	| 主键Id |bigint
-user_id	|用户ID|bigint
-group_id|分组ID	|bigint
+| 字段     | 备注   | 类型   |
+| -------- | ------ | ------ |
+| id       | 主键Id | bigint |
+| user_id  | 用户ID | bigint |
+| group_id | 分组ID | bigint |
 
 
 ### 4. 权限表 lin_permission
 
  权限表，本系统通过反射在系统初次启动时，启动异步任务，将不存在的权限新增到此表中。
-字段| 备注|类型
----|---|---|
-id|主键Id|bigint
-module|权限所属模块，例如：人员管理|varchar
-name|所属权限、权限名称，例如：访问首页|varchar
+| 字段   | 备注                               | 类型    |
+| ------ | ---------------------------------- | ------- |
+| id     | 主键Id                             | bigint  |
+| module | 权限所属模块，例如：人员管理       | varchar |
+| name   | 所属权限、权限名称，例如：访问首页 | varchar |
 
 
 ### 5. 分组权限表 lin_group_permission
 
 分组权限表，用于分组与权限表的关联
 
-字段| 备注|类型
----|---|---|
-id| 主键Id |bigint
-group_id| 分组Id |bigint
-permission_id| 权限Id |bigint
+| 字段          | 备注   | 类型   |
+| ------------- | ------ | ------ |
+| id            | 主键Id | bigint |
+| group_id      | 分组Id | bigint |
+| permission_id | 权限Id | bigint |
 
-### 6. 用户三方授权登录表 lin_user_identity
+### 6. 用户身份认证登录表 lin_user_identity
 
 用户授权信息表，用于存储不同登录类型的用户信息，如手机号、邮件、用户名、第三方应用（微信、QQ、GitHub）的登录
 
-字段| 备注|类型
----|---|---|
-id|char|主键Id
-identity_type|varchar|认证类型Password，GitHub、QQ、WeiXin等
-identifier|varchar|认证者，例如 用户名,手机号，邮件等，
-credential|varchar|凭证，例如 密码,存OpenId、Id，同一IdentityType的OpenId的值是唯一的
-create_user_id|bigint|绑定的用户Id
-create_time|datetime|
+| 字段           | 备注     | 类型                                                               |
+| -------------- | -------- | ------------------------------------------------------------------ |
+| id             | char     | 主键Id                                                             |
+| identity_type  | varchar  | 认证类型Password，GitHub、QQ、WeiXin等                             |
+| identifier     | varchar  | 认证者，例如 用户名,手机号，邮件等，                               |
+| credential     | varchar  | 凭证，例如 密码,存OpenId、Id，同一IdentityType的OpenId的值是唯一的 |
+| create_user_id | bigint   | 绑定的用户Id                                                       |
+| create_time    | datetime |
 
 
 
@@ -83,21 +83,21 @@ create_time|datetime|
 比如：文章是（原创，转载，翻译),性别是（男，女）。当然更多，在下文会有介绍。
 
 ### 1.base_type （字典类别管理）
-字段| 类型|备注
----|---|---|
-id | int|
-type_code|varchar(50)|类别编码|
-full_name|varchar(50)|全称|
-sort_code|int|排序码|
+| 字段      | 类型        | 备注     |
+| --------- | ----------- | -------- |
+| id        | int         |
+| type_code | varchar(50) | 类别编码 |
+| full_name | varchar(50) | 全称     |
+| sort_code | int         | 排序码   |
 
 ### 2.base_item （字典管理）
-字段| 类型|备注
----|---|---|
-id | int|
-base_type_id|int|类别id(关联base_type的id)|
-item_code|varchar(50)|字典编码|
-item_name|varchar(50)|字典全称|
-sort_code|int|排序码|
+| 字段         | 类型        | 备注                      |
+| ------------ | ----------- | ------------------------- |
+| id           | int         |
+| base_type_id | int         | 类别id(关联base_type的id) |
+| item_code    | varchar(50) | 字典编码                  |
+| item_name    | varchar(50) | 字典全称                  |
+| sort_code    | int         | 排序码                    |
 
 
 BaseType 1 对BaseItem多。
@@ -125,32 +125,32 @@ BaseType有一条数据，TypeCode为 字符串category、FullName文章类别�
 ## 
 ### lin_file文件存储
 
-字段| 类型|备注
----|---|---|
-id||bigint|主键Id
-extension|varchar|后缀
-md5|varchar|图片md5值，防止上传重复图片
-name|varchar|名称
-path|varchar|路径
-size|bigint|大小
-type|smallint|1 local，2 代表七牛云 3 其他表示其他地方
-create_user_id|bigint|创建者ID
+| 字段           | 类型     | 备注                                     |
+| -------------- | -------- | ---------------------------------------- |
+| id             |          | bigint                                   | 主键Id |
+| extension      | varchar  | 后缀                                     |
+| md5            | varchar  | 图片md5值，防止上传重复图片              |
+| name           | varchar  | 名称                                     |
+| path           | varchar  | 路径                                     |
+| size           | bigint   | 大小                                     |
+| type           | smallint | 1 local，2 代表七牛云 3 其他表示其他地方 |
+| create_user_id | bigint   | 创建者ID                                 |
 
 
 ### lin_log 日志记录
 
-字段| 类型|备注
----|---|---|
-id|bigint|主键Id
-authority|	varchar|访问哪个权限
-message	|varchar|日志信息
-method	|varchar|请求方法
-path|	varchar|请求路径
-status_code	|int|请求的http返回码
-time|	datetime|日志创建时间
-user_id|	bigint|用户id
-user_name|	varchar|用户当时的昵称
-other_message|	longtext|
+| 字段          | 类型     | 备注             |
+| ------------- | -------- | ---------------- |
+| id            | bigint   | 主键Id           |
+| authority     | varchar  | 访问哪个权限     |
+| message       | varchar  | 日志信息         |
+| method        | varchar  | 请求方法         |
+| path          | varchar  | 请求路径         |
+| status_code   | int      | 请求的http返回码 |
+| time          | datetime | 日志创建时间     |
+| user_id       | bigint   | 用户id           |
+| user_name     | varchar  | 用户当时的昵称   |
+| other_message | longtext |
 
 
 
