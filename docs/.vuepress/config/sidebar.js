@@ -35,7 +35,8 @@ module.exports = {
             'file-upload.md',
             'logger.md',
             'table.md',
-            'authorize.md'
+            'authorize.md',
+            'lincms-scaffolding.md'
         ]
     }, {
         title: '开发者文档',
@@ -50,7 +51,8 @@ module.exports = {
             'stopwords',
             'spa-github-login',
             'qq-login',
-            'rabbitmq'
+            'rabbitmq',
+            'scriban-README'
         ]
     }],
     '/colorui/': [
