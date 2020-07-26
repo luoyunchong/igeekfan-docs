@@ -1,6 +1,4 @@
-
-
-# scriban 文本模板语言
+# scriban 本模板语言
 
 ### 目录 
 - [【翻译】Scriban是一种快速、强大、安全和轻量级的文本模板语言和.NET引擎，具有解析liquid模板的兼容模式](https://www.cnblogs.com/igeekfan/p/13343331.html)
@@ -14,7 +12,7 @@
 
 Scriban是一种快速、强大、安全和轻量级的文本模板语言和.NET引擎，具有解析`liquid`模板的兼容模式
 
-```C#
+```
 // Parse a scriban template
 var template = Template.Parse("Hello {{name}}!");
 var result = template.Render(new { Name = "World" }); // => "Hello World!" 
@@ -22,7 +20,7 @@ var result = template.Render(new { Name = "World" }); // => "Hello World!"
 
 使用Liquid语言解析Liquid模板：
 
-```C#
+```
 // Parse a liquid template
 var template = Template.ParseLiquid("Hello {{name}}!");
 var result = template.Render(new { Name = "World" }); // => "Hello World!" 
@@ -30,7 +28,7 @@ var result = template.Render(new { Name = "World" }); // => "Hello World!"
 
 语言非常通用，易于阅读和使用，类似于[liquid](https://shopify.github.io/liquid/) 模板:
 
-```C#
+```
 var template = Template.Parse(@"
 <ul id='products'>
   {{ for product in products }}
@@ -52,7 +50,8 @@ var result = template.Render(new { Products = this.ProductList });
 
 ## 特性
 
-- 非常**高效**,**快速** 解析器和**轻量级**的运行时. 对CPU和垃圾收集器友好. 查看  [benchmarks](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/benchmarks.md)获取更多细节.
+- 非常**高效**,**快速** 解析器和**轻量级**的运行时. 对CPU和垃圾收集器友好. 查看 
+-  [benchmarks](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/benchmarks.md)获取更多细节.
 - 由Lexer / Parser提供一个**完整的抽象语法树，fast, versatile and robust(快速，通用且强大)**, 比基于regex的解析器更高效
   - 错误报告:能提供精确的源代码位置 ，包括(path, column and line) 
   - **将AST写入脚本文本的形式**,  使用 [`Template.ToText`](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/runtime.md#ast-to-text), 可以操作内存中的脚本并将其重新保存到磁盘, 对于 **roundtrip（往返）的脚本更新方案**是有用的
@@ -78,7 +77,11 @@ var result = template.Render(new { Products = this.ProductList });
   - [`regex functions`](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/builtins.md#regex-functions)
   - [`string functions`](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/builtins.md#string-functions)
   - [`timespan`](doc/builtins.md#timespan-functions)
-- [Multi-line statements（多行语句）](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md#11-code-block) 不必在每行都使用`{{...}}`
+-  [Multi-line statements 多行语句](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md#11-code-block) 不必在每行都使用 
+
+```
+{{...}}
+```
 - [Safe parser](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/runtime.md#the-lexer-and-parser) and [safe runtime](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/runtime.md#safe-runtime), 使您可以控制公开哪些对象和功能
 
 ## Syntax  Coloring(语法着色)
