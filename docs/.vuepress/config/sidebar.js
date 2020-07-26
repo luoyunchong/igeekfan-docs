@@ -52,7 +52,7 @@ module.exports = {
             'spa-github-login',
             'qq-login',
             'rabbitmq',
-            'scriban-README'
+            'scriban-readme'
         ]
     }],
     '/colorui/': [
