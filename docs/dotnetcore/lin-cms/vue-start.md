@@ -7,12 +7,11 @@
 - 用户端UI [https://github.com/luoyunchong/lin-cms-vvlog](https://github.com/luoyunchong/lin-cms-vvlog)
 
 ## 博客模块线上地址 
-- 后端swagger地址 [https://baimocore.cn/swagger/index.html](https://baimocore.cn/swagger/index.html)
-- 用户端 lin-cms-vvlog [http://47.106.80.39:8080/#/index](http://47.106.80.39:8080/#/index) 
+- 本项目swagger地址 [https://api.igeekfan.cn/swagger/index.html](https://api.igeekfan.cn/swagger/index.html)
+- 用户端 lin-cms-vvlog [https://vvlog.baimocore.cn](https://vvlog.baimocore.cn) 
   - 普通用户：710277267@qq.com
   - 密码：123qwe
-
-- 管理员 lin-cms-vue [http://47.106.80.39:8081/#/](http://47.106.80.39:8081/#/)
+- 管理员 lin-cms-vue [https://cms.baimocore.cn/](https://cms.baimocore.cn)
   - 管理员： admin
   - 密码：123qwe
 
