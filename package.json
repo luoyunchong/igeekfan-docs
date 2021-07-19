@@ -1,23 +1,23 @@
 {
-  "name": "vovo-docs",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
-    "deploy": "bash deploy.sh",
-    "deploy:linux": "yarn build&node ./deploy"
-  },
-  "dependencies": {
-    "@vuepress/plugin-pwa": "1.5.2",
-    "ora": "4.0.5",
-    "scp2": "^0.5.0",
-    "vuepress": "1.5.0",
-    "vuepress-plugin-boxx": "0.0.7",
-    "vuepress-plugin-flowchart": "1.4.3",
-    "vuepress-plugin-sitemap": "2.3.1",
-    "vuepress-theme-reco": "1.5.5",
-    "whatwg-fetch": "3.2.0"
-  }
+    "name": "vovo-docs",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "dev": "vuepress dev docs",
+        "build": "vuepress build docs",
+        "deploy": "bash deploy.sh",
+        "deploy:linux": "yarn build&node ./deploy"
+    },
+    "dependencies": {
+        "@vuepress/plugin-pwa": "^1.5.2",
+        "ora": "^4.0.5",
+        "scp2": "^0.5.0",
+        "vuepress": "^1.5.0",
+        "vuepress-plugin-boxx": "0.0.7",
+        "vuepress-plugin-flowchart": "1.4.3",
+        "vuepress-plugin-sitemap": "2.3.1",
+        "vuepress-theme-reco": "^1.6.6",
+        "whatwg-fetch": "^3.2.0"
+    }
 }
