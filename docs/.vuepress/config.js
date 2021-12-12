@@ -13,7 +13,7 @@ module.exports = {
     markdown: {
         lineNumbers: true // 代码块显示行号
     },
-    base: '/vovo-docs/',
+    base: '/vovo-docs/',//vovo-docs/
     theme: 'reco',
     themeConfig: {
         huawei: true,
@@ -24,7 +24,7 @@ module.exports = {
         displayAllHeaders: false,
         startYear: '2019',
         author: 'IGeekFan',
-        record: '苏ICP备16046457号-1',
+        record: '苏ICP备16046457号-3',
         recordLink: 'http://www.beian.miit.gov.cn/',
         // 文档仓库
         docsRepo: 'https://github.com/luoyunchong/vovo-docs',

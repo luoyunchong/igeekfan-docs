@@ -4,7 +4,7 @@
 ## 项目结构
 
 - framework
-   - VoVo.CAP.MySql：为CAP实现了配合FreeSql的事务一致性扩展
+   - IGeekFan.Localization.FreeSql：使用FreeSql存储本地化数据
 - identityserver4
    - LinCms.IdentityServer4:使用id4授权登录
 - src
@@ -19,7 +19,7 @@
 ```
 ├─framework
 │  └─src
-│      └─VoVo.CAP.MySql
+│      └─IGeekFan.Localization.FreeSql
 ├─identityserver4
 │  └─LinCms.IdentityServer4
 │      ├─Controllers

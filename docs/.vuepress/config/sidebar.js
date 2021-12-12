@@ -36,7 +36,10 @@ module.exports = {
             'logger.md',
             'table.md',
             'authorize.md',
-            'lincms-scaffolding.md'
+            'lincms-scaffolding.md',
+            'sql-server.md',
+            'autofac.md',
+            'aspnetcore-repository-unitofwork.md'
         ]
     }, {
         title: '开发者文档',
@@ -52,7 +55,7 @@ module.exports = {
             'spa-github-login',
             'qq-login',
             'rabbitmq',
-            'scribanREADME.md'
+            'scriban-README.md'
         ]
     }],
     '/colorui/': [

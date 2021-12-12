@@ -1,9 +1,9 @@
 # 后端准备
 
 ## Server 端必备环境
-* 安装软件开发包 [.NET Core SDK 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1)   
-* 安装开发工具  [Visual Studio 2019](https://visualstudio.microsoft.com/zh-hans/vs/?rr=https%3A%2F%2Fcn.bing.com%2F)  或 [Rider](https://www.jetbrains.com/rider/)
-* 安装MySQL（version： 5.6+,别装8.0+，未测试）
+* 安装软件开发包 [.NET SDK 6.0](https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0)   
+* 安装开发工具  [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hans/vs/)  或 [Rider](https://www.jetbrains.com/rider/)
+* 安装MySQL（version 5.7+)
 * Redis 4.0.14.2 for Windows [https://github.com/tporadowski/redis/releases](https://github.com/tporadowski/redis/releases)
 
 ## 获取工程项目
@@ -32,11 +32,13 @@ identityserver4/LinCms.IdentityServer4/appsettings.Development.json 数据库配
 ```
 
 ## 数据迁移
-该项目使用[FreeSql](https://github.com/2881099/FreeSql)，默认自动迁移数据表结构，**需要自己创建数据库，名字为LinCms**，无须用户操作，但无数据，而且只有访问到表时才会创建某个表，所以用户可将[备份SQL](https://github.com/luoyunchong/lin-cms-dotnetcore/tree/master/docs/sql/%E6%95%B0%E6%8D%AE%E5%BA%93.zip)放到Mysql中生成，还原表结构及数据。
+该项目使用[FreeSql](https://github.com/2881099/FreeSql)，默认自动迁移数据表结构，会自动根据配置项创建数据库，初始化种子数据
+
+默认会创建用户`admin`，密码`123qwe`
 
 
-## visual studio 2019运行项目
-双击lin-cms-dotnetcore.sln，使用vs2019打开项目。右键解决方案，点击生成解决方案。
+## visual studio 2022运行项目
+双击lin-cms-dotnetcore.sln，使用vs2022打开项目。右键解决方案，点击生成解决方案。
 
 由于将identityserver4单独拆成了一个项目，所以需要同时启动二个项目，**右键解决方案，属性。**,选择多个启动项目，勾选二个项目同时启动。如下图所示。
 
@@ -57,8 +59,8 @@ LinCms.Web运行效果：
 
 
 ## 部署
-- [部署至Linux(Ubuntu16.06)](https://blog.igeekfan.cn/2019/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Ubuntu)
-- [部署至Linux(Ubuntu16.06)下的Docker](https://blog.igeekfan.cn/2019/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Docker-Ubuntu/)
+- [部署至Linux(Ubuntu16.06)](https://blog.igeekfan.cn/2022/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Ubuntu)
+- [部署至Linux(Ubuntu16.06)下的Docker](https://blog.igeekfan.cn/2022/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Docker-Ubuntu/)
 
 ## 部署前准备
 因为该项目基于IdentityServer4,实现的授权认证服务，

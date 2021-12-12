@@ -1,4 +1,4 @@
-### LinCms.Scaffolding代码生成器 出场
+### LinCms.Scaffolding代码生成器 
 
 目前在Dev分支
 
