@@ -1,4 +1,4 @@
-# Scriban 本模板语言
+# Scriban 模板语言
 
 ### 目录 
 - [【翻译】Scriban是一种快速、强大、安全和轻量级的文本模板语言和.NET引擎，具有解析liquid模板的兼容模式](https://www.cnblogs.com/igeekfan/p/13343331.html)

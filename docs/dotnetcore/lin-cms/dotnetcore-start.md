@@ -13,22 +13,54 @@ git clone https://github.com/luoyunchong/lin-cms-dotnetcore.git
 
 ## 数据库配置
 
-文件位置src/LinCms.Web/appsettings.Development.json，当数据库中存储表情包是，Charset为utf8mb4
+文件位置`src/LinCms.Web/appsettings.json`，当数据库中存储表情包是，`Charset`为`utf8mb4`
 
-**请务必根据自己的实际情况修改此配置项**
+**请务必根据自己的实际情况修改此配置项**，`DefaultDB`为0时，代表使用`MySQL`，`DefaultDB`为1时，代表使用`SqlServer`,以此类推。
 ```json
-"ConnectionStrings": {
-"MySql": "Data Source=localhost;Port=3306;User ID=root;Password=123456;Initial Catalog=lincms;Charset=utf8mb4;SslMode=none;Max pool size=5;",
-"CsRedis": "127.0.0.1:6379,password=,defaultDatabase=0"
-},
+ "ConnectionStrings": {
+    "DefaultDB": "0",
+    "DataType": {
+      "MySql": 0,
+      "SqlServer": 1,
+      "PostgreSQL": 2,
+      "Oracle": 3,
+      "Sqlite": 4
+    },
+    "MySql": "Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=lincms;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20",
+    "SqlServer": "Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1",
+    "PostgreSQL": "Host=localhost;Port=5432;Username=postgres;Password=123456; Database=lincms;Pooling=true;Minimum Pool Size=1",
+    "Oracle": null,
+    "Sqlite": "Data Source=|DataDirectory|\\lincms.db; Attachs=lincms.db; Pooling=true;Min Pool Size=1",
+    "CsRedis": "127.0.0.1:6379,password=,defaultDatabase=0"
+  },
+```
+`LinCms.IdentityServer4` 项目不是必须的，需要需要运行，需要修改数据库配置项
+
+`identityserver4/LinCms.IdentityServer4/appsettings.json` 数据库配置、同`LinCms.Web`中的配置项相同
+
+```json
+  "ConnectionStrings": {
+    "DefaultDB": "0",
+    "DataType": {
+      "MySql": 0,
+      "SqlServer": 1,
+      "PostgreSQL": 2,
+      "Oracle": 3,
+      "Sqlite": 4
+    },
+    "MySql": "Data Source=localhost;Port=3308;User ID=root;Password=root;Initial Catalog=lincms;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20",
+    "SqlServer": "Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1",
+    "Sqlite": "Data Source=|DataDirectory|\\lincms.db; Attachs=lincms.db; Pooling=true;Min Pool Size=1"
+  },
 ```
 
-identityserver4/LinCms.IdentityServer4/appsettings.Development.json 数据库配置
-
+其中MariaDB（看做MySql）,通过`Serilog`记录日志，需要配置相应的链接串。
 ```json
-"ConnectionStrings": {
-"MySql": "Data Source=localhost;Port=3306;User ID=root;Password=123456;Initial Catalog=LinCms;Charset=utf8mb4;SslMode=none;Max pool size=10;"
-},
+{
+        "Name": "MariaDB",
+        "Args": {
+          "connectionString": "Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=lincms;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20",
+        }
 ```
 
 ## 数据迁移

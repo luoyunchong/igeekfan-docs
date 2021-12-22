@@ -16,6 +16,7 @@ module.exports = {
     base: '/vovo-docs/',//vovo-docs/
     theme: 'reco',
     themeConfig: {
+        subSidebar: 'auto',
         huawei: true,
         lastUpdated: '最后更新时间',
         search: true,

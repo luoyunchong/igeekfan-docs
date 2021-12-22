@@ -34,8 +34,6 @@
 - Clean Code（代码整洁之道）
 
 ### 分层结构（Layers）
-- framework
-   - VoVo.CAP.MySql：为CAP实现了配合FreeSql的事务一致性扩展
 - identityserver4
    - LinCms.IdentityServer4:使用id4授权登录
 - src

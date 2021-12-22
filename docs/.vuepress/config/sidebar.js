@@ -11,7 +11,8 @@ module.exports = {
                 'freesql-sample-blog-restful-use-automapper',
                 'identityserver4',
                 'qiniu-object-storage',
-                'imcore-chat'
+                'imcore-chat',
+                'nacos-aspnetcore'
             ]
         }
     ],
@@ -27,6 +28,7 @@ module.exports = {
             'pm-design-modules.md',
             'production-design.md',
             'github-actions.md',
+            'change-sqlserver.md',
         ]
     }, {
         title: '.NET Core',

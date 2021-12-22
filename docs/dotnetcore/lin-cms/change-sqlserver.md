@@ -1,5 +1,8 @@
-## 如何换成sql server
-LinCms.Web中的appsetting.json配置
+
+# LinCms如何切换成SQL server
+
+需要修改LinCms.Web中的appsetting.json配置
+
 ### 数据库配置
 
 DefaultDB：改成1

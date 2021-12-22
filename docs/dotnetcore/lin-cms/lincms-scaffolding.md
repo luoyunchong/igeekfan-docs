@@ -1,7 +1,5 @@
 ### LinCms.Scaffolding代码生成器 
 
-目前在Dev分支
-
 [https://github.com/luoyunchong/lin-cms-dotnetcore/tree/dev](https://github.com/luoyunchong/lin-cms-dotnetcore/tree/dev)
 
 打开项目LinCms.Scaffolding.sln。
