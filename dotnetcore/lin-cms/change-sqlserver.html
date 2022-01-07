@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LinCms如何切换成SQL server | IGeekFan的文档</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/vovo-docs/favicon.ico">
+    <meta name="description" content="小楼昨夜又东风">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/vovo-docs/assets/css/0.styles.029b0c51.css" as="style"><link rel="preload" href="/vovo-docs/assets/js/app.be89d5e5.js" as="script"><link rel="preload" href="/vovo-docs/assets/js/4.879a87f6.js" as="script"><link rel="preload" href="/vovo-docs/assets/js/1.d2d86360.js" as="script"><link rel="preload" href="/vovo-docs/assets/js/36.52756e99.js" as="script"><link rel="preload" href="/vovo-docs/assets/js/10.0fe96159.js" as="script"><link rel="prefetch" href="/vovo-docs/assets/js/11.43d1c4ef.js"><link rel="prefetch" href="/vovo-docs/assets/js/12.20b86cf6.js"><link rel="prefetch" href="/vovo-docs/assets/js/13.1faa3adb.js"><link rel="prefetch" href="/vovo-docs/assets/js/14.ea234964.js"><link rel="prefetch" href="/vovo-docs/assets/js/15.771c75dd.js"><link rel="prefetch" href="/vovo-docs/assets/js/16.5361f77e.js"><link rel="prefetch" href="/vovo-docs/assets/js/17.02a4a767.js"><link rel="prefetch" href="/vovo-docs/assets/js/18.e59814e4.js"><link rel="prefetch" href="/vovo-docs/assets/js/19.0cce07a3.js"><link rel="prefetch" href="/vovo-docs/assets/js/20.1c609785.js"><link rel="prefetch" href="/vovo-docs/assets/js/21.b12ae85f.js"><link rel="prefetch" href="/vovo-docs/assets/js/22.8ffb8eab.js"><link rel="prefetch" href="/vovo-docs/assets/js/23.ce9b26f8.js"><link rel="prefetch" href="/vovo-docs/assets/js/24.dd8777b3.js"><link rel="prefetch" href="/vovo-docs/assets/js/25.8d4184e6.js"><link rel="prefetch" href="/vovo-docs/assets/js/26.8873ca06.js"><link rel="prefetch" href="/vovo-docs/assets/js/27.3deca905.js"><link rel="prefetch" href="/vovo-docs/assets/js/28.aecc8346.js"><link rel="prefetch" href="/vovo-docs/assets/js/29.0c5ad765.js"><link rel="prefetch" href="/vovo-docs/assets/js/30.0372372d.js"><link rel="prefetch" href="/vovo-docs/assets/js/31.06c1315d.js"><link rel="prefetch" href="/vovo-docs/assets/js/32.81c32d7b.js"><link rel="prefetch" href="/vovo-docs/assets/js/33.5bdc4f00.js"><link rel="prefetch" href="/vovo-docs/assets/js/34.32d11ae2.js"><link rel="prefetch" href="/vovo-docs/assets/js/35.e86e8bfe.js"><link rel="prefetch" href="/vovo-docs/assets/js/37.7cd19cb4.js"><link rel="prefetch" href="/vovo-docs/assets/js/38.a93b811d.js"><link rel="prefetch" href="/vovo-docs/assets/js/39.9c71a35c.js"><link rel="prefetch" href="/vovo-docs/assets/js/40.918f93c9.js"><link rel="prefetch" href="/vovo-docs/assets/js/41.2c6c85ce.js"><link rel="prefetch" href="/vovo-docs/assets/js/42.cd8d747e.js"><link rel="prefetch" href="/vovo-docs/assets/js/43.4ac17139.js"><link rel="prefetch" href="/vovo-docs/assets/js/44.7d143fec.js"><link rel="prefetch" href="/vovo-docs/assets/js/45.98391c3e.js"><link rel="prefetch" href="/vovo-docs/assets/js/46.ee6f2873.js"><link rel="prefetch" href="/vovo-docs/assets/js/47.cbb9f27a.js"><link rel="prefetch" href="/vovo-docs/assets/js/48.645b9ae8.js"><link rel="prefetch" href="/vovo-docs/assets/js/49.542a791b.js"><link rel="prefetch" href="/vovo-docs/assets/js/5.259f7897.js"><link rel="prefetch" href="/vovo-docs/assets/js/50.600ab369.js"><link rel="prefetch" href="/vovo-docs/assets/js/51.c4c10c79.js"><link rel="prefetch" href="/vovo-docs/assets/js/52.3e327fa9.js"><link rel="prefetch" href="/vovo-docs/assets/js/53.cd05c09e.js"><link rel="prefetch" href="/vovo-docs/assets/js/54.f4c722db.js"><link rel="prefetch" href="/vovo-docs/assets/js/55.b8e6ce47.js"><link rel="prefetch" href="/vovo-docs/assets/js/56.ac10c336.js"><link rel="prefetch" href="/vovo-docs/assets/js/57.d00a5816.js"><link rel="prefetch" href="/vovo-docs/assets/js/58.39e0f85b.js"><link rel="prefetch" href="/vovo-docs/assets/js/59.b7d94695.js"><link rel="prefetch" href="/vovo-docs/assets/js/6.9e014455.js"><link rel="prefetch" href="/vovo-docs/assets/js/60.f56c4fb9.js"><link rel="prefetch" href="/vovo-docs/assets/js/61.604b5355.js"><link rel="prefetch" href="/vovo-docs/assets/js/7.8de21655.js"><link rel="prefetch" href="/vovo-docs/assets/js/8.8e0e1879.js"><link rel="prefetch" href="/vovo-docs/assets/js/9.beca26b2.js"><link rel="prefetch" href="/vovo-docs/assets/js/vendors~flowchart.2b65b5d3.js">
+    <link rel="stylesheet" href="/vovo-docs/assets/css/0.styles.029b0c51.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>IGeekFan的文档</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>小楼昨夜又东风</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>IGeekFan</span>
+            
+          <span data-v-25ba6db2>2019 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vovo-docs/" class="home-link router-link-active"><!----> <span class="site-name">IGeekFan的文档</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vovo-docs/" class="nav-link"><i class="iconfont reco-home"></i>
+  简介
+</a></div><div class="nav-item"><a href="/vovo-docs/dotnetcore/lin-cms/" class="nav-link router-link-active"><i class="undefined"></i>
+  lin-cms-dotnetcore起步
+</a></div><div class="nav-item"><a href="/vovo-docs/dotnetcore/examples/" class="nav-link"><i class="undefined"></i>
+  .NET指南
+</a></div><div class="nav-item"><a href="/vovo-docs/about/" class="nav-link"><i class="undefined"></i>
+  关于
+</a></div><div class="nav-item"><a href="/vovo-docs/blogs/" class="nav-link"><i class="undefined"></i>
+  博客
+</a></div><div class="nav-item"><a href="/vovo-docs/colorui/docs/" class="nav-link"><i class="undefined"></i>
+  ColorUI指南
+</a></div><div class="nav-item"><a href="https://github.com/luoyunchong/vovo-docs" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><!----> <h3 class="name" data-v-39576ba9>
+    IGeekFan
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>47</h3> <h6 data-v-39576ba9>Articles</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>4</h3> <h6 data-v-39576ba9>Tags</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/vovo-docs/" class="nav-link"><i class="iconfont reco-home"></i>
+  简介
+</a></div><div class="nav-item"><a href="/vovo-docs/dotnetcore/lin-cms/" class="nav-link router-link-active"><i class="undefined"></i>
+  lin-cms-dotnetcore起步
+</a></div><div class="nav-item"><a href="/vovo-docs/dotnetcore/examples/" class="nav-link"><i class="undefined"></i>
+  .NET指南
+</a></div><div class="nav-item"><a href="/vovo-docs/about/" class="nav-link"><i class="undefined"></i>
+  关于
+</a></div><div class="nav-item"><a href="/vovo-docs/blogs/" class="nav-link"><i class="undefined"></i>
+  博客
+</a></div><div class="nav-item"><a href="/vovo-docs/colorui/docs/" class="nav-link"><i class="undefined"></i>
+  ColorUI指南
+</a></div><div class="nav-item"><a href="https://github.com/luoyunchong/vovo-docs" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>起步</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vovo-docs/dotnetcore/lin-cms/dotnetcore-start.html" class="sidebar-link">后端准备</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/cms-start.html" class="sidebar-link">后端快速上手</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/technology.html" class="sidebar-link">相关技术</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/vue-start.html" class="sidebar-link">前端准备</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/open-source-road.html" class="sidebar-link">开源介绍</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/pm-design-modules.html" class="sidebar-link">功能模块的设计</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/production-design.html" class="sidebar-link">产品设计</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/github-actions.html" class="sidebar-link">GitHub Actions</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/change-sqlserver.html" aria-current="page" class="active sidebar-link">LinCms如何切换成SQL server</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>.NET Core</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>开发者文档</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2></h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>IGeekFan</span>
+            
+          <span data-v-25ba6db2>2019 - </span>
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">LinCms如何切换成SQL server</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>IGeekFan</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h1 id="lincms如何切换成sql-server"><a href="#lincms如何切换成sql-server" class="header-anchor">#</a> LinCms如何切换成SQL server</h1> <p>需要修改LinCms.Web中的appsetting.json配置</p> <h3 id="数据库配置"><a href="#数据库配置" class="header-anchor">#</a> 数据库配置</h3> <p>DefaultDB：改成1
+SqlServer：改成自己的数据库配置</p> <div class="language-diff line-numbers-mode"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> &quot;ConnectionStrings&quot;: {
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">    &quot;DefaultDB&quot;: &quot;0&quot;,
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">    &quot;DefaultDB&quot;: &quot;1&quot;,
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   &quot;DataType&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;MySql&quot;: 0,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;SqlServer&quot;: 1,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;PostgreSQL&quot;: 2,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;Oracle&quot;: 3,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;Sqlite&quot;: 4
+</span><span class="token prefix unchanged"> </span><span class="token line">   },
+</span><span class="token prefix unchanged"> </span><span class="token line">   &quot;MySql&quot;: &quot;Data Source=localhost;Port=3306;User ID=root;Password=rCsRedisoot;Initial Catalog=lincms;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20&quot;
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">   &quot;SqlServer&quot;: &quot;Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1&quot;
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> },
+</span></span></code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="serilog配置"><a href="#serilog配置" class="header-anchor">#</a> Serilog配置</h3> <p>Using引用  <code>&quot;Serilog.Sinks.MSSqlServer&quot;</code>,去掉<code>&quot;Serilog.Sinks.MariaDB&quot;</code></p> <p>把 <code>&quot;Name&quot;</code>为 <code>&quot;MariaDB&quot;</code>的json注释掉。</p> <p>把<code>&quot;Name&quot;</code>为 <code>&quot;MSSqlServer&quot;</code>的json注释去掉。</p> <p>并改掉<code>Args:connectionString</code>的连接串。</p> <div class="language-diff line-numbers-mode"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   &quot;Serilog&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">   &quot;Using&quot;: [
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;Serilog.Sinks.Console&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;Serilog.Sinks.File&quot;,
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">      &quot;Serilog.Sinks.MariaDB&quot;
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">      &quot;Serilog.Sinks.MSSqlServer&quot;
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   ],
+</span><span class="token prefix unchanged"> </span><span class="token line">   &quot;MinimumLevel&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;Default&quot;: &quot;Information&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;Override&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">       &quot;Microsoft&quot;: &quot;Information&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">       &quot;System&quot;: &quot;Warning&quot;
+</span><span class="token prefix unchanged"> </span><span class="token line">     }
+</span><span class="token prefix unchanged"> </span><span class="token line">   },
+</span><span class="token prefix unchanged"> </span><span class="token line">   &quot;WriteTo&quot;: [
+</span><span class="token prefix unchanged"> </span><span class="token line">     {
+</span><span class="token prefix unchanged"> </span><span class="token line">       &quot;Name&quot;: &quot;File&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">       &quot;Args&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">         &quot;path&quot;: &quot;Logs/log.txt&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">         &quot;rollingInterval&quot;: &quot;Day&quot;
+</span><span class="token prefix unchanged"> </span><span class="token line">       }
+</span><span class="token prefix unchanged"> </span><span class="token line">     },
+</span><span class="token prefix unchanged"> </span><span class="token line">     {
+</span><span class="token prefix unchanged"> </span><span class="token line">       &quot;Name&quot;: &quot;Console&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">       &quot;Args&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">         &quot;theme&quot;: &quot;Serilog.Sinks.SystemConsole.Themes.AnsiConsoleTheme::Code, Serilog.Sinks.Console&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">         &quot;outputTemplate&quot;: &quot;[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj} &lt;s:{SourceContext}&gt;{NewLine}{Exception}&quot;
+</span><span class="token prefix unchanged"> </span><span class="token line">       }
+</span><span class="token prefix unchanged"> </span><span class="token line">     },
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">      {
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">       &quot;Name&quot;: &quot;MariaDB&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">       &quot;Args&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">         &quot;connectionString&quot;: &quot;Data Source=localhost;Port=3308;User ID=root;Password=root;Initial Catalog=lincms;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">         &quot;autoCreateTable&quot;: true,
+</span><span class="token prefix unchanged"> </span><span class="token line">         &quot;tableName&quot;: &quot;app_serilog&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">         &quot;restrictedToMinimumLevel&quot;: &quot;Information&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">         &quot;batchPostingLimit&quot;: 4, //1000
+</span><span class="token prefix unchanged"> </span><span class="token line">         &quot;period&quot;: &quot;0.00:00:03&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">         &quot;options&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">           &quot;PropertiesToColumnsMapping&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">             &quot;Exception&quot;: &quot;exception&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">             &quot;Level&quot;: &quot;level&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">             &quot;Message&quot;: &quot;message&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">             &quot;MessageTemplate&quot;: &quot;message_template&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">             &quot;Properties&quot;: &quot;properties&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">             &quot;Timestamp&quot;: &quot;timestamp&quot;
+</span><span class="token prefix unchanged"> </span><span class="token line">           },
+</span><span class="token prefix unchanged"> </span><span class="token line">           &quot;TimestampInUtc&quot;: false,
+</span><span class="token prefix unchanged"> </span><span class="token line">           &quot;ExcludePropertiesWithDedicatedColumn&quot;: true,
+</span><span class="token prefix unchanged"> </span><span class="token line">           &quot;EnumsAsInts&quot;: true,
+</span><span class="token prefix unchanged"> </span><span class="token line">           &quot;LogRecordsCleanupFrequency&quot;: &quot;0.02:00:00&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">           &quot;LogRecordsExpiration&quot;: &quot;31.00:00:00&quot;
+</span><span class="token prefix unchanged"> </span><span class="token line">         }
+</span><span class="token prefix unchanged"> </span><span class="token line">       }
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">      }
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">      //{
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">     //  &quot;Name&quot;: &quot;MSSqlServer&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //  &quot;Args&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //    &quot;connectionString&quot;: &quot;Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //    &quot;restrictedToMinimumLevel&quot;: &quot;Information&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //    &quot;sinkOptionsSection&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;tableName&quot;: &quot;app_serilog&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;schemaName&quot;: &quot;dbo&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;autoCreateSqlTable&quot;: true,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;batchPostingLimit&quot;: 1000,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;period&quot;: &quot;0.00:00:15&quot;
+</span><span class="token prefix unchanged"> </span><span class="token line">     //    },
+</span><span class="token prefix unchanged"> </span><span class="token line">     //    &quot;columnOptionsSection&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;disableTriggers&quot;: true,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;clusteredColumnstoreIndex&quot;: false,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;primaryKeyColumnName&quot;: &quot;id&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;addStandardColumns&quot;: [ &quot;LogEvent&quot; ],
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;removeStandardColumns&quot;: [ &quot;Properties&quot; ],
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;additionalColumns&quot;: [
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;ColumnName&quot;: &quot;event_type&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;DataType&quot;: &quot;int&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;AllowNull&quot;: true
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        },
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;ColumnName&quot;: &quot;release&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;DataType&quot;: &quot;varchar&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;DataLength&quot;: 32
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        },
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;ColumnName&quot;: &quot;environment_user_name&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;PropertyName&quot;: &quot;UserName&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;DataType&quot;: &quot;varchar&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;DataLength&quot;: 50
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        },
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;ColumnName&quot;: &quot;all_sqlcolumn_defaults&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;DataType&quot;: &quot;varchar&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;AllowNull&quot;: true,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;DataLength&quot;: -1,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //          &quot;NonClusteredIndex&quot;: false
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        }
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      ],
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;id&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;columnName&quot;: &quot;id&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;nonClusteredIndex&quot;: true
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      },
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;level&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;columnName&quot;: &quot;level&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;storeAsEnum&quot;: true
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      },
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //&quot;Properties&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;columnName&quot;: &quot;properties&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;excludeAdditionalProperties&quot;: true,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;dictionaryElementName&quot;: &quot;dict&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;itemElementName&quot;: &quot;item&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;omitDictionaryContainerElement&quot;: false,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;omitSequenceContainerElement&quot;: false,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;omitStructureContainerElement&quot;: false,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;omitElementIfEmpty&quot;: true,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;propertyElementName&quot;: &quot;prop&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;rootElementName&quot;: &quot;root&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;sequenceElementName&quot;: &quot;seq&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;structureElementName&quot;: &quot;struct&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //  &quot;usePropertyKeyAsElementName&quot;: false
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      //},
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;TimeStamp&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;columnName&quot;: &quot;timestamp&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;convertToUtc&quot;: true,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;DataType&quot;: &quot;tinyint&quot;
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      },
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;MessageTemplate&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;columnName&quot;: &quot;message_template&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;convertToUtc&quot;: true
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      },
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;Timestamp&quot;: &quot;timestamp&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;Exception&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;columnName&quot;: &quot;exception&quot;
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      },
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;Message&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;columnName&quot;: &quot;message&quot;
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      },
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      &quot;logEvent&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;columnName&quot;: &quot;properties&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;excludeAdditionalProperties&quot;: true,
+</span><span class="token prefix unchanged"> </span><span class="token line">     //        &quot;excludeStandardColumns&quot;: true
+</span><span class="token prefix unchanged"> </span><span class="token line">     //      }
+</span><span class="token prefix unchanged"> </span><span class="token line">     //    }
+</span><span class="token prefix unchanged"> </span><span class="token line">     //  }
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">      //}
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   ]
+</span><span class="token prefix unchanged"> </span><span class="token line"> }
+</span></span></code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br></div></div><h3 id="cap配置"><a href="#cap配置" class="header-anchor">#</a> CAP配置</h3> <p>因为用了<code>CAP</code>。cap换<code>sql server</code>。这里改成 <code>DefaultStorage</code>改成2。</p> <p>如果Messqueue换rabbitmq的话，<code>DefaultMessageQueue</code>就改成1.然后配置 RabbitMQ</p> <div class="language-diff line-numbers-mode"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> &quot;CAP&quot;: {
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">    &quot;DefaultStorage&quot;: &quot;1&quot;,
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">    &quot;DefaultStorage&quot;: &quot;2&quot;,
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   &quot;DefaultMessageQueue&quot;: &quot;0&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">   &quot;Storage&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;InMemoryStorage&quot;: 0,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;MySql&quot;: 1,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;SqlServer&quot;: 2
+</span><span class="token prefix unchanged"> </span><span class="token line">   },
+</span><span class="token prefix unchanged"> </span><span class="token line">   &quot;MessageQueue&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;InMemoryQueue&quot;: 0,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;RabbitMQ&quot;: 1
+</span><span class="token prefix unchanged"> </span><span class="token line">   },
+</span><span class="token prefix unchanged"> </span><span class="token line">   &quot;RabbitMQ&quot;: {
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;HostName&quot;: &quot;localhost&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;UserName&quot;: &quot;admin&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;Password&quot;: &quot;123456&quot;,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;Port&quot;: 5672,
+</span><span class="token prefix unchanged"> </span><span class="token line">     &quot;VirtualHost&quot;: &quot;/admin&quot;
+</span><span class="token prefix unchanged"> </span><span class="token line">   }
+</span><span class="token prefix unchanged"> </span><span class="token line"> },
+</span></span></code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><p>双击<code>LinCms.Application</code>项目,注释掉<code>DotNetCore.CAP.MySql</code>的引用，引用 SqlServer的包</p> <div class="language-diff line-numbers-mode"><pre class="language-diff"><code>	&lt;ItemGroup&gt;
+		&lt;PackageReference Include=&quot;AspNet.Security.OAuth.Gitee&quot; Version=&quot;5.0.11&quot; /&gt;
+		&lt;PackageReference Include=&quot;AspNet.Security.OAuth.GitHub&quot; Version=&quot;5.0.11&quot; /&gt;
+		&lt;PackageReference Include=&quot;AspNet.Security.OAuth.QQ&quot; Version=&quot;5.0.11&quot; /&gt;
+		&lt;PackageReference Include=&quot;AutoMapper&quot; Version=&quot;10.1.1&quot; /&gt;
+		&lt;PackageReference Include=&quot;Autofac.Extensions.DependencyInjection&quot; Version=&quot;7.1.0&quot; /&gt;
+<span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">		&lt;PackageReference Include=&quot;DotNetCore.CAP.MySql&quot; Version=&quot;5.1.3&quot; /&gt;
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">		&lt;PackageReference Include=&quot;DotNetCore.CAP.SqlServer&quot; Version=&quot;5.1.3&quot; /&gt;
+</span></span>		&lt;PackageReference Include=&quot;IdentityServer4&quot; Version=&quot;4.1.2&quot; /&gt;
+		&lt;PackageReference Include=&quot;DotNetCore.CAP&quot; Version=&quot;5.1.3&quot; /&gt;
+		&lt;PackageReference Include=&quot;IdentityModel&quot; Version=&quot;5.1.0&quot; /&gt;
+		&lt;PackageReference Include=&quot;MQiniu.Core&quot; Version=&quot;1.0.1&quot; /&gt;
+		&lt;PackageReference Include=&quot;Caching.CSRedis&quot; Version=&quot;3.6.60&quot; /&gt;
+		&lt;PackageReference Include=&quot;CSRedisCore&quot; Version=&quot;3.6.6&quot; /&gt;
+	&lt;/ItemGroup&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>打开<code>LinCms.Application</code>项目中的<code>CapUnitOfWorkExtensions.cs</code>文件</p> <p>修改方法<code>BeginTransaction</code></p> <div class="language-diff line-numbers-mode"><pre class="language-diff"><code>public static ICapTransaction BeginTransaction(this IUnitOfWork unitOfWork, ICapPublisher publisher, bool autoCommit = false)
+{
+<span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">   //看了源码，换了新的写法，换不同的数据库，就需要手动修改这段代码了（MySqlCapTransaction）
+</span><span class="token prefix unchanged"> </span><span class="token line">   //publisher.Transaction.Value = (ICapTransaction)publisher.ServiceProvider.GetService(typeof(ICapTransaction));新版本只能得到nul
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">   publisher.Transaction.Value = ActivatorUtilities.CreateInstance&lt;MySqlCapTransaction&gt;(publisher.ServiceProvider);
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">   publisher.Transaction.Value = ActivatorUtilities.CreateInstance&lt;SqlServerCapTransaction&gt;(publisher.ServiceProvider);
+</span></span>}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></div></section> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/luoyunchong/vovo-docs/edit/master/docs/dotnetcore/lin-cms/change-sqlserver.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">最后更新时间: </span> <span class="time">12/23/2021, 2:31:25 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/vovo-docs/dotnetcore/lin-cms/github-actions.html" class="prev">
+            GitHub Actions
+          </a></span> <span class="next"><a href="/vovo-docs/dotnetcore/lin-cms/file-upload.html">
+            文件上传系统
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-3" data-v-cb1513f6><a href="/vovo-docs/dotnetcore/lin-cms/change-sqlserver.html#数据库配置" class="sidebar-link reco-side-数据库配置" data-v-cb1513f6>数据库配置</a></li><li class="level-3" data-v-cb1513f6><a href="/vovo-docs/dotnetcore/lin-cms/change-sqlserver.html#serilog配置" class="sidebar-link reco-side-serilog配置" data-v-cb1513f6>Serilog配置</a></li><li class="level-3" data-v-cb1513f6><a href="/vovo-docs/dotnetcore/lin-cms/change-sqlserver.html#cap配置" class="sidebar-link reco-side-cap配置" data-v-cb1513f6>CAP配置</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/vovo-docs/assets/js/app.be89d5e5.js" defer></script><script src="/vovo-docs/assets/js/4.879a87f6.js" defer></script><script src="/vovo-docs/assets/js/1.d2d86360.js" defer></script><script src="/vovo-docs/assets/js/36.52756e99.js" defer></script><script src="/vovo-docs/assets/js/10.0fe96159.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>后端快速上手 | IGeekFan的文档</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/vovo-docs/favicon.ico">
+    <meta name="description" content="小楼昨夜又东风">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/vovo-docs/assets/css/0.styles.029b0c51.css" as="style"><link rel="preload" href="/vovo-docs/assets/js/app.be89d5e5.js" as="script"><link rel="preload" href="/vovo-docs/assets/js/4.879a87f6.js" as="script"><link rel="preload" href="/vovo-docs/assets/js/1.d2d86360.js" as="script"><link rel="preload" href="/vovo-docs/assets/js/37.7cd19cb4.js" as="script"><link rel="preload" href="/vovo-docs/assets/js/10.0fe96159.js" as="script"><link rel="prefetch" href="/vovo-docs/assets/js/11.43d1c4ef.js"><link rel="prefetch" href="/vovo-docs/assets/js/12.20b86cf6.js"><link rel="prefetch" href="/vovo-docs/assets/js/13.1faa3adb.js"><link rel="prefetch" href="/vovo-docs/assets/js/14.ea234964.js"><link rel="prefetch" href="/vovo-docs/assets/js/15.771c75dd.js"><link rel="prefetch" href="/vovo-docs/assets/js/16.5361f77e.js"><link rel="prefetch" href="/vovo-docs/assets/js/17.02a4a767.js"><link rel="prefetch" href="/vovo-docs/assets/js/18.e59814e4.js"><link rel="prefetch" href="/vovo-docs/assets/js/19.0cce07a3.js"><link rel="prefetch" href="/vovo-docs/assets/js/20.1c609785.js"><link rel="prefetch" href="/vovo-docs/assets/js/21.b12ae85f.js"><link rel="prefetch" href="/vovo-docs/assets/js/22.8ffb8eab.js"><link rel="prefetch" href="/vovo-docs/assets/js/23.ce9b26f8.js"><link rel="prefetch" href="/vovo-docs/assets/js/24.dd8777b3.js"><link rel="prefetch" href="/vovo-docs/assets/js/25.8d4184e6.js"><link rel="prefetch" href="/vovo-docs/assets/js/26.8873ca06.js"><link rel="prefetch" href="/vovo-docs/assets/js/27.3deca905.js"><link rel="prefetch" href="/vovo-docs/assets/js/28.aecc8346.js"><link rel="prefetch" href="/vovo-docs/assets/js/29.0c5ad765.js"><link rel="prefetch" href="/vovo-docs/assets/js/30.0372372d.js"><link rel="prefetch" href="/vovo-docs/assets/js/31.06c1315d.js"><link rel="prefetch" href="/vovo-docs/assets/js/32.81c32d7b.js"><link rel="prefetch" href="/vovo-docs/assets/js/33.5bdc4f00.js"><link rel="prefetch" href="/vovo-docs/assets/js/34.32d11ae2.js"><link rel="prefetch" href="/vovo-docs/assets/js/35.e86e8bfe.js"><link rel="prefetch" href="/vovo-docs/assets/js/36.52756e99.js"><link rel="prefetch" href="/vovo-docs/assets/js/38.a93b811d.js"><link rel="prefetch" href="/vovo-docs/assets/js/39.9c71a35c.js"><link rel="prefetch" href="/vovo-docs/assets/js/40.918f93c9.js"><link rel="prefetch" href="/vovo-docs/assets/js/41.2c6c85ce.js"><link rel="prefetch" href="/vovo-docs/assets/js/42.cd8d747e.js"><link rel="prefetch" href="/vovo-docs/assets/js/43.4ac17139.js"><link rel="prefetch" href="/vovo-docs/assets/js/44.7d143fec.js"><link rel="prefetch" href="/vovo-docs/assets/js/45.98391c3e.js"><link rel="prefetch" href="/vovo-docs/assets/js/46.ee6f2873.js"><link rel="prefetch" href="/vovo-docs/assets/js/47.cbb9f27a.js"><link rel="prefetch" href="/vovo-docs/assets/js/48.645b9ae8.js"><link rel="prefetch" href="/vovo-docs/assets/js/49.542a791b.js"><link rel="prefetch" href="/vovo-docs/assets/js/5.259f7897.js"><link rel="prefetch" href="/vovo-docs/assets/js/50.600ab369.js"><link rel="prefetch" href="/vovo-docs/assets/js/51.c4c10c79.js"><link rel="prefetch" href="/vovo-docs/assets/js/52.3e327fa9.js"><link rel="prefetch" href="/vovo-docs/assets/js/53.cd05c09e.js"><link rel="prefetch" href="/vovo-docs/assets/js/54.f4c722db.js"><link rel="prefetch" href="/vovo-docs/assets/js/55.b8e6ce47.js"><link rel="prefetch" href="/vovo-docs/assets/js/56.ac10c336.js"><link rel="prefetch" href="/vovo-docs/assets/js/57.d00a5816.js"><link rel="prefetch" href="/vovo-docs/assets/js/58.39e0f85b.js"><link rel="prefetch" href="/vovo-docs/assets/js/59.b7d94695.js"><link rel="prefetch" href="/vovo-docs/assets/js/6.9e014455.js"><link rel="prefetch" href="/vovo-docs/assets/js/60.f56c4fb9.js"><link rel="prefetch" href="/vovo-docs/assets/js/61.604b5355.js"><link rel="prefetch" href="/vovo-docs/assets/js/7.8de21655.js"><link rel="prefetch" href="/vovo-docs/assets/js/8.8e0e1879.js"><link rel="prefetch" href="/vovo-docs/assets/js/9.beca26b2.js"><link rel="prefetch" href="/vovo-docs/assets/js/vendors~flowchart.2b65b5d3.js">
+    <link rel="stylesheet" href="/vovo-docs/assets/css/0.styles.029b0c51.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-1aefc0b4><div data-v-1aefc0b4><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1aefc0b4 data-v-1aefc0b4><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2>IGeekFan的文档</h3> <p class="description" data-v-25ba6db2 data-v-25ba6db2>小楼昨夜又东风</p> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>IGeekFan</span>
+            
+          <span data-v-25ba6db2>2019 - </span>
+          2022
+        </a></span></div></div> <div class="hide" data-v-1aefc0b4><header class="navbar" data-v-1aefc0b4><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/vovo-docs/" class="home-link router-link-active"><!----> <span class="site-name">IGeekFan的文档</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/vovo-docs/" class="nav-link"><i class="iconfont reco-home"></i>
+  简介
+</a></div><div class="nav-item"><a href="/vovo-docs/dotnetcore/lin-cms/" class="nav-link router-link-active"><i class="undefined"></i>
+  lin-cms-dotnetcore起步
+</a></div><div class="nav-item"><a href="/vovo-docs/dotnetcore/examples/" class="nav-link"><i class="undefined"></i>
+  .NET指南
+</a></div><div class="nav-item"><a href="/vovo-docs/about/" class="nav-link"><i class="undefined"></i>
+  关于
+</a></div><div class="nav-item"><a href="/vovo-docs/blogs/" class="nav-link"><i class="undefined"></i>
+  博客
+</a></div><div class="nav-item"><a href="/vovo-docs/colorui/docs/" class="nav-link"><i class="undefined"></i>
+  ColorUI指南
+</a></div><div class="nav-item"><a href="https://github.com/luoyunchong/vovo-docs" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1aefc0b4></div> <aside class="sidebar" data-v-1aefc0b4><div class="personal-info-wrapper" data-v-39576ba9 data-v-1aefc0b4><!----> <h3 class="name" data-v-39576ba9>
+    IGeekFan
+  </h3> <div class="num" data-v-39576ba9><div data-v-39576ba9><h3 data-v-39576ba9>47</h3> <h6 data-v-39576ba9>Articles</h6></div> <div data-v-39576ba9><h3 data-v-39576ba9>4</h3> <h6 data-v-39576ba9>Tags</h6></div></div> <ul class="social-links" data-v-39576ba9></ul> <hr data-v-39576ba9></div> <nav class="nav-links"><div class="nav-item"><a href="/vovo-docs/" class="nav-link"><i class="iconfont reco-home"></i>
+  简介
+</a></div><div class="nav-item"><a href="/vovo-docs/dotnetcore/lin-cms/" class="nav-link router-link-active"><i class="undefined"></i>
+  lin-cms-dotnetcore起步
+</a></div><div class="nav-item"><a href="/vovo-docs/dotnetcore/examples/" class="nav-link"><i class="undefined"></i>
+  .NET指南
+</a></div><div class="nav-item"><a href="/vovo-docs/about/" class="nav-link"><i class="undefined"></i>
+  关于
+</a></div><div class="nav-item"><a href="/vovo-docs/blogs/" class="nav-link"><i class="undefined"></i>
+  博客
+</a></div><div class="nav-item"><a href="/vovo-docs/colorui/docs/" class="nav-link"><i class="undefined"></i>
+  ColorUI指南
+</a></div><div class="nav-item"><a href="https://github.com/luoyunchong/vovo-docs" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>起步</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vovo-docs/dotnetcore/lin-cms/dotnetcore-start.html" class="sidebar-link">后端准备</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/cms-start.html" aria-current="page" class="active sidebar-link">后端快速上手</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/technology.html" class="sidebar-link">相关技术</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/vue-start.html" class="sidebar-link">前端准备</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/open-source-road.html" class="sidebar-link">开源介绍</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/pm-design-modules.html" class="sidebar-link">功能模块的设计</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/production-design.html" class="sidebar-link">产品设计</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/github-actions.html" class="sidebar-link">GitHub Actions</a></li><li><a href="/vovo-docs/dotnetcore/lin-cms/change-sqlserver.html" class="sidebar-link">LinCms如何切换成SQL server</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>.NET Core</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>开发者文档</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-25ba6db2 data-v-1aefc0b4><h3 class="title" data-v-25ba6db2 data-v-25ba6db2></h3> <!----> <label id="box" class="inputBox" data-v-25ba6db2 data-v-25ba6db2><input type="password" value="" data-v-25ba6db2> <span data-v-25ba6db2>Konck! Knock!</span> <button data-v-25ba6db2>OK</button></label> <div class="footer" data-v-25ba6db2 data-v-25ba6db2><span data-v-25ba6db2><i class="iconfont reco-theme" data-v-25ba6db2></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-25ba6db2>vuePress-theme-reco</a></span> <span data-v-25ba6db2><i class="iconfont reco-copyright" data-v-25ba6db2></i> <a data-v-25ba6db2><span data-v-25ba6db2>IGeekFan</span>
+            
+          <span data-v-25ba6db2>2019 - </span>
+          2022
+        </a></span></div></div> <div data-v-1aefc0b4><main class="page"><section><div class="page-title"><h1 class="title">后端快速上手</h1> <div data-v-f875f3fc><i class="iconfont reco-account" data-v-f875f3fc><span data-v-f875f3fc>IGeekFan</span></i> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h1 id="后端快速上手"><a href="#后端快速上手" class="header-anchor">#</a> 后端快速上手</h1> <p>本小节我们将在lin-cms的基础上开发一个简单的图书管理demo,帮助大家来熟悉和入门lin-cms。</p> <p>lin-cms是一个lin团队经数打磨的模板项目，本人是c#的开发者，为lin-cms完善在.net 下的生态，是基于asp.netcore的基础上，沉淀下来的一套实践， 帮助开发者节约时间。</p> <blockquote><p>注意：本小节建立在你有一定的asp.net mvc，freesql，.net core的基础上。</p></blockquote> <h2 id="数据层"><a href="#数据层" class="header-anchor">#</a> 数据层</h2> <p>由于我们用的.net core中优秀的开源项目FreeSql,codefirst模式，他能根据类生成表结构。所以，不需要我们手动创建表结构。</p> <h3 id="book-书"><a href="#book-书" class="header-anchor">#</a> book 书</h3> <table><thead><tr><th>字段</th> <th>类型</th> <th>备注</th></tr></thead> <tbody><tr><td>id</td> <td>bigint</td> <td>主键Id</td></tr> <tr><td>author</td> <td>varchar</td> <td>作者</td></tr> <tr><td>image</td> <td>varchar</td> <td>图片</td></tr> <tr><td>summary</td> <td>varchar</td> <td>简介</td></tr> <tr><td>title</td> <td>varchar</td> <td>标题</td></tr></tbody></table> <p>可增加一些审计字段，如</p> <table><thead><tr><th>字段</th> <th>类型</th> <th>备注</th></tr></thead> <tbody><tr><td>create_time</td> <td>datetime</td> <td>创建时间</td></tr> <tr><td>create_user_id</td> <td>datetime</td> <td>创建者ID</td></tr> <tr><td>update_time</td> <td>datetime</td> <td>修改时间</td></tr> <tr><td>update_user_id</td> <td>datetime</td> <td>最后修改人Id</td></tr> <tr><td>delete_time</td> <td>datetime</td> <td>删除时间</td></tr> <tr><td>delete_user_id</td> <td>datetime</td> <td>删除人id</td></tr> <tr><td>is_deleted</td> <td>datetime</td> <td>是否删除</td></tr></tbody></table> <p>审计字段可通过继承父类<strong>FullAduitEntity</strong>即可,当然，也可只有创建时间，创建人二个字段，继承<strong>ICreateAduitEntity</strong>接口，实现二个字段即可。如果不想要这些记录，只需要继承<strong>Entity</strong>类，仅有一个ID字段，支持泛型。</p> <p><strong>is_deleted</strong>字段本身没有什么稀奇的，但我们可以配合FreeSql实现逻辑删除（软删除），在LinCms.Web/Configs/DependencyInjectionExtensions.cs文件中。配置 了如下内容，如果我们筛选数据时，会全局启用 <a href="https://github.com/dotnetcore/FreeSql/wiki/%E8%BF%87%E6%BB%A4%E5%99%A8" target="_blank" rel="noopener noreferrer">过滤器<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。像创建时间，创建人。这些字段都不需要我们赋值，如果我们全部使用仓储<strong>IAuditBaseRepository</strong>访问数据库，这些字段会自动赋值。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>fsql.GlobalFilter.Apply&lt;IDeleteAduitEntity&gt;(&quot;IsDeleted&quot;, a =&gt; a.IsDeleted == false);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="模型层"><a href="#模型层" class="header-anchor">#</a> 模型层</h2> <p>我们建立单纯的实体类（Entities)，在路径<strong>lin-cms-dotnetcore\src\LinCms.Core\Entities</strong>,名为Book.cs的实体类</p> <div class="language-csharp line-numbers-mode"><pre class="language-csharp"><code><span class="token keyword">using</span> <span class="token namespace">FreeSql<span class="token punctuation">.</span>DataAnnotations</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">LinCms<span class="token punctuation">.</span>Core<span class="token punctuation">.</span>Entities</span>
+<span class="token punctuation">{</span>
+    <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Table</span><span class="token attribute-arguments"><span class="token punctuation">(</span>Name <span class="token operator">=</span> <span class="token string">&quot;book&quot;</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Book</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">FullAduitEntity</span></span>
+    <span class="token punctuation">{</span>
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Column</span><span class="token attribute-arguments"><span class="token punctuation">(</span>DbType <span class="token operator">=</span> <span class="token string">&quot;varchar(30)&quot;</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Author <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">string</span><span class="token punctuation">.</span>Empty<span class="token punctuation">;</span>
+
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Column</span><span class="token attribute-arguments"><span class="token punctuation">(</span>DbType <span class="token operator">=</span> <span class="token string">&quot;varchar(50)&quot;</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Image <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">string</span><span class="token punctuation">.</span>Empty<span class="token punctuation">;</span>
+
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Column</span><span class="token attribute-arguments"><span class="token punctuation">(</span>DbType <span class="token operator">=</span> <span class="token string">&quot;varchar(1000)&quot;</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Summary <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">string</span><span class="token punctuation">.</span>Empty<span class="token punctuation">;</span>
+
+        <span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Column</span><span class="token attribute-arguments"><span class="token punctuation">(</span>DbType <span class="token operator">=</span> <span class="token string">&quot;varchar(50)&quot;</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Title <span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">;</span> <span class="token keyword">set</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">string</span><span class="token punctuation">.</span>Empty<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>更多特性标签支持情况，请查看<a href="https://github.com/dotnetcore/FreeSql/wiki/%E5%AE%9E%E4%BD%93%E7%89%B9%E6%80%A7" target="_blank" rel="noopener noreferrer">FreeSql官方文档实体特性<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p> <p>由于默认FreeSql,只有访问到这个类时才会生成表，但我们可以手动扫描所有带有Table特性标签的类，同步表结构。仅建议开发时启动表结构全部同步。</p> <p>LinCms.Web/Configs/DependencyInjectionExtensions.cs
+中的AddContext配置项中.</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//在运行时直接生成表结构
+fsql.CodeFirst.SyncStructure(ReflexHelper.GetEntityTypes(typeof(IEntity))); 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="业务层"><a href="#业务层" class="header-anchor">#</a> 业务层</h2> <p>有了实体类，我们创建IBookRepository<code>&lt;Book,long&gt;</code>，也可以不创建，直接使用IAuditBaseRepository<code>&lt;Book&gt;</code>在Service层写相应的业务。这里我们就不创建仓储服务了，框架中携带的仓储已经满足我们的要求。</p> <p>仓储是什么呢。在这里我们可以理解DAL,也理解为仓库，他提供了对单个表的CURD操作方法，有了一个统一的规范。</p> <p>作用即数据的持久化，应用服务通过仓储对数据进行操作，让开发者不用关注仓储内部的实现。</p> <p>业务层Services，我们直接使用仓储访问数据库。</p> <p>在LinCms.Application.Contracts项目中，在v1文件夹新建一个Books的文件夹,用于存放书的相关接口，创建IBookService的接口</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>using System.Threading.Tasks;
+using LinCms.Application.Contracts.v1.Books.Dtos;
+using LinCms.Core.Data;
+
+namespace LinCms.Application.Contracts.v1.Books
+{
+    public interface IBookService
+    {
+        Task&lt;BookDto&gt; GetAsync(long id);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>新建一个Dtos文件夹，用于存放业务传输的数据对象，再创建一个BookDto，仅包含必要的字段，而非全部。该类以Dto结尾，代表数据传输对象。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>using System;
+using LinCms.Core.Entities;
+
+namespace LinCms.Application.Contracts.v1.Books.Dtos
+{
+    public class BookDto:EntityDto
+    {
+        public string Author { get; set; }
+        public string Image { get; set; }
+        public string Summary { get; set; }
+        public string Title { get; set; }
+        public DateTime CreateTime { get; set; }
+        public DateTime UpdateTime { get; set; }
+    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>在BookService实现如下，在这里我们注入IAuditBaseRepository，通过 调用 <strong>_bookRepository.Select.Where(a =&gt; a.Id == id).ToOneAsync();</strong> ,根据id得到书的实体对象。然后使用AutoMappeer,将Book类转换成BookDto类，然后返回。
+至于为什么 这里我们可以注入IAuditBaseRepository，IMapper类，后面我们会讲到。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using LinCms.Application.Contracts.v1.Books;
+using LinCms.Application.Contracts.v1.Books.Dtos;
+using LinCms.Core.Data;
+using LinCms.Core.Entities;
+using LinCms.Core.Exceptions;
+using LinCms.Core.Extensions;
+using LinCms.Core.IRepositories;
+
+namespace LinCms.Application.v1.Books
+{
+    public class BookService : IBookService
+    {
+        private readonly IAuditBaseRepository&lt;Book&gt; _bookRepository;
+        private readonly IMapper _mapper;
+        public BookService(IAuditBaseRepository&lt;Book&gt; bookRepository, IMapper mapper)
+        {
+            _bookRepository = bookRepository;
+            _mapper = mapper;
+        }
+
+
+        public async Task&lt;BookDto&gt; GetAsync(long id)
+        {
+            Book book = await _bookRepository.Select.Where(a =&gt; a.Id == id).ToOneAsync();
+            return _mapper.Map&lt;BookDto&gt;(book);
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><p>因为使用AutoMapper简化二个对象的映射，我们在同一目录下，创建一个继承Profile类的配置项。在构造函数中，我们配置了调用CreateMap方法，代表，从Book-&gt;BookDto的映射关系。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>using AutoMapper;
+using LinCms.Application.Contracts.v1.Books.Dtos;
+using LinCms.Core.Entities;
+
+namespace LinCms.Application.v1.Books
+{
+    public class BookProfile:Profile
+    {
+        public BookProfile()
+        {
+            CreateMap&lt;Book, BookDto&gt;();
+        }
+    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>在ASP.NET Core中，我们会扫描该程序集（LinCms.Applicaiton）中所有继承了Profile类的子类，在LinCms.Web中ConfiguartionService配置如下，</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>services.AddAutoMapper(typeof(BookProfile).Assembly);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>一个项目即一个程序集(生成一个dll)，仅配置一次。</p> <p>我们完善一下控制器的代码。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>using System.Threading.Tasks;
+using AutoMapper;
+using LinCms.Application.Contracts.v1.Books;
+using LinCms.Application.Contracts.v1.Books.Dtos;
+using LinCms.Core.Aop;
+using LinCms.Core.Aop.Filter;
+using LinCms.Core.Data;
+using LinCms.Core.Entities;
+using LinCms.Core.Exceptions;
+using LinCms.Core.Extensions;
+using LinCms.Core.IRepositories;
+using LinCms.Web.Data.Authorization;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace LinCms.Web.Controllers.v1
+{
+    [Route(&quot;v1/book&quot;)]
+    [ApiController]
+    [Authorize]
+    public class BookController : ControllerBase
+    {
+        private readonly IBookService _bookService;
+        public BookController(IBookService bookService)
+        {
+            _bookService = bookService;
+        }
+
+        [HttpGet(&quot;{id}&quot;)]
+        public async Task&lt;BookDto&gt; GetAsync(int id)
+        {
+            return await _bookService.GetAsync(id);
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br></div></div><p>在LinCms.Web/Controllers/v1文件夹，创建我们的Book控制器。
+我们依旧通过构造函数注入服务<strong>IBookService</strong>,这里用到的是async await方法，与同步方法执行顺序一致，仅多二个关键字，并使用Task&lt;返回值&gt;来返回数据，通常我们使用Async标识异步方法。</p> <p>启动项目，可通过Visual Studio点击上方的运行即可。</p> <p>还可通过终端运行项目</p> <p>先 cd 到目录 lin-cms-dotnetcore/src/LinCms.Web</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>dotnet run
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>打开浏览器，https://localhost:5001/swagger/index.html， ctrl+f搜索，book，找到GET /v1/book/{id}，点击try it out,输入id，点击Execute。</p> <p>因为我们没登录登录，在BookController上写了特性标签 <strong>[Authorize]</strong> ，所以会返回</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+  &quot;code&quot;: 10000,
+  &quot;message&quot;: &quot;请先登录&quot;,
+  &quot;request&quot;: &quot;GET /v1/book/131&quot;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>我们可以先去掉这个特性标签，也可以走登录浏览，把Token放到Header中的Authoriaztion中。。</p> <p>这里我们先去掉这行特性标签。去掉后，需要ctrl+c，即出运行状态，如果感觉麻烦，可以使用 <strong>dotnet run watch</strong> 命令，修改后，自动重启，不需要手动重启。。</p> <p>这里我们重新测试，手动给数据库加一些数据，记得is_deleted要是false，然后输入对应的id，会得到对应的值</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+  &quot;author&quot;: &quot;891dc185-2&quot;,
+  &quot;image&quot;: &quot;f6d0c1e9-fcb2-446a-9093-d773e6515579&quot;,
+  &quot;summary&quot;: &quot;8aea38f8-a6e0-4053-bd7a-ae4476432bdd&quot;,
+  &quot;title&quot;: &quot;2d0c2e44-ee02-4d40-b4b7-eed03bb48aa4&quot;,
+  &quot;create_time&quot;: 1588485910430,
+  &quot;update_time&quot;: 1588485910430,
+  &quot;id&quot;: 139
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div></div></section> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/luoyunchong/vovo-docs/edit/master/docs/dotnetcore/lin-cms/cms-start.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">最后更新时间: </span> <span class="time">7/25/2020, 1:10:08 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/vovo-docs/dotnetcore/lin-cms/dotnetcore-start.html" class="prev">
+            后端准备
+          </a></span> <span class="next"><a href="/vovo-docs/dotnetcore/lin-cms/technology.html">
+            相关技术
+          </a></span></p></div> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-cb1513f6><li class="level-2" data-v-cb1513f6><a href="/vovo-docs/dotnetcore/lin-cms/cms-start.html#数据层" class="sidebar-link reco-side-数据层" data-v-cb1513f6>数据层</a></li><li class="level-3" data-v-cb1513f6><a href="/vovo-docs/dotnetcore/lin-cms/cms-start.html#book-书" class="sidebar-link reco-side-book-书" data-v-cb1513f6>book 书</a></li><li class="level-2" data-v-cb1513f6><a href="/vovo-docs/dotnetcore/lin-cms/cms-start.html#模型层" class="sidebar-link reco-side-模型层" data-v-cb1513f6>模型层</a></li><li class="level-2" data-v-cb1513f6><a href="/vovo-docs/dotnetcore/lin-cms/cms-start.html#业务层" class="sidebar-link reco-side-业务层" data-v-cb1513f6>业务层</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/vovo-docs/assets/js/app.be89d5e5.js" defer></script><script src="/vovo-docs/assets/js/4.879a87f6.js" defer></script><script src="/vovo-docs/assets/js/1.d2d86360.js" defer></script><script src="/vovo-docs/assets/js/37.7cd19cb4.js" defer></script><script src="/vovo-docs/assets/js/10.0fe96159.js" defer></script>
+  </body>
+</html>
