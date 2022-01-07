@@ -12,7 +12,8 @@ module.exports = {
                 'identityserver4',
                 'qiniu-object-storage',
                 'imcore-chat',
-                'nacos-aspnetcore'
+                'nacos-aspnetcore',
+                'serilog-tutorial'
             ]
         }
     ],
@@ -60,6 +61,24 @@ module.exports = {
             'scriban-README.md'
         ]
     }],
+    '/about/': [
+        {
+            title: '关于',
+            collapsable: true
+        }
+    ],
+    '/blogs/': [
+        {
+            title: '技术分享',
+            collapsable: true,
+            children: [
+                'git-emoji',
+                'net-sqlite-encryption',
+                'freesql-sqlitecore-SQLCipher',
+                'net-encoded-1',
+            ]
+        }
+    ],
     '/colorui/': [
         {
             title: 'ColorUI文档',
