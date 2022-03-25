@@ -26,7 +26,7 @@ module.exports = {
         startYear: '2019',
         author: 'IGeekFan',
         record: '苏ICP备16046457号-3',
-        recordLink: 'http://www.beian.miit.gov.cn/',
+        recordLink: 'https://beian.miit.gov.cn/#/Integrated/index',
         // 文档仓库
         docsRepo: 'https://github.com/luoyunchong/vovo-docs',
         // 假如文档不是放在仓库的根目录下：
