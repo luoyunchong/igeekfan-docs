@@ -1,12 +1,12 @@
 
-# yarn install
+yarn install
 # 生成静态文件
 yarn build
 
 # 进入生成的文件夹
 Set-Location docs/.vuepress/dist
-git config --global user.email "luoyunchong@foxmail.com"
-git config --global user.name "luoyunchong"
+git config --global user.email "igeekfan@foxmail.com"
+git config --global user.name "igeekfan"
 
 git init
 git add -A

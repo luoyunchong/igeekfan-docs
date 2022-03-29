@@ -40,7 +40,6 @@ module.exports = {
             'table.md',
             'authorize.md',
             'lincms-scaffolding.md',
-            'sql-server.md',
             'autofac.md',
             'aspnetcore-repository-unitofwork.md'
         ]
