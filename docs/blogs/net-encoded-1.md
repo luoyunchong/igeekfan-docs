@@ -83,7 +83,7 @@ public string ByteToHex(string str)
 ```
 
 `hex`得到 的数据就是 `E4B8ADE59BBD`
-```
+```cs
  string hex= ByteToHex("中国");
 ```
 
@@ -92,7 +92,7 @@ public string ByteToHex(string str)
 
 1. `Encoding.UTF8.GetBytes`能得到数据的十进制的字节数组。
 2. 利用c#中的 **[复合格式化特性](https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/composite-formatting)** {0:X2}自动转换成16进制。同样内容支持Console.WriteLine等
-```
+```cs
 public string ByteToHex2(string str)
 {
     byte[] bytes = Encoding.UTF8.GetBytes(str);
@@ -108,7 +108,7 @@ public string ByteToHex2(string str)
 
 ### hex(16进制字符串)转换 byte[]
 1. 一个循环将16进制转换成10进制。
-```
+```cs
 public byte[] HexToByte(string hex)
 {
     byte[] inputByteArray = new byte[hex.Length / 2];
@@ -121,7 +121,7 @@ public byte[] HexToByte(string hex)
 }
 ```
 调用如下内容，bytes[]中的长度为6，数据是228，184，173、229，155，189。即上文中的中国的十进制byte数组
-```
+```cs
 string hexChinese = "E4B8ADE59BBD";//中国的UTF8编码。十六进制。
 byte[] bytes = HexToByte(hexChinese);
 string text = Encoding.UTF8.GetString(bytes);// `中国`

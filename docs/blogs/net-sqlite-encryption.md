@@ -31,16 +31,16 @@ library 'e_sqlite3' doesn't support encryption.
 
 ## System.Data.SQLite.Core
 创建一个控制台项目,起名 `OvOv.SqliteSystemCore`
-```
+```bash
 dotnet new console -n OvOv.SqliteSystemCore
 cd OvOv.SqliteSystemCore
 ```
 安装包
-```
+```bash
 dotnet add package System.Data.SQLite.Core
 ```
 使用`SQLiteConnection`创建一个连接，使用Password指定密码
-```
+```cs
 using System.Data.SQLite;
 
 static void Open()
@@ -58,7 +58,7 @@ Open();
 ```
 
 运行项目 
-```
+```bash
 dotnet run
 ```
 就会出现如下错误。
@@ -71,17 +71,17 @@ System.IO.FileNotFoundException:“Could not load file or assembly
 
 ## Microsoft.Data.Sqlite
 创建一个控制台项目,起名 `OvOv.SqliteMicrosoft`
-```
+```bash
 dotnet new console -n OvOv.SqliteMicrosoft
 cd OvOv.SqliteMicrosoft
 ```
 安装包
-```
+```bash
 dotnet add package Microsoft.Data.Sqlite
 ```
 
 使用`SqliteConnection`创建一个连接，使用Password指定密码
-```
+```cs
 using Microsoft.Data.Sqlite;
 
 static void Open()
@@ -101,7 +101,7 @@ Open();
 ```
 
 运行项目 
-```
+```bash
 dotnet run
 ```
 就会出现如下错误。
@@ -115,7 +115,7 @@ but the native SQLite library
 - [https://docs.microsoft.com/zh-cn/dotnet/standard/data/sqlite/encryption?tabs=netcore-cli](https://docs.microsoft.com/zh-cn/dotnet/standard/data/sqlite/encryption?tabs=netcore-cli)
 
 
-```console
+```bash
 dotnet remove package Microsoft.Data.Sqlite
 dotnet add package Microsoft.Data.Sqlite.Core
 dotnet add package SQLitePCLRaw.bundle_e_sqlcipher

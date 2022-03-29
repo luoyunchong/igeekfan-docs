@@ -13,7 +13,7 @@ module.exports = {
     markdown: {
         lineNumbers: true // 代码块显示行号
     },
-    base: '/vovo-docs/',//vovo-docs/
+    base: '/',//vovo-docs/
     theme: 'reco',
     themeConfig: {
         subSidebar: 'auto',

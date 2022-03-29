@@ -73,7 +73,6 @@ module.exports = {
             children: [
                 'git-emoji',
                 'net-sqlite-encryption',
-                'freesql-sqlitecore-SQLCipher',
                 'net-encoded-1',
             ]
         }
