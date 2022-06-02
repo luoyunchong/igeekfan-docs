@@ -1,6 +1,8 @@
 import { defineUserConfig } from "@vuepress/cli";
 import theme from "./theme";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
+const base = (process.env.BASE as "/" | `/${string}/`) || "/";
+
 export default defineUserConfig({
     locales: {
         "/": {
@@ -14,7 +16,7 @@ export default defineUserConfig({
             description: "IGeekFan Documents",
         },
     },
-    base: "/",
+    base: base,
     title: 'IGeekFan的文档',
     description: '小楼昨夜又东风',
     head: [
