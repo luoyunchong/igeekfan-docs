@@ -1,13 +1,1021 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
   <id>https://igeekfan.cn/igeekfan-docs/</id>
-  <title>IGeekFan的文档</title>
-  <subtitle>IGeekFan Documents</subtitle>
-  <updated>2022-06-02T13:21:24.274Z</updated>
+  <title>IGeekFan 开发者文档</title>
+  <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
+  <updated>2022-06-02T18:20:03.470Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
   <category term="lin-cms-dotnetcore"/>
+  <entry>
+    <title type="html">七牛云对象存储</title>
+    <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/qiniu-object-storages.html</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/qiniu-object-storages.html"/>
+    <updated>2022-06-02T18:18:50.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="七牛云对象存储" tabindex="-1"> 七牛云对象存储</h1>
+<p>.NET Core 下集成 七牛云下的对象存储</p>
+<h2 id="开源地址" tabindex="-1"> 开源地址</h2>
+<p><a href="https://github.com/luoyunchong/dotnetcore-examples/tree/master/999-Others/OvOv.MQiniu.Core" target="_blank" rel="noopener noreferrer">OvOv.MQiniu.Core</a></p>
+<h2 id="集成类库" tabindex="-1"> 集成类库</h2>
+<table>
+<thead>
+<tr>
+<th>基础类库集成方案</th>
+<th>开源地址</th>
+<th>文档</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/luoyunchong/dotnetcore-examples/tree/master/dotnet-core-efcore" target="_blank" rel="noopener noreferrer">Qiniu 云对象存储</a></td>
+<td><a href="https://github.com/qiniu/csharp-sdk" target="_blank" rel="noopener noreferrer">.net</a>/<a href="https://github.com/Hello-Mango/MQiniu.Core" target="_blank" rel="noopener noreferrer">.net core</a></td>
+<td><a href="https://developer.qiniu.com/kodo/sdk/1237/csharp" target="_blank" rel="noopener noreferrer">c# sdk</a></td>
+<td>由于官网未支持. net core，所以 大家看<a href="https://github.com/Hello-Mango/MQiniu.Core" target="_blank" rel="noopener noreferrer">社区版解决方案</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="前提" tabindex="-1"> 前提</h2>
+<ul>
+<li>本地 windows 10,安装 .net core 2.2+</li>
+<li>Linux 服务器 Ubuntu Server 16+</li>
+<li>服务器安装了 Docker</li>
+<li>本地 xftp、xshell（这二个分别是 windows 传文件至 linux，执行命令行。）</li>
+</ul>
+<h2 id="准备" tabindex="-1"> 准备</h2>
+<p>在七牛云中自行注册后，在个人中心，密钥管理，生成自己的密钥（https://portal.qiniu.com/user/key）
+v* AK，SK 分别代表：AccessKey/SecretKey</p>
+<ul>
+<li>Bucket 中的 vant-ui，是创建对象存储时起的名字</li>
+<li>PrefixPath 中的值，随意字符串，前缀地址。</li>
+<li>Host 为：融合 CDN 测试域名,可自行绑定自己的域名，否则只有三十天免费使用时长。</li>
+</ul>
+<h2 id="appsettings-json-配置项" tabindex="-1"> appsettings.json 配置项</h2>
+<div><pre><code>  <span>"Qiniu"</span><span>:</span> <span>{</span>
+    <span>"AK"</span><span>:</span> <span>"eUH1O-ft66S4XM2GIK7FGmj7czuYkcAyNGDAc-wq"</span><span>,</span>
+    <span>"SK"</span><span>:</span> <span>"4dOi1daSr2-YgofhAfWb8JaLrbgozCmgD6AUmmM9"</span><span>,</span>
+    <span>"Bucket"</span><span>:</span> <span>"vant-ui"</span><span>,</span>
+    <span>"PrefixPath"</span><span>:</span> <span>"ui"</span><span>,</span>
+    <span>"Host"</span><span>:</span> <span>"http://pu5vnz60k.bkt.clouddn.com/"</span>
+  <span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div><h2 id="安装包" tabindex="-1"> 安装包</h2>
+<div><pre><code>Install-Package MQiniu.Core
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><h2 id="代码解读" tabindex="-1"> 代码解读</h2>
+<p>配置 swagger 的过程就不说了，创建 QiniuController</p>
+<div><pre><code>  <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 七牛云上传服务</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span>[</span><span>Route</span><span>(</span><span>"api/[controller]"</span><span>)</span><span>]</span>
+    <span>[</span><span><span>ApiController</span></span><span>]</span>
+    <span>public</span> <span>class</span> <span>QiniuController</span> <span>:</span> <span><span>ControllerBase</span></span>
+    <span>{</span>
+        <span>private</span> <span>readonly</span> <span>IConfiguration</span> _configuration<span>;</span>
+
+        <span>public</span> <span>QiniuController</span><span>(</span><span>IConfiguration</span> configuration<span>)</span>
+        <span>{</span>
+            _configuration <span>=</span> configuration<span>;</span>
+        <span>}</span>
+
+        <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+        <span>/// 根据后台配置项，得到请求七牛云的token值，前台也可根据此token值上传至七牛云服务</span>
+        <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+        <span>/// <span><span><span>&lt;</span>returns</span><span>></span></span><span><span><span>&lt;/</span>returns</span><span>></span></span></span>
+        <span>[</span><span>HttpGet</span><span>(</span><span>"access_token"</span><span>)</span><span>]</span>
+        <span>public</span> <span><span>string</span></span> <span>GetAccessToken</span><span>(</span><span>)</span>
+        <span>{</span>
+            <span>Mac</span> mac <span>=</span> <span>new</span> <span>Mac</span><span>(</span>_configuration<span>[</span><span>"Qiniu:AK"</span><span>]</span><span>,</span> _configuration<span>[</span><span>"Qiniu:SK"</span><span>]</span><span>)</span><span>;</span>
+            <span>PutPolicy</span> putPolicy <span>=</span> <span>new</span> <span>PutPolicy</span> <span>{</span> Scope <span>=</span> _configuration<span>[</span><span>"Qiniu:Bucket"</span><span>]</span> <span>}</span><span>;</span>
+            <span>return</span> Auth<span>.</span><span>CreateUploadToken</span><span>(</span>mac<span>,</span> putPolicy<span>.</span><span>ToJsonString</span><span>(</span><span>)</span><span>)</span><span>;</span>
+        <span>}</span>
+
+        <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+        <span>/// 上传文件至七牛云,code为200，代表上传成功,其他代表不成功</span>
+        <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+        <span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>file<span>"</span></span><span>></span></span>单个文件<span><span><span>&lt;/</span>param</span><span>></span></span></span>
+        <span>/// <span><span><span>&lt;</span>returns</span><span>></span></span>new { code = 200, data ="七牛云文件地址，包括http://....mm.png", msg = "上传成功" };<span><span><span>&lt;/</span>returns</span><span>></span></span></span>
+        <span>[</span><span>HttpPost</span><span>(</span><span>"upload"</span><span>)</span><span>]</span>
+        <span>public</span> <span><span>dynamic</span></span> <span>Upload</span><span>(</span><span>IFormFile</span> file<span>)</span>
+        <span>{</span>
+            <span>if</span> <span>(</span>file<span>.</span>Length <span>==</span> <span>0</span><span>)</span>
+            <span>{</span>
+                <span>return</span> <span>new</span> <span>{</span> code <span>=</span> <span>1</span><span>,</span> msg <span>=</span> <span>"文件为空"</span> <span>}</span><span>;</span>
+            <span>}</span>
+
+            <span>FormUploader</span> upload <span>=</span> <span>new</span> <span>FormUploader</span><span>(</span><span>new</span> <span>Config</span><span>(</span><span>)</span>
+            <span>{</span>
+                Zone <span>=</span> Zone<span>.</span>ZONE_CN_South<span>,</span><span>//华南</span>
+                UseHttps <span>=</span> <span>true</span>
+            <span>}</span><span>)</span><span>;</span>
+
+            <span><span>var</span></span> fileName <span>=</span> ContentDispositionHeaderValue
+                <span>.</span><span>Parse</span><span>(</span>file<span>.</span>ContentDisposition<span>)</span>
+                <span>.</span>FileName<span>.</span><span>Trim</span><span>(</span><span>)</span><span>;</span>
+
+            <span><span>string</span></span> qiniuName <span>=</span> _configuration<span>[</span><span>"Qiniu:PrefixPath"</span><span>]</span> <span>+</span> <span>"/"</span> <span>+</span> DateTime<span>.</span>Now<span>.</span><span>ToString</span><span>(</span><span>"yyyyMMddHHmmssffffff"</span><span>)</span> <span>+</span> fileName<span>;</span>
+            <span>Stream</span> stream <span>=</span> file<span>.</span><span>OpenReadStream</span><span>(</span><span>)</span><span>;</span>
+            <span>HttpResult</span> result <span>=</span> upload<span>.</span><span>UploadStream</span><span>(</span>stream<span>,</span> qiniuName<span>,</span> <span>GetAccessToken</span><span>(</span><span>)</span><span>,</span> <span>null</span><span>)</span><span>;</span>
+
+            <span>if</span> <span>(</span>result<span>.</span>Code <span>==</span> <span>200</span><span>)</span>
+            <span>{</span>
+                <span>return</span> <span>new</span> <span>{</span> code <span>=</span> <span>200</span><span>,</span> data <span>=</span> _configuration<span>[</span><span>"Qiniu:Host"</span><span>]</span> <span>+</span> qiniuName<span>,</span> msg <span>=</span> <span>"上传成功"</span> <span>}</span><span>;</span>
+            <span>}</span>
+
+            <span>return</span> <span>new</span> <span>{</span> code <span>=</span> <span>1</span><span>,</span> msg <span>=</span> <span>"上传失败"</span> <span>}</span><span>;</span>
+        <span>}</span>
+    <span>}</span>
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br><span>55</span><br><span>56</span><br><span>57</span><br><span>58</span><br><span>59</span><br><span>60</span><br><span>61</span><br><span>62</span><br></div></div><p>Upload 方法中，Zone.ZONE_CN_South，代表华南，所以创建对象存储时要注意，请选择与此相同的位置（华南），或根据实际情况修改 Zone 所在地区的枚举值即可。</p>
+<div><pre><code><span>FormUploader</span> upload <span>=</span> <span>new</span> <span>FormUploader</span><span>(</span><span>new</span> <span>Config</span><span>(</span><span>)</span>
+<span>{</span>
+    Zone <span>=</span> Zone<span>.</span>ZONE_CN_South<span>,</span><span>//华南</span>
+    UseHttps <span>=</span> <span>true</span>
+<span>}</span><span>)</span><span>;</span>
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><h2 id="发布至-linux-下的-docker" tabindex="-1"> 发布至 Linux 下的 Docker</h2>
+<p>双击 publish.bat，生成的文件夹为如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2001974-bcd72707e4fcc7f8.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="image" loading="lazy"></p>
+<p>修改项目名为 qiniu-web，复制 至 linux 服务器中，（xftp 工具）
+<img src="https://upload-images.jianshu.io/upload_images/2001974-48771e9fce281262.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="image" loading="lazy"></p>
+<p>使用 xshell 远程登录后，进入 root 权限。</p>
+<div><pre><code>root@VM-37-104-ubuntu:/home/ubuntu/<span># sudo su</span>
+root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>前置条件，在 ubuntu 上安装好了 docker。并且正常运行。</p>
+<p>-d 代表后台运行，此时将对外显露 5000 端口运行，5000 是运行后，docker 对外的端口，80 是这个服务对外的端口，其中 Dockerfile 存在语句 EXPOSE 80</p>
+<div><pre><code><span>docker</span> build -t igeekfan/qiniu <span>.</span>     <span>#生成images</span>
+<span>docker</span> run -d -p <span>5000</span>:80 igeekfan/qiniu  <span># 生成 container 并运行在5000端口</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>此时打开 浏览器， ip+端口 5000 即可访问服务，请加/swagger。</p>
+<p>本项目已部署至服务器 <a href="http://122.152.192.161:5000/swagger/index.html" target="_blank" rel="noopener noreferrer">http://122.152.192.161:5000/swagger/index.html</a></p>
+<h2 id="运行结果" tabindex="-1"> 运行结果</h2>
+<p><img src="https://upload-images.jianshu.io/upload_images/2001974-2b72cc6338db1434.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="image.png" loading="lazy"></p>
+<h2 id="参考" tabindex="-1"> 参考</h2>
+<ul>
+<li>.NET Core 版本七牛云 SDK 使用<a href="https://www.cnblogs.com/OMango/p/8447480.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/OMango/p/8447480.html</a></li>
+<li>.NET Core 部署至 Linux 下的 Docker <a href="http://blog.igeekfan.cn/2019/06/09/dotnetcore/aspnetcore-Deploy-To-Docker-Ubuntu/" target="_blank" rel="noopener noreferrer">http://blog.igeekfan.cn/2019/06/09/dotnetcore/aspnetcore-Deploy-To-Docker-Ubuntu/</a></li>
+</ul>
+]]></content>
+    <published>2022-06-02T18:18:50.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">aspnetcore identity freesql 的实现</title>
+    <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/AspNetCore.Identity.FreeSql.html</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/AspNetCore.Identity.FreeSql.html"/>
+    <updated>2022-06-02T18:18:50.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="aspnetcore-identity-freesql-的实现" tabindex="-1"> aspnetcore identity freesql 的实现</h1>
+<h2 id="igeekfan-aspnetcore-identity-freesql" tabindex="-1"> IGeekFan.AspNetCore.Identity.FreeSql</h2>
+<p><code>asp.net core 6</code> 的<code>identity</code>的<code>freesql</code>实现</p>
+<ul>
+<li>安装包</li>
+</ul>
+<div><pre><code>dotnet <span>add</span> package IGeekFan.AspNetCore.Identity.FreeSql
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><ul>
+<li>新增 FreeSql 相关包</li>
+</ul>
+<div><pre><code>dotnet <span>add</span> package FreeSql.Provider.MySqlConnector
+dotnet <span>add</span> package FreeSql.DbContext
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><h3 id="扩展用户、角色" tabindex="-1"> 扩展用户、角色</h3>
+<div><pre><code><span>public</span> <span>class</span> <span>AppUser</span> <span>:</span> <span><span>IdentityUser<span>&lt;</span>Guid<span>></span></span></span>
+<span>{</span>
+<span>}</span>
+<span>public</span> <span>class</span> <span>AppRole</span> <span>:</span> <span><span>IdentityRole<span>&lt;</span>Guid<span>></span></span></span>
+<span>{</span>
+
+<span>}</span>
+<span>public</span> <span>class</span> <span>IdentityContext</span> <span>:</span> <span><span>IdentityDbContext<span>&lt;</span>AppUser<span>,</span> AppRole<span>,</span> Guid<span>></span></span></span>
+<span>{</span>
+    <span>public</span> <span>IdentityContext</span><span>(</span><span>IOptions<span>&lt;</span>IdentityOptions<span>></span></span> identityOptions<span>,</span> <span>IFreeSql</span> fsql<span>,</span> <span>DbContextOptions</span> options<span>)</span>
+    <span>:</span> <span>base</span><span>(</span>identityOptions<span>.</span>Value<span>,</span> fsql<span>,</span> options<span>)</span>
+    <span>{</span>
+    <span>}</span>
+
+    <span>protected</span> <span>override</span> <span><span>void</span></span> <span>OnConfiguring</span><span>(</span><span>DbContextOptionsBuilder</span> builder<span>)</span>
+    <span>{</span>
+        <span>//这里直接指定一个静态的 IFreeSql 对象即可，切勿重新 Build()</span>
+    <span>}</span>
+
+    <span>protected</span> <span>override</span> <span><span>void</span></span> <span>OnModelCreating</span><span>(</span><span>ICodeFirst</span> codefirst<span>)</span>
+    <span>{</span>
+        <span>base</span><span>.</span><span>OnModelCreating</span><span>(</span>codefirst<span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br></div></div><h3 id="配置用户、角色的配置" tabindex="-1"> 配置用户、角色的配置</h3>
+<div><pre><code><span>public</span> <span>class</span> <span>AppUserConfiguration</span> <span>:</span> <span><span>IEntityTypeConfiguration<span>&lt;</span>AppUser<span>></span></span></span>
+<span>{</span>
+    <span>public</span> <span><span>void</span></span> <span>Configure</span><span>(</span><span>EfCoreTableFluent<span>&lt;</span>AppUser<span>></span></span> model<span>)</span>
+    <span>{</span>
+        model<span>.</span><span>ToTable</span><span>(</span><span>"app_user"</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+<span>public</span> <span>class</span> <span>AppRoleConfiguration</span> <span>:</span> <span><span>IEntityTypeConfiguration<span>&lt;</span>AppRole<span>></span></span></span>
+<span>{</span>
+    <span>public</span> <span><span>void</span></span> <span>Configure</span><span>(</span><span>EfCoreTableFluent<span>&lt;</span>AppRole<span>></span></span> model<span>)</span>
+    <span>{</span>
+        model<span>.</span><span>ToTable</span><span>(</span><span>"app_role"</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br></div></div><ul>
+<li>appsettings.json
+该配置通过扩展方法<code>UseConnectionString</code>读取如下配置，DefaultDB 配置 0 代表使用配置串 MySql。需要安装<code>FreeSql.Provider.MySqlConnector</code></li>
+</ul>
+<div><pre><code><span>"ConnectionStrings"</span><span>:</span> <span>{</span>
+    <span>"DefaultDB"</span><span>:</span> <span>"0"</span><span>,</span>
+    <span>"DataType"</span><span>:</span> <span>{</span>
+        <span>"MySql"</span><span>:</span> <span>0</span><span>,</span>
+        <span>"SqlServer"</span><span>:</span> <span>1</span><span>,</span>
+        <span>"PostgreSQL"</span><span>:</span> <span>2</span><span>,</span>
+        <span>"Oracle"</span><span>:</span> <span>3</span><span>,</span>
+        <span>"Sqlite"</span><span>:</span> <span>4</span>
+    <span>}</span><span>,</span>
+    <span>"MySql"</span><span>:</span> <span>"Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=file;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"</span><span>,</span>
+    <span>"SqlServer"</span><span>:</span> <span>"Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1"</span><span>,</span>
+    <span>"PostgreSQL"</span><span>:</span> <span>"Host=localhost;Port=5432;Username=postgres;Password=123456; Database=lincms;Pooling=true;Minimum Pool Size=1"</span><span>,</span>
+    <span>"Oracle"</span><span>:</span> <span>"user id=root;password=root; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1"</span><span>,</span>
+    <span>"Sqlite"</span><span>:</span> <span>"Data Source=|DataDirectory|\\lincms.db; Attachs=lincms.db; Pooling=true;Min Pool Size=1"</span>
+<span>}</span><span>,</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div><h3 id="配置-identity-freesql" tabindex="-1"> 配置 Identity+FreeSql</h3>
+<ul>
+<li>新增一个扩展方法，引用 aspnetcore identity 相关服务</li>
+</ul>
+<div><pre><code><span>public</span> <span>static</span> <span>IServiceCollection</span> <span>AddFreeSql</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>,</span> <span>IConfiguration</span> configuration<span>)</span>
+<span>{</span>
+    <span>IFreeSql</span> fsql <span>=</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
+            <span>.</span><span>UseConnectionString</span><span>(</span>configuration<span>)</span>
+            <span>.</span><span>UseNameConvert</span><span>(</span>NameConvertType<span>.</span>PascalCaseToUnderscoreWithLower<span>)</span>
+            <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span> <span>//自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。</span>
+            <span>.</span><span>UseMonitorCommand</span><span>(</span>cmd <span>=></span>
+            <span>{</span>
+                Trace<span>.</span><span>WriteLine</span><span>(</span>cmd<span>.</span>CommandText <span>+</span> <span>";"</span><span>)</span><span>;</span>
+            <span>}</span><span>)</span>
+            <span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
+
+    fsql<span>.</span>GlobalFilter<span>.</span><span><span>Apply</span><span><span>&lt;</span>ISoftDelete<span>></span></span></span><span>(</span><span>"IsDeleted"</span><span>,</span> a <span>=></span> a<span>.</span>IsDeleted <span>==</span> <span>false</span><span>)</span><span>;</span>
+
+    services<span>.</span><span><span>AddSingleton</span><span><span>&lt;</span>IFreeSql<span>></span></span></span><span>(</span>fsql<span>)</span><span>;</span>
+    services<span>.</span><span>AddFreeRepository</span><span>(</span><span>)</span><span>;</span>
+    services<span>.</span><span><span>AddScoped</span><span><span>&lt;</span>UnitOfWorkManager<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+
+    <span>//只有实例化了ToDoContext，才能正常调用OnModelCreating，不然直接使用仓储，无法调用DbContext中的OnModelCreating方法，，配置的TodoConfiguration 就会没有生效</span>
+    services<span>.</span><span><span>AddFreeDbContext</span><span><span>&lt;</span>IdentityContext<span>></span></span></span><span>(</span>options <span>=></span> options
+                <span>.</span><span>UseFreeSql</span><span>(</span>fsql<span>)</span>
+                <span>.</span><span>UseOptions</span><span>(</span><span>new</span> <span>DbContextOptions</span><span>(</span><span>)</span>
+                <span>{</span>
+                    EnableAddOrUpdateNavigateList <span>=</span> <span>true</span>
+                <span>}</span><span>)</span>
+    <span>)</span><span>;</span>
+
+    services<span>.</span><span><span>AddIdentityCore</span><span><span>&lt;</span>AppUser<span>></span></span></span><span>(</span>options <span>=></span> options<span>.</span>SignIn<span>.</span>RequireConfirmedAccount <span>=</span> <span>true</span><span>)</span>
+            <span>.</span><span><span>AddFreeSqlStores</span><span><span>&lt;</span>IdentityContext<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+
+    <span>//fsql.CodeFirst.ApplyConfiguration(new TodoConfiguration());</span>
+
+    <span>return</span> services<span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br></div></div>]]></content>
+    <published>2022-06-02T18:18:50.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">基础包</title>
+    <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Core.html</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Core.html"/>
+    <updated>2022-06-02T18:18:50.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="基础包" tabindex="-1"> 基础包</h1>
+<h2 id="igeekfan-freekit" tabindex="-1"> IGeekFan.FreeKit</h2>
+<p>该项目无任何依赖</p>
+<ul>
+<li>安装</li>
+</ul>
+<div><pre><code>dotnet <span>add</span> package IGeekFan.FreeKit
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><h3 id="实体审计类" tabindex="-1"> 实体审计类</h3>
+<p>仅包含一些基础的审计类</p>
+<ul>
+<li>Entity</li>
+<li>IEntity</li>
+<li>IEntityDto</li>
+<li>ICreateAduitEntity</li>
+<li>IUpdateAuditEntity</li>
+<li>IDeleteAduitEntity</li>
+<li>ISoftDelete</li>
+</ul>
+<h3 id="依赖注入接口" tabindex="-1"> 依赖注入接口</h3>
+<p>只是空接口</p>
+<ul>
+<li>ITransientDependency</li>
+<li>IScopedDependency</li>
+<li>ISingletonDependency</li>
+</ul>
+]]></content>
+    <published>2022-06-02T18:18:50.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">Email 邮件</title>
+    <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Email.html</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Email.html"/>
+    <updated>2022-06-02T18:18:50.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="email-邮件" tabindex="-1"> Email 邮件</h1>
+<h2 id="igeekfan-freekit-email" tabindex="-1"> IGeekFan.FreeKit.Email</h2>
+<p>该包是一个独立的开发包，内部由 MailKit 实现发送邮件。</p>
+<ol>
+<li>安装包</li>
+</ol>
+<div><pre><code>dotnet <span>add</span> package IGeekFan.FreeKit.Email
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><ul>
+<li>ConfigureServices 方法</li>
+</ul>
+<div><pre><code>    Services<span>.</span><span><span>Configure</span><span><span>&lt;</span>MailKitOptions<span>></span></span></span><span>(</span>Configuration<span>.</span><span>GetSection</span><span>(</span><span>"MailKitOptions"</span><span>)</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><ul>
+<li>appsettings.json</li>
+</ul>
+<div><pre><code>  <span>"MailKitOptions"</span><span>:</span> <span>{</span>
+    <span>"Host"</span><span>:</span> <span>"smtp.163.com"</span><span>,</span>
+    <span>"Port"</span><span>:</span> <span>"25"</span><span>,</span>
+    <span>"EnableSsl"</span><span>:</span> <span>true</span><span>,</span>
+    <span>"UserName"</span><span>:</span> <span>"igeekfan@163.com"</span><span>,</span>
+    <span>"Password"</span><span>:</span> <span>""</span><span>,</span>
+    <span>"Domain"</span><span>:</span> <span>""</span>
+  <span>}</span><span>,</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><ul>
+<li>业务逻辑</li>
+</ul>
+<div><pre><code>    <span>public</span> <span>interface</span> <span>IAccountService</span>
+    <span>{</span>
+        <span>Task</span> <span>SendEmailCode</span><span>(</span><span>RegisterDto</span> registerDto<span>)</span><span>;</span>
+    <span>}</span>
+    <span>public</span> <span>class</span> <span>AccountService</span> <span>:</span> <span><span>IAccountService</span></span>
+    <span>{</span>
+        <span>private</span> <span>readonly</span> <span>IEmailSender</span> _emailSender<span>;</span>
+        <span>private</span> <span>readonly</span> <span>MailKitOptions</span> _mailKitOptions<span>;</span>
+
+        <span>public</span> <span>AccountService</span><span>(</span>
+            <span>IEmailSender</span> emailSender<span>,</span>
+            <span>IOptions<span>&lt;</span>MailKitOptions<span>></span></span> options<span>)</span>
+        <span>{</span>
+            _emailSender <span>=</span> emailSender<span>;</span>
+            _mailKitOptions <span>=</span> options<span>.</span>Value<span>;</span>
+        <span>}</span>
+        <span>public</span> <span>async</span> <span>Task</span> <span>SendEmailCode</span><span>(</span><span>RegisterDto</span> registerDto<span>)</span>
+        <span>{</span>
+            <span><span>var</span></span> message <span>=</span> <span>new</span> <span>MimeMessage</span><span>(</span><span>)</span><span>;</span>
+            message<span>.</span>From<span>.</span><span>Add</span><span>(</span><span>new</span> <span>MailboxAddress</span><span>(</span>_mailKitOptions<span>.</span>UserName<span>,</span> _mailKitOptions<span>.</span>UserName<span>)</span><span>)</span><span>;</span>
+            message<span>.</span>To<span>.</span><span>Add</span><span>(</span><span>new</span> <span>MailboxAddress</span><span>(</span>registerDto<span>.</span>Nickname<span>,</span> registerDto<span>.</span>Email<span>)</span><span>)</span><span>;</span>
+            message<span>.</span>Subject <span>=</span> <span><span>$"VVLOG-你的验证码是"</span></span><span>;</span>
+
+            <span><span>string</span></span> uuid <span>=</span> Guid<span>.</span><span>NewGuid</span><span>(</span><span>)</span><span>.</span><span>ToString</span><span>(</span><span>)</span><span>;</span>
+            <span>await</span> RedisHelper<span>.</span><span>SetAsync</span><span>(</span><span>"SendEmailCode-"</span> <span>+</span> registerDto<span>.</span>Email<span>,</span> uuid<span>,</span> <span>30</span> <span>*</span> <span>60</span><span>)</span><span>;</span>
+
+            <span><span>int</span></span> rand6Value <span>=</span> <span>new</span> <span>Random</span><span>(</span><span>)</span><span>.</span><span>Next</span><span>(</span><span>100000</span><span>,</span> <span>999999</span><span>)</span><span>;</span>
+
+            message<span>.</span>Body <span>=</span> <span>new</span> <span>TextPart</span><span>(</span><span>"html"</span><span>)</span>
+            <span>{</span>
+                Text <span>=</span> <span><span>$@"</span><span><span>{</span><span>registerDto<span>.</span>Nickname</span><span>}</span></span><span>,您好!&lt;/br>你此次验证码如下，请在 30 分钟内输入验证码进行下一步操作。&lt;/br>如非你本人操作，请忽略此邮件。&lt;/br></span><span><span>{</span><span>rand6Value</span><span>}</span></span><span>"</span></span>
+            <span>}</span><span>;</span>
+
+
+            <span>await</span> _emailSender<span>.</span><span>SendAsync</span><span>(</span>message<span>)</span><span>;</span>
+        <span>}</span>
+    <span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br></div></div><p>简单的实体，在发送之前应验证必填项、密码强度和邮件格式等</p>
+<div><pre><code>    <span>public</span> <span>class</span> <span>RegisterDto</span>
+    <span>{</span>
+        <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+        <span>/// 昵称</span>
+        <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+        <span>public</span> <span><span>string</span></span> Nickname <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+        <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+        <span>/// 密码</span>
+        <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+        <span>public</span> <span><span>string</span></span> Password <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+        <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+        <span>/// 邮件</span>
+        <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+        <span>public</span> <span><span>string</span></span> Email <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+   <span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div><p><strong>IEmailSender</strong>还不能直接使用。</p>
+<p>有二种方式</p>
+<p>1.使用 ASPNETCore 默认的 DI。</p>
+<div><pre><code>    services.AddTransient&lt;IEmailSender, EmailSender>();
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>2.由于继承了接口<strong>ITransientDependency</strong>，可通过<code>IGeekFan.FreeKit.Extras</code>依赖包中，默认的注册机制，通过 Autofac 配置继承此接口的接口将注入到依赖注入的集合中。</p>
+<ul>
+<li>增加依赖包</li>
+</ul>
+<div><pre><code>dotnet <span>add</span> package IGeekFan.FreeKit.Extras
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><ul>
+<li>配置依赖</li>
+</ul>
+<div><pre><code>builder<span>.</span>Host
+    <span>.</span><span>UseServiceProviderFactory</span><span>(</span><span>new</span> <span>AutofacServiceProviderFactory</span><span>(</span><span>)</span><span>)</span>
+    <span>.</span><span><span>ConfigureContainer</span><span><span>&lt;</span>ContainerBuilder<span>></span></span></span><span>(</span><span>(</span>webBuilder<span>,</span> containerBuilder<span>)</span> <span>=></span>
+    <span>{</span>
+        containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span><span>typeof</span><span>(</span><span>FreeKitModule</span><span>)</span><span>,</span> <span>typeof</span><span>(</span><span>Program</span><span>)</span><span>,</span><span>typeof</span><span>(</span><span>MailKitOptions</span><span>)</span><span>)</span><span>)</span>
+    <span>}</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div>]]></content>
+    <published>2022-06-02T18:18:50.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">Extras 扩展包</title>
+    <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Extras.html</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Extras.html"/>
+    <updated>2022-06-02T18:18:50.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="extras-扩展包" tabindex="-1"> Extras 扩展包</h1>
+<p>该项目是基于 FreeSql 实现的一些扩展包、AOP 事务，当前用户，简化依赖注入</p>
+<ul>
+<li>依赖项</li>
+</ul>
+<div><pre><code><span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>FreeSql.DbContext<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>3.0.100<span>"</span></span> <span>/></span></span>
+<span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>Autofac.Extensions.DependencyInjection<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>7.2.0<span>"</span></span> <span>/></span></span>
+<span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>Autofac.Extras.DynamicProxy<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>6.0.0<span>"</span></span> <span>/></span></span>
+<span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>Castle.Core.AsyncInterceptor<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>2.0.0<span>"</span></span> <span>/></span></span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><p>根据自己访问数据库的不同，安装对应的<a href="http://freesql.net/guide/install.html#packages" target="_blank" rel="noopener noreferrer">Provider</a></p>
+<div><pre><code>dotnet <span>add</span> package FreeSql.Provider.Sqlite
+dotnet <span>add</span> package IGeekFan.FreeKit.Extras
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><h2 id="一些扩展包" tabindex="-1"> 一些扩展包</h2>
+<ul>
+<li>简化 FreeSql 单库的配置：UseConnectionString 扩展方法</li>
+<li>基于特性标签的 AOP 事务</li>
+<li>基于接口的注入</li>
+<li>通用 CRUD 的</li>
+<li>Security 当前登录人信息</li>
+<li>FluentAPI 基于接口的配置实体</li>
+<li>注入以 Service 为后缀接口所在的程序集</li>
+<li>CaseQuery 支持 Get 请求参数 key，大小驼峰转换</li>
+</ul>
+<h3 id="简化-freesql-单库的配置" tabindex="-1"> 简化 FreeSql 单库的配置</h3>
+<p>UseConnectionString 扩展方法</p>
+<div><pre><code>    <span>public</span> <span>static</span> <span>IServiceCollection</span> <span>AddFreeSql</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>,</span> <span>IConfiguration</span> configuration<span>)</span>
+    <span>{</span>
+        <span>IFreeSql</span> fsql <span>=</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
+                  <span>.</span><span>UseConnectionString</span><span>(</span>configuration<span>)</span>
+                  <span>.</span><span>UseNameConvert</span><span>(</span>NameConvertType<span>.</span>PascalCaseToUnderscoreWithLower<span>)</span>
+                  <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span> <span>//自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。</span>
+                  <span>.</span><span>UseMonitorCommand</span><span>(</span>cmd <span>=></span>
+                  <span>{</span>
+                      Trace<span>.</span><span>WriteLine</span><span>(</span>cmd<span>.</span>CommandText <span>+</span> <span>";"</span><span>)</span><span>;</span>
+                  <span>}</span><span>)</span>
+                  <span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
+
+        fsql<span>.</span>GlobalFilter<span>.</span><span><span>Apply</span><span><span>&lt;</span>ISoftDelete<span>></span></span></span><span>(</span><span>"IsDeleted"</span><span>,</span> a <span>=></span> a<span>.</span>IsDeleted <span>==</span> <span>false</span><span>)</span><span>;</span>
+
+        services<span>.</span><span><span>AddSingleton</span><span><span>&lt;</span>IFreeSql<span>></span></span></span><span>(</span>fsql<span>)</span><span>;</span>
+        services<span>.</span><span>AddFreeRepository</span><span>(</span><span>)</span><span>;</span>
+        services<span>.</span><span><span>AddScoped</span><span><span>&lt;</span>UnitOfWorkManager<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+
+        <span>return</span> services<span>;</span>
+    <span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br></div></div><ul>
+<li>appsettings.json</li>
+</ul>
+<div><pre><code><span>"ConnectionStrings"</span><span>:</span> <span>{</span>
+    <span>"DefaultDB"</span><span>:</span> <span>"0"</span><span>,</span>
+    <span>"DataType"</span><span>:</span> <span>{</span>
+        <span>"MySql"</span><span>:</span> <span>0</span><span>,</span>
+        <span>"SqlServer"</span><span>:</span> <span>1</span><span>,</span>
+        <span>"PostgreSQL"</span><span>:</span> <span>2</span><span>,</span>
+        <span>"Oracle"</span><span>:</span> <span>3</span><span>,</span>
+        <span>"Sqlite"</span><span>:</span> <span>4</span>
+     <span>}</span><span>,</span>
+    <span>"MySql"</span><span>:</span> <span>"Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=freekit;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"</span><span>,</span>
+    <span>"SqlServer"</span><span>:</span> <span>"Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1"</span><span>,</span>
+    <span>"PostgreSQL"</span><span>:</span> <span>"Host=localhost;Port=5432;Username=postgres;Password=123456; Database=lincms;Pooling=true;Minimum Pool Size=1"</span><span>,</span>
+    <span>"Oracle"</span><span>:</span> <span>"user id=user1;password=123456; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1"</span><span>,</span>
+    <span>"Sqlite"</span><span>:</span> <span>"Data Source=|DataDirectory|\\freekit.db; Attachs=freekit.db; Pooling=true;Min Pool Size=1"</span>
+    <span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div><h3 id="基于特性标签的-aop-事务" tabindex="-1"> 基于特性标签的 AOP 事务</h3>
+<ul>
+<li>特性标签 <strong>[Transactional]</strong></li>
+</ul>
+<p>通过 Autofac 配置哪些类需要基于特性标签的 AOP 事务</p>
+<div><pre><code>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>如果依旧是 Startup 的模式，可通过 ConfigureContainer 配置服务</p>
+<ul>
+<li>Program.cs 配置</li>
+</ul>
+<div><pre><code>    Host<span>.</span><span>CreateDefaultBuilder</span><span>(</span>args<span>)</span>
+                <span>.</span><span>UseServiceProviderFactory</span><span>(</span><span>new</span> <span>AutofacServiceProviderFactory</span><span>(</span><span>)</span><span>)</span>
+                <span>.</span><span>ConfigureWebHostDefaults</span><span>(</span>webBuilder <span>=></span>
+                <span>{</span>
+                    webBuilder<span>.</span><span><span>UseStartup</span><span><span>&lt;</span>Startup<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+                <span>}</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><ul>
+<li>Startup.cs 配置</li>
+</ul>
+<div><pre><code>    <span>public</span> <span><span>void</span></span> <span>ConfigureContainer</span><span>(</span><span>ContainerBuilder</span> builder<span>)</span>
+    <span>{</span>
+        builder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>ServiceModule</span><span>(</span><span>)</span><span>)</span><span>;</span>
+    <span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><p>或</p>
+<div><pre><code>builder<span>.</span>Host
+    <span>.</span><span>UseServiceProviderFactory</span><span>(</span><span>new</span> <span>AutofacServiceProviderFactory</span><span>(</span><span>)</span><span>)</span>
+    <span>.</span><span><span>ConfigureContainer</span><span><span>&lt;</span>ContainerBuilder<span>></span></span></span><span>(</span><span>(</span>webBuilder<span>,</span> containerBuilder<span>)</span> <span>=></span>
+    <span>{</span>
+        containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>ServiceModule</span><span>(</span><span>)</span><span>)</span><span>;</span>
+    <span>}</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><h3 id="基于接口的注入" tabindex="-1"> 基于接口的注入</h3>
+<p>只需要继承如下接口，会自动按照对应的生命周期注入到 DI 中。</p>
+<ul>
+<li>IScopedDependency 范围</li>
+<li>ISingletonDependency 单例</li>
+<li>ITransientDependency 瞬时</li>
+</ul>
+<div><pre><code><span>namespace</span> <span>Module1</span>
+<span>{</span>
+    <span>public</span> <span>interface</span> <span>ITestService</span> <span>:</span> <span><span>ITransientDependency</span></span>
+    <span>{</span>
+        <span><span>bool</span></span> <span>ExecuteConnectTest</span><span>(</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+
+<span>namespace</span> <span>Module1</span>
+<span>{</span>
+    <span>public</span> <span>class</span> <span>TestService</span> <span>:</span> <span><span>ITestService</span></span>
+    <span>{</span>
+        <span>private</span> <span>readonly</span> <span>IFreeSql</span> _fsql<span>;</span>
+        <span>public</span> <span>TestService</span><span>(</span><span>IFreeSql</span> fsql<span>)</span>
+        <span>{</span>
+            _fsql <span>=</span> fsql<span>;</span>
+        <span>}</span>
+
+        <span>public</span> <span><span>bool</span></span> <span>ExecuteConnectTest</span><span>(</span><span>)</span>
+        <span>{</span>
+            <span>return</span> _fsql<span>.</span>Ado<span>.</span><span>ExecuteConnectTest</span><span>(</span><span>)</span><span>;</span>
+        <span>}</span>
+    <span>}</span>
+<span>}</span>
+
+<span>public</span> <span>class</span> <span>TestController</span> <span>:</span> <span><span>Controller</span></span>
+<span>{</span>
+    <span>ILogger<span>&lt;</span>TestController<span>></span></span> logger<span>;</span>
+    <span>private</span> <span>readonly</span> <span>ITestService</span> testService<span>;</span>
+
+    <span>public</span> <span>TestController</span><span>(</span><span>ILogger<span>&lt;</span>TestController<span>></span></span> logger<span>,</span> <span>ITestService</span> testService<span>)</span>
+    <span>{</span>
+        <span>this</span><span>.</span>logger <span>=</span> logger<span>;</span>
+        <span>this</span><span>.</span>testService <span>=</span> testService<span>;</span>
+    <span>}</span>
+
+    <span>[</span><span><span>HttpGet</span><span><span>(</span><span>"ExecuteConnectTest"</span><span>)</span></span></span><span>]</span>
+    <span>public</span> <span>ActionResult<span>&lt;</span><span>bool</span><span>></span></span> <span>ExecuteConnectTest</span><span>(</span><span>)</span>
+    <span>{</span>
+        <span>return</span> testService<span>.</span><span>ExecuteConnectTest</span><span>(</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br></div></div><p>1.获取所有的程序集合，然后根据 FullName，一般为项目名，过滤具体的程序集</p>
+<div><pre><code>builder<span>.</span>Host
+    <span>.</span><span>UseServiceProviderFactory</span><span>(</span><span>new</span> <span>AutofacServiceProviderFactory</span><span>(</span><span>)</span><span>)</span>
+    <span>.</span><span><span>ConfigureContainer</span><span><span>&lt;</span>ContainerBuilder<span>></span></span></span><span>(</span><span>(</span>webBuilder<span>,</span> containerBuilder<span>)</span> <span>=></span>
+    <span>{</span>
+        <span>Assembly<span>[</span><span>]</span></span> currentAssemblies <span>=</span> AppDomain<span>.</span>CurrentDomain<span>.</span><span>GetAssemblies</span><span>(</span><span>)</span><span>.</span><span>Where</span><span>(</span>r <span>=></span>
+r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"IGeekFan.FreeKit.Extras"</span><span>)</span><span>||</span>
+r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module1"</span><span>)</span>
+<span>)</span><span>.</span><span>ToArray</span><span>(</span><span>)</span><span>;</span>
+
+        containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span>currentAssemblies<span>)</span><span>)</span><span>;</span>
+    <span>}</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br></div></div><p>其中<code>FreeKitModule</code>的参数支持<code>params Type[]types</code>或<code>params Assembly[]assemblies</code>,即哪些<a href="https://docs.microsoft.com/zh-cn/dotnet/standard/assembly/" target="_blank" rel="noopener noreferrer">程序集</a>中的类需要注入到依赖注入的集合中。</p>
+<p>2.根据程序集中的某个类获取程序集</p>
+<div><pre><code><span>Assembly<span>[</span><span>]</span></span> currentAssemblies2 <span>=</span> <span>new</span> <span>Assembly<span>[</span><span>]</span></span> <span>{</span> <span>typeof</span><span>(</span><span>FreeKitModule</span><span>)</span><span>.</span>Assembly<span>,</span> <span>typeof</span><span>(</span><span>Module1<span>.</span>Module1Startup</span><span>)</span><span>.</span>Assembly <span>}</span><span>;</span>
+containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span>currentAssemblies2<span>)</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>3.直接使用 params Assembly[] 的特性，直接作为 FreeKitModule 的参数</p>
+<div><pre><code>containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span> <span>typeof</span><span>(</span><span>FreeKitModule</span><span>)</span><span>.</span>Assembly<span>,</span> <span>typeof</span><span>(</span><span>Program</span><span>)</span><span>.</span>Assembly<span>)</span><span>)</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>4，通过 params Type[]，内部解析 Assembly。</p>
+<div><pre><code>containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span><span>typeof</span><span>(</span><span>FreeKitModule</span><span>)</span><span>,</span> <span>typeof</span><span>(</span><span>Program</span><span>)</span><span>)</span><span>)</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>其中，此程序集中的类 如果继承了<code>IScopedDependency</code>,<code>ISingletonDependency</code>、<code>ITransientDependency</code>这些接口， 都会按照对应的生命周期注入到依赖注入的集合中 ，可直接使用。</p>
+<h3 id="currentuser-当前登录人信息" tabindex="-1"> CurrentUser 当前登录人信息</h3>
+<p>如何使用</p>
+<div><pre><code>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>因为我们无法确定用户 Id 的类型，可能是<code>long</code>,也可能是<code>Guid</code>，ICurrentUser&lt;T&gt;是泛型的，默认有一个实现<code>ICurrentUser:ICurrentUser&lt;long&gt;</code></p>
+<h3 id="实体审计类" tabindex="-1"> 实体审计类</h3>
+<ul>
+<li>FullAduitEntity</li>
+</ul>
+<h3 id="casequery-支持-get-请求参数-key-大小驼峰转换" tabindex="-1"> CaseQuery 支持 Get 请求参数 key，大小驼峰转换</h3>
+<p><code>HttpGet</code>请求时，参数的 key 和实体相同，比如创建如下类。</p>
+<div><pre><code><span>public</span> <span>class</span> <span>QueryModel</span>
+<span>{</span>
+    <span>public</span> <span><span>string</span></span> Title <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+    <span>public</span> <span><span>string</span></span> UserName <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><div><pre><code><span>[</span><span><span>HttpGet</span></span><span>]</span>
+<span>public</span> <span>IEnumerable<span>&lt;</span>WeatherForecast<span>></span></span> <span>Get</span><span>(</span><span>[</span><span><span>FromQuery</span></span><span>]</span> <span>QueryModel</span> queryModel<span>)</span>
+<span>{</span>
+    <span>return</span> <span>null</span><span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><p>在 swagger 下就会生成如下内容</p>
+<p><img src="@source/dotnetcore/freekit/images/DefaultQueryValue.png" alt="DefaultQueryValue" loading="lazy">
+如果实现，GET 请求参数的 key 转换呢。</p>
+<h3 id="查询参数转换支持" tabindex="-1"> 查询参数转换支持</h3>
+<ul>
+<li>
+<p>SnakeCase（下划线写法）</p>
+</li>
+<li>
+<p>LowerCase（小写）</p>
+</li>
+<li>
+<p>CamelCase（首字母小写）</p>
+</li>
+<li>
+<p>使用方式</p>
+</li>
+</ul>
+<p>在 AddControllers 中注入实现</p>
+<div><pre><code>    services<span>.</span><span>AddControllers</span><span>(</span>options <span>=></span>
+    <span>{</span>
+        options<span>.</span>ValueProviderFactories<span>.</span><span>Add</span><span>(</span><span>new</span> <span>CamelCaseValueProviderFactory</span><span>(</span><span>)</span><span>)</span><span>;</span>
+    <span>}</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><p>swagger 渲染需要替换 provider</p>
+<div><pre><code>    services<span>.</span><span>TryAddEnumerable</span><span>(</span>ServiceDescriptor<span>.</span><span><span>Transient</span><span><span>&lt;</span>IApiDescriptionProvider<span>,</span> CamelCaseApiDescriptionProvider<span>></span></span></span><span>(</span><span>)</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p><img src="@source/dotnetcore/freekit/images/CamelCaseValueProviderFactory.png" alt="CamelCaseValueProviderFactory" loading="lazy"></p>
+<p>其中支持的 Factory 如下</p>
+<ul>
+<li>SnakeCaseValueProviderFactory（下划线写法）</li>
+<li>LowerCaseValueProviderFactory（小写）</li>
+<li>CamelCaseValueProviderFactory（首字母小写）</li>
+</ul>
+<p>Provider 支持如下</p>
+<ul>
+<li>SnakeApiDescriptionProvider（下划线写法）</li>
+<li>LowerApiDescriptionProvider（小写）</li>
+<li>CamelCaseApiDescriptionProvider（首字母小写）</li>
+</ul>
+]]></content>
+    <published>2022-06-02T18:18:50.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">本地化</title>
+    <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Localization.FreeSql.html</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Localization.FreeSql.html"/>
+    <updated>2022-06-02T18:18:50.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="本地化" tabindex="-1"> 本地化</h1>
+]]></content>
+    <published>2022-06-02T18:18:50.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">Modularity 模块化</title>
+    <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Modularity.html</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Modularity.html"/>
+    <updated>2022-06-02T18:18:50.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="modularity-模块化" tabindex="-1"> Modularity 模块化</h1>
+<h2 id="单体模块化" tabindex="-1"> 单体模块化</h2>
+<ul>
+<li>https://github.com/thinktecture-labs/aspnetcore-modular-monolith</li>
+</ul>
+<p>因为类名如 Autofac 和 aspnetcore 中的类相同，将类名修改成如下名称</p>
+<ul>
+<li>Module.cs--&gt;ModuleInfo.cs</li>
+<li>IStartup.cs--&gt;IModuleStartup.cs</li>
+</ul>
+<p>创建一个类库名 Module1，并引用 AspNetCore 包</p>
+<div><pre><code>   <span><span><span>&lt;</span>ItemGroup</span><span>></span></span>
+		<span><span><span>&lt;</span>FrameworkReference</span> <span>Include</span><span><span>=</span><span>"</span>Microsoft.AspNetCore.App<span>"</span></span> <span>/></span></span>
+   <span><span><span>&lt;/</span>ItemGroup</span><span>></span></span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><p>集成接口，可在<code>ConfigureServices</code>中注入任何服务，在<code>Configure</code>方法中注入中间件</p>
+<div><pre><code><span>public</span> <span>class</span> <span>Module1Startup</span> <span>:</span> <span><span>IModuleStartup</span></span>
+<span>{</span>
+    <span>public</span> <span><span>void</span></span> <span>ConfigureServices</span><span>(</span><span>IServiceCollection</span> services<span>)</span>
+    <span>{</span>
+        <span>//services.AddSingleton&lt;ITestService, TestService>();</span>
+    <span>}</span>
+
+    <span>public</span> <span><span>void</span></span> <span>Configure</span><span>(</span><span>IApplicationBuilder</span> app<span>,</span> <span>IWebHostEnvironment</span> env<span>)</span>
+    <span>{</span>
+        app<span>.</span><span>UseEndpoints</span><span>(</span>endpoints <span>=></span>
+            endpoints<span>.</span><span>MapGet</span><span>(</span><span>"/TestEndpoint"</span><span>,</span>
+                <span>async</span> context <span>=></span>
+                <span>{</span>
+                    <span>await</span> context<span>.</span>Response<span>.</span><span>WriteAsync</span><span>(</span><span>"Hello World from TestEndpoint in Module 1"</span><span>)</span><span>;</span>
+                <span>}</span><span>)</span><span>.</span><span>RequireAuthorization</span><span>(</span><span>)</span>
+        <span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br></div></div><p>使用控制器</p>
+<div><pre><code><span>using</span> <span>Microsoft<span>.</span>AspNetCore<span>.</span>Mvc</span><span>;</span>
+
+<span>[</span><span><span>Route</span><span><span>(</span><span>"[module]/[controller]"</span><span>)</span></span></span><span>]</span>
+<span>public</span> <span>class</span> <span>TestController</span> <span>:</span> <span><span>Controller</span></span>
+<span>{</span>
+    <span>[</span><span><span>HttpGet</span></span><span>]</span>
+    <span>public</span> <span>ActionResult<span>&lt;</span><span>string</span><span>></span></span> <span>Index</span><span>(</span><span>)</span>
+    <span>{</span>
+        <span>return</span> <span>"Hello World from TestController in Module 1"</span><span>;</span>
+    <span>}</span>
+
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// InterModule</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span>/// <span><span><span>&lt;</span>returns</span><span>></span></span><span><span><span>&lt;/</span>returns</span><span>></span></span></span>
+    <span>[</span><span>HttpGet</span><span>(</span><span>"InterModule"</span><span>)</span><span>]</span>
+    <span>public</span> <span>ActionResult<span>&lt;</span><span>string</span><span>></span></span> <span>InterModule</span><span>(</span><span>)</span>
+    <span>{</span>
+        <span>return</span> <span><span>$"</span><span><span>{</span><span><span>0</span></span><span>}</span></span><span> in TestController in Module 1"</span></span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br></div></div><ul>
+<li>主程序<code>Program</code></li>
+</ul>
+<div><pre><code><span>// Register a convention allowing to us to prefix routes to modules.</span>
+builder<span>.</span>Services<span>.</span><span><span>AddTransient</span><span><span>&lt;</span>IPostConfigureOptions<span>&lt;</span>MvcOptions<span>></span><span>,</span> ModuleRoutingMvcOptionsPostConfigure<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+
+<span>// Adds module1 with the route prefix module-1</span>
+builder<span>.</span>Services<span>.</span><span><span>AddModule</span><span><span>&lt;</span>Module1<span>.</span>Module1Startup<span>></span></span></span><span>(</span><span>"module-1"</span><span>)</span><span>;</span>
+
+<span>// Adds module2 with the route prefix module-2</span>
+builder<span>.</span>Services<span>.</span><span><span>AddModule</span><span><span>&lt;</span>Module2<span>.</span>Module2Startup<span>></span></span></span><span>(</span><span>"module-2"</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><ul>
+<li>注入中间件</li>
+</ul>
+<div><pre><code><span>// Adds endpoints defined in modules</span>
+<span><span>var</span></span> modules <span>=</span> app<span>.</span>Services<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>IEnumerable<span>&lt;</span>ModuleInfo<span>></span><span>></span></span></span><span>(</span><span>)</span><span>;</span>
+<span>foreach</span> <span>(</span><span><span>var</span></span> module <span>in</span> modules<span>)</span>
+<span>{</span>
+    app<span>.</span><span>Map</span><span>(</span><span><span>$"/</span><span><span>{</span><span>module<span>.</span>RoutePrefix</span><span>}</span></span><span>"</span></span><span>,</span> builder <span>=></span>
+    <span>{</span>
+        builder<span>.</span><span>UseRouting</span><span>(</span><span>)</span><span>;</span>
+        module<span>.</span>Startup<span>.</span><span>Configure</span><span>(</span>builder<span>,</span> app<span>.</span>Environment<span>)</span><span>;</span>
+    <span>}</span><span>)</span><span>;</span>
+<span>}</span>
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br></div></div>]]></content>
+    <published>2022-06-02T18:18:50.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">FreeKit</title>
+    <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/"/>
+    <updated>2022-06-02T18:18:50.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="freekit" tabindex="-1"> FreeKit</h1>
+<div align="center">
+    <h1 align="center"> .NET <img alt="logo" src="/images/dotnet-20-years.png" width="80px"/>YEARS </h1>
+<p><strong>Freekit</strong> 为.NET Core 提供了更多的扩展实现</p>
+<p><a href="https://www.jetbrains.com/rider/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/static/v1?style=float&amp;logo=rider&amp;label=Rider&amp;message=jetbrains&amp;color=red" alt=".NET IDE Rider" loading="lazy"></a>
+<a href="https://raw.githubusercontent.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license" loading="lazy"></a></p>
+</div>
+<h2 id="nuget-packages" tabindex="-1"> Nuget Packages</h2>
+<table>
+<thead>
+<tr>
+<th>Package name</th>
+<th>Version</th>
+<th>Downloads</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IGeekFan.AspNetCore.Identity.FreeSql</code></td>
+<td><a href="https://www.nuget.org/packages/IGeekFan.AspNetCore.Identity.FreeSql/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/v/IGeekFan.AspNetCore.Identity.FreeSql.svg?style=flat-square&amp;label=nuget&amp;color=fedcba" alt="NuGet" loading="lazy"></a></td>
+<td><img src="https://img.shields.io/nuget/dt/IGeekFan.AspNetCore.Identity.FreeSql.svg" alt="downloads" loading="lazy"></td>
+</tr>
+<tr>
+<td><code>IGeekFan.FreeKit</code></td>
+<td><a href="https://www.nuget.org/packages/IGeekFan.FreeKit/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/v/IGeekFan.FreeKit.svg?style=flat-square&amp;label=nuget" alt="NuGet" loading="lazy"></a></td>
+<td><img src="https://img.shields.io/nuget/dt/IGeekFan.FreeKit.svg" alt="downloads" loading="lazy"></td>
+</tr>
+<tr>
+<td><code>IGeekFan.FreeKit.Extras</code></td>
+<td><a href="https://www.nuget.org/packages/IGeekFan.FreeKit.Extras/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/v/IGeekFan.FreeKit.Extras.svg?style=flat-square&amp;label=nuget" alt="NuGet" loading="lazy"></a></td>
+<td><img src="https://img.shields.io/nuget/dt/IGeekFan.FreeKit.Extras.svg" alt="downloads" loading="lazy"></td>
+</tr>
+<tr>
+<td><code>IGeekFan.FreeKit.Modularity</code></td>
+<td><a href="https://www.nuget.org/packages/IGeekFan.FreeKit.Modularity/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/v/IGeekFan.FreeKit.Modularity.svg?style=flat-square&amp;label=nuget" alt="NuGet" loading="lazy"></a></td>
+<td><img src="https://img.shields.io/nuget/dt/IGeekFan.FreeKit.Modularity.svg" alt="downloads" loading="lazy"></td>
+</tr>
+<tr>
+<td><code>IGeekFan.FreeKit.Email</code></td>
+<td><a href="https://www.nuget.org/packages/IGeekFan.FreeKit.Email/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/v/IGeekFan.FreeKit.Email.svg?style=flat-square&amp;label=nuget" alt="NuGet" loading="lazy"></a></td>
+<td><img src="https://img.shields.io/nuget/dt/IGeekFan.FreeKit.Email.svg" alt="downloads" loading="lazy"></td>
+</tr>
+<tr>
+<td><code>IGeekFan.Localization.FreeSql</code></td>
+<td><a href="https://www.nuget.org/packages/IGeekFan.Localization.FreeSql/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/v/IGeekFan.Localization.FreeSql.svg?style=flat-square&amp;label=nuget" alt="NuGet" loading="lazy"></a></td>
+<td><img src="https://img.shields.io/nuget/dt/IGeekFan.Localization.FreeSql.svg" alt="downloads" loading="lazy"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="baget-packages" tabindex="-1"> BaGet Packages</h2>
+<table>
+<thead>
+<tr>
+<th>Package name</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IGeekFan.AspNetCore.Identity.FreeSql</code></td>
+<td><a href="http://124.70.130.97:5555/packages/IGeekFan.AspNetCore.Identity.FreeSql" target="_blank" rel="noopener noreferrer">BaGet</a></td>
+</tr>
+<tr>
+<td><code>IGeekFan.FreeKit</code></td>
+<td><a href="http://124.70.130.97:5555/packages/IGeekFan.FreeKit" target="_blank" rel="noopener noreferrer">BaGet</a></td>
+</tr>
+<tr>
+<td><code>IGeekFan.FreeKit.Extras</code></td>
+<td><a href="http://124.70.130.97:5555/packages/IGeekFan.FreeKit.Extras" target="_blank" rel="noopener noreferrer">BaGet</a></td>
+</tr>
+<tr>
+<td><code>IGeekFan.FreeKit.Modularity</code></td>
+<td><a href="http://124.70.130.97:5555/packages/IGeekFan.FreeKit.Modularity" target="_blank" rel="noopener noreferrer">BaGet</a></td>
+</tr>
+<tr>
+<td><code>IGeekFan.FreeKit.Email</code></td>
+<td><a href="http://124.70.130.97:5555/packages/IGeekFan.FreeKit.Email" target="_blank" rel="noopener noreferrer">BaGet</a></td>
+</tr>
+<tr>
+<td><code>IGeekFan.Localization.FreeSql</code></td>
+<td><a href="http://124.70.130.97:5555/packages/IGeekFan.Localization.FreeSql" target="_blank" rel="noopener noreferrer">BaGet</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="igeekfan-aspnetcore-identity-freesql" tabindex="-1"> IGeekFan.AspNetCore.Identity.FreeSql</h2>
+<p><code>asp.net core 6</code> 的<code>identity</code>的<code>freesql</code>实现</p>
+<ul>
+<li>查看<a href="/dotnetcore/freekit/AspNetCore.Identity.FreeSql.html">IGeekFan.AspNetCore.Identity.FreeSql</a><strong>文档</strong></li>
+</ul>
+<h2 id="igeekfan-freekit" tabindex="-1"> IGeekFan.FreeKit</h2>
+<ul>
+<li>AduitEntity 审计日志实体</li>
+<li>Dependency 依赖注入接口</li>
+<li>查看<a href="/dotnetcore/freekit/Core.html">IGeekFan.FreeKit</a><strong>文档</strong></li>
+</ul>
+<h2 id="igeekfan-freekit-extras" tabindex="-1"> IGeekFan.FreeKit.Extras</h2>
+<ul>
+<li>FreeSql 扩展+Autofac UnitOfWork</li>
+<li>FreeSql+AduitEntity</li>
+<li>Autofac+ITransientDependency+IScopedDependency+ISingletonDependency</li>
+<li>CaseQuery</li>
+<li>Security 登录人信息</li>
+<li>查看<a href="/dotnetcore/freekit/Extras.html">IGeekFan.FreeKit.Extras</a><strong>文档</strong></li>
+</ul>
+<h2 id="igeekfan-freekit-email" tabindex="-1"> IGeekFan.FreeKit.Email</h2>
+<ul>
+<li>查看<a href="/dotnetcore/freekit/Email.html">IGeekFan.FreeKit.Email</a><strong>文档</strong></li>
+</ul>
+]]></content>
+    <published>2022-06-02T18:18:50.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">获取控制器及方法特性标签</title>
+    <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/Reflex-Assembly.html</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/Reflex-Assembly.html"/>
+    <updated>2022-06-02T18:18:50.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="获取控制器及方法特性标签" tabindex="-1"> 获取控制器及方法特性标签</h1>
+<blockquote>
+<p>.NET Core 反射获取所有控制器及方法上特定标签.</p>
+</blockquote>
+<p>有个需求，就是在. NET Core 中，我们想在项目 启动时，获取 LinCmsAuthorizeAttribute 这个特性标签所有出现的地方，把他的参数，放入一个集合并缓存起来，以便后面使用此数据用于权限验证。</p>
+<p>我们通过反射获取所有控制器下及方法的 Attribute。</p>
+<h2 id="lincmsauthorizeattribute-是什么" tabindex="-1"> LinCmsAuthorizeAttribute 是什么</h2>
+<p>其代码非常简单，用于自定义权限验证，通过重写 OnAuthorizationAsync 方法，实现固定权限可分配给动态角色（也能分配给动态用户）。主要就<strong>基于权限的授权</strong>的实现进行研究，实现方法级别的权限验证。</p>
+<ul>
+<li><a href="https://www.cnblogs.com/RainingNight/p/dynamic-authorization-in-aspnetcore.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/RainingNight/p/dynamic-authorization-in-aspnetcore.html</a></li>
+</ul>
+<p>当然，这个只是部分代码，完整代码请查看最下方开源地址，其中 LinCmsAuthorizeAttribute 继承 AuthorizeAttribute，拥有指定角色权限控制，当 Permission 未指定时，当过滤器与 Authorize 功能相同。Module 是指模块，即多个权限，属于同一个模块，方便前台展示为树型结构。Permission 属性的值不可重复。</p>
+<div><pre><code>[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
+public class LinCmsAuthorizeAttribute : AuthorizeAttribute, IAsyncAuthorizationFilter
+{
+    public string Permission { get; set; }
+    public string Module { get; set; }
+
+    public LinCmsAuthorizeAttribute()
+    {
+
+    }
+
+    public LinCmsAuthorizeAttribute(string permission,string module)
+    {
+        Permission = permission;
+        Module = module;
+    }
+
+    public LinCmsAuthorizeAttribute(string permission,string module, string policy) : base(policy)
+    {
+        Permission = permission;
+        Module = module;
+    }
+
+    public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
+    {
+        if (Permission == null) return;
+        var authorizationService = (IAuthorizationService)context.HttpContext.RequestServices.GetService(typeof(IAuthorizationService));
+        var authorizationResult = await authorizationService.AuthorizeAsync(context.HttpContext.User, null, new OperationAuthorizationRequirement() { Name = Permission });
+        if (!authorizationResult.Succeeded)
+        {
+            context.Result = new ForbidResult();
+        }
+    }
+
+    public override string ToString()
+    {
+        return $"\"{base.ToString()}\",\"Permission:{Permission}\",\"Module:{Module}\",\"Roles:{Roles}\",\"Policy:{Policy}\",\"AuthenticationSchemes:{AuthenticationSchemes}\"";
+    }
+}
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br></div></div><h2 id="controller" tabindex="-1"> Controller</h2>
+<p>在 LinCms.Web 中的 Controller，至于为什么 Permission 为中文，目前的主要原因，此项目用于适配 <a href="https://github.com/TaleLin/lin-cms-vue" target="_blank" rel="noopener noreferrer">Lin-CMS-VUE</a>项目,所以于平常我们以某个字符串作为权限名不同，但不须大惊小怪，道理相同。</p>
+<div><pre><code>[Route("cms/log")]
+[ApiController]
+public class LogController : ControllerBase
+{
+    private readonly ILogService _logService;
+
+    public LogController(ILogService logService)
+    {
+        _logService = logService;
+    }
+
+    [HttpGet("users")]
+    [LinCmsAuthorize("查询日志记录的用户", "日志")]
+    public List&lt;string> GetLoggedUsers([FromQuery]PageDto pageDto)
+    {
+        return _logService.GetLoggedUsers(pageDto);
+    }
+
+
+    [HttpGet]
+    [LinCmsAuthorize("查询所有日志", "日志")]
+    public PagedResultDto&lt;LinLog> GetLogs([FromQuery]LogSearchDto searchDto)
+    {
+        return _logService.GetLogUsers(searchDto);
+    }
+
+    [HttpGet("search")]
+    [LinCmsAuthorize("搜索日志", "日志")]
+    public PagedResultDto&lt;LinLog> SearchLogs([FromQuery]LogSearchDto searchDto)
+    {
+        return _logService.GetLogUsers(searchDto);
+    }
+}
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br></div></div><h2 id="测试类获取方法上的特定标签" tabindex="-1"> 测试类获取方法上的特定标签</h2>
+<p>in xunit test 项目工程中，开始我们的测试</p>
+<div><pre><code>[Fact]
+public void GetAssemblyMethodsAttributes()
+{
+    var assembly = typeof(Startup).Assembly.GetTypes().AsEnumerable()
+        .Where(type => typeof(ControllerBase).IsAssignableFrom(type)).ToList();
+
+    assembly.ForEach(r =>
+    {
+        foreach (var methodInfo in r.GetMethods())
+        {
+            foreach (Attribute attribute in methodInfo.GetCustomAttributes())
+            {
+                if (attribute is LinCmsAuthorizeAttribute linCmsAuthorize)
+                {
+                    _testOutputHelper.WriteLine(linCmsAuthorize.ToString());
+                }
+            }
+        }
+    });
+}
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br></div></div><h2 id="方法结果" tabindex="-1"> 方法结果</h2>
+<p>可在输出文本中查看，正是我们想要的东西，最后一行，是其他 Controller 中的内容，而且我们重写了 ToString(),所以我们能看到其属性。</p>
+<div><pre><code>"LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:查询日志记录的用户","Module:日志","Roles:","Policy:","AuthenticationSchemes:"
+"LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:查询所有日志","Module:日志","Roles:","Policy:","AuthenticationSchemes:"
+"LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:搜索日志","Module:日志","Roles:","Policy:","AuthenticationSchemes:"
+"LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:查看lin的信息","Module:信息","Roles:","Policy:","AuthenticationSchemes:"
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><h2 id="获取控制器上特性标签" tabindex="-1"> 获取控制器上特性标签</h2>
+<div><pre><code>/// &lt;summary>
+/// 获取控制器上的LinCmsAuthorizeAttribute
+/// &lt;/summary>
+/// "LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:","Module:","Roles:Administrator","Policy:","AuthenticationSchemes:"
+[Fact]
+public void GetControllerAttributes()
+{
+    var assembly = typeof(Startup).Assembly.GetTypes().AsEnumerable()
+        .Where(type => typeof(ControllerBase).IsAssignableFrom(type)).ToList();
+
+    assembly.ForEach(d =>
+    {
+        var linCmsAuthorize = d.GetCustomAttribute&lt;LinCmsAuthorizeAttribute>();
+        if (linCmsAuthorize != null)
+        {
+            _testOutputHelper.WriteLine(linCmsAuthorize.ToString());
+        }
+    });
+}
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br></div></div><h2 id="controller-结果" tabindex="-1"> Controller 结果</h2>
+<p>只有 AdminController 加了此标签，所以只有一行。</p>
+<div><pre><code>"LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:","Module:","Roles:Administrator","Policy:","AuthenticationSchemes:"
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>此时 Roles 为 Administrator，Permission 及 Module 都是 null，
+这是因为只有 AdminController 中加了 LinGroup.Administrator=&quot;Administrator&quot;字符串，在登录过程中，已经给当前登录用户设置了 new Claim(ClaimTypes.Role,user.IsAdmin()?LinGroup.Administrator:user.GroupId.ToString())，即&quot;Administrator,当用户访问 AdminController 中的方法时，LinCmsAuthorize 并没有做相关验证，都是 AuthorizeAttribute，实现了固定角色权限的判断及登录的判断。LinCmsAuthorize 完成了固定权限设置为不同的动态角色后，判断用户是否拥有此权限。</p>
+<div><pre><code>[LinCmsAuthorize(Roles = LinGroup.Administrator)]
+public class AdminController : ControllerBase
+{
+    ...
+}
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><h2 id="参考" tabindex="-1"> 参考</h2>
+<ul>
+<li>c# – 如何在 asp. net core rc2 中获取控制器的自定义属性 <a href="https://codeday.me/bug/20181207/453278.html" target="_blank" rel="noopener noreferrer">https://codeday.me/bug/20181207/453278.html</a></li>
+<li></li>
+</ul>
+<h2 id="开源地址" tabindex="-1"> 开源地址</h2>
+<ul>
+<li><a href="github.com/luoyunchong/lin-cms-dotnetcore">github.com/luoyunchong/lin-cms-dotnetcore</a></li>
+</ul>
+]]></content>
+    <published>2022-06-02T18:18:50.000Z</published>
+  </entry>
   <entry>
     <title type="html">Blogs分享</title>
     <id>https://igeekfan.cn/igeekfan-docs/blogs/</id>
@@ -6365,6 +7373,145 @@ order by (a.`view_hits` + a.`likes_quantity` * 20 + a.`comment_quantity` * 30) D
     <published>2020-02-28T11:10:31.000Z</published>
   </entry>
   <entry>
+    <title type="html">Lin CMS By .NET</title>
+    <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/"/>
+    <updated>2022-06-02T18:18:50.000Z</updated>
+    <content type="html"><![CDATA[<p></p>
+<h1 id="lin-cms-by-net" tabindex="-1"> Lin CMS By .NET</h1>
+<h1  align="center">
+  <a href="http://doc.cms.7yue.pro/">
+    <img width="200" src="https://consumerminiaclprd01.blob.core.chinacloudapi.cn/miniappbackground/sfgmember/lin/left-logo.png">
+  </a>
+  <h1>
+  </h1>
+</h1>
+<p>😃 A simple and practical CMS implemented by <a href="https://docs.microsoft.com/zh-cn/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0" target="_blank" rel="noopener noreferrer">ASP.NET Core 6</a></p>
+<p>本项目是完全出于个人喜爱，看到 Lin-cms 有了 python,node.js,社区也有人出了<a href="https://github.com/ChenJinchuang/lin-cms-tp5" target="_blank" rel="noopener noreferrer">lin-cms-tp5</a>的版本</p>
+<p>本项目是 Lin CMS 后端的 <a href="https://docs.microsoft.com/zh-cn/dotnet/core/introduction" target="_blank" rel="noopener noreferrer">ASP.NET6</a> 的实现，通过 Vue.js 实现的前后端分离 CMS 平台，目前实现简约的权限管理系统、基础字典项管理、随笔专栏，评论点赞，消息通知，标签等仿掘金模块。</p>
+<h2 id="什么是-lin-cms" tabindex="-1"> 什么是 Lin CMS？</h2>
+<p>Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套<strong>内容管理系统框架</strong>。Lin-CMS 可以有效的帮助开发者提高 CMS 的开发效率, 需要前端？请访问<a href="https://github.com/TaleLin/lin-cms-vue" target="_blank" rel="noopener noreferrer"><strong>前端仓库</strong></a>。官方团队产品了解请访问<a href="https://github.com/TaleLin" target="_blank" rel="noopener noreferrer"><strong>TaleLin</strong></a></p>
+<h2 id="开源地址" tabindex="-1"> 开源地址</h2>
+<ul>
+<li>后端接口 Gitee 链接 <a href="https://gitee.com/igeekfan/lin-cms-dotnetcore" target="_blank" rel="noopener noreferrer">https://gitee.com/igeekfan/lin-cms-dotnetcore</a></li>
+<li>后端接口 GitHub 链接 <a href="https://github.com/luoyunchong/lin-cms-dotnetcore" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/lin-cms-dotnetcore</a></li>
+<li>适配管理端 UI <a href="https://github.com/luoyunchong/lin-cms-vue" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/lin-cms-vue</a></li>
+<li>适配用户端 UI <a href="https://github.com/luoyunchong/lin-cms-vvlog" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/lin-cms-vvlog</a></li>
+</ul>
+<h2 id="线上文档地址-完善中" tabindex="-1"> 线上文档地址(完善中)</h2>
+<ul>
+<li><a href="https://luoyunchong.github.io/igeekfan-docs/dotnetcore/lin-cms/" target="_blank" rel="noopener noreferrer">https://luoyunchong.github.io/igeekfan-docs/dotnetcore/lin-cms/</a></li>
+<li><a href="https://igeekfan.gitee.io/igeekfan-docs/dotnetcore/lin-cms/" target="_blank" rel="noopener noreferrer">https://igeekfan.gitee.io/igeekfan-docs/dotnetcore/lin-cms/</a></li>
+</ul>
+<h2 id="线上-demo" tabindex="-1"> 线上 Demo</h2>
+<ul>
+<li>本项目 swagger 地址 <a href="https://api.igeekfan.cn/swagger/index.html" target="_blank" rel="noopener noreferrer">https://api.igeekfan.cn/swagger/index.html</a></li>
+<li>用户端 lin-cms-vvlog <a href="https://vvlog.baimocore.cn" target="_blank" rel="noopener noreferrer">https://vvlog.baimocore.cn</a>
+<ul>
+<li>普通用户：710277267@qq.com</li>
+<li>密码：123qwe</li>
+</ul>
+</li>
+<li>管理员 lin-cms-vue <a href="https://cms.baimocore.cn" target="_blank" rel="noopener noreferrer">https://cms.baimocore.cn/</a>
+<ul>
+<li>管理员： admin</li>
+<li>密码：123qwe</li>
+</ul>
+</li>
+</ul>
+<h2 id="前端" tabindex="-1"> 前端</h2>
+<ul>
+<li>在原<a href="https://github.com/TaleLin/lin-cms-vue" target="_blank" rel="noopener noreferrer">开源项目</a>中增加了博客随笔、标签、随笔评论、关注用户、关注标签、技术频道（标签分类）、插件式功能（目前还没有）
+，具体特点查看如下<a href="https://blog.igeekfan.cn/2019/11/24/lin-cms-dotnetcore/design/" target="_blank" rel="noopener noreferrer">lin-cms-dotnetcore 功能模块的设计</a>,开源地址见下方。</li>
+</ul>
+<h3 id="lin-cms-的特点" tabindex="-1"> Lin CMS 的特点</h3>
+<p>Lin CMS 的构筑思想是有其自身特点的。下面我们阐述一些 Lin 的主要特点。</p>
+<h3 id="lin-cms-是一个前后端分离的-cms-解决方案" tabindex="-1"> Lin CMS 是一个前后端分离的 CMS 解决方案</h3>
+<p>这意味着，Lin 既提供后台的支撑，也有一套对应的前端系统，</p>
+<p>首先，传统的网站开发更多的是采用服务端渲染的方式，需用使用一种模板语言在服务端完成页面渲染：比如 Razor 等模板技术。</p>
+<p>服务端渲染的好处在于可以比较好的支持 SEO，但作为内部使用的 CMS 管理系统，SEO 并不重要。</p>
+<p>但一个不可忽视的事实是，服务器渲染的页面到底是由前端开发者来完成，还是由服务器开发者来完成？其实都不太合适。现在已经没有多少前端开发者是了解这些服务端模板语言的，而服务器开发者本身是不太擅长开发页面的。那还是分开吧，前端用最熟悉的 Vue 写 JS 和 CSS，而服务器只关注自己的 API 即可。</p>
+<p>其次，单页面应用程序的体验本身就要好于传统网站。</p>
+<h3 id="框架本身已内置了-cms-常用的功能" tabindex="-1"> 框架本身已内置了 CMS 常用的功能</h3>
+<p>Lin 已经内置了 CMS 中最为常见的需求：用户管理、权限管理、日志系统等。开发者只需要集中精力开发自己的 CMS 业务即可</p>
+<p>更多关于 Lin CMS 的介绍请访问<a href="http://doc.cms.7yue.pro/" target="_blank" rel="noopener noreferrer">Lin CMS 线上文档</a></p>
+<h2 id="所需基础" tabindex="-1"> 所需基础</h2>
+<p>由于 Lin 采用的是前后端分离的架构，所以你至少需要熟悉 C# 和 Vue。</p>
+<h3 id="后端-c" tabindex="-1"> 后端 C#</h3>
+<p>该项目的 Lin 的服务端框架是基于<a href="https://docs.microsoft.com/zh-cn/dotnet/core/" target="_blank" rel="noopener noreferrer">.NET Core 3.1</a>构建的，所以如果你比较熟悉 Mvc、WebAPI、过滤器等概念，或者是 有.NET Framework 中 Mvc 开发经验，相信你一定很容易写出代码。</p>
+<h3 id="相关技术" tabindex="-1"> 相关技术</h3>
+<ul>
+<li>数据库相关：ORM:<a href="https://github.com/2881099/FreeSql" target="_blank" rel="noopener noreferrer">FreeSql</a>+DataBase:MySQL5.6/MsSqlServer/Oracle/Sqlite/PostgreSQL</li>
+<li>ASP.NET Core 6 +WebAPI+RESTful</li>
+<li>简化对象映射：<a href="https://automapper.org/" target="_blank" rel="noopener noreferrer">AutoMapper</a></li>
+<li>身份认证框架：<a href="https://github.com/IdentityServer/IdentityServer4" target="_blank" rel="noopener noreferrer">IdentityServer4</a></li>
+<li>Json Web 令牌:JWT</li>
+<li>文档 API：Swagger(<a href="https://github.com/domaindrivendev/Swashbuckle.AspNetCore" target="_blank" rel="noopener noreferrer">Swashbuckle.AspNetCore</a>)
+<ul>
+<li>RapiDoc(<a href="https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc" target="_blank" rel="noopener noreferrer">RapiDoc</a>)</li>
+<li>Knife4jUI(<a href="https://github.com/luoyunchong/IGeekFan.AspNetCore.Knife4jUI" target="_blank" rel="noopener noreferrer">Knife4jUI</a>)</li>
+</ul>
+</li>
+<li>序列化：Newtonsoft.Json</li>
+<li>测试框架：Xunit</li>
+<li>日志 <a href="https://github.com/serilog/serilog-aspnetcore" target="_blank" rel="noopener noreferrer">Serilog</a></li>
+<li>依赖注入服务<a href="https://github.com/autofac/Autofac.Extensions.DependencyInjection" target="_blank" rel="noopener noreferrer">AutoFac</a></li>
+<li>通用扩展方法 Z.ExtensionMethods</li>
+<li>云存储：七牛云 <a href="https://github.com/Hello-Mango/MQiniu.Core" target="_blank" rel="noopener noreferrer">MQiniu.Core</a></li>
+<li>分布式事务、EventBus：<a href="https://github.com/dotnetcore/CAP" target="_blank" rel="noopener noreferrer">DotNeteCore.CAP</a></li>
+<li>GitHub 第三方授权登录<a href="https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers/tree/dev/src/AspNet.Security.OAuth.GitHub" target="_blank" rel="noopener noreferrer">AspNet.Security.OAuth.GitHub</a></li>
+<li>QQ 第三方授权登录<a href="https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers/tree/dev/src/AspNet.Security.OAuth.QQ" target="_blank" rel="noopener noreferrer">AspNet.Security.OAuth.QQ</a></li>
+<li>Gitee 第三方授权登录<a href="https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers/tree/dev/src/AspNet.Security.OAuth.Gitee" target="_blank" rel="noopener noreferrer">AspNet.Security.OAuth.Gitee</a></li>
+<li><a href="https://docs.docker.com/" target="_blank" rel="noopener noreferrer">Docker</a></li>
+<li><a href="https://dev.azure.com/" target="_blank" rel="noopener noreferrer">Azure DevOps</a></li>
+<li>健康检查<a href="https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks" target="_blank" rel="noopener noreferrer">AspNetCore.HealthChecks.UI.Client</a></li>
+<li><a href="https://help.github.com/en/actions" target="_blank" rel="noopener noreferrer">GitHub Action</a></li>
+</ul>
+<h3 id="实践" tabindex="-1"> 实践</h3>
+<ul>
+<li>DDD(Domain-Driven Design)领域驱动设计</li>
+<li>Logging（日志）</li>
+<li>DevOps(CI/CD,自动化构建)</li>
+<li>Database Migrations（数据库自动迁移)</li>
+<li>Authentication(身份认证)</li>
+<li>Authorization（授权）</li>
+<li>Separation of Concerns（关注点分离）</li>
+<li>Repository Pattern（仓储模式）</li>
+<li>SOLID Principles（单一职责）</li>
+<li>Clean Code（代码整洁之道）</li>
+</ul>
+<h3 id="分层结构-layers" tabindex="-1"> 分层结构（Layers）</h3>
+<ul>
+<li>identityserver4
+<ul>
+<li>LinCms.IdentityServer4:使用 id4 授权登录</li>
+</ul>
+</li>
+<li>src
+<ul>
+<li>LinCms.Web：接口 API（ASP.NET Core)</li>
+<li>LinCms.Application:应用服务</li>
+<li>LinCms.Application.Contracts:DTO,数据传输对象，应用服务接口</li>
+<li>LinCms.Infrastructure:基础设施，数据库持久性的操作</li>
+<li>LinCms.Core:该应用的核心，实体类，通用操作类，AOP 扩展，分页对象，基础依赖对象接口，时间扩展方法，当前用户信息，异常类，值对象</li>
+<li>LinCms.Plugins 使用单项目实现某个业务的扩展，不是该项目的主要结构，可暂时忽略。</li>
+<li>LinCms.Scaffolding <a href="https://igeekfan.gitee.io/igeekfan-docs/dotnetcore/lin-cms/lincms-scaffolding.html" target="_blank" rel="noopener noreferrer">代码生成器</a></li>
+</ul>
+</li>
+<li>test
+<ul>
+<li>LinCms.Test:对仓储，应用服务或工具类进行测试</li>
+</ul>
+</li>
+</ul>
+<h3 id="前端-1" tabindex="-1"> 前端</h3>
+<p>前端需要开发者比较熟悉 Vue 的，另外需要了解 ES6,axios,ElementUi、webpack、Vuex、Vue-Router 等等等</p>
+<h2 id="更新日志" tabindex="-1"> 更新日志</h2>
+<p><a href="https://github.com/luoyunchong/lin-cms-dotnetcore/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/lin-cms-dotnetcore/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97</a></p>
+]]></content>
+    <published>2020-02-28T11:10:31.000Z</published>
+  </entry>
+  <entry>
     <title type="html">全局敏感词处理</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/StopWords.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/StopWords.html"/>
@@ -7079,7 +8226,7 @@ update_time	        datetime
     <title type="html">GitHub第三方授权登录</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/spa-github-login.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/spa-github-login.html"/>
-    <updated>2022-06-02T11:02:17.000Z</updated>
+    <updated>2022-06-02T18:18:50.000Z</updated>
     <content type="html"><![CDATA[<p>使用 SPA+.NET Core3.1 实现 GitHub 第三方授权登录 类似使用 AspNet.Security.OAuth.GitHub，前端使用如下：VUE+Vue-Router+axios</p>
 <h2 id="aspnet-security-oauth-github" tabindex="-1"> AspNet.Security.OAuth.GitHub</h2>
 <ul>
@@ -7093,50 +8240,50 @@ update_time	        datetime
 </ul>
 <p>下面为示例</p>
 <div><pre><code>client_id:0be6b05fc717bfc4fb67
-client_secret:dcaced9f176afba64e89d88b9b06ffc4a887a609
+client_secret:xxxxxxxxxxxxxxx
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>Get</p>
 <div><pre><code>https://github.com/login/oauth/authorize?client_id=0be6b05fc717bfc4fb67&amp;redirect_uri=https://localhost:5001/signin-github
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>会重定向到</p>
 <p><a href="https://localhost:5001/signin-github?code=07537a84d12bbae08361" target="_blank" rel="noopener noreferrer">https://localhost:5001/signin-github?code=07537a84d12bbae08361</a></p>
 <p>这个 code 放到下面的请求中，获取 access_token
 POST 方式（PostMan 去请求）</p>
-<div><pre><code>https://github.com/login/oauth/access_token?client_id=0be6b05fc717bfc4fb67&amp;client_secret=dcaced9f176afba64e89d88b9b06ffc4a887a609&amp;code=07537a84d12bbae08361
+<div><pre><code>https://github.com/login/oauth/access_token?client_id=0be6b05fc717bfc4fb67&amp;client_secret=xxxxxxxxxxxxxxx&amp;code=07537a84d12bbae08361
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>Get 方式</p>
 <div><pre><code>https://api.github.com/user?access_token=787506afa3271d077b98f18af56d7cfdc8db43b4
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>然后就能获取用户信息</p>
-<div><pre><code>{
-   "login": "luoyunchong",
-   "id": 18613266,
-   "node_id": "MDQ6VXNlcjE4NjEzMjY2",
-   "avatar_url": "https://avatars1.githubusercontent.com/u/18613266?v=4",
-   "gravatar_id": "",
-   "url": "https://api.github.com/users/luoyunchong",
-   "html_url": "https://github.com/luoyunchong",
-   "followers_url": "https://api.github.com/users/luoyunchong/followers",
-   "following_url": "https://api.github.com/users/luoyunchong/following{/other_user}",
-   "gists_url": "https://api.github.com/users/luoyunchong/gists{/gist_id}",
-   "starred_url": "https://api.github.com/users/luoyunchong/starred{/owner}{/repo}",
-   "subscriptions_url": "https://api.github.com/users/luoyunchong/subscriptions",
-   "organizations_url": "https://api.github.com/users/luoyunchong/orgs",
-   "repos_url": "https://api.github.com/users/luoyunchong/repos",
-   "events_url": "https://api.github.com/users/luoyunchong/events{/privacy}",
-   "received_events_url": "https://api.github.com/users/luoyunchong/received_events",
-   "type": "User",
-   "site_admin": false,
-   "name": "IGeekFan",
-   "company": null,
-   "blog": "https://blog.igeekfan.cn",
-   "location": null,
-   "email": "luoyunchong@foxmail.com",
-   "hireable": null,
-   "bio": "学习之路漫漫无期。",
-   "public_repos": 14,
-   "public_gists": 0,
-   "followers": 16,
-   "following": 11,
-   "created_at": "2016-04-22T10:33:44Z",
-   "updated_at": "2019-12-21T14:49:33Z"
-}
+<div><pre><code><span>{</span>
+  <span>"login"</span><span>:</span> <span>"luoyunchong"</span><span>,</span>
+  <span>"id"</span><span>:</span> <span>18613266</span><span>,</span>
+  <span>"node_id"</span><span>:</span> <span>"MDQ6VXNlcjE4NjEzMjY2"</span><span>,</span>
+  <span>"avatar_url"</span><span>:</span> <span>"https://avatars1.githubusercontent.com/u/18613266?v=4"</span><span>,</span>
+  <span>"gravatar_id"</span><span>:</span> <span>""</span><span>,</span>
+  <span>"url"</span><span>:</span> <span>"https://api.github.com/users/luoyunchong"</span><span>,</span>
+  <span>"html_url"</span><span>:</span> <span>"https://github.com/luoyunchong"</span><span>,</span>
+  <span>"followers_url"</span><span>:</span> <span>"https://api.github.com/users/luoyunchong/followers"</span><span>,</span>
+  <span>"following_url"</span><span>:</span> <span>"https://api.github.com/users/luoyunchong/following{/other_user}"</span><span>,</span>
+  <span>"gists_url"</span><span>:</span> <span>"https://api.github.com/users/luoyunchong/gists{/gist_id}"</span><span>,</span>
+  <span>"starred_url"</span><span>:</span> <span>"https://api.github.com/users/luoyunchong/starred{/owner}{/repo}"</span><span>,</span>
+  <span>"subscriptions_url"</span><span>:</span> <span>"https://api.github.com/users/luoyunchong/subscriptions"</span><span>,</span>
+  <span>"organizations_url"</span><span>:</span> <span>"https://api.github.com/users/luoyunchong/orgs"</span><span>,</span>
+  <span>"repos_url"</span><span>:</span> <span>"https://api.github.com/users/luoyunchong/repos"</span><span>,</span>
+  <span>"events_url"</span><span>:</span> <span>"https://api.github.com/users/luoyunchong/events{/privacy}"</span><span>,</span>
+  <span>"received_events_url"</span><span>:</span> <span>"https://api.github.com/users/luoyunchong/received_events"</span><span>,</span>
+  <span>"type"</span><span>:</span> <span>"User"</span><span>,</span>
+  <span>"site_admin"</span><span>:</span> <span>false</span><span>,</span>
+  <span>"name"</span><span>:</span> <span>"IGeekFan"</span><span>,</span>
+  <span>"company"</span><span>:</span> <span>null</span><span>,</span>
+  <span>"blog"</span><span>:</span> <span>"https://blog.igeekfan.cn"</span><span>,</span>
+  <span>"location"</span><span>:</span> <span>null</span><span>,</span>
+  <span>"email"</span><span>:</span> <span>"luoyunchong@foxmail.com"</span><span>,</span>
+  <span>"hireable"</span><span>:</span> <span>null</span><span>,</span>
+  <span>"bio"</span><span>:</span> <span>"学习之路漫漫无期。"</span><span>,</span>
+  <span>"public_repos"</span><span>:</span> <span>14</span><span>,</span>
+  <span>"public_gists"</span><span>:</span> <span>0</span><span>,</span>
+  <span>"followers"</span><span>:</span> <span>16</span><span>,</span>
+  <span>"following"</span><span>:</span> <span>11</span><span>,</span>
+  <span>"created_at"</span><span>:</span> <span>"2016-04-22T10:33:44Z"</span><span>,</span>
+  <span>"updated_at"</span><span>:</span> <span>"2019-12-21T14:49:33Z"</span>
+<span>}</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br></div></div><h2 id="net-core3-1" tabindex="-1"> .NET Core3.1</h2>
 <p>以下代码为主要代码，完整代码看下面的 DEMO 链接。</p>
 <p>使用 WebApi 时，看了一些项目，全是基于 MVC 结构的，都不是我想要的。看了一些博客上面介绍 ,步骤都是千篇一律，都是配合前后端分离的。</p>
@@ -7182,7 +8329,7 @@ public AuthenticationController( IHttpContextAccessor contextAccessor)
 <div><pre><code>"Authentication": {
     "GitHub": {
       "ClientId": "0be6b05fc717bfc4fb67",
-      "ClientSecret": "dcaced9f176afba64e89d88b9b06ffc4a887a609"
+      "ClientSecret": "xxxxxxxxxxxxxxx"
     }
 }
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><p>add 扩展方法</p>
@@ -7326,30 +8473,30 @@ axios({
 },
 "GitHub": {
   "ClientId": "0be6b05fc717bfc4fb67",
-  "ClientSecret": "dcaced9f176afba64e89d88b9b06ffc4a887a609"
+  "ClientSecret": "xxxxxxxxxxxxxxx"
 }
 }
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br></div></div><p>在 signin-callback 路由中，得到 authenticateResult.Principal，其中默认包含了(id,login,name,url)，授权得到 eamil，另外 MapJsonKey 扩展了以下字段（avatar_url、bio、blog)</p>
-<div><pre><code>var authenticateResult = await _contextAccessor.HttpContext.AuthenticateAsync(provider);
-string token = this.CreateToken(authenticateResult.Principal);
+<div><pre><code><span><span>var</span></span> authenticateResult <span>=</span> <span>await</span> _contextAccessor<span>.</span>HttpContext<span>.</span><span>AuthenticateAsync</span><span>(</span>provider<span>)</span><span>;</span>
+<span><span>string</span></span> token <span>=</span> <span>this</span><span>.</span><span>CreateToken</span><span>(</span>authenticateResult<span>.</span>Principal<span>)</span><span>;</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>根据 ClaimsPrincipal 值生成 token 值。</p>
-<div><pre><code>private string CreateToken(ClaimsPrincipal claimsPrincipal)
-{
+<div><pre><code><span>private</span> <span><span>string</span></span> <span>CreateToken</span><span>(</span><span>ClaimsPrincipal</span> claimsPrincipal<span>)</span>
+<span>{</span>
 
-    var handler = new JwtSecurityTokenHandler();
-    var key = new SymmetricSecurityKey(
-        Encoding.UTF8.GetBytes(_configuration["Authentication:JwtBearer:SecurityKey"]));
-    var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-    var token = new JwtSecurityToken(
-        _configuration["Authentication:JwtBearer:Issuer"],
-        _configuration["Authentication:JwtBearer:Audience"],
-        claimsPrincipal.Claims,
-        expires: DateTime.Now.AddMinutes(30),
-        signingCredentials: credentials
-    );
+    <span><span>var</span></span> handler <span>=</span> <span>new</span> <span>JwtSecurityTokenHandler</span><span>(</span><span>)</span><span>;</span>
+    <span><span>var</span></span> key <span>=</span> <span>new</span> <span>SymmetricSecurityKey</span><span>(</span>
+        Encoding<span>.</span>UTF8<span>.</span><span>GetBytes</span><span>(</span>_configuration<span>[</span><span>"Authentication:JwtBearer:SecurityKey"</span><span>]</span><span>)</span><span>)</span><span>;</span>
+    <span><span>var</span></span> credentials <span>=</span> <span>new</span> <span>SigningCredentials</span><span>(</span>key<span>,</span> SecurityAlgorithms<span>.</span>HmacSha256<span>)</span><span>;</span>
+    <span><span>var</span></span> token <span>=</span> <span>new</span> <span>JwtSecurityToken</span><span>(</span>
+        _configuration<span>[</span><span>"Authentication:JwtBearer:Issuer"</span><span>]</span><span>,</span>
+        _configuration<span>[</span><span>"Authentication:JwtBearer:Audience"</span><span>]</span><span>,</span>
+        claimsPrincipal<span>.</span>Claims<span>,</span>
+        <span>expires</span><span>:</span> DateTime<span>.</span>Now<span>.</span><span>AddMinutes</span><span>(</span><span>30</span><span>)</span><span>,</span>
+        <span>signingCredentials</span><span>:</span> credentials
+    <span>)</span><span>;</span>
 
-    return handler.WriteToken(token);
-}
+    <span>return</span> handler<span>.</span><span>WriteToken</span><span>(</span>token<span>)</span><span>;</span>
+<span>}</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br></div></div><p>这里的 claimsPrincipal 是什么呢。简单的说就是一个存有 github 授权信息的对象，可以解析出对应的 Clamis，这里其实就是用了 Clamis 的属性值。</p>
 <table>
 <thead>
@@ -7369,58 +8516,58 @@ string token = this.CreateToken(authenticateResult.Principal);
 </table>
 <p>具体 Jwt 的生成与配置项。这里不详细说明。可以看这个示例（.NET Core2.2）<a href="https://github.com/luoyunchong/BasicTemplate" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/BasicTemplate</a></p>
 <p>AddJwtConfiguration 改成如下内容</p>
-<div><pre><code>public static void AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration)
-{
+<div><pre><code><span>public</span> <span>static</span> <span><span>void</span></span> <span>AddJwtConfiguration</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>,</span> <span>IConfiguration</span> configuration<span>)</span>
+<span>{</span>
 
-    services.AddAuthentication(opts =>
-        {
-            opts.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddCookie(options =>
-    {
-        options.LoginPath = "/signin";
-        options.LogoutPath = "/signout";
-    }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
-    {
-        options.Audience = configuration["Authentication:JwtBearer:Audience"];
+    services<span>.</span><span>AddAuthentication</span><span>(</span>opts <span>=></span>
+        <span>{</span>
+            opts<span>.</span>DefaultScheme <span>=</span> CookieAuthenticationDefaults<span>.</span>AuthenticationScheme<span>;</span>
+            opts<span>.</span>DefaultAuthenticateScheme <span>=</span> JwtBearerDefaults<span>.</span>AuthenticationScheme<span>;</span>
+        <span>}</span><span>)</span><span>.</span><span>AddCookie</span><span>(</span>options <span>=></span>
+    <span>{</span>
+        options<span>.</span>LoginPath <span>=</span> <span>"/signin"</span><span>;</span>
+        options<span>.</span>LogoutPath <span>=</span> <span>"/signout"</span><span>;</span>
+    <span>}</span><span>)</span><span>.</span><span>AddJwtBearer</span><span>(</span>JwtBearerDefaults<span>.</span>AuthenticationScheme<span>,</span> options <span>=></span>
+    <span>{</span>
+        options<span>.</span>Audience <span>=</span> configuration<span>[</span><span>"Authentication:JwtBearer:Audience"</span><span>]</span><span>;</span>
 
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            // The signing key must match!
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.ASCII.GetBytes(configuration["Authentication:JwtBearer:SecurityKey"])),
+        options<span>.</span>TokenValidationParameters <span>=</span> <span>new</span> <span>TokenValidationParameters</span>
+        <span>{</span>
+            <span>// The signing key must match!</span>
+            ValidateIssuerSigningKey <span>=</span> <span>true</span><span>,</span>
+            IssuerSigningKey <span>=</span> <span>new</span> <span>SymmetricSecurityKey</span><span>(</span>
+                Encoding<span>.</span>ASCII<span>.</span><span>GetBytes</span><span>(</span>configuration<span>[</span><span>"Authentication:JwtBearer:SecurityKey"</span><span>]</span><span>)</span><span>)</span><span>,</span>
 
-            // Validate the JWT Issuer (iss) claim
-            ValidateIssuer = true,
-            ValidIssuer = configuration["Authentication:JwtBearer:Issuer"],
+            <span>// Validate the JWT Issuer (iss) claim</span>
+            ValidateIssuer <span>=</span> <span>true</span><span>,</span>
+            ValidIssuer <span>=</span> configuration<span>[</span><span>"Authentication:JwtBearer:Issuer"</span><span>]</span><span>,</span>
 
-            // Validate the JWT Audience (aud) claim
-            ValidateAudience = true,
-            ValidAudience = configuration["Authentication:JwtBearer:Audience"],
+            <span>// Validate the JWT Audience (aud) claim</span>
+            ValidateAudience <span>=</span> <span>true</span><span>,</span>
+            ValidAudience <span>=</span> configuration<span>[</span><span>"Authentication:JwtBearer:Audience"</span><span>]</span><span>,</span>
 
-            // Validate the token expiry
-            ValidateLifetime = true,
+            <span>// Validate the token expiry</span>
+            ValidateLifetime <span>=</span> <span>true</span><span>,</span>
 
-            // If you want to allow a certain amount of clock drift, set that here
-            //ClockSkew = TimeSpan.Zero
-        };
-    }).AddGitHub(options =>
-    {
-        options.ClientId = configuration["Authentication:GitHub:ClientId"];
-        options.ClientSecret = configuration["Authentication:GitHub:ClientSecret"];
-        //options.CallbackPath = new PathString("~/signin-github");//与GitHub上的回调地址相同，默认即是/signin-github
-        options.Scope.Add("user:email");
-        //authenticateResult.Principal.FindFirst(LinConsts.Claims.AvatarUrl)?.Value;  得到GitHub头像
-        options.ClaimActions.MapJsonKey(LinConsts.Claims.AvatarUrl, "avatar_url");
-        options.ClaimActions.MapJsonKey(LinConsts.Claims.BIO, "bio");
-        options.ClaimActions.MapJsonKey(LinConsts.Claims.BlogAddress, "blog");
-    });
-}
+            <span>// If you want to allow a certain amount of clock drift, set that here</span>
+            <span>//ClockSkew = TimeSpan.Zero</span>
+        <span>}</span><span>;</span>
+    <span>}</span><span>)</span><span>.</span><span>AddGitHub</span><span>(</span>options <span>=></span>
+    <span>{</span>
+        options<span>.</span>ClientId <span>=</span> configuration<span>[</span><span>"Authentication:GitHub:ClientId"</span><span>]</span><span>;</span>
+        options<span>.</span>ClientSecret <span>=</span> configuration<span>[</span><span>"Authentication:GitHub:ClientSecret"</span><span>]</span><span>;</span>
+        <span>//options.CallbackPath = new PathString("~/signin-github");//与GitHub上的回调地址相同，默认即是/signin-github</span>
+        options<span>.</span>Scope<span>.</span><span>Add</span><span>(</span><span>"user:email"</span><span>)</span><span>;</span>
+        <span>//authenticateResult.Principal.FindFirst(LinConsts.Claims.AvatarUrl)?.Value;  得到GitHub头像</span>
+        options<span>.</span>ClaimActions<span>.</span><span>MapJsonKey</span><span>(</span>LinConsts<span>.</span>Claims<span>.</span>AvatarUrl<span>,</span> <span>"avatar_url"</span><span>)</span><span>;</span>
+        options<span>.</span>ClaimActions<span>.</span><span>MapJsonKey</span><span>(</span>LinConsts<span>.</span>Claims<span>.</span>BIO<span>,</span> <span>"bio"</span><span>)</span><span>;</span>
+        options<span>.</span>ClaimActions<span>.</span><span>MapJsonKey</span><span>(</span>LinConsts<span>.</span>Claims<span>.</span>BlogAddress<span>,</span> <span>"blog"</span><span>)</span><span>;</span>
+    <span>}</span><span>)</span><span>;</span>
+<span>}</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br></div></div><p><a href="https://github.com/luoyunchong/dotnetcore-examples/blob/master/aspnetcore-oatuth2/spa-vue-oauth2/src/components/LoginResult.vue" target="_blank" rel="noopener noreferrer">前端 LoginResult.vue 代码</a></p>
 <p>前端运行</p>
-<div><pre><code>yarn install
-yarn serve
+<div><pre><code><span>yarn</span> <span>install</span>
+<span>yarn</span> serve
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>点击 GitHub 登录</p>
 <p>GetOpenIdByToken 根据生成的 token 值，解析出了用户 id,这样前端在 login-result 这个组件中，把 token 保存好，并重定向自己的主页，获取用户所有信息即可。</p>
 <div><pre><code>data: 18613266
