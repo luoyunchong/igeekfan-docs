@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <atom:link href="https://igeekfan.cn/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://igeekfan.cn/igeekfan-docs/rss.xml" rel="self" type="application/rss+xml"/>
     <title>IGeekFan的文档</title>
-    <link>https://igeekfan.cn/</link>
+    <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>IGeekFan Documents</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 02 Jun 2022 11:20:26 GMT</pubDate>
-    <lastBuildDate>Thu, 02 Jun 2022 11:20:26 GMT</lastBuildDate>
+    <pubDate>Thu, 02 Jun 2022 11:45:34 GMT</pubDate>
+    <lastBuildDate>Thu, 02 Jun 2022 11:45:34 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>lin-cms-dotnetcore</category>
     <item>
       <title>Blogs分享</title>
-      <link>https://igeekfan.cn/blogs/</link>
-      <guid>https://igeekfan.cn/blogs/</guid>
-      <source url="https://igeekfan.cn/rss.xml">Blogs分享</source>
+      <link>https://igeekfan.cn/igeekfan-docs/blogs/</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/blogs/</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Blogs分享</source>
       <pubDate>Fri, 07 Jan 2022 10:07:15 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="blogs分享" tabindex="-1"> Blogs分享</h1>
 ]]></content:encoded>
     </item>
     <item>
       <title>git emoji</title>
-      <link>https://igeekfan.cn/blogs/git-emoji.html</link>
-      <guid>https://igeekfan.cn/blogs/git-emoji.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">git emoji</source>
+      <link>https://igeekfan.cn/igeekfan-docs/blogs/git-emoji.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/blogs/git-emoji.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">git emoji</source>
       <pubDate>Fri, 07 Jan 2022 10:07:15 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="git-emoji" tabindex="-1"> git emoji</h1>
 <table>
@@ -362,9 +362,9 @@
     </item>
     <item>
       <title>.NET 编码的基础知识</title>
-      <link>https://igeekfan.cn/blogs/net-encoded-1.html</link>
-      <guid>https://igeekfan.cn/blogs/net-encoded-1.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">.NET 编码的基础知识</source>
+      <link>https://igeekfan.cn/igeekfan-docs/blogs/net-encoded-1.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/blogs/net-encoded-1.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">.NET 编码的基础知识</source>
       <pubDate>Fri, 07 Jan 2022 10:07:15 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="net-编码的基础知识" tabindex="-1"> .NET 编码的基础知识</h1>
 <p>.NET 编码的一些基本概念和分析</p>
@@ -494,9 +494,9 @@ int b4 = b1 + b2;
     </item>
     <item>
       <title>.NET+Sqlite 如何支持加密</title>
-      <link>https://igeekfan.cn/blogs/net-sqlite-encryption.html</link>
-      <guid>https://igeekfan.cn/blogs/net-sqlite-encryption.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">.NET+Sqlite 如何支持加密</source>
+      <link>https://igeekfan.cn/igeekfan-docs/blogs/net-sqlite-encryption.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/blogs/net-sqlite-encryption.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">.NET+Sqlite 如何支持加密</source>
       <pubDate>Fri, 07 Jan 2022 10:07:15 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="net-sqlite-如何支持加密" tabindex="-1"> .NET+Sqlite 如何支持加密</h1>
 <h2 id="相关文章" tabindex="-1"> 相关文章</h2>
@@ -624,9 +624,9 @@ dotnet <span>add</span> package SQLitePCLRaw.bundle_e_sqlcipher
     </item>
     <item>
       <title>Serilog指南</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/serilog-tutorial.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/serilog-tutorial.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">Serilog指南</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/serilog-tutorial.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/serilog-tutorial.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Serilog指南</source>
       <pubDate>Fri, 07 Jan 2022 10:07:15 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="serilog指南" tabindex="-1"> Serilog指南</h1>
 <ul>
@@ -814,9 +814,9 @@ orderLog.Information("Product lookup took {Elapsed} ms", elapsed.TotalMillisecon
     </item>
     <item>
       <title>Nacos 配置中心</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/nacos-aspnetcore.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/nacos-aspnetcore.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">Nacos 配置中心</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/nacos-aspnetcore.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/nacos-aspnetcore.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Nacos 配置中心</source>
       <pubDate>Wed, 22 Dec 2021 18:31:25 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="nacos-配置中心" tabindex="-1"> Nacos 配置中心</h1>
 <p><code>nacos</code> 是一个构建云原生应用的动态服务发现、配置管理和服务管理平台。。</p>
@@ -1179,9 +1179,9 @@ docker start nacos
     </item>
     <item>
       <title>LinCms如何切换成SQL server</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/change-sqlserver.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/change-sqlserver.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">LinCms如何切换成SQL server</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/change-sqlserver.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/change-sqlserver.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">LinCms如何切换成SQL server</source>
       <pubDate>Wed, 22 Dec 2021 18:31:25 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="lincms如何切换成sql-server" tabindex="-1"> LinCms如何切换成SQL server</h1>
 <p>需要修改LinCms.Web中的appsetting.json配置</p>
@@ -1407,9 +1407,9 @@ SqlServer：改成自己的数据库配置</p>
     </item>
     <item>
       <title>ASP.NETCore 下 FreeSql 的仓储事务</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/aspnetcore-repository-unitofwork.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/aspnetcore-repository-unitofwork.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">ASP.NETCore 下 FreeSql 的仓储事务</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/aspnetcore-repository-unitofwork.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/aspnetcore-repository-unitofwork.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">ASP.NETCore 下 FreeSql 的仓储事务</source>
       <pubDate>Sun, 12 Dec 2021 10:05:43 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="asp-netcore-下-freesql-的仓储事务" tabindex="-1"> ASP.NETCore 下 FreeSql 的仓储事务</h1>
 <h4 id="第一步-配置-startup-cs-注入" tabindex="-1"> 第一步：配置 Startup.cs 注入</h4>
@@ -1577,9 +1577,9 @@ dotnet <span>add</span> package FreeSql<span>.</span>Provider<span>.</span>MySql
     </item>
     <item>
       <title>Autofac 依赖注入小知识</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/autofac.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/autofac.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">Autofac 依赖注入小知识</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/autofac.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/autofac.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Autofac 依赖注入小知识</source>
       <pubDate>Sun, 12 Dec 2021 10:05:43 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="autofac-依赖注入小知识" tabindex="-1"> Autofac 依赖注入小知识</h1>
 <h2 id="控制反转-依赖注入-ioc-di" tabindex="-1"> 控制反转/依赖注入 IOC/DI</h2>
@@ -1833,9 +1833,9 @@ builder<span>.</span><span>Register</span><span>(</span>c <span>=></span> <span>
     </item>
     <item>
       <title>Scriban 模板语言</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/scriban-README.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/scriban-README.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">Scriban 模板语言</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/scriban-README.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/scriban-README.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Scriban 模板语言</source>
       <pubDate>Sun, 12 Dec 2021 10:05:43 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="scriban-模板语言" tabindex="-1"> Scriban 模板语言</h1>
 <h3 id="目录" tabindex="-1"> 目录</h3>
@@ -1965,9 +1965,9 @@ builder<span>.</span><span>Register</span><span>(</span>c <span>=></span> <span>
     </item>
     <item>
       <title>LinCms.Scaffolding 代码生成器</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/lincms-scaffolding.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/lincms-scaffolding.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">LinCms.Scaffolding 代码生成器</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/lincms-scaffolding.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/lincms-scaffolding.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">LinCms.Scaffolding 代码生成器</source>
       <pubDate>Sun, 26 Jul 2020 16:18:09 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="lincms-scaffolding-代码生成器" tabindex="-1"> LinCms.Scaffolding 代码生成器</h1>
 <p><a href="https://github.com/luoyunchong/lin-cms-dotnetcore/tree/dev" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/lin-cms-dotnetcore/tree/dev</a></p>
@@ -2033,9 +2033,9 @@ builder<span>.</span><span>Register</span><span>(</span>c <span>=></span> <span>
     </item>
     <item>
       <title>后端快速上手</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/cms-start.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/cms-start.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">后端快速上手</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/cms-start.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/cms-start.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">后端快速上手</source>
       <pubDate>Fri, 24 Jul 2020 17:10:08 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="后端快速上手" tabindex="-1"> 后端快速上手</h1>
 <p>本小节我们将在 lin-cms 的基础上开发一个简单的图书管理 demo,帮助大家来熟悉和入门 lin-cms。</p>
@@ -2312,9 +2312,9 @@ namespace LinCms.Web.Controllers.v1
     </item>
     <item>
       <title>GitHub Actions</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/github-actions.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/github-actions.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">GitHub Actions</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/github-actions.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/github-actions.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">GitHub Actions</source>
       <pubDate>Fri, 24 Jul 2020 17:10:08 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="github-actions" tabindex="-1"> GitHub Actions</h1>
 <h2 id="gitee-与-github-自动同步" tabindex="-1"> Gitee 与 GitHub 自动同步</h2>
@@ -2461,9 +2461,9 @@ TARGET: ${{ secrets.REMOTE_TARGET }}
     </item>
     <item>
       <title>方法级别的权限控制（API级别）</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/authorize.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/authorize.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">方法级别的权限控制（API级别）</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/authorize.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/authorize.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">方法级别的权限控制（API级别）</source>
       <pubDate>Thu, 28 May 2020 06:06:11 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="方法级别的权限控制-api级别" tabindex="-1"> 方法级别的权限控制（API级别）</h1>
 <p>Lin的定位在于实现一整套 CMS的解决方案，它是一个设计方案，提供了不同的后端，不同的前端，而且也支持不同的数据库</p>
@@ -2834,9 +2834,9 @@ IAuditBaseRepository&lt;LinGroupPermission, long>
     </item>
     <item>
       <title>文件上传系统</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/file-upload.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/file-upload.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">文件上传系统</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/file-upload.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/file-upload.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">文件上传系统</source>
       <pubDate>Wed, 13 May 2020 11:18:08 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="文件上传系统" tabindex="-1"> 文件上传系统</h1>
 <p>lin-cms-dotnetcore 默认集成了文件上传功能，并可自由切换存储位置，前端也有相应的组件匹配使用.</p>
@@ -3059,18 +3059,18 @@ IAuditBaseRepository&lt;LinGroupPermission, long>
     </item>
     <item>
       <title>行为日志</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/logger.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/logger.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">行为日志</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/logger.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/logger.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">行为日志</source>
       <pubDate>Wed, 13 May 2020 11:18:08 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="行为日志" tabindex="-1"> 行为日志</h1>
 ]]></content:encoded>
     </item>
     <item>
       <title>开源介绍</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/open-source-road.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/open-source-road.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">开源介绍</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/open-source-road.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/open-source-road.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">开源介绍</source>
       <pubDate>Wed, 13 May 2020 11:18:08 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="开源介绍" tabindex="-1"> 开源介绍</h1>
 <ul>
@@ -3187,9 +3187,9 @@ BaseType有一条数据，TypeCode为 字符串category、FullName文章类别�
     </item>
     <item>
       <title>QQ第三方授权登录</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/qq-login.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/qq-login.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">QQ第三方授权登录</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/qq-login.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/qq-login.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">QQ第三方授权登录</source>
       <pubDate>Wed, 13 May 2020 11:18:08 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="qq第三方授权登录" tabindex="-1"> QQ第三方授权登录</h1>
 <h2 id="安装包" tabindex="-1"> 安装包</h2>
@@ -3453,9 +3453,9 @@ public async Task&lt;IActionResult> Home(string provider, string redirectUrl = "
     </item>
     <item>
       <title>基于 RBAC 实现权限设计</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/table.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/table.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">基于 RBAC 实现权限设计</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/table.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/table.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">基于 RBAC 实现权限设计</source>
       <pubDate>Wed, 13 May 2020 11:18:08 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="基于-rbac-实现权限设计" tabindex="-1"> 基于 RBAC 实现权限设计</h1>
 <p>功能：实现一个用户设置多个分组，分组可以设置多个权限，权限与后台 API 方法对应，前端菜单绑定权限编码，前端按钮绑定权限编码，从而实现用户可配置权限，从而控制界面上的元素等。</p>
@@ -3832,9 +3832,9 @@ BaseType 有一条数据，TypeCode 为 字符串 category、FullName 文章类�
     </item>
     <item>
       <title>FreeSql+ASP.NET Core</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/freesql-in-aspnetcore-webapi-how-to-use.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/freesql-in-aspnetcore-webapi-how-to-use.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">FreeSql+ASP.NET Core</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/freesql-in-aspnetcore-webapi-how-to-use.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/freesql-in-aspnetcore-webapi-how-to-use.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">FreeSql+ASP.NET Core</source>
       <pubDate>Fri, 08 May 2020 15:01:00 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="freesql-asp-net-core" tabindex="-1"> FreeSql+ASP.NET Core</h1>
 <h2 id="文章概述" tabindex="-1"> 文章概述</h2>
@@ -4193,9 +4193,9 @@ Fsql.CodeFirst.IsAutoSyncStructure = true;
     </item>
     <item>
       <title>依赖注入scrutor</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/dependency-injection-scrutor.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/dependency-injection-scrutor.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">依赖注入scrutor</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/dependency-injection-scrutor.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/dependency-injection-scrutor.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">依赖注入scrutor</source>
       <pubDate>Fri, 08 May 2020 15:01:00 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="依赖注入scrutor" tabindex="-1"> 依赖注入scrutor</h1>
 <p>官网介绍</p>
@@ -4298,9 +4298,9 @@ public class UserController : ControllerBase
     </item>
     <item>
       <title>认证与授权</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/dynamic-authorization-in-aspnetcore.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/dynamic-authorization-in-aspnetcore.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">认证与授权</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/dynamic-authorization-in-aspnetcore.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/dynamic-authorization-in-aspnetcore.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">认证与授权</source>
       <pubDate>Fri, 08 May 2020 15:01:00 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="认证与授权" tabindex="-1"> 认证与授权</h1>
 <p>主要就<strong>基于权限的授权</strong>的实现进行研究，实现方法级别的权限验证。</p>
@@ -4319,9 +4319,9 @@ public class UserController : ControllerBase
     </item>
     <item>
       <title>CAP实现EventBus</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/rabbitmq.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/rabbitmq.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">CAP实现EventBus</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/rabbitmq.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/rabbitmq.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">CAP实现EventBus</source>
       <pubDate>Fri, 08 May 2020 15:01:00 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="cap实现eventbus" tabindex="-1"> CAP实现EventBus</h1>
 <p>分布式事务一致性，使用的是 <a href="https://github.com/dotnetcore/cap" target="_blank" rel="noopener noreferrer">CAP</a>，那么我们在什么情况下使用它呢。</p>
@@ -4423,9 +4423,9 @@ public class UserController : ControllerBase
     </item>
     <item>
       <title>相关技术</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/technology.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/technology.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">相关技术</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/technology.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/technology.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">相关技术</source>
       <pubDate>Fri, 08 May 2020 05:46:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="相关技术" tabindex="-1"> 相关技术</h1>
 <ul>
@@ -4488,22 +4488,22 @@ public class UserController : ControllerBase
 ]]></content:encoded>
     </item>
     <item>
-      <title>创建简单 Hello World</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/console-hello-world.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/console-hello-world.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">创建简单 Hello World</source>
+      <title>创建简单Hello World</title>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/console-hello-world.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/console-hello-world.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">创建简单Hello World</source>
       <pubDate>Wed, 15 Apr 2020 17:09:07 GMT</pubDate>
-      <content:encoded><![CDATA[<h1 id="创建简单-hello-world" tabindex="-1"> 创建简单 Hello World</h1>
+      <content:encoded><![CDATA[<h1 id="创建简单hello-world" tabindex="-1"> 创建简单Hello World</h1>
 <h2 id="源码" tabindex="-1"> 源码</h2>
-<p>代码托管在 GitHub 上 <a href="https://github.com/luoyunchong/dotnetcore-examples/tree/master/console-hello-world" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/dotnetcore-examples/tree/master/console-hello-world</a></p>
+<p>代码托管在GitHub上 <a href="https://github.com/luoyunchong/dotnetcore-examples/tree/master/console-hello-world" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/dotnetcore-examples/tree/master/console-hello-world</a></p>
 <h2 id="相关阅读" tabindex="-1"> 相关阅读</h2>
 <ul>
 <li><a href="https://docs.microsoft.com/zh-cn/dotnet/core/tutorials/with-visual-studio-code" target="_blank" rel="noopener noreferrer">C# 和 Visual Studio Code 入门教程</a></li>
-<li><a href="https://blog.csdn.net/qq_40346899/article/details/80955788" target="_blank" rel="noopener noreferrer">vscode 调试运行 c#详细操作过程</a></li>
-<li><strong><a href="https://blog.csdn.net/qin_yu_2010/article/details/83978244" target="_blank" rel="noopener noreferrer">使用 Visual Studio Code 开发.NET Core 看这篇就够了</a></strong> 强烈推荐。</li>
+<li><a href="https://blog.csdn.net/qq_40346899/article/details/80955788" target="_blank" rel="noopener noreferrer">vscode调试运行c#详细操作过程</a></li>
+<li><strong><a href="https://blog.csdn.net/qin_yu_2010/article/details/83978244" target="_blank" rel="noopener noreferrer">使用Visual Studio Code开发.NET Core看这篇就够了</a></strong> 强烈推荐。</li>
 </ul>
 <h2 id="开始" tabindex="-1"> 开始</h2>
-<p>创建一个 hello-word 的 console，会输出 Hello World!</p>
+<p>创建一个hello-word的console，会输出Hello World!</p>
 <div><pre><code><span>mkdir</span> console-hello-world
 <span>cd</span> console-hello-world
 dotnet new console
@@ -4521,11 +4521,11 @@ dotnet run
 
 <span><span><span>&lt;/</span>Project</span><span>></span></span>
 
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><p>在 console-hello-world/bin/Debug/netcoreapp3.0 中生成了 console-hello-world.dll</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><p>在 console-hello-world/bin/Debug/netcoreapp3.0中生成了console-hello-world.dll</p>
 <div><pre><code>cd console-hello-world #要先在console-hello-world目录中
 dotnet bin/Debug/netcoreapp3.0/console-hello-world.dll
 Hello World
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><p>修改 main 函数</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><p>修改main函数</p>
 <div><pre><code><span>using</span> <span>System</span><span>;</span>
 
 <span>namespace</span> <span>console_hello_world</span>
@@ -4551,21 +4551,21 @@ Hello John!
     </item>
     <item>
       <title>.NET Core 简单测试项目</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/console-news-types.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/console-news-types.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">.NET Core 简单测试项目</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/console-news-types.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/console-news-types.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">.NET Core 简单测试项目</source>
       <pubDate>Wed, 15 Apr 2020 17:09:07 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="net-core-简单测试项目" tabindex="-1"> .NET Core 简单测试项目</h1>
-<p>使用 PowerShell 的 dotnet cli 命令行创建控制台项目，测试项目，测试项目引用控制台项目。</p>
+<p>使用PowerShell的dotnet cli命令行创建控制台项目，测试项目，测试项目引用控制台项目。</p>
 <h2 id="源码" tabindex="-1"> 源码</h2>
-<p>代码托管在 GitHub 上 <a href="https://github.com/luoyunchong/dotnetcore-examples/tree/master/console-news-types" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/dotnetcore-examples/tree/master/console-news-types</a></p>
+<p>代码托管在GitHub上 <a href="https://github.com/luoyunchong/dotnetcore-examples/tree/master/console-news-types" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/dotnetcore-examples/tree/master/console-news-types</a></p>
 <h2 id="相关参考" tabindex="-1"> 相关参考</h2>
 <p>code :<a href="https://github.com/dotnet/samples/blob/master/core/console-apps/NewTypesMsBuild/README.md" target="_blank" rel="noopener noreferrer">https://github.com/dotnet/samples/blob/master/core/console-apps/NewTypesMsBuild/README.md</a></p>
 <p>docs: <a href="https://docs.microsoft.com/zh-cn/dotnet/core/tutorials/testing-with-cli" target="_blank" rel="noopener noreferrer">https://docs.microsoft.com/zh-cn/dotnet/core/tutorials/testing-with-cli</a></p>
 <p>dotnet-add-reference 使用文档 <a href="https://docs.microsoft.com/zh-cn/dotnet/core/tools/dotnet-add-reference" target="_blank" rel="noopener noreferrer">https://docs.microsoft.com/zh-cn/dotnet/core/tools/dotnet-add-reference</a></p>
 <p>总结如下命令行</p>
 <div><pre><code>PS dotnetcore-examples&gt; mkdir console-news-types
-PS dotnetcore-examples&gt; cd .\console-news-types\
+PS dotnetcore-examples&gt; cd .\console-news-types\ 
 PS dotnetcore-examples\console-news-types&gt; mkdir src
 
 PS dotnetcore-examples\console-news-types&gt; mkdir test
@@ -4577,17 +4577,17 @@ d----           2019/6/27    20:51                test
 
 PS dotnetcore-examples\console-news-types&gt; cd .\src\
 PS dotnetcore-examples\console-news-types\src&gt; dotnet new console -n NewTypes
-PS dotnetcore-examples\console-news-types\src&gt; cd ..\test\
-PS dotnetcore-examples\console-news-types\test&gt; dotnet new xunit -n NewTypesTests
+PS dotnetcore-examples\console-news-types\src&gt; cd ..\test\  
+PS dotnetcore-examples\console-news-types\test&gt; dotnet new xunit -n NewTypesTests 
 PS dotnetcore-examples\console-news-types\test&gt; cd .\NewTypesTests\
 PS dotnetcore-examples\console-news-types\test\NewTypesTests&gt; dotnet add reference ../../src/NewTypes/NewTypes.csproj
 #Reference `..\..\src\NewTypes\NewTypes.csproj` added to the project.
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br></div></div><p>其他的代码就看上面的二个链接，把代码复制进去，代码很简单，一个接口，二个实现，main 函数调用，测试项目引用控制台项目，</p>
-<p>先 cd 到 src\NewTypes 目录中，执行 <strong>dotnet run</strong></p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br></div></div><p>其他的代码就看上面的二个链接，把代码复制进去，代码很简单，一个接口，二个实现，main函数调用，测试项目引用控制台项目，</p>
+<p>先cd 到src\NewTypes目录中，执行 <strong>dotnet run</strong></p>
 <div><pre><code>PS dotnetcore-examples\console-news-types\src\NewTypes&gt; dotnet run
 Woof!
 Meow!
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><p>先 cd 到 test\NewTypesTests 目录中，执行 <strong>dotnet test</strong>，看好代码，测试类 Assert.Equal() 是成功的，如果是 Assert.NotEqual() 则 Failure</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><p>先cd 到test\NewTypesTests目录中，执行 <strong>dotnet test</strong>，看好代码，测试类 Assert.Equal() 是成功的，如果是Assert.NotEqual() 则Failure</p>
 <div><pre><code>PS dotnetcore-examples\console-news-types\test\NewTypesTests&gt; dotnet test
 dotnetcore-examples\console-news-types\test\NewTypesTests\bin\Debug\netcoreapp3.0\NewTypesTests.dll 的测试运行(.NETCoreApp,Version=v3.0)
 Microsoft (R) 测试执行命令行工具版本 16.0.1
@@ -4602,9 +4602,9 @@ Microsoft (R) 测试执行命令行工具版本 16.0.1
     </item>
     <item>
       <title>RESTful+FreeSql+AutoMapper</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/freesql-sample-blog-restful-use-automapper.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/freesql-sample-blog-restful-use-automapper.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">RESTful+FreeSql+AutoMapper</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/freesql-sample-blog-restful-use-automapper.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/freesql-sample-blog-restful-use-automapper.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">RESTful+FreeSql+AutoMapper</source>
       <description> RESTful+FreeSql+AutoMapper
  文章概述
 本文使用ASP .NET Core的WEB API，构建一个RESTful风格的接口，使用Freesql访问MySQL数据库，实现二个表的简单博客，并集成AutoMapper。
@@ -4950,26 +4950,26 @@ PS &gt; dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection -
     </item>
     <item>
       <title>IdentityServer4</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/identityserver4.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/identityserver4.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">IdentityServer4</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/identityserver4.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/identityserver4.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">IdentityServer4</source>
       <pubDate>Wed, 15 Apr 2020 17:09:07 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="identityserver4" tabindex="-1"> IdentityServer4</h1>
-<h2 id="写的一些-identityserver4-的示例" tabindex="-1"> 写的一些 IdentityServer4 的示例</h2>
-<p>IdentityServer4 实现单点登录授权 token 验证</p>
+<h2 id="写的一些identityserver4的示例" tabindex="-1"> 写的一些IdentityServer4的示例</h2>
+<p>IdentityServer4 实现单点登录授权token验证</p>
 <h2 id="源码" tabindex="-1"> 源码</h2>
-<p>代码托管在 GitHub 上 <a href="https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-identityserver4" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-identityserver4</a></p>
+<p>代码托管在GitHub上 <a href="https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-identityserver4" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-identityserver4</a></p>
 <h2 id="参考" tabindex="-1"> 参考</h2>
 <ul>
-<li><a href="https://www.cnblogs.com/edisonchou/p/identityserver4_foundation_and_quickstart_01.html" target="_blank" rel="noopener noreferrer">.NET Core 微服务之基于 IdentityServer 建立授权与验证服务</a></li>
+<li><a href="https://www.cnblogs.com/edisonchou/p/identityserver4_foundation_and_quickstart_01.html" target="_blank" rel="noopener noreferrer">.NET Core微服务之基于IdentityServer建立授权与验证服务</a></li>
 </ul>
 ]]></content:encoded>
     </item>
     <item>
       <title>ImCore 即时通讯</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/imcore-chat.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/imcore-chat.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">ImCore 即时通讯</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/imcore-chat.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/imcore-chat.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">ImCore 即时通讯</source>
       <pubDate>Wed, 15 Apr 2020 17:09:07 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="imcore-即时通讯" tabindex="-1"> ImCore 即时通讯</h1>
 <h2 id="简介" tabindex="-1"> 简介</h2>
@@ -4984,159 +4984,10 @@ PS &gt; dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection -
       <enclosure url="https://ae01.alicdn.com/kf/Hf8b31f05dbb94f8da565fce29f78aa78Y.png" type="image/png"/>
     </item>
     <item>
-      <title>七牛云对象存储</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/qiniu-object-storage.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/qiniu-object-storage.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">七牛云对象存储</source>
-      <pubDate>Wed, 15 Apr 2020 17:09:07 GMT</pubDate>
-      <content:encoded><![CDATA[<h1 id="七牛云对象存储" tabindex="-1"> 七牛云对象存储</h1>
-<p>.NET Core 下集成 七牛云下的对象存储</p>
-<h2 id="开源地址" tabindex="-1"> 开源地址</h2>
-<p><a href="https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-qiniu" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-qiniu</a></p>
-<h2 id="集成类库" tabindex="-1"> 集成类库</h2>
-<table>
-<thead>
-<tr>
-<th>基础类库集成方案</th>
-<th>开源地址</th>
-<th>文档</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/luoyunchong/dotnetcore-examples/tree/master/dotnet-core-efcore" target="_blank" rel="noopener noreferrer">Qiniu 云对象存储</a></td>
-<td><a href="https://github.com/qiniu/csharp-sdk" target="_blank" rel="noopener noreferrer">.net</a>/<a href="https://github.com/Hello-Mango/MQiniu.Core" target="_blank" rel="noopener noreferrer">.net core</a></td>
-<td><a href="https://developer.qiniu.com/kodo/sdk/1237/csharp" target="_blank" rel="noopener noreferrer">c# sdk</a></td>
-<td>由于官网未支持. net core，所以 大家看<a href="https://github.com/Hello-Mango/MQiniu.Core" target="_blank" rel="noopener noreferrer">社区版解决方案</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="前提" tabindex="-1"> 前提</h2>
-<ul>
-<li>本地 windows 10,安装 .net core 2.2+</li>
-<li>Linux 服务器 Ubuntu Server 16+</li>
-<li>服务器安装了 Docker</li>
-<li>本地 xftp、xshell（这二个分别是 windows 传文件至 linux，执行命令行。）</li>
-</ul>
-<h2 id="准备" tabindex="-1"> 准备</h2>
-<p>在七牛云中自行注册后，在个人中心，密钥管理，生成自己的密钥（https://portal.qiniu.com/user/key）
-v* AK，SK 分别代表：AccessKey/SecretKey</p>
-<ul>
-<li>Bucket 中的 vant-ui，是创建对象存储时起的名字</li>
-<li>PrefixPath 中的值，随意字符串，前缀地址。</li>
-<li>Host 为：融合 CDN 测试域名,可自行绑定自己的域名，否则只有三十天免费使用时长。</li>
-</ul>
-<h2 id="appsettings-json-配置项" tabindex="-1"> appsettings.json 配置项</h2>
-<div><pre><code>  <span>"Qiniu"</span><span>:</span> <span>{</span>
-    <span>"AK"</span><span>:</span> <span>"eUH1O-ft66S4XM2GIK7FGmj7czuYkcAyNGDAc-wq"</span><span>,</span>
-    <span>"SK"</span><span>:</span> <span>"4dOi1daSr2-YgofhAfWb8JaLrbgozCmgD6AUmmM9"</span><span>,</span>
-    <span>"Bucket"</span><span>:</span> <span>"vant-ui"</span><span>,</span>
-    <span>"PrefixPath"</span><span>:</span> <span>"ui"</span><span>,</span>
-    <span>"Host"</span><span>:</span> <span>"http://pu5vnz60k.bkt.clouddn.com/"</span>
-  <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div><h2 id="安装包" tabindex="-1"> 安装包</h2>
-<div><pre><code>Install-Package MQiniu.Core
-</code></pre><div aria-hidden="true"><span>1</span><br></div></div><h2 id="代码解读" tabindex="-1"> 代码解读</h2>
-<p>配置 swagger 的过程就不说了，创建 QiniuController</p>
-<div><pre><code>  <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
-    <span>/// 七牛云上传服务</span>
-    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
-    <span>[</span><span>Route</span><span>(</span><span>"api/[controller]"</span><span>)</span><span>]</span>
-    <span>[</span><span><span>ApiController</span></span><span>]</span>
-    <span>public</span> <span>class</span> <span>QiniuController</span> <span>:</span> <span><span>ControllerBase</span></span>
-    <span>{</span>
-        <span>private</span> <span>readonly</span> <span>IConfiguration</span> _configuration<span>;</span>
-
-        <span>public</span> <span>QiniuController</span><span>(</span><span>IConfiguration</span> configuration<span>)</span>
-        <span>{</span>
-            _configuration <span>=</span> configuration<span>;</span>
-        <span>}</span>
-
-        <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
-        <span>/// 根据后台配置项，得到请求七牛云的token值，前台也可根据此token值上传至七牛云服务</span>
-        <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
-        <span>/// <span><span><span>&lt;</span>returns</span><span>></span></span><span><span><span>&lt;/</span>returns</span><span>></span></span></span>
-        <span>[</span><span>HttpGet</span><span>(</span><span>"access_token"</span><span>)</span><span>]</span>
-        <span>public</span> <span><span>string</span></span> <span>GetAccessToken</span><span>(</span><span>)</span>
-        <span>{</span>
-            <span>Mac</span> mac <span>=</span> <span>new</span> <span>Mac</span><span>(</span>_configuration<span>[</span><span>"Qiniu:AK"</span><span>]</span><span>,</span> _configuration<span>[</span><span>"Qiniu:SK"</span><span>]</span><span>)</span><span>;</span>
-            <span>PutPolicy</span> putPolicy <span>=</span> <span>new</span> <span>PutPolicy</span> <span>{</span> Scope <span>=</span> _configuration<span>[</span><span>"Qiniu:Bucket"</span><span>]</span> <span>}</span><span>;</span>
-            <span>return</span> Auth<span>.</span><span>CreateUploadToken</span><span>(</span>mac<span>,</span> putPolicy<span>.</span><span>ToJsonString</span><span>(</span><span>)</span><span>)</span><span>;</span>
-        <span>}</span>
-
-        <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
-        <span>/// 上传文件至七牛云,code为200，代表上传成功,其他代表不成功</span>
-        <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
-        <span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>file<span>"</span></span><span>></span></span>单个文件<span><span><span>&lt;/</span>param</span><span>></span></span></span>
-        <span>/// <span><span><span>&lt;</span>returns</span><span>></span></span>new { code = 200, data ="七牛云文件地址，包括http://....mm.png", msg = "上传成功" };<span><span><span>&lt;/</span>returns</span><span>></span></span></span>
-        <span>[</span><span>HttpPost</span><span>(</span><span>"upload"</span><span>)</span><span>]</span>
-        <span>public</span> <span><span>dynamic</span></span> <span>Upload</span><span>(</span><span>IFormFile</span> file<span>)</span>
-        <span>{</span>
-            <span>if</span> <span>(</span>file<span>.</span>Length <span>==</span> <span>0</span><span>)</span>
-            <span>{</span>
-                <span>return</span> <span>new</span> <span>{</span> code <span>=</span> <span>1</span><span>,</span> msg <span>=</span> <span>"文件为空"</span> <span>}</span><span>;</span>
-            <span>}</span>
-
-            <span>FormUploader</span> upload <span>=</span> <span>new</span> <span>FormUploader</span><span>(</span><span>new</span> <span>Config</span><span>(</span><span>)</span>
-            <span>{</span>
-                Zone <span>=</span> Zone<span>.</span>ZONE_CN_South<span>,</span><span>//华南</span>
-                UseHttps <span>=</span> <span>true</span>
-            <span>}</span><span>)</span><span>;</span>
-
-            <span><span>var</span></span> fileName <span>=</span> ContentDispositionHeaderValue
-                <span>.</span><span>Parse</span><span>(</span>file<span>.</span>ContentDisposition<span>)</span>
-                <span>.</span>FileName<span>.</span><span>Trim</span><span>(</span><span>)</span><span>;</span>
-
-            <span><span>string</span></span> qiniuName <span>=</span> _configuration<span>[</span><span>"Qiniu:PrefixPath"</span><span>]</span> <span>+</span> <span>"/"</span> <span>+</span> DateTime<span>.</span>Now<span>.</span><span>ToString</span><span>(</span><span>"yyyyMMddHHmmssffffff"</span><span>)</span> <span>+</span> fileName<span>;</span>
-            <span>Stream</span> stream <span>=</span> file<span>.</span><span>OpenReadStream</span><span>(</span><span>)</span><span>;</span>
-            <span>HttpResult</span> result <span>=</span> upload<span>.</span><span>UploadStream</span><span>(</span>stream<span>,</span> qiniuName<span>,</span> <span>GetAccessToken</span><span>(</span><span>)</span><span>,</span> <span>null</span><span>)</span><span>;</span>
-
-            <span>if</span> <span>(</span>result<span>.</span>Code <span>==</span> <span>200</span><span>)</span>
-            <span>{</span>
-                <span>return</span> <span>new</span> <span>{</span> code <span>=</span> <span>200</span><span>,</span> data <span>=</span> _configuration<span>[</span><span>"Qiniu:Host"</span><span>]</span> <span>+</span> qiniuName<span>,</span> msg <span>=</span> <span>"上传成功"</span> <span>}</span><span>;</span>
-            <span>}</span>
-
-            <span>return</span> <span>new</span> <span>{</span> code <span>=</span> <span>1</span><span>,</span> msg <span>=</span> <span>"上传失败"</span> <span>}</span><span>;</span>
-        <span>}</span>
-    <span>}</span>
-
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br><span>55</span><br><span>56</span><br><span>57</span><br><span>58</span><br><span>59</span><br><span>60</span><br><span>61</span><br><span>62</span><br></div></div><p>Upload 方法中，Zone.ZONE_CN_South，代表华南，所以创建对象存储时要注意，请选择与此相同的位置（华南），或根据实际情况修改 Zone 所在地区的枚举值即可。</p>
-<div><pre><code><span>FormUploader</span> upload <span>=</span> <span>new</span> <span>FormUploader</span><span>(</span><span>new</span> <span>Config</span><span>(</span><span>)</span>
-<span>{</span>
-    Zone <span>=</span> Zone<span>.</span>ZONE_CN_South<span>,</span><span>//华南</span>
-    UseHttps <span>=</span> <span>true</span>
-<span>}</span><span>)</span><span>;</span>
-
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><h2 id="发布至-linux-下的-docker" tabindex="-1"> 发布至 Linux 下的 Docker</h2>
-<p>双击 publish.bat，生成的文件夹为如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/2001974-bcd72707e4fcc7f8.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="image" loading="lazy"></p>
-<p>修改项目名为 qiniu-web，复制 至 linux 服务器中，（xftp 工具）
-<img src="https://upload-images.jianshu.io/upload_images/2001974-48771e9fce281262.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="image" loading="lazy"></p>
-<p>使用 xshell 远程登录后，进入 root 权限。</p>
-<div><pre><code>root@VM-37-104-ubuntu:/home/ubuntu/<span># sudo su</span>
-root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>前置条件，在 ubuntu 上安装好了 docker。并且正常运行。</p>
-<p>-d 代表后台运行，此时将对外显露 5000 端口运行，5000 是运行后，docker 对外的端口，80 是这个服务对外的端口，其中 Dockerfile 存在语句 EXPOSE 80</p>
-<div><pre><code><span>docker</span> build -t igeekfan/qiniu <span>.</span>     <span>#生成images</span>
-<span>docker</span> run -d -p <span>5000</span>:80 igeekfan/qiniu  <span># 生成 container 并运行在5000端口</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>此时打开 浏览器， ip+端口 5000 即可访问服务，请加/swagger。</p>
-<p>本项目已部署至服务器 <a href="http://122.152.192.161:5000/swagger/index.html" target="_blank" rel="noopener noreferrer">http://122.152.192.161:5000/swagger/index.html</a></p>
-<h2 id="运行结果" tabindex="-1"> 运行结果</h2>
-<p><img src="https://upload-images.jianshu.io/upload_images/2001974-2b72cc6338db1434.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="image.png" loading="lazy"></p>
-<h2 id="参考" tabindex="-1"> 参考</h2>
-<ul>
-<li>.NET Core 版本七牛云 SDK 使用<a href="https://www.cnblogs.com/OMango/p/8447480.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/OMango/p/8447480.html</a></li>
-<li>.NET Core 部署至 Linux 下的 Docker <a href="http://blog.igeekfan.cn/2019/06/09/dotnetcore/aspnetcore-Deploy-To-Docker-Ubuntu/" target="_blank" rel="noopener noreferrer">http://blog.igeekfan.cn/2019/06/09/dotnetcore/aspnetcore-Deploy-To-Docker-Ubuntu/</a></li>
-</ul>
-]]></content:encoded>
-      <enclosure url="https://upload-images.jianshu.io/upload_images/2001974-bcd72707e4fcc7f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" type="image/"/>
-    </item>
-    <item>
       <title>认证鉴权状态</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/identityserver4-jwt.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/identityserver4-jwt.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">认证鉴权状态</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/identityserver4-jwt.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/identityserver4-jwt.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">认证鉴权状态</source>
       <pubDate>Wed, 15 Apr 2020 17:09:07 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="认证鉴权状态" tabindex="-1"> 认证鉴权状态</h1>
 <p>认证分为以下情况：当前角色为管理员，该分组配置了权限，该分组未分配某一方法的权限.</p>
@@ -5154,7 +5005,7 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
 <td>未授权、无权限、未登录</td>
 </tr>
 <tr>
-<td>422 UNPROCESSABLE ENTITY</td>
+<td>422  UNPROCESSABLE ENTITY</td>
 <td>令牌失效</td>
 </tr>
 <tr>
@@ -5164,84 +5015,84 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
 </tbody>
 </table>
 <ol>
-<li>未登录，不带 access_token，直接请求需要登录的接口、管理员接口结果一样。</li>
+<li>未登录，不带access_token，直接请求需要登录的接口、管理员接口结果一样。</li>
 </ol>
 <p>返回结果应为：状态码：401 UNAUTHORIZED</p>
-<div><pre><code><span>{</span>
-    <span>"error_code"</span><span>:</span> <span>10000</span><span>,</span>
-    <span>"msg"</span><span>:</span> <span>"认证失败，请检查请求头或者重新登陆"</span><span>,</span>
-    <span>"request"</span><span>:</span> <span>"GET  /cms/admin/authority"</span>
-<span>}</span>
+<div><pre><code>{
+    "error_code": 10000,
+    "msg": "认证失败，请检查请求头或者重新登陆",
+    "request": "GET  /cms/admin/authority"
+}
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><ol start="2">
-<li>携带 access_token，但非超级管理员(admin 字段为 2),访问的方法为角色为超管才有权限的方法。</li>
+<li>携带access_token，但非超级管理员(admin字段为2),访问的方法为角色为超管才有权限的方法。</li>
 </ol>
-<div><pre><code><span>[</span><span><span>LinCmsAuthorize</span><span><span>(</span>Roles <span>=</span> LinGroup<span>.</span>Administrator<span>)</span></span></span><span>]</span>
+<div><pre><code>[LinCmsAuthorize(Roles = LinGroup.Administrator)]
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>返回结果应为：：状态码：401 UNAUTHORIZED</p>
-<div><pre><code><span>{</span>
-    <span>"error_code"</span><span>:</span> <span>10000</span><span>,</span>
-    <span>"msg"</span><span>:</span> <span>"只有超级管理员可操作"</span><span>,</span>
-    <span>"request"</span><span>:</span> <span>"GET  /cms/admin/authority"</span>
-<span>}</span>
+<div><pre><code>{
+    "error_code": 10000,
+    "msg": "只有超级管理员可操作",
+    "request": "GET  /cms/admin/authority"
+}
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><ol start="3">
-<li>携带 access_token ，访问只需要登录的接口（/cms/user/auths）</li>
+<li>携带access_token ，访问只需要登录的接口（/cms/user/auths）</li>
 </ol>
 <p>控制器或方法上指定 <strong>[Authorize]</strong> 或 <strong>[LinCmsAuthorize]</strong> 特性标签时，必须登录才能访问，否则返回第一种结果。</p>
 <p>返回结果应为：状态码：200</p>
-<div><pre><code><span>{</span>
-    <span>"active"</span><span>:</span> <span>1</span><span>,</span>
-    <span>"admin"</span><span>:</span> <span>1</span><span>,</span>
-    <span>"auths"</span><span>:</span> <span>[</span>
-        <span>{</span>
-            <span>"信息"</span><span>:</span> <span>[</span>
-                <span>{</span>
-                    <span>"auth"</span><span>:</span> <span>"查看lin的信息"</span><span>,</span>
-                    <span>"module"</span><span>:</span> <span>"信息"</span>
-                <span>}</span>
-            <span>]</span>
-        <span>}</span>
-    <span>]</span><span>,</span>
-    <span>"avatar"</span><span>:</span> <span>null</span><span>,</span>
-    <span>"create_time"</span><span>:</span> <span>1564372600000</span><span>,</span>
-    <span>"email"</span><span>:</span> <span>"acs@acs.com"</span><span>,</span>
-    <span>"group_id"</span><span>:</span> <span>54</span><span>,</span>
-    <span>"id"</span><span>:</span> <span>112</span><span>,</span>
-    <span>"nickname"</span><span>:</span> <span>"alan"</span><span>,</span>
-    <span>"update_time"</span><span>:</span> <span>1564487059000</span>
-<span>}</span>
+<div><pre><code>{
+    "active": 1,
+    "admin": 1,
+    "auths": [
+        {
+            "信息": [
+                {
+                    "auth": "查看lin的信息",
+                    "module": "信息"
+                }
+            ]
+        }
+    ],
+    "avatar": null,
+    "create_time": 1564372600000,
+    "email": "acs@acs.com",
+    "group_id": 54,
+    "id": 112,
+    "nickname": "alan",
+    "update_time": 1564487059000
+}
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br></div></div><ol start="4">
-<li>携带 access_token，但此用户无访问此方法的权限（即该用户的组别未配置此权限）。</li>
+<li>携带access_token，但此用户无访问此方法的权限（即该用户的组别未配置此权限）。</li>
 </ol>
 <p>返回结果应为：状态码：401 UNAUTHORIZED</p>
-<div><pre><code><span>{</span>
-    <span>"error_code"</span><span>:</span> <span>10000</span><span>,</span>
-    <span>"msg"</span><span>:</span> <span>"权限不够，请联系超级管理员获得权限"</span><span>,</span>
-    <span>"request"</span><span>:</span> <span>"GET  /cms/log/search"</span>
-<span>}</span>
+<div><pre><code>{
+    "error_code": 10000,
+    "msg": "权限不够，请联系超级管理员获得权限",
+    "request": "GET  /cms/log/search"
+}
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><ol start="5">
-<li>携带过期的 access_token 值
+<li>携带过期的access_token值
 返回结果应为：状态码：401 UNAUTHORIZED</li>
 </ol>
-<div><pre><code><span>{</span>
-    <span>"error_code"</span><span>:</span> <span>10050</span><span>,</span>
-    <span>"msg"</span><span>:</span> <span>"令牌过期"</span><span>,</span>
-    <span>"request"</span><span>:</span> <span>"GET  /cms/admin/users"</span>
-<span>}</span>
+<div><pre><code>{
+    "error_code": 10050,
+    "msg": "令牌过期",
+    "request": "GET  /cms/admin/users"
+}
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><ol start="6">
-<li>携带不正常的 access_token 值，后台无法下正常解析出用户信息
+<li>携带不正常的access_token值，后台无法下正常解析出用户信息
 返回结果应为：状态码：422 UNPROCESSABLE ENTITY</li>
 </ol>
-<div><pre><code><span>{</span>
-    <span>"error_code"</span><span>:</span> <span>10040</span><span>,</span>
-    <span>"msg"</span><span>:</span> <span>"令牌失效"</span><span>,</span>
-    <span>"request"</span><span>:</span> <span>"GET  /cms/admin/users"</span>
-<span>}</span>
+<div><pre><code>{
+    "error_code": 10040,
+    "msg": "令牌失效",
+    "request": "GET  /cms/admin/users"
+}
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div>]]></content:encoded>
     </item>
     <item>
       <title>产品设计</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/production-design.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/production-design.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">产品设计</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/production-design.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/production-design.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">产品设计</source>
       <pubDate>Wed, 15 Apr 2020 17:09:07 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="产品设计" tabindex="-1"> 产品设计</h1>
 <h2 id="产品设计-评论模块的设计" tabindex="-1"> 产品设计-评论模块的设计</h2>
@@ -5250,15 +5101,15 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
 <p>用户操作：</p>
 <ul>
 <li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-0"><label for="task-item-0"> 评论随笔(内容支持超链接、emoji)</label></li>
-<li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-1"><label for="task-item-1"> 点赞评论/取消点赞</label></li>
-<li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-2"><label for="task-item-2"> 回复评论</label></li>
-<li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-3"><label for="task-item-3"> 删除自己的评论</label></li>
+<li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-1"><label for="task-item-1">  点赞评论/取消点赞</label></li>
+<li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-2"><label for="task-item-2">  回复评论</label></li>
+<li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-3"><label for="task-item-3">  删除自己的评论</label></li>
 </ul>
 <p>运营操作：</p>
 <ul>
-<li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-4"><label for="task-item-4"> 审核通过/拉黑评论</label></li>
-<li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-5"><label for="task-item-5"> 删除任何评论</label></li>
-<li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-6"><label for="task-item-6"> 拉黑后的显示逻辑。（保留当前区块、显示内容为：该评论因违规被拉黑）</label></li>
+<li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-4"><label for="task-item-4">  审核通过/拉黑评论</label></li>
+<li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-5"><label for="task-item-5">  删除任何评论</label></li>
+<li><input type="checkbox" checked="checked" disabled="disabled" id="task-item-6"><label for="task-item-6">  拉黑后的显示逻辑。（保留当前区块、显示内容为：该评论因违规被拉黑）</label></li>
 <li>删除：（如果是二级评论，直接软删除，如果是一级评论，软删除子评论和当前评论-需要提前提醒用户）
 交互设计</li>
 <li>评论的字数长度（500）、emoji。</li>
@@ -5272,16 +5123,16 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
 <h2 id="排行榜见解" tabindex="-1"> 排行榜见解</h2>
 <p>排行榜从心理学上分析，主要从四个方面影响着您：<strong>寻找权威 、参与比较 、关注主流 、自我确认。</strong></p>
 <p>如何设计一个简单的排行榜呢。。</p>
-<p>在一个博客随笔中，我们设计一个 3 天、七天（周榜）、30 天（月榜）、全部的榜单。以浏览量（权重 1）、点赞量（20）、评论量（30)。权重可自己定义。</p>
+<p>在一个博客随笔中，我们设计一个3天、七天（周榜）、30天（月榜）、全部的榜单。以浏览量（权重1）、点赞量（20）、评论量（30)。权重可自己定义。</p>
 <p>1.默认取最新的随笔</p>
-<p>前台传 create_time 时，使用如下 sql</p>
+<p>前台传create_time时，使用如下sql</p>
 <div><pre><code>select * from `blog_article` order by create_time desc;
-</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>2.传排序方式为最近 n 天的热榜时。</p>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>2.传排序方式为最近n天的热榜时。</p>
 <p>参数：THREE_DAYS_HOTTEST（三天）、WEEKLY_HOTTEST(七天）、MONTHLY_HOTTEST（一个月）、HOTTEST（全部）</p>
 <p>mysql 查询当前日期时间前三天数据</p>
 <div><pre><code>select date_sub(now() ,interval 3 day);
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>根据权重查询</p>
-<div><pre><code>select * from `blog_article` a
+<div><pre><code>select * from `blog_article` a 
 where a.`create_time`>(select date_sub(now() ,interval 3 day))
 order by (a.`view_hits` + a.`likes_quantity` * 20 + a.`comment_quantity` * 30) DESC, a.`create_time` DESC
 
@@ -5293,180 +5144,18 @@ order by (a.`view_hits` + a.`likes_quantity` * 20 + a.`comment_quantity` * 30) D
 <h2 id="更多参考" tabindex="-1"> 更多参考</h2>
 <ul>
 <li><a href="http://www.woshipm.com/pd/1255548.html" target="_blank" rel="noopener noreferrer">万字长文深度分析：产品排行榜的设计和玩法</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/52322777" target="_blank" rel="noopener noreferrer">想知道谁是你的最佳用户？基于 Redis 实现排行榜周期榜与最近 N 期榜</a></li>
-</ul>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>获取控制器及方法特性标签</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/reflex-assembly-get-controller-methods-attribute.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/reflex-assembly-get-controller-methods-attribute.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">获取控制器及方法特性标签</source>
-      <pubDate>Wed, 15 Apr 2020 17:09:07 GMT</pubDate>
-      <content:encoded><![CDATA[<h1 id="获取控制器及方法特性标签" tabindex="-1"> 获取控制器及方法特性标签</h1>
-<blockquote>
-<p>.NET Core 反射获取所有控制器及方法上特定标签.</p>
-</blockquote>
-<p>有个需求，就是在. NET Core 中，我们想在项目 启动时，获取 LinCmsAuthorizeAttribute 这个特性标签所有出现的地方，把他的参数，放入一个集合并缓存起来，以便后面使用此数据用于权限验证。</p>
-<p>我们通过反射获取所有控制器下及方法的 Attribute。</p>
-<h2 id="lincmsauthorizeattribute-是什么" tabindex="-1"> LinCmsAuthorizeAttribute 是什么</h2>
-<p>其代码非常简单，用于自定义权限验证，通过重写 OnAuthorizationAsync 方法，实现固定权限可分配给动态角色（也能分配给动态用户）。主要就<strong>基于权限的授权</strong>的实现进行研究，实现方法级别的权限验证。</p>
-<ul>
-<li><a href="https://www.cnblogs.com/RainingNight/p/dynamic-authorization-in-aspnetcore.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/RainingNight/p/dynamic-authorization-in-aspnetcore.html</a></li>
-</ul>
-<p>当然，这个只是部分代码，完整代码请查看最下方开源地址，其中 LinCmsAuthorizeAttribute 继承 AuthorizeAttribute，拥有指定角色权限控制，当 Permission 未指定时，当过滤器与 Authorize 功能相同。Module 是指模块，即多个权限，属于同一个模块，方便前台展示为树型结构。Permission 属性的值不可重复。</p>
-<div><pre><code><span>[</span><span><span>AttributeUsage</span><span><span>(</span>AttributeTargets<span>.</span>Class <span>|</span> AttributeTargets<span>.</span>Method<span>,</span> AllowMultiple <span>=</span> <span>true</span><span>)</span></span></span><span>]</span>
-<span>public</span> <span>class</span> <span>LinCmsAuthorizeAttribute</span> <span>:</span> <span><span>AuthorizeAttribute</span><span>,</span> <span>IAsyncAuthorizationFilter</span></span>
-<span>{</span>
-    <span>public</span> <span><span>string</span></span> Permission <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
-    <span>public</span> <span><span>string</span></span> Module <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
-
-    <span>public</span> <span>LinCmsAuthorizeAttribute</span><span>(</span><span>)</span>
-    <span>{</span>
-
-    <span>}</span>
-
-    <span>public</span> <span>LinCmsAuthorizeAttribute</span><span>(</span><span><span>string</span></span> permission<span>,</span><span><span>string</span></span> module<span>)</span>
-    <span>{</span>
-        Permission <span>=</span> permission<span>;</span>
-        Module <span>=</span> module<span>;</span>
-    <span>}</span>
-
-    <span>public</span> <span>LinCmsAuthorizeAttribute</span><span>(</span><span><span>string</span></span> permission<span>,</span><span><span>string</span></span> module<span>,</span> <span><span>string</span></span> policy<span>)</span> <span>:</span> <span>base</span><span>(</span>policy<span>)</span>
-    <span>{</span>
-        Permission <span>=</span> permission<span>;</span>
-        Module <span>=</span> module<span>;</span>
-    <span>}</span>
-
-    <span>public</span> <span>async</span> <span>Task</span> <span>OnAuthorizationAsync</span><span>(</span><span>AuthorizationFilterContext</span> context<span>)</span>
-    <span>{</span>
-        <span>if</span> <span>(</span>Permission <span>==</span> <span>null</span><span>)</span> <span>return</span><span>;</span>
-        <span><span>var</span></span> authorizationService <span>=</span> <span>(</span>IAuthorizationService<span>)</span>context<span>.</span>HttpContext<span>.</span>RequestServices<span>.</span><span>GetService</span><span>(</span><span>typeof</span><span>(</span><span>IAuthorizationService</span><span>)</span><span>)</span><span>;</span>
-        <span><span>var</span></span> authorizationResult <span>=</span> <span>await</span> authorizationService<span>.</span><span>AuthorizeAsync</span><span>(</span>context<span>.</span>HttpContext<span>.</span>User<span>,</span> <span>null</span><span>,</span> <span>new</span> <span>OperationAuthorizationRequirement</span><span>(</span><span>)</span> <span>{</span> Name <span>=</span> Permission <span>}</span><span>)</span><span>;</span>
-        <span>if</span> <span>(</span><span>!</span>authorizationResult<span>.</span>Succeeded<span>)</span>
-        <span>{</span>
-            context<span>.</span>Result <span>=</span> <span>new</span> <span>ForbidResult</span><span>(</span><span>)</span><span>;</span>
-        <span>}</span>
-    <span>}</span>
-
-    <span>public</span> <span>override</span> <span><span>string</span></span> <span>ToString</span><span>(</span><span>)</span>
-    <span>{</span>
-        <span>return</span> <span><span>$"\"</span><span><span>{</span><span><span>base</span><span>.</span><span>ToString</span><span>(</span><span>)</span></span><span>}</span></span><span>\",\"Permission:</span><span><span>{</span><span>Permission</span><span>}</span></span><span>\",\"Module:</span><span><span>{</span><span>Module</span><span>}</span></span><span>\",\"Roles:</span><span><span>{</span><span>Roles</span><span>}</span></span><span>\",\"Policy:</span><span><span>{</span><span>Policy</span><span>}</span></span><span>\",\"AuthenticationSchemes:</span><span><span>{</span><span>AuthenticationSchemes</span><span>}</span></span><span>\""</span></span><span>;</span>
-    <span>}</span>
-<span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br></div></div><h2 id="controller" tabindex="-1"> Controller</h2>
-<p>在 LinCms.Web 中的 Controller，至于为什么 Permission 为中文，目前的主要原因，此项目用于适配 <a href="https://github.com/TaleLin/lin-cms-vue" target="_blank" rel="noopener noreferrer">Lin-CMS-VUE</a>项目,所以于平常我们以某个字符串作为权限名不同，但不须大惊小怪，道理相同。</p>
-<div><pre><code>[Route("cms/log")]
-[ApiController]
-public class LogController : ControllerBase
-{
-    private readonly ILogService _logService;
-
-    public LogController(ILogService logService)
-    {
-        _logService = logService;
-    }
-
-    [HttpGet("users")]
-    [LinCmsAuthorize("查询日志记录的用户", "日志")]
-    public List&lt;string> GetLoggedUsers([FromQuery]PageDto pageDto)
-    {
-        return _logService.GetLoggedUsers(pageDto);
-    }
-
-
-    [HttpGet]
-    [LinCmsAuthorize("查询所有日志", "日志")]
-    public PagedResultDto&lt;LinLog> GetLogs([FromQuery]LogSearchDto searchDto)
-    {
-        return _logService.GetLogUsers(searchDto);
-    }
-
-    [HttpGet("search")]
-    [LinCmsAuthorize("搜索日志", "日志")]
-    public PagedResultDto&lt;LinLog> SearchLogs([FromQuery]LogSearchDto searchDto)
-    {
-        return _logService.GetLogUsers(searchDto);
-    }
-}
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br></div></div><h2 id="测试类获取方法上的特定标签" tabindex="-1"> 测试类获取方法上的特定标签</h2>
-<p>in xunit test 项目工程中，开始我们的测试</p>
-<div><pre><code>[Fact]
-public void GetAssemblyMethodsAttributes()
-{
-    var assembly = typeof(Startup).Assembly.GetTypes().AsEnumerable()
-        .Where(type => typeof(ControllerBase).IsAssignableFrom(type)).ToList();
-
-    assembly.ForEach(r =>
-    {
-        foreach (var methodInfo in r.GetMethods())
-        {
-            foreach (Attribute attribute in methodInfo.GetCustomAttributes())
-            {
-                if (attribute is LinCmsAuthorizeAttribute linCmsAuthorize)
-                {
-                    _testOutputHelper.WriteLine(linCmsAuthorize.ToString());
-                }
-            }
-        }
-    });
-}
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br></div></div><h2 id="方法结果" tabindex="-1"> 方法结果</h2>
-<p>可在输出文本中查看，正是我们想要的东西，最后一行，是其他 Controller 中的内容，而且我们重写了 ToString(),所以我们能看到其属性。</p>
-<div><pre><code>"LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:查询日志记录的用户","Module:日志","Roles:","Policy:","AuthenticationSchemes:"
-"LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:查询所有日志","Module:日志","Roles:","Policy:","AuthenticationSchemes:"
-"LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:搜索日志","Module:日志","Roles:","Policy:","AuthenticationSchemes:"
-"LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:查看lin的信息","Module:信息","Roles:","Policy:","AuthenticationSchemes:"
-
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><h2 id="获取控制器上特性标签" tabindex="-1"> 获取控制器上特性标签</h2>
-<div><pre><code>/// &lt;summary>
-/// 获取控制器上的LinCmsAuthorizeAttribute
-/// &lt;/summary>
-/// "LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:","Module:","Roles:Administrator","Policy:","AuthenticationSchemes:"
-[Fact]
-public void GetControllerAttributes()
-{
-    var assembly = typeof(Startup).Assembly.GetTypes().AsEnumerable()
-        .Where(type => typeof(ControllerBase).IsAssignableFrom(type)).ToList();
-
-    assembly.ForEach(d =>
-    {
-        var linCmsAuthorize = d.GetCustomAttribute&lt;LinCmsAuthorizeAttribute>();
-        if (linCmsAuthorize != null)
-        {
-            _testOutputHelper.WriteLine(linCmsAuthorize.ToString());
-        }
-    });
-}
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br></div></div><h2 id="controller-结果" tabindex="-1"> Controller 结果</h2>
-<p>只有 AdminController 加了此标签，所以只有一行。</p>
-<div><pre><code>"LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:","Module:","Roles:Administrator","Policy:","AuthenticationSchemes:"
-</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>此时 Roles 为 Administrator，Permission 及 Module 都是 null，
-这是因为只有 AdminController 中加了 LinGroup.Administrator=&quot;Administrator&quot;字符串，在登录过程中，已经给当前登录用户设置了 new Claim(ClaimTypes.Role,user.IsAdmin()?LinGroup.Administrator:user.GroupId.ToString())，即&quot;Administrator,当用户访问 AdminController 中的方法时，LinCmsAuthorize 并没有做相关验证，都是 AuthorizeAttribute，实现了固定角色权限的判断及登录的判断。LinCmsAuthorize 完成了固定权限设置为不同的动态角色后，判断用户是否拥有此权限。</p>
-<div><pre><code>[LinCmsAuthorize(Roles = LinGroup.Administrator)]
-public class AdminController : ControllerBase
-{
-    ...
-}
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><h2 id="参考" tabindex="-1"> 参考</h2>
-<ul>
-<li>c# – 如何在 asp. net core rc2 中获取控制器的自定义属性 <a href="https://codeday.me/bug/20181207/453278.html" target="_blank" rel="noopener noreferrer">https://codeday.me/bug/20181207/453278.html</a></li>
-<li></li>
-</ul>
-<h2 id="开源地址" tabindex="-1"> 开源地址</h2>
-<ul>
-<li><a href="github.com/luoyunchong/lin-cms-dotnetcore">github.com/luoyunchong/lin-cms-dotnetcore</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/52322777" target="_blank" rel="noopener noreferrer">想知道谁是你的最佳用户？基于Redis实现排行榜周期榜与最近N期榜</a></li>
 </ul>
 ]]></content:encoded>
     </item>
     <item>
       <title>全局敏感词处理</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/stopwords.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/stopwords.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">全局敏感词处理</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/stopwords.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/stopwords.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">全局敏感词处理</source>
       <pubDate>Wed, 15 Apr 2020 17:09:07 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="全局敏感词处理" tabindex="-1"> 全局敏感词处理</h1>
-<p>基于 ToolGood.Words 类库，配合敏感字的文本文件，写的 API 接口。</p>
+<p>基于ToolGood.Words类库，配合敏感字的文本文件，写的API接口。</p>
 <ul>
 <li><a href="https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-stopwords" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-stopwords</a></li>
 </ul>
@@ -5488,7 +5177,7 @@ public void IssuesTest_17()
     Assert.Equal("我是中美国人厉害**完美***ddb好的", str);
 }
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><p>配合敏感库文本文件，写的工具类</p>
-<p>二个文件放到 wwwroot/_Illegal 目录下，通过 ReplaceStopWords 方法调用即可对</p>
+<p>二个文件放到wwwroot/_Illegal目录下，通过ReplaceStopWords方法调用即可对</p>
 <ul>
 <li><a href="https://github.com/toolgood/ToolGood.Words/blob/master/csharp/ToolGood.Words.Test/_Illegal/IllegalKeywords.txt" target="_blank" rel="noopener noreferrer">https://github.com/toolgood/ToolGood.Words/blob/master/csharp/ToolGood.Words.Test/_Illegal/IllegalKeywords.txt</a></li>
 <li><a href="https://github.com/toolgood/ToolGood.Words/blob/master/csharp/ToolGood.Words.Test/_Illegal/IllegalUrls.txt" target="_blank" rel="noopener noreferrer">https://github.com/toolgood/ToolGood.Words/blob/master/csharp/ToolGood.Words.Test/_Illegal/IllegalUrls.txt</a></li>
@@ -5565,8 +5254,8 @@ public void IssuesTest_17()
         return search;
     }
 }
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br><span>55</span><br><span>56</span><br><span>57</span><br><span>58</span><br><span>59</span><br><span>60</span><br><span>61</span><br><span>62</span><br><span>63</span><br><span>64</span><br><span>65</span><br><span>66</span><br><span>67</span><br><span>68</span><br><span>69</span><br><span>70</span><br><span>71</span><br><span>72</span><br></div></div><h2 id="_2-循环使用-replace" tabindex="-1"> 2. 循环使用 Replace</h2>
-<p>方案：通过维护敏感库，循环 replace
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br><span>55</span><br><span>56</span><br><span>57</span><br><span>58</span><br><span>59</span><br><span>60</span><br><span>61</span><br><span>62</span><br><span>63</span><br><span>64</span><br><span>65</span><br><span>66</span><br><span>67</span><br><span>68</span><br><span>69</span><br><span>70</span><br><span>71</span><br><span>72</span><br></div></div><h2 id="_2-循环使用replace" tabindex="-1"> 2. 循环使用Replace</h2>
+<p>方案：通过维护敏感库，循环replace
 大佬分享给我的，稍微改成了从文件中获取敏感字。</p>
 <div><pre><code>public static class StopWords
 {
@@ -5619,8 +5308,8 @@ public void IssuesTest_17()
         return that;
     }
 }
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br></div></div><h2 id="freesql-全局处理敏感词" tabindex="-1"> FreeSql 全局处理敏感词</h2>
-<p>使用 FreeSql 这个 ORM 时，全局处理 string 类型的值，进行敏感词处理。代码在 StartUp.cs 的构造函数中。</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br></div></div><h2 id="freesql全局处理敏感词" tabindex="-1"> FreeSql全局处理敏感词</h2>
+<p>使用FreeSql这个ORM时，全局处理string类型的值，进行敏感词处理。代码在StartUp.cs的构造函数中。</p>
 <div><pre><code>//敏感词处理
 IllegalWordsSearch illegalWords = ToolGoodUtils.GetIllegalWordsSearch();
 
@@ -5642,9 +5331,9 @@ Fsql.Aop.AuditValue += (s, e) =>
     </item>
     <item>
       <title>Newtonsoft.Json基础问题</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/newtonsoft-json-question.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/newtonsoft-json-question.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">Newtonsoft.Json基础问题</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/newtonsoft-json-question.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/newtonsoft-json-question.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Newtonsoft.Json基础问题</source>
       <pubDate>Wed, 15 Apr 2020 16:23:14 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="newtonsoft-json基础问题" tabindex="-1"> Newtonsoft.Json基础问题</h1>
 <p>它是.NET下的一个序列化、反序化的基础类库，更基础的用法还是看别人的吧，这里只说一些遇到的问题。</p>
@@ -5787,9 +5476,9 @@ ProcessDictionaryKeys 功能：A flag indicating whether dictionary keys should 
     </item>
     <item>
       <title>About</title>
-      <link>https://igeekfan.cn/about/</link>
-      <guid>https://igeekfan.cn/about/</guid>
-      <source url="https://igeekfan.cn/rss.xml">About</source>
+      <link>https://igeekfan.cn/igeekfan-docs/about/</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/about/</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">About</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="about" tabindex="-1"> About</h1>
 <h2 id="欢迎" tabindex="-1"> 欢迎</h2>
@@ -5812,9 +5501,9 @@ ProcessDictionaryKeys 功能：A flag indicating whether dictionary keys should 
     </item>
     <item>
       <title>ColorUI</title>
-      <link>https://igeekfan.cn/colorui/docs/</link>
-      <guid>https://igeekfan.cn/colorui/docs/</guid>
-      <source url="https://igeekfan.cn/rss.xml">ColorUI</source>
+      <link>https://igeekfan.cn/igeekfan-docs/colorui/docs/</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/colorui/docs/</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">ColorUI</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="colorui" tabindex="-1"> ColorUI</h1>
 <h2 id="github" tabindex="-1"> github</h2>
@@ -5829,9 +5518,9 @@ ProcessDictionaryKeys 功能：A flag indicating whether dictionary keys should 
     </item>
     <item>
       <title>Button 按钮</title>
-      <link>https://igeekfan.cn/colorui/docs/button.html</link>
-      <guid>https://igeekfan.cn/colorui/docs/button.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">Button 按钮</source>
+      <link>https://igeekfan.cn/igeekfan-docs/colorui/docs/button.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/colorui/docs/button.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Button 按钮</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="button-按钮" tabindex="-1"> Button 按钮</h1>
 <div><pre><code>&lt;button>默认&lt;/button>
@@ -5864,9 +5553,9 @@ button.cuIcon.lg
     </item>
     <item>
       <title>Text 文本</title>
-      <link>https://igeekfan.cn/colorui/docs/text.html</link>
-      <guid>https://igeekfan.cn/colorui/docs/text.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">Text 文本</source>
+      <link>https://igeekfan.cn/igeekfan-docs/colorui/docs/text.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/colorui/docs/text.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Text 文本</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="text-文本" tabindex="-1"> Text 文本</h1>
 <div><pre><code>.text-xs 
@@ -5936,9 +5625,9 @@ button.cuIcon.lg
     </item>
     <item>
       <title>创建简单Hello World</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/Console-Hello-World.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/Console-Hello-World.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">创建简单Hello World</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/Console-Hello-World.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/Console-Hello-World.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">创建简单Hello World</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="创建简单hello-world" tabindex="-1"> 创建简单Hello World</h1>
 <h2 id="源码" tabindex="-1"> 源码</h2>
@@ -5998,9 +5687,9 @@ Hello John!
     </item>
     <item>
       <title>.NET Core 简单测试项目</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/Console-News-Types.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/Console-News-Types.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">.NET Core 简单测试项目</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/Console-News-Types.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/Console-News-Types.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">.NET Core 简单测试项目</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="net-core-简单测试项目" tabindex="-1"> .NET Core 简单测试项目</h1>
 <p>使用PowerShell的dotnet cli命令行创建控制台项目，测试项目，测试项目引用控制台项目。</p>
@@ -6049,9 +5738,9 @@ Microsoft (R) 测试执行命令行工具版本 16.0.1
     </item>
     <item>
       <title>RESTful+FreeSql+AutoMapper</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/FreeSql-sample-blog-RESTful-use-automapper.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/FreeSql-sample-blog-RESTful-use-automapper.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">RESTful+FreeSql+AutoMapper</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/FreeSql-sample-blog-RESTful-use-automapper.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/FreeSql-sample-blog-RESTful-use-automapper.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">RESTful+FreeSql+AutoMapper</source>
       <description> RESTful+FreeSql+AutoMapper
  文章概述
 本文使用ASP .NET Core的WEB API，构建一个RESTful风格的接口，使用Freesql访问MySQL数据库，实现二个表的简单博客，并集成AutoMapper。
@@ -6397,9 +6086,9 @@ PS &gt; dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection -
     </item>
     <item>
       <title>IdentityServer4</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/IdentityServer4.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/IdentityServer4.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">IdentityServer4</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/IdentityServer4.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/IdentityServer4.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">IdentityServer4</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="identityserver4" tabindex="-1"> IdentityServer4</h1>
 <h2 id="写的一些identityserver4的示例" tabindex="-1"> 写的一些IdentityServer4的示例</h2>
@@ -6414,9 +6103,9 @@ PS &gt; dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection -
     </item>
     <item>
       <title>ImCore 即时通讯</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/ImCore-Chat.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/ImCore-Chat.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">ImCore 即时通讯</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/ImCore-Chat.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/ImCore-Chat.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">ImCore 即时通讯</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="imcore-即时通讯" tabindex="-1"> ImCore 即时通讯</h1>
 <h2 id="简介" tabindex="-1"> 简介</h2>
@@ -6432,9 +6121,9 @@ PS &gt; dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection -
     </item>
     <item>
       <title>.NET Core 学习示例文档</title>
-      <link>https://igeekfan.cn/dotnetcore/examples/</link>
-      <guid>https://igeekfan.cn/dotnetcore/examples/</guid>
-      <source url="https://igeekfan.cn/rss.xml">.NET Core 学习示例文档</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">.NET Core 学习示例文档</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="net-core-学习示例文档" tabindex="-1"> .NET Core 学习示例文档</h1>
 <p>浏览左侧导航菜单以深入了解文档.</p>
@@ -6525,9 +6214,9 @@ PS C:\WINDOWS\system32&gt; dotnet --list-sdks
     </item>
     <item>
       <title>认证鉴权状态</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/IdentityServer4-JWT.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/IdentityServer4-JWT.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">认证鉴权状态</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/IdentityServer4-JWT.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/IdentityServer4-JWT.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">认证鉴权状态</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="认证鉴权状态" tabindex="-1"> 认证鉴权状态</h1>
 <p>认证分为以下情况：当前角色为管理员，该分组配置了权限，该分组未分配某一方法的权限.</p>
@@ -6630,9 +6319,9 @@ PS C:\WINDOWS\system32&gt; dotnet --list-sdks
     </item>
     <item>
       <title>产品设计</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/Production-Design.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/Production-Design.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">产品设计</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/Production-Design.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/Production-Design.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">产品设计</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="产品设计" tabindex="-1"> 产品设计</h1>
 <h2 id="产品设计-评论模块的设计" tabindex="-1"> 产品设计-评论模块的设计</h2>
@@ -6690,9 +6379,9 @@ order by (a.`view_hits` + a.`likes_quantity` * 20 + a.`comment_quantity` * 30) D
     </item>
     <item>
       <title>全局敏感词处理</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/StopWords.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/StopWords.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">全局敏感词处理</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/StopWords.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/StopWords.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">全局敏感词处理</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="全局敏感词处理" tabindex="-1"> 全局敏感词处理</h1>
 <p>基于ToolGood.Words类库，配合敏感字的文本文件，写的API接口。</p>
@@ -6871,9 +6560,9 @@ Fsql.Aop.AuditValue += (s, e) =>
     </item>
     <item>
       <title>开发起步</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/dev-start.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/dev-start.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">开发起步</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/dev-start.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/dev-start.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">开发起步</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="开发起步" tabindex="-1"> 开发起步</h1>
 <h2 id="项目结构" tabindex="-1"> 项目结构</h2>
@@ -6983,23 +6672,23 @@ Fsql.Aop.AuditValue += (s, e) =>
 <h3 id="freesql" tabindex="-1"> FreeSql</h3>
 <ul>
 <li>
-<p><a href="/dotnetcore/examples/freesql-in-aspnetcore-webapi-how-to-use.html">主要在介绍FreeSql在ASP.NTE Core WebApi中如何使用的过程，完成一个最简单的博客系统的后端接口</a></p>
+<p><a href="/dotnetcore/examples/freesql-in-aspnetcore-webapi-how-to-use.html" target="_blank" rel="noopener noreferrer">主要在介绍FreeSql在ASP.NTE Core WebApi中如何使用的过程，完成一个最简单的博客系统的后端接口</a></p>
 </li>
 <li>
-<p><a href="/dotnetcore/examples/freesql-sample-blog-restful-use-automapper.html">本文使用ASP .NET Core的WEB API，构建一个RESTful风格的接口，使用Freesql访问MySQL数据库，实现二个表的简单博客，并集成AutoMapper。</a></p>
+<p><a href="/dotnetcore/examples/freesql-sample-blog-restful-use-automapper.html" target="_blank" rel="noopener noreferrer">本文使用ASP .NET Core的WEB API，构建一个RESTful风格的接口，使用Freesql访问MySQL数据库，实现二个表的简单博客，并集成AutoMapper。</a></p>
 </li>
 </ul>
 <h3 id="identityserver4" tabindex="-1"> IdentityServer4</h3>
 <ul>
-<li><a href="/dotnetcore/examples/IdentityServer4.html">IdentityServer4 在本项目中的应用</a></li>
+<li><a href="/dotnetcore/examples/IdentityServer4.html" target="_blank" rel="noopener noreferrer">IdentityServer4 在本项目中的应用</a></li>
 </ul>
 ]]></content:encoded>
     </item>
     <item>
       <title>后端准备</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/dotnetcore-start.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/dotnetcore-start.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">后端准备</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/dotnetcore-start.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/dotnetcore-start.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">后端准备</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="后端准备" tabindex="-1"> 后端准备</h1>
 <h2 id="server-端必备环境" tabindex="-1"> Server 端必备环境</h2>
@@ -7114,9 +6803,9 @@ Fsql.Aop.AuditValue += (s, e) =>
     </item>
     <item>
       <title>code</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/error-code.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/error-code.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">code</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/error-code.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/error-code.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">code</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="code" tabindex="-1"> code</h1>
 <h2 id="核心库内置已使用状态码" tabindex="-1"> 核心库内置已使用状态码</h2>
@@ -7140,9 +6829,9 @@ Fsql.Aop.AuditValue += (s, e) =>
     </item>
     <item>
       <title>功能模块的设计</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/pm-design-modules.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/pm-design-modules.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">功能模块的设计</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/pm-design-modules.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/pm-design-modules.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">功能模块的设计</source>
       <category>lin-cms-dotnetcore</category>
       <pubDate>Sun, 24 Nov 2019 12:44:22 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="功能模块的设计" tabindex="-1"> 功能模块的设计</h1>
@@ -7402,9 +7091,9 @@ update_time	        datetime
     </item>
     <item>
       <title>GitHub第三方授权登录</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/spa-github-login.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/spa-github-login.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">GitHub第三方授权登录</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/spa-github-login.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/spa-github-login.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">GitHub第三方授权登录</source>
       <category>lin-cms-dotnetcore</category>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<p>使用 SPA+.NET Core3.1 实现 GitHub 第三方授权登录 类似使用 AspNet.Security.OAuth.GitHub，前端使用如下：VUE+Vue-Router+axios</p>
@@ -7768,9 +7457,9 @@ config: {url: "https://localhost:5001/GetOpenIdByToken"}
     </item>
     <item>
       <title>前端准备</title>
-      <link>https://igeekfan.cn/dotnetcore/lin-cms/vue-start.html</link>
-      <guid>https://igeekfan.cn/dotnetcore/lin-cms/vue-start.html</guid>
-      <source url="https://igeekfan.cn/rss.xml">前端准备</source>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/vue-start.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/vue-start.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">前端准备</source>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="前端准备" tabindex="-1"> 前端准备</h1>
 <h2 id="开源地址" tabindex="-1"> 开源地址</h2>

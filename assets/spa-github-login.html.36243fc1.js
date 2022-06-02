@@ -1,0 +1,252 @@
+import{_ as i}from"./plugin-vue_export-helper.21dcd24c.js";import{r,c as l,a as n,b as a,F as u,e,d as t,o}from"./app.c32635e1.js";const p={},c=n("p",null,"\u4F7F\u7528 SPA+.NET Core3.1 \u5B9E\u73B0 GitHub \u7B2C\u4E09\u65B9\u6388\u6743\u767B\u5F55 \u7C7B\u4F3C\u4F7F\u7528 AspNet.Security.OAuth.GitHub\uFF0C\u524D\u7AEF\u4F7F\u7528\u5982\u4E0B\uFF1AVUE+Vue-Router+axios",-1),b=n("h2",{id:"aspnet-security-oauth-github",tabindex:"-1"},[n("a",{class:"header-anchor",href:"#aspnet-security-oauth-github","aria-hidden":"true"},"#"),e(" AspNet.Security.OAuth.GitHub")],-1),d=e("GitHub "),m={href:"https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers",target:"_blank",rel:"noopener noreferrer"},h=e("https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers"),g=n("h2",{id:"github-\u6388\u6743\u767B\u5F55",tabindex:"-1"},[n("a",{class:"header-anchor",href:"#github-\u6388\u6743\u767B\u5F55","aria-hidden":"true"},"#"),e(" GitHub \u6388\u6743\u767B\u5F55")],-1),q=n("p",null,"\u4EC0\u4E48\u914D\u7F6E\u7684\u8FC7\u7A0B\u4E0D\u8BF4\u4E86\u3002\u3002\u6709\u4E00\u63A8\u3002",-1),v={href:"https://www.jianshu.com/p/78d186aeb526",target:"_blank",rel:"noopener noreferrer"},_=e("GitHub \u7B2C\u4E09\u65B9\u767B\u5F55"),x={href:"https://juejin.im/post/5dfb04cee51d45583a66c2f3",target:"_blank",rel:"noopener noreferrer"},f=e("\u7ED9\u4F60\u7684\u7F51\u7AD9\u6DFB\u52A0\u7B2C\u4E09\u65B9\u767B\u5F55\u4EE5\u53CA\u77ED\u4FE1\u9A8C\u8BC1\u529F\u80FD"),C=t(`<p>\u4E0B\u9762\u4E3A\u793A\u4F8B</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>client_id:0be6b05fc717bfc4fb67
+client_secret:dcaced9f176afba64e89d88b9b06ffc4a887a609
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>Get</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>https://github.com/login/oauth/authorize?client_id=0be6b05fc717bfc4fb67&amp;redirect_uri=https://localhost:5001/signin-github
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><p>\u4F1A\u91CD\u5B9A\u5411\u5230</p>`,5),A={href:"https://localhost:5001/signin-github?code=07537a84d12bbae08361",target:"_blank",rel:"noopener noreferrer"},y=e("https://localhost:5001/signin-github?code=07537a84d12bbae08361"),k=t(`<p>\u8FD9\u4E2A code \u653E\u5230\u4E0B\u9762\u7684\u8BF7\u6C42\u4E2D\uFF0C\u83B7\u53D6 access_token POST \u65B9\u5F0F\uFF08PostMan \u53BB\u8BF7\u6C42\uFF09</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>https://github.com/login/oauth/access_token?client_id=0be6b05fc717bfc4fb67&amp;client_secret=dcaced9f176afba64e89d88b9b06ffc4a887a609&amp;code=07537a84d12bbae08361
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><p>Get \u65B9\u5F0F</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>https://api.github.com/user?access_token=787506afa3271d077b98f18af56d7cfdc8db43b4
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><p>\u7136\u540E\u5C31\u80FD\u83B7\u53D6\u7528\u6237\u4FE1\u606F</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>{
+   &quot;login&quot;: &quot;luoyunchong&quot;,
+   &quot;id&quot;: 18613266,
+   &quot;node_id&quot;: &quot;MDQ6VXNlcjE4NjEzMjY2&quot;,
+   &quot;avatar_url&quot;: &quot;https://avatars1.githubusercontent.com/u/18613266?v=4&quot;,
+   &quot;gravatar_id&quot;: &quot;&quot;,
+   &quot;url&quot;: &quot;https://api.github.com/users/luoyunchong&quot;,
+   &quot;html_url&quot;: &quot;https://github.com/luoyunchong&quot;,
+   &quot;followers_url&quot;: &quot;https://api.github.com/users/luoyunchong/followers&quot;,
+   &quot;following_url&quot;: &quot;https://api.github.com/users/luoyunchong/following{/other_user}&quot;,
+   &quot;gists_url&quot;: &quot;https://api.github.com/users/luoyunchong/gists{/gist_id}&quot;,
+   &quot;starred_url&quot;: &quot;https://api.github.com/users/luoyunchong/starred{/owner}{/repo}&quot;,
+   &quot;subscriptions_url&quot;: &quot;https://api.github.com/users/luoyunchong/subscriptions&quot;,
+   &quot;organizations_url&quot;: &quot;https://api.github.com/users/luoyunchong/orgs&quot;,
+   &quot;repos_url&quot;: &quot;https://api.github.com/users/luoyunchong/repos&quot;,
+   &quot;events_url&quot;: &quot;https://api.github.com/users/luoyunchong/events{/privacy}&quot;,
+   &quot;received_events_url&quot;: &quot;https://api.github.com/users/luoyunchong/received_events&quot;,
+   &quot;type&quot;: &quot;User&quot;,
+   &quot;site_admin&quot;: false,
+   &quot;name&quot;: &quot;IGeekFan&quot;,
+   &quot;company&quot;: null,
+   &quot;blog&quot;: &quot;https://blog.igeekfan.cn&quot;,
+   &quot;location&quot;: null,
+   &quot;email&quot;: &quot;luoyunchong@foxmail.com&quot;,
+   &quot;hireable&quot;: null,
+   &quot;bio&quot;: &quot;\u5B66\u4E60\u4E4B\u8DEF\u6F2B\u6F2B\u65E0\u671F\u3002&quot;,
+   &quot;public_repos&quot;: 14,
+   &quot;public_gists&quot;: 0,
+   &quot;followers&quot;: 16,
+   &quot;following&quot;: 11,
+   &quot;created_at&quot;: &quot;2016-04-22T10:33:44Z&quot;,
+   &quot;updated_at&quot;: &quot;2019-12-21T14:49:33Z&quot;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><h2 id="net-core3-1" tabindex="-1"><a class="header-anchor" href="#net-core3-1" aria-hidden="true">#</a> .NET Core3.1</h2><p>\u4EE5\u4E0B\u4EE3\u7801\u4E3A\u4E3B\u8981\u4EE3\u7801\uFF0C\u5B8C\u6574\u4EE3\u7801\u770B\u4E0B\u9762\u7684 DEMO \u94FE\u63A5\u3002</p><p>\u4F7F\u7528 WebApi \u65F6\uFF0C\u770B\u4E86\u4E00\u4E9B\u9879\u76EE\uFF0C\u5168\u662F\u57FA\u4E8E MVC \u7ED3\u6784\u7684\uFF0C\u90FD\u4E0D\u662F\u6211\u60F3\u8981\u7684\u3002\u770B\u4E86\u4E00\u4E9B\u535A\u5BA2\u4E0A\u9762\u4ECB\u7ECD ,\u6B65\u9AA4\u90FD\u662F\u5343\u7BC7\u4E00\u5F8B\uFF0C\u90FD\u662F\u914D\u5408\u524D\u540E\u7AEF\u5206\u79BB\u7684\u3002</p><ul><li>\u524D\u7AEF\u8FD0\u884C\u5728:http://localhost:8081</li><li>\u540E\u7AEF\u8FD0\u884C\u5728:https://localhost:5001</li></ul><h3 id="\u524D\u540E\u7AEF\u5206\u79BB\u7684-spa-\u914D\u5408\u7B2C\u4E09\u65B9\u6388\u6743\u767B\u5F55\u6D41\u7A0B\u5982\u4E0B" tabindex="-1"><a class="header-anchor" href="#\u524D\u540E\u7AEF\u5206\u79BB\u7684-spa-\u914D\u5408\u7B2C\u4E09\u65B9\u6388\u6743\u767B\u5F55\u6D41\u7A0B\u5982\u4E0B" aria-hidden="true">#</a> \u524D\u540E\u7AEF\u5206\u79BB\u7684 SPA \u914D\u5408\u7B2C\u4E09\u65B9\u6388\u6743\u767B\u5F55\u6D41\u7A0B\u5982\u4E0B</h3><p>\u672C\u5730\u6D4B\u8BD5\u65F6\uFF0CgitHub \u56DE\u8C03\u5730\u5740\u8BBE\u7F6E http(s)\u{1F615}/ip:\u7AEF\u53E3/signin-github</p><ul><li>\u5982: https://localhost:5001/signin-github\u3002</li></ul><h4 id="_1-\u4E0A\u9762\u8FD9\u4E2A\u660E\u660E\u586B\u5199\u7684\u540E\u7AEF\u7684\u5730\u5740-\u90A3\u540E\u7AEF\u600E\u4E48\u628A\u7ED3\u679C\u901A\u77E5\u524D\u7AEF\u5462" tabindex="-1"><a class="header-anchor" href="#_1-\u4E0A\u9762\u8FD9\u4E2A\u660E\u660E\u586B\u5199\u7684\u540E\u7AEF\u7684\u5730\u5740-\u90A3\u540E\u7AEF\u600E\u4E48\u628A\u7ED3\u679C\u901A\u77E5\u524D\u7AEF\u5462" aria-hidden="true">#</a> 1. \u4E0A\u9762\u8FD9\u4E2A\u660E\u660E\u586B\u5199\u7684\u540E\u7AEF\u7684\u5730\u5740\uFF0C\u90A3\u540E\u7AEF\u600E\u4E48\u628A\u7ED3\u679C\u901A\u77E5\u524D\u7AEF\u5462\uFF1F</h4><p>\u524D\u7AEF\u8BF7\u6C42<strong>https://localhost:5001/signin?provider=GitHub&amp;redirectUrl=http://localhost:8080/login-result</strong></p><ul><li>\u63D0\u4F9B\u53C2\u6570 provider \u4E3A GitHub\uFF0C</li><li>redirectUrl \u4E3A GitHub \u6388\u6743\u767B\u5F55\u540E\uFF0C\u56DE\u8C03 signin-github \u540E\uFF0C\u540E\u7AEF\u518D\u53BB\u91CD\u5B9A\u5411\u7684\u5730\u5740\uFF0C\u8FD9\u91CC\u586B\u524D\u7AEF\u7684\u4E00\u4E2A\u8DEF\u7531\u3002</li></ul><h4 id="_2-\u540E\u7AEF\u53EA\u63D0\u4F9B\u4E86-signin-signin-callback-\u8DEF\u7531-\u6CA1\u6709-signin-github-\u90A3-github-\u4E0A\u914D\u7F6E\u7684\u8DEF\u7531\u662F\u600E\u4E48\u56DE\u8C03\u56DE\u6765\u5462" tabindex="-1"><a class="header-anchor" href="#_2-\u540E\u7AEF\u53EA\u63D0\u4F9B\u4E86-signin-signin-callback-\u8DEF\u7531-\u6CA1\u6709-signin-github-\u90A3-github-\u4E0A\u914D\u7F6E\u7684\u8DEF\u7531\u662F\u600E\u4E48\u56DE\u8C03\u56DE\u6765\u5462" aria-hidden="true">#</a> 2. \u540E\u7AEF\u53EA\u63D0\u4F9B\u4E86 signin\uFF0Csignin-callback \u8DEF\u7531\uFF0C\u6CA1\u6709 signin-github\uFF0C\u90A3 github \u4E0A\u914D\u7F6E\u7684\u8DEF\u7531\u662F\u600E\u4E48\u56DE\u8C03\u56DE\u6765\u5462\uFF1F</h4>`,17),I={href:"https://docs.microsoft.com/zh-cn/aspnet/core/security/authentication/social/google-logins?view=aspnetcore-3.1",target:"_blank",rel:"noopener noreferrer"},S=e("google-\u767B\u5F55\uFF0C\u5FAE\u8F6F\u6587\u6863"),H=e("\uFF0C\u5176\u4E2D\u6709\u4E00\u4E2A"),w=n("strong",null,"\u66F4\u6539\u9ED8\u8BA4\u56DE\u8C03 URI",-1),G=e(",\u901A\u8FC7 AddGitHub \u4E2D\u7684 CallbackPath \u5C5E\u6027\u914D\u7F6E\u3002"),T=t(`<p>\u4ECB\u7ECD\u4E86\u56DE\u8C03\u5730\u5740\u5E94\u914D\u7F6E signin-google,\u6240\u4EE5\u8FD9\u91CC\u5E94\u8BE5\u662F signin-github\uFF0C\u4ED6\u662F\u53EF\u4EE5\u914D\u7F6E\u7684\uFF0C\u4E0D\u9700\u8981\u81EA\u5DF1\u5199\u7A0B\u5E8F\u5904\u7406 signin-google \u8FD9\u4E2A\u8DEF\u7531\uFF0C\u5185\u90E8\u6709\u4E2D\u95F4\u4EF6\u5DF2\u7ECF\u5904\u7406\u4E86\u3002</p><h4 id="_3-\u56DE\u8C03\u5230-signin-github-\u540E-\u540E\u7AEF\u600E\u4E48\u5904\u7406-\u624D\u80FD\u8BA9\u524D\u7AEF\u5237\u65B0\u3002\u83B7\u53D6\u767B\u5F55\u540E\u7684\u4FE1\u606F\u5462\u3002" tabindex="-1"><a class="header-anchor" href="#_3-\u56DE\u8C03\u5230-signin-github-\u540E-\u540E\u7AEF\u600E\u4E48\u5904\u7406-\u624D\u80FD\u8BA9\u524D\u7AEF\u5237\u65B0\u3002\u83B7\u53D6\u767B\u5F55\u540E\u7684\u4FE1\u606F\u5462\u3002" aria-hidden="true">#</a> 3. \u56DE\u8C03\u5230 signin-github \u540E\uFF0C\u540E\u7AEF\u600E\u4E48\u5904\u7406\uFF0C\u624D\u80FD\u8BA9\u524D\u7AEF\u5237\u65B0\u3002\u83B7\u53D6\u767B\u5F55\u540E\u7684\u4FE1\u606F\u5462\u3002</h4><p>\u5177\u4F53\u4E0A\u9762\u7684\u6839\u636E code \u83B7\u53D6 access_token\uFF0C\u6839\u636E access_token \u83B7\u53D6\u7528\u6237\u7684\u4FE1\u606F\u7684\u8FC7\u7A0B\uFF0C\u8FD9\u4E9B\u5904\u7406\u7684\u8FC7\u7A0B\uFF0C\u90FD\u4E0D\u9700\u8981\u6211\u4EEC\u81EA\u5DF1\u5904\u7406\u3002\u6211\u4EEC\u53EF\u4EE5\u7528\u76F4\u63A5\u83B7\u53D6\u7528\u6237\u4FE1\u606F\u3002</p><p>\u4E00\u4E2A\u65B9\u6CD5 SignIn,\u53EA\u8981<strong>return Challenge(properties, provider);</strong>\uFF0C</p><ul><li>provider \u4E3A GitHub\uFF0C</li><li>properties var properties = new AuthenticationProperties { RedirectUri = url };</li></ul><p>\u8FD9\u4E2A url \u4E3A\u53E6\u4E00\u4E2A\u83B7\u53D6\u7528\u6237\u4FE1\u606F\u7684\u8DEF\u7531\uFF0C\u53EA\u8981\u62FC\u63A5\u597D\u5730\u5740\u5373\u53EF\u3002</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>var authenticateResult = await _contextAccessor.HttpContext.AuthenticateAsync(provider);
+string email = authenticateResult.Principal.FindFirst(ClaimTypes.Email)?.Value;
+string name = authenticateResult.Principal.FindFirst(ClaimTypes.Name)?.Value;
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>\u9700\u8981\u6CE8\u5165</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>private readonly IHttpContextAccessor _contextAccessor;
+public AuthenticationController( IHttpContextAccessor contextAccessor)
+{
+    _contextAccessor = contextAccessor;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="\u4EE3\u7801\u90E8\u7F72-\u7B80\u5316" tabindex="-1"><a class="header-anchor" href="#\u4EE3\u7801\u90E8\u7F72-\u7B80\u5316" aria-hidden="true">#</a> \u4EE3\u7801\u90E8\u7F72\uFF08\u7B80\u5316\uFF09</h3><p>\u6253\u5F00 NuGet \u5305\u7BA1\u7406,\u5B89\u88C5\u5305</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>Install-Package AspNet.Security.OAuth.GitHub
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><p>appSettings.json</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>&quot;Authentication&quot;: {
+    &quot;GitHub&quot;: {
+      &quot;ClientId&quot;: &quot;0be6b05fc717bfc4fb67&quot;,
+      &quot;ClientSecret&quot;: &quot;dcaced9f176afba64e89d88b9b06ffc4a887a609&quot;
+    }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>add \u6269\u5C55\u65B9\u6CD5</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>public static class JwtConfiguration
+{
+    public static void AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration)
+    {
+
+        services.AddAuthentication(opts =&gt;
+            {
+                opts.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddCookie(options =&gt;
+        {
+            options.LoginPath = &quot;/signin&quot;;
+            options.LogoutPath = &quot;/signout&quot;;
+        }).AddGitHub(options =&gt;
+        {
+            options.ClientId = configuration[&quot;Authentication:GitHub:ClientId&quot;];
+            options.ClientSecret = configuration[&quot;Authentication:GitHub:ClientSecret&quot;];
+        });
+    }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>\u9ED8\u8BA4\u60C5\u51B5\u4E0B\uFF0C\u5982\u5934\u50CF\uFF0Cemail\uFF0C\u662F\u6CA1\u6709\u83B7\u53D6\u7684\u3002</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>.AddGitHub(options =&gt;
+{
+    options.ClientId = configuration[&quot;Authentication:GitHub:ClientId&quot;];
+    options.ClientSecret = configuration[&quot;Authentication:GitHub:ClientSecret&quot;];
+    //options.CallbackPath = new PathString(&quot;~/signin-github&quot;);//\u4E0EGitHub\u4E0A\u7684\u56DE\u8C03\u5730\u5740\u76F8\u540C\uFF0C\u9ED8\u8BA4\u5373\u662F/signin-github
+    options.Scope.Add(&quot;user:email&quot;);
+    //authenticateResult.Principal.FindFirst(LinConsts.Claims.AvatarUrl)?.Value;  \u5F97\u5230GitHub\u5934\u50CF
+    options.ClaimActions.MapJsonKey(LinConsts.Claims.AvatarUrl, &quot;avatar_url&quot;);
+    options.ClaimActions.MapJsonKey(LinConsts.Claims.BIO, &quot;bio&quot;);
+    options.ClaimActions.MapJsonKey(LinConsts.Claims.BlogAddress, &quot;blog&quot;);
+});
+
+#\u5176\u4E2DLinConsts\u7C7B\u4E3A\u9759\u6001\u5E38\u91CF
+public static class LinConsts
+{
+    public static class Claims
+    {
+        public const string BIO = &quot;urn:github:bio&quot;;
+        public const string AvatarUrl = &quot;urn:github:avatar_url&quot;;
+        public const string BlogAddress = &quot;urn:github:blog&quot;;
+    }
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>startup.cs</p><p>ConfigureServices \u4E2D\u914D\u7F6E\u6B64\u670D\u52A1</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>    services.AddSingleton&lt;IHttpContextAccessor, HttpContextAccessor&gt;();
+    services.AddJwtConfiguration(Configuration);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>\u521B\u5EFA AuthenticationController.cs \u589E\u52A0 SignIn\uFF0C\u7528\u4E8E\u5904\u7406\u7528\u6237\u6388\u6743\u6210\u529F\u540E\uFF0C\u91CD\u5B9A\u56DE signin-callback,\u5E76\u5C06\u53C2\u6570\u5E26\u56DE\u3002</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>        private readonly IHttpContextAccessor _contextAccessor;
+        private readonly IConfiguration _configuration;
+
+        public AuthenticationController(IHttpContextAccessor contextAccessor, IConfiguration configuration)
+        {
+            _contextAccessor = contextAccessor;
+            _configuration = configuration;
+        }
+
+        [HttpGet(&quot;~/signin&quot;)]
+        public async Task&lt;IActionResult&gt; SignIn(string provider, string redirectUrl)
+        {
+            var request = _contextAccessor.HttpContext.Request;
+            var url =
+                $&quot;{request.Scheme}://{request.Host}{request.PathBase}{request.Path}-callback?provider={provider}&amp;redirectUrl={redirectUrl}&quot;;
+            var properties = new AuthenticationProperties { RedirectUri = url };
+            properties.Items[&quot;LoginProviderKey&quot;] = provider;
+            return Challenge(properties, provider);
+
+        }
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>\u5728 signin \u65B9\u6CD5\u4E2D\uFF0C\u7528\u6237\u70B9\u51FB\u6388\u6743\u540E\uFF08\u7B2C\u4E00\u6B21\uFF09\uFF0C\u4F1A\u6839\u636E\u5176\u4F20\u9012\u7684 URL\uFF0C\u91CD\u5B9A\u5411\u5230\u8FD9\u4E2A\u5730\u5740\uFF0Csignin-callback,\u53C2\u6570\u4E5F\u4F1A\u4E00\u540C\u643A\u5E26\u3002provider \u4E3A GitHub,redirectUrl \u4E3A\uFF1Ahttp://localhost:8081/login-result.</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>[HttpGet(&quot;~/signin-callback&quot;)]
+public async Task&lt;IActionResult&gt; Home(string provider = null, string redirectUrl = &quot;&quot;)
+{
+    var authenticateResult = await _contextAccessor.HttpContext.AuthenticateAsync(provider);
+    if (!authenticateResult.Succeeded) return Redirect(redirectUrl);
+    var openIdClaim = authenticateResult.Principal.FindFirst(ClaimTypes.NameIdentifier);
+    if (openIdClaim == null || string.IsNullOrWhiteSpace(openIdClaim.Value))
+        return Redirect(redirectUrl);
+
+    //TODO \u8BB0\u5F55\u6388\u6743\u6210\u529F\u540E\u7684\u4FE1\u606F
+
+    string email = authenticateResult.Principal.FindFirst(ClaimTypes.Email)?.Value;
+    string name = authenticateResult.Principal.FindFirst(ClaimTypes.Name)?.Value;
+    string gitHubName = authenticateResult.Principal.FindFirst(GitHubAuthenticationConstants.Claims.Name)?.Value;
+    string gitHubUrl = authenticateResult.Principal.FindFirst(GitHubAuthenticationConstants.Claims.Url)?.Value;
+    //startup \u4E2D AddGitHub\u914D\u7F6E\u9879  options.ClaimActions.MapJsonKey(LinConsts.Claims.AvatarUrl, &quot;avatar_url&quot;);
+    string avatarUrl = authenticateResult.Principal.FindFirst(LinConsts.Claims.AvatarUrl)?.Value;
+
+    return Redirect($&quot;{redirectUrl}?openId={openIdClaim.Value}&quot;);
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>\u8FD9\u65F6\u5019\u6211\u4EEC\u80FD\u83B7\u53D6\u7528\u6237\u4FE1\u606F\u4E86\u3002\u90A3\u4E48\u524D\u7AEF\u600E\u4E48\u529E\u5462\u3002\u6211\u4EEC\u5199\u4E2A\u65B9\u6CD5\uFF0C\u83B7\u53D6\u7528\u6237\u4FE1\u606F\uFF0C\u770B\u770B\u6548\u679C\u3002</p><ul><li>\u6D4F\u89C8\u5668\u76F4\u63A5\u6253\u5F00\u80FD\u5F97\u5230 github \u7684 id\u3002</li><li>axios GET \u8BF7\u6C42 https://localhost:5001/OpenId \u5F97\u5230 null</li></ul><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>[HttpGet(&quot;~/OpenId&quot;)]
+public async Task&lt;string&gt; OpenId(string provider = null)
+{
+   var authenticateResult = await _contextAccessor.HttpContext.AuthenticateAsync(provider);
+   if (!authenticateResult.Succeeded) return null;
+   var openIdClaim = authenticateResult.Principal.FindFirst(ClaimTypes.NameIdentifier);
+   return openIdClaim?.Value;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>\u6211\u8BB0\u5F97\u4E4B\u524D\u4F20 Token \u65F6\uFF0C\u540E\u53F0\u662F\u53EF\u4EE5\u8FD9\u6837\u83B7\u53D6\u7684\u3002</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>[HttpGet(&quot;~/GetOpenIdByToken&quot;)]
+public string GetOpenIdByToken()
+{
+    return User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>LoginResult.vue \u5728 created \u751F\u547D\u5468\u671F\u4E2D\u3002\u90FD\u662F\u5F97\u5230 null</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>axios({
+  methods: &quot;get&quot;,
+  url: &quot;https://localhost:5001/OpenId?provider=GitHub&quot;
+})
+  .then(function(response) {
+    // handle success
+    console.log(response);
+  })
+
+axios({
+  methods: &quot;get&quot;,
+  url: &quot;https://localhost:5001/GetOpenIdByToken&quot;
+})
+  .then(function(response) {
+    // handle success
+    console.log(response);
+  })
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h3 id="\u4E3A\u4EC0\u4E48\u5462" tabindex="-1"><a class="header-anchor" href="#\u4E3A\u4EC0\u4E48\u5462" aria-hidden="true">#</a> \u4E3A\u4EC0\u4E48\u5462\uFF1F\uFF1F\uFF1F</h3><p>\u56E0\u4E3A\u524D\u540E\u7AEF\u5206\u79BB\uFF0C\u4E0D\u662F\u57FA\u4E8E Cookies \u7684\u3002http \u662F\u65E0\u72B6\u6001\u7684\u3002\u6BCF\u6B21\u8BF7\u6C42\u65E0\u6CD5\u533A\u5206\u7528\u6237\u7684\u3002\u6211\u4EEC\u53EF\u4EE5\u6839\u636E\u5F53\u524D\u7684 ClaimsPrincipal\uFF0C\u6839\u636E JWT \u751F\u6210\u76F8\u5E94\u7684 Token\uFF0Caxios \u8BF7\u6C42\u65F6\uFF0C\u653E\u5230 headers \u4E2D\u3002</p><p>\u5B89\u88C5\u5305</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>Install-Package Microsoft.AspNetCore.Authentication.JwtBearer
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br></div></div><p>AppSettings.json \u914D\u7F6E\u6539\u6210</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>&quot;Authentication&quot;: {
+&quot;JwtBearer&quot;: {
+  &quot;SecurityKey&quot;: &quot;JWTStudyWebsite_DI20DXU3&quot;,
+  &quot;Issuer&quot;: &quot;JWTStudy&quot;,
+  &quot;Audience&quot;: &quot;JWTStudyWebsite&quot;
+},
+&quot;GitHub&quot;: {
+  &quot;ClientId&quot;: &quot;0be6b05fc717bfc4fb67&quot;,
+  &quot;ClientSecret&quot;: &quot;dcaced9f176afba64e89d88b9b06ffc4a887a609&quot;
+}
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>\u5728 signin-callback \u8DEF\u7531\u4E2D\uFF0C\u5F97\u5230 authenticateResult.Principal\uFF0C\u5176\u4E2D\u9ED8\u8BA4\u5305\u542B\u4E86(id,login,name,url)\uFF0C\u6388\u6743\u5F97\u5230 eamil\uFF0C\u53E6\u5916 MapJsonKey \u6269\u5C55\u4E86\u4EE5\u4E0B\u5B57\u6BB5\uFF08avatar_url\u3001bio\u3001blog)</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>var authenticateResult = await _contextAccessor.HttpContext.AuthenticateAsync(provider);
+string token = this.CreateToken(authenticateResult.Principal);
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>\u6839\u636E ClaimsPrincipal \u503C\u751F\u6210 token \u503C\u3002</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>private string CreateToken(ClaimsPrincipal claimsPrincipal)
+{
+
+    var handler = new JwtSecurityTokenHandler();
+    var key = new SymmetricSecurityKey(
+        Encoding.UTF8.GetBytes(_configuration[&quot;Authentication:JwtBearer:SecurityKey&quot;]));
+    var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+    var token = new JwtSecurityToken(
+        _configuration[&quot;Authentication:JwtBearer:Issuer&quot;],
+        _configuration[&quot;Authentication:JwtBearer:Audience&quot;],
+        claimsPrincipal.Claims,
+        expires: DateTime.Now.AddMinutes(30),
+        signingCredentials: credentials
+    );
+
+    return handler.WriteToken(token);
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>\u8FD9\u91CC\u7684 claimsPrincipal \u662F\u4EC0\u4E48\u5462\u3002\u7B80\u5355\u7684\u8BF4\u5C31\u662F\u4E00\u4E2A\u5B58\u6709 github \u6388\u6743\u4FE1\u606F\u7684\u5BF9\u8C61\uFF0C\u53EF\u4EE5\u89E3\u6790\u51FA\u5BF9\u5E94\u7684 Clamis\uFF0C\u8FD9\u91CC\u5176\u5B9E\u5C31\u662F\u7528\u4E86 Clamis \u7684\u5C5E\u6027\u503C\u3002</p><table><thead><tr><th>Claim</th><th>ClaimsIdentity</th><th>ClaimsPrincipal</th></tr></thead><tbody><tr><td>id\u3001name,url,email,avatar_url \u7B49</td><td>\u7531\u591A\u7EC4 Claim \u7EC4\u6210\uFF0C\u8FD9\u91CC\u53EF\u6307 GitHub \u6388\u6743\u767B\u5F55\u540E\u5F97\u5230\u7684\u90A3\u4E2A\u5BF9\u8C61\u3002</td><td>ClaimsIdentity \u7684\u6301\u6709\u8005</td></tr></tbody></table>`,44),P=e("\u5177\u4F53 Jwt \u7684\u751F\u6210\u4E0E\u914D\u7F6E\u9879\u3002\u8FD9\u91CC\u4E0D\u8BE6\u7EC6\u8BF4\u660E\u3002\u53EF\u4EE5\u770B\u8FD9\u4E2A\u793A\u4F8B\uFF08.NET Core2.2\uFF09"),J={href:"https://github.com/luoyunchong/BasicTemplate",target:"_blank",rel:"noopener noreferrer"},R=e("https://github.com/luoyunchong/BasicTemplate"),V=t(`<p>AddJwtConfiguration \u6539\u6210\u5982\u4E0B\u5185\u5BB9</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>public static void AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration)
+{
+
+    services.AddAuthentication(opts =&gt;
+        {
+            opts.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddCookie(options =&gt;
+    {
+        options.LoginPath = &quot;/signin&quot;;
+        options.LogoutPath = &quot;/signout&quot;;
+    }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =&gt;
+    {
+        options.Audience = configuration[&quot;Authentication:JwtBearer:Audience&quot;];
+
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            // The signing key must match!
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.ASCII.GetBytes(configuration[&quot;Authentication:JwtBearer:SecurityKey&quot;])),
+
+            // Validate the JWT Issuer (iss) claim
+            ValidateIssuer = true,
+            ValidIssuer = configuration[&quot;Authentication:JwtBearer:Issuer&quot;],
+
+            // Validate the JWT Audience (aud) claim
+            ValidateAudience = true,
+            ValidAudience = configuration[&quot;Authentication:JwtBearer:Audience&quot;],
+
+            // Validate the token expiry
+            ValidateLifetime = true,
+
+            // If you want to allow a certain amount of clock drift, set that here
+            //ClockSkew = TimeSpan.Zero
+        };
+    }).AddGitHub(options =&gt;
+    {
+        options.ClientId = configuration[&quot;Authentication:GitHub:ClientId&quot;];
+        options.ClientSecret = configuration[&quot;Authentication:GitHub:ClientSecret&quot;];
+        //options.CallbackPath = new PathString(&quot;~/signin-github&quot;);//\u4E0EGitHub\u4E0A\u7684\u56DE\u8C03\u5730\u5740\u76F8\u540C\uFF0C\u9ED8\u8BA4\u5373\u662F/signin-github
+        options.Scope.Add(&quot;user:email&quot;);
+        //authenticateResult.Principal.FindFirst(LinConsts.Claims.AvatarUrl)?.Value;  \u5F97\u5230GitHub\u5934\u50CF
+        options.ClaimActions.MapJsonKey(LinConsts.Claims.AvatarUrl, &quot;avatar_url&quot;);
+        options.ClaimActions.MapJsonKey(LinConsts.Claims.BIO, &quot;bio&quot;);
+        options.ClaimActions.MapJsonKey(LinConsts.Claims.BlogAddress, &quot;blog&quot;);
+    });
+}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br></div></div>`,2),B={href:"https://github.com/luoyunchong/dotnetcore-examples/blob/master/aspnetcore-oatuth2/spa-vue-oauth2/src/components/LoginResult.vue",target:"_blank",rel:"noopener noreferrer"},U=e("\u524D\u7AEF LoginResult.vue \u4EE3\u7801"),F=t(`<p>\u524D\u7AEF\u8FD0\u884C</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>yarn install
+yarn serve
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>\u70B9\u51FB GitHub \u767B\u5F55</p><p>GetOpenIdByToken \u6839\u636E\u751F\u6210\u7684 token \u503C\uFF0C\u89E3\u6790\u51FA\u4E86\u7528\u6237 id,\u8FD9\u6837\u524D\u7AEF\u5728 login-result \u8FD9\u4E2A\u7EC4\u4EF6\u4E2D\uFF0C\u628A token \u4FDD\u5B58\u597D\uFF0C\u5E76\u91CD\u5B9A\u5411\u81EA\u5DF1\u7684\u4E3B\u9875\uFF0C\u83B7\u53D6\u7528\u6237\u6240\u6709\u4FE1\u606F\u5373\u53EF\u3002</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>data: 18613266
+status: 200
+config: {url: &quot;https://localhost:5001/GetOpenIdByToken&quot;}
+</code></pre><div class="line-numbers" aria-hidden="true"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>OpenId?provider=GitHub \u5219\u5F97\u4E0D\u5230\u6570\u636E\uFF0C\u53EA\u80FD\u6D4F\u89C8\u5668\u76F4\u63A5\u8BF7\u6C42 https://localhost:5001/OpenId?provider=GitHub\uFF0C\u624D\u80FD\u5230 github \u7684 id\u3002\u8FD9\u4E2A\u9002\u5E94\u4E8E\u524D\u540E\u7AEF\u4E0D\u5206\u79BB\uFF0C\u6216\u8005\u5C5E\u4E8E\u4E4B\u524D\u6211\u4EEC\u7ECF\u5E38\u4F7F\u7528 MVC \u7ED3\u6784\uFF0C\u540C\u4E00\u57DF\u540D\u4E0B\uFF0C\u540C\u4E00\u7AEF\u53E3\uFF0C\u57FA\u4E8E Cookies \u767B\u5F55\u7684\u5224\u65AD\u3002</p><h2 id="\u53C2\u8003" tabindex="-1"><a class="header-anchor" href="#\u53C2\u8003" aria-hidden="true">#</a> \u53C2\u8003</h2>`,7),N={href:"https://www.cnblogs.com/rsls/p/10522649.html",target:"_blank",rel:"noopener noreferrer"},L=e(".net Core2.2 WebApi \u901A\u8FC7 OAuth2.0 \u5B9E\u73B0\u5FAE\u4FE1\u767B\u5F55"),O={href:"https://blog.csdn.net/weixin_30414305/article/details/101389325",target:"_blank",rel:"noopener noreferrer"},D=e("AspNetCore3.0 \u548C JWT"),K={href:"http://www.woshipm.com/pd/509712.html",target:"_blank",rel:"noopener noreferrer"},M=e("\u7528\u6237\u7CFB\u7EDF\u8BBE\u8BA1\uFF1A\u7B2C\u4E09\u65B9\u6388\u6743\u3001\u8D26\u53F7\u7ED1\u5B9A\u53CA\u89E3\u7ED1\uFF08\u4E0B\uFF09"),E=n("h2",{id:"demo-\u793A\u4F8B",tabindex:"-1"},[n("a",{class:"header-anchor",href:"#demo-\u793A\u4F8B","aria-hidden":"true"},"#"),e(" Demo \u793A\u4F8B")],-1),W=e("GitHub "),j={href:"https://github.com/luoyunchong/dotnetcore-examples/blob/master/aspnetcore-oatuth2",target:"_blank",rel:"noopener noreferrer"},z=e("https://github.com/luoyunchong/dotnetcore-examples/blob/master/aspnetcore-oatuth2");function Z(X,$){const s=r("ExternalLinkIcon");return o(),l(u,null,[c,b,n("ul",null,[n("li",null,[d,n("a",m,[h,a(s)])])]),g,q,n("ul",null,[n("li",null,[n("a",v,[_,a(s)])]),n("li",null,[n("a",x,[f,a(s)])])]),C,n("p",null,[n("a",A,[y,a(s)])]),k,n("p",null,[n("a",I,[S,a(s)]),H,w,G]),T,n("p",null,[P,n("a",J,[R,a(s)])]),V,n("p",null,[n("a",B,[U,a(s)])]),F,n("ul",null,[n("li",null,[n("a",N,[L,a(s)])]),n("li",null,[n("a",O,[D,a(s)])]),n("li",null,[n("a",K,[M,a(s)])])]),E,n("ul",null,[n("li",null,[W,n("a",j,[z,a(s)])])])],64)}var nn=i(p,[["render",Z],["__file","spa-github-login.html.vue"]]);export{nn as default};

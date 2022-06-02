@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
-  <id>https://igeekfan.cn/en/</id>
+  <id>https://igeekfan.cn/igeekfan-docs/en/</id>
   <title>IGeekFan Documents</title>
   <subtitle>IGeekFan Documents</subtitle>
-  <updated>2022-06-02T11:20:26.644Z</updated>
+  <updated>2022-06-02T11:45:34.637Z</updated>
   <generator>vuepress-plugin-feed2</generator>
-  <link rel="self" href="https://igeekfan.cn/atom.xml"/>
-  <link rel="alternate" href="https://igeekfan.cn/en/"/>
+  <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
+  <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/en/"/>
 </feed>
