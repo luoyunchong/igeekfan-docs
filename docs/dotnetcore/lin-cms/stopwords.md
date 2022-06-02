@@ -1,14 +1,16 @@
-
 # 全局敏感词处理
 
-基于ToolGood.Words类库，配合敏感字的文本文件，写的API接口。
+基于 ToolGood.Words 类库，配合敏感字的文本文件，写的 API 接口。
+
 - [https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-stopwords](https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-stopwords)
 
 一共二种方式
 
 ## 1.ToolGood.Words
+
 类库配合敏感库
--  [ToolGood.Words](https://github.com/toolgood/ToolGood.Words)
+
+- [ToolGood.Words](https://github.com/toolgood/ToolGood.Words)
 
 简单用法
 
@@ -24,12 +26,13 @@ public void IssuesTest_17()
     Assert.Equal("我是中美国人厉害**完美***ddb好的", str);
 }
 ```
+
 配合敏感库文本文件，写的工具类
 
+二个文件放到 wwwroot/\_Illegal 目录下，通过 ReplaceStopWords 方法调用即可对
 
-二个文件放到wwwroot/_Illegal目录下，通过ReplaceStopWords方法调用即可对
-- [https://github.com/toolgood/ToolGood.Words/blob/master/csharp/ToolGood.Words.Test/_Illegal/IllegalKeywords.txt](https://github.com/toolgood/ToolGood.Words/blob/master/csharp/ToolGood.Words.Test/_Illegal/IllegalKeywords.txt)
-- [https://github.com/toolgood/ToolGood.Words/blob/master/csharp/ToolGood.Words.Test/_Illegal/IllegalUrls.txt](https://github.com/toolgood/ToolGood.Words/blob/master/csharp/ToolGood.Words.Test/_Illegal/IllegalUrls.txt)
+- [https://github.com/toolgood/ToolGood.Words/blob/master/csharp/ToolGood.Words.Test/\_Illegal/IllegalKeywords.txt](https://github.com/toolgood/ToolGood.Words/blob/master/csharp/ToolGood.Words.Test/_Illegal/IllegalKeywords.txt)
+- [https://github.com/toolgood/ToolGood.Words/blob/master/csharp/ToolGood.Words.Test/\_Illegal/IllegalUrls.txt](https://github.com/toolgood/ToolGood.Words/blob/master/csharp/ToolGood.Words.Test/_Illegal/IllegalUrls.txt)
 
 ```
 public class ToolGoodUtils
@@ -105,10 +108,11 @@ public class ToolGoodUtils
     }
 }
 ```
-## 2. 循环使用Replace
-方案：通过维护敏感库，循环replace 
-大佬分享给我的，稍微改成了从文件中获取敏感字。
 
+## 2. 循环使用 Replace
+
+方案：通过维护敏感库，循环 replace
+大佬分享给我的，稍微改成了从文件中获取敏感字。
 
 ```
 public static class StopWords
@@ -164,8 +168,10 @@ public static class StopWords
 }
 ```
 
-## FreeSql全局处理敏感词
-使用FreeSql这个ORM时，全局处理string类型的值，进行敏感词处理。代码在StartUp.cs的构造函数中。
+## FreeSql 全局处理敏感词
+
+使用 FreeSql 这个 ORM 时，全局处理 string 类型的值，进行敏感词处理。代码在 StartUp.cs 的构造函数中。
+
 ```
 //敏感词处理
 IllegalWordsSearch illegalWords = ToolGoodUtils.GetIllegalWordsSearch();
@@ -185,4 +191,3 @@ Fsql.Aop.AuditValue += (s, e) =>
     }
 };
 ```
-

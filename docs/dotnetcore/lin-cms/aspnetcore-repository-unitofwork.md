@@ -1,13 +1,17 @@
-## ASP.NETCore下FreeSql的仓储事务
+# ASP.NETCore 下 FreeSql 的仓储事务
+
 #### 第一步：配置 Startup.cs 注入
+
 引入包
 
-```cs   
+```cs
 dotnet add package FreeSql
 dotnet add package FreeSql.DbContext
 dotnet add package FreeSql.Provider.MySqlConnector
 ```
+
 配置 Startup.cs 注入
+
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -27,9 +31,10 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 - appsettings.json
+
 ```json
 {
-  "Mysql": "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;Initial Catalog=ovov_freesql_repository;Charset=utf8;SslMode=none;Max pool size=10",
+  "Mysql": "Data Source=127.0.0.1;Port=3306;User ID=root;Password=root;Initial Catalog=ovov_freesql_repository;Charset=utf8;SslMode=none;Max pool size=10"
 }
 ```
 
@@ -39,8 +44,8 @@ public void ConfigureServices(IServiceCollection services)
 | void Binding(repository)                       | 将仓储的事务交给它管理 |
 | IUnitOfWork Begin(propagation, isolationLevel) | 创建工作单元           |
 
-
 - TransBlogService.cs
+
 ```csharp
 private readonly IBaseRepository<Blog, int> _blogRepository;
 private readonly IBaseRepository<Tag, int> _tagRepository;
@@ -68,9 +73,9 @@ public async Task CreateBlogUnitOfWorkAsync(Blog blog,List<Tag>tagList)
             unitOfWork.Commit();
         }
         catch (Exception e)
-        {     
+        {
             //实际 可以不Rollback。因为IUnitOfWork内部Dispose，会把没有Commit的事务Rollback回来，但能提前Rollback
-        
+
             unitOfWork.Rollback();
             //记录日志、或继续throw;出来
         }
@@ -97,7 +102,6 @@ public async Task UpdateBlogAsync(int id)
 }
 ```
 
-
 | IUnitOfWork 成员                                | 说明                                                                                                 |
 | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | IFreeSql Orm                                    | 该对象 Select/Delete/Insert/Update/InsertOrUpdate 与工作单元事务保持一致，可省略传递 WithTransaction |
@@ -107,12 +111,14 @@ public async Task UpdateBlogAsync(int id)
 | DbContext.EntityChangeReport EntityChangeReport | 工作单元内的实体变化跟踪                                                                             |
 
 #### 完整的代码
+
 - [Blog.cs](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.Core/Domain/Blog.cs)
 - [Tag.cs](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.Core/Domain/Tag.cs)
 - [TransBlogService.cs](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.FreeSql.AutoFac.DynamicProxy/Services/TransBlogService.cs)
 
-以上使用的是泛型仓储，那我们如果是重写一个仓储 如何保持和``UnitOfWorkManager``同一个事务呢。
-继承现有的``DefaultRepository<,>``仓储，实现自定义的仓储``BlogRepository.cs``,
+以上使用的是泛型仓储，那我们如果是重写一个仓储 如何保持和`UnitOfWorkManager`同一个事务呢。
+继承现有的`DefaultRepository<,>`仓储，实现自定义的仓储`BlogRepository.cs`,
+
 ```csharp
     public class BlogRepository : DefaultRepository<Blog, int>, IBlogRepository
     {
@@ -126,7 +132,9 @@ public async Task UpdateBlogAsync(int id)
         }
     }
 ```
-其中接口。``IBlogRepository.cs``
+
+其中接口。`IBlogRepository.cs`
+
 ```csharp
     public interface IBlogRepository : IBaseRepository<Blog, int>
     {
@@ -134,7 +142,7 @@ public async Task UpdateBlogAsync(int id)
     }
 ```
 
-在 startup.cs注入此服务
+在 startup.cs 注入此服务
 
 ```csharp
     services.AddScoped<IBlogRepository, BlogRepository>();

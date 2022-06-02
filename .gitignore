@@ -1,5 +1,5 @@
 node_modules/
-gb-pages/
+docs/.vuepress/.cache/
+docs/.vuepress/.temp/
 docs/.vuepress/dist/
-node_modules
-deploy/
+.pnpm-debug.log

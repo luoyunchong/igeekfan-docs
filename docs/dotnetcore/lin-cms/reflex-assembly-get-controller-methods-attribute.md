@@ -1,19 +1,20 @@
-## 获取控制器及方法特性标签
+# 获取控制器及方法特性标签
 
 > .NET Core 反射获取所有控制器及方法上特定标签.
 
-有个需求，就是在. NET Core中，我们想在项目 启动时，获取LinCmsAuthorizeAttribute这个特性标签所有出现的地方，把他的参数，放入一个集合并缓存起来，以便后面使用此数据用于权限验证。
+有个需求，就是在. NET Core 中，我们想在项目 启动时，获取 LinCmsAuthorizeAttribute 这个特性标签所有出现的地方，把他的参数，放入一个集合并缓存起来，以便后面使用此数据用于权限验证。
 
-我们通过反射获取所有控制器下及方法的Attribute。
+我们通过反射获取所有控制器下及方法的 Attribute。
 
-## LinCmsAuthorizeAttribute是什么
-其代码非常简单，用于自定义权限验证，通过重写OnAuthorizationAsync方法，实现固定权限可分配给动态角色（也能分配给动态用户）。主要就**基于权限的授权**的实现进行研究，实现方法级别的权限验证。
+## LinCmsAuthorizeAttribute 是什么
+
+其代码非常简单，用于自定义权限验证，通过重写 OnAuthorizationAsync 方法，实现固定权限可分配给动态角色（也能分配给动态用户）。主要就**基于权限的授权**的实现进行研究，实现方法级别的权限验证。
+
 - [https://www.cnblogs.com/RainingNight/p/dynamic-authorization-in-aspnetcore.html](https://www.cnblogs.com/RainingNight/p/dynamic-authorization-in-aspnetcore.html)
 
-当然，这个只是部分代码，完整代码请查看最下方开源地址，其中LinCmsAuthorizeAttribute继承AuthorizeAttribute，拥有指定角色权限控制，当Permission未指定时，当过滤器与Authorize功能相同。Module是指模块，即多个权限，属于同一个模块，方便前台展示为树型结构。Permission属性的值不可重复。
+当然，这个只是部分代码，完整代码请查看最下方开源地址，其中 LinCmsAuthorizeAttribute 继承 AuthorizeAttribute，拥有指定角色权限控制，当 Permission 未指定时，当过滤器与 Authorize 功能相同。Module 是指模块，即多个权限，属于同一个模块，方便前台展示为树型结构。Permission 属性的值不可重复。
 
-
-```
+```cs
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
 public class LinCmsAuthorizeAttribute : AuthorizeAttribute, IAsyncAuthorizationFilter
 {
@@ -54,8 +55,10 @@ public class LinCmsAuthorizeAttribute : AuthorizeAttribute, IAsyncAuthorizationF
     }
 }
 ```
+
 ## Controller
-在 LinCms.Web中的Controller，至于为什么Permission为中文，目前的主要原因，此项目用于适配 [Lin-CMS-VUE](https://github.com/TaleLin/lin-cms-vue)项目,所以于平常我们以某个字符串作为权限名不同，但不须大惊小怪，道理相同。
+
+在 LinCms.Web 中的 Controller，至于为什么 Permission 为中文，目前的主要原因，此项目用于适配 [Lin-CMS-VUE](https://github.com/TaleLin/lin-cms-vue)项目,所以于平常我们以某个字符串作为权限名不同，但不须大惊小怪，道理相同。
 
 ```
 [Route("cms/log")]
@@ -76,7 +79,7 @@ public class LogController : ControllerBase
         return _logService.GetLoggedUsers(pageDto);
     }
 
- 
+
     [HttpGet]
     [LinCmsAuthorize("查询所有日志", "日志")]
     public PagedResultDto<LinLog> GetLogs([FromQuery]LogSearchDto searchDto)
@@ -92,7 +95,9 @@ public class LogController : ControllerBase
     }
 }
 ```
+
 ## 测试类获取方法上的特定标签
+
 in xunit test 项目工程中，开始我们的测试
 
 ```
@@ -115,10 +120,12 @@ public void GetAssemblyMethodsAttributes()
             }
         }
     });
-}    
+}
 ```
+
 ## 方法结果
-可在输出文本中查看，正是我们想要的东西，最后一行，是其他Controller中的内容，而且我们重写了ToString(),所以我们能看到其属性。
+
+可在输出文本中查看，正是我们想要的东西，最后一行，是其他 Controller 中的内容，而且我们重写了 ToString(),所以我们能看到其属性。
 
 ```
 "LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:查询日志记录的用户","Module:日志","Roles:","Policy:","AuthenticationSchemes:"
@@ -129,6 +136,7 @@ public void GetAssemblyMethodsAttributes()
 ```
 
 ## 获取控制器上特性标签
+
 ```
 /// <summary>
 /// 获取控制器上的LinCmsAuthorizeAttribute
@@ -151,14 +159,17 @@ public void GetControllerAttributes()
 }
 ```
 
-## Controller结果
-只有AdminController加了此标签，所以只有一行。
+## Controller 结果
+
+只有 AdminController 加了此标签，所以只有一行。
+
 ```
 "LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:","Module:","Roles:Administrator","Policy:","AuthenticationSchemes:"
 ```
 
-此时Roles为Administrator，Permission及Module都是null，
-这是因为只有AdminController中加了LinGroup.Administrator="Administrator"字符串，在登录过程中，已经给当前登录用户设置了 new Claim(ClaimTypes.Role,user.IsAdmin()?LinGroup.Administrator:user.GroupId.ToString())，即"Administrator,当用户访问AdminController中的方法时，LinCmsAuthorize并没有做相关验证，都是AuthorizeAttribute，实现了固定角色权限的判断及登录的判断。LinCmsAuthorize完成了固定权限设置为不同的动态角色后，判断用户是否拥有此权限。
+此时 Roles 为 Administrator，Permission 及 Module 都是 null，
+这是因为只有 AdminController 中加了 LinGroup.Administrator="Administrator"字符串，在登录过程中，已经给当前登录用户设置了 new Claim(ClaimTypes.Role,user.IsAdmin()?LinGroup.Administrator:user.GroupId.ToString())，即"Administrator,当用户访问 AdminController 中的方法时，LinCmsAuthorize 并没有做相关验证，都是 AuthorizeAttribute，实现了固定角色权限的判断及登录的判断。LinCmsAuthorize 完成了固定权限设置为不同的动态角色后，判断用户是否拥有此权限。
+
 ```
 [LinCmsAuthorize(Roles = LinGroup.Administrator)]
 public class AdminController : ControllerBase
@@ -167,14 +178,11 @@ public class AdminController : ControllerBase
 }
 ```
 
-
-
 ## 参考
-- c# – 如何在asp. net core rc2中获取控制器的自定义属性 [https://codeday.me/bug/20181207/453278.html](https://codeday.me/bug/20181207/453278.html)
-- 
 
-
+- c# – 如何在 asp. net core rc2 中获取控制器的自定义属性 [https://codeday.me/bug/20181207/453278.html](https://codeday.me/bug/20181207/453278.html)
+-
 
 ## 开源地址
-- [github.com/luoyunchong/lin-cms-dotnetcore](github.com/luoyunchong/lin-cms-dotnetcore)
 
+- [github.com/luoyunchong/lin-cms-dotnetcore](github.com/luoyunchong/lin-cms-dotnetcore)

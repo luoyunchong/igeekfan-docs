@@ -5,20 +5,22 @@
 依赖接口而不依赖于实现，是面向对象的六大设计原则（SOLID)之一。即依赖倒置原则(`Dependence Inversion Principle`)
 
 生命周期分为三种，具体如下
+
 - `Singleton` 单例（全局唯一实例）
 - `Scoped` 范围 （在同一个生命周期内是同一个实例）
 - `Transient` 瞬时（每次请求都是一个新的实例）
 
-## 使用说明 
+## 使用说明
+
 创建`ASP.NET Core 3.0+`的项目，并安装`Autofac`包
 
-```
+```bash
 dotnet add package Autofac.Extensions.DependencyInjection
 ```
 
-在Program 中Host主机指定 `.UseServiceProviderFactory(new AutofacServiceProviderFactory())`.
+在 Program 中 Host 主机指定 `.UseServiceProviderFactory(new AutofacServiceProviderFactory())`.
 
-UseServiceProviderFactory调用Autofac提供程序,附加到通用宿主机制。
+UseServiceProviderFactory 调用 Autofac 提供程序,附加到通用宿主机制。
 
 ```diff
 public class Program
@@ -34,13 +36,13 @@ public class Program
             .UseStartup<Startup>();
         })
         .Build();
-    
+
         host.Run();
     }
 }
 ```
 
-在StartUp中配置
+在 StartUp 中配置
 
 ```diff
 public class Startup
@@ -84,7 +86,7 @@ public class Startup
 }
 ```
 
-定义注入实现 
+定义注入实现
 
 ```csharp
 public class MyApplicationModule : Autofac.Module
@@ -103,14 +105,17 @@ builder.RegisterGeneric(typeof(AuditBaseRepository<>)).As(typeof(IAuditBaseRepos
 builder.RegisterGeneric(typeof(AuditBaseRepository<,>)).As(typeof(IAuditBaseRepository<,>)).InstancePerLifetimeScope();
 ```
 
-- 一个接口多个实现,使用Named，区分、参数为字符串即可。
+- 一个接口多个实现,使用 Named，区分、参数为字符串即可。
 
 注册服务
+
 ```csharp
 builder.RegisterType<IdentityServer4Service>().Named<ITokenService>(typeof(IdentityServer4Service).Name).InstancePerLifetimeScope();
 builder.RegisterType<JwtTokenService>().Named<ITokenService>(typeof(JwtTokenService).Name).InstancePerLifetimeScope();
 ```
-根据Name获取哪个服务
+
+根据 Name 获取哪个服务
+
 ```csharp
 private readonly ITokenService _tokenService;
 public AccountController(IComponentContext componentContext, IConfiguration configuration)
@@ -120,7 +125,7 @@ public AccountController(IComponentContext componentContext, IConfiguration conf
 }
 ```
 
-可通过appsettings.json中配置,可决定是哪个服务 
+可通过 appsettings.json 中配置,可决定是哪个服务
 
 ```json
   "Service": {
@@ -130,7 +135,7 @@ public AccountController(IComponentContext componentContext, IConfiguration conf
 
 - 基于接口的注入
 
-`AsImplementedInterfaces` Specifies that a type from a scanned assembly is registered as providing all  of its implemented interfaces.
+`AsImplementedInterfaces` Specifies that a type from a scanned assembly is registered as providing all of its implemented interfaces.
 指定将扫描程序集中的类型注册为提供其所有实现的接口。
 
 根据接口`ITransientDependency`可以得到有哪些类继承了此接口，并判断是类，不是抽象类，不是泛型。
@@ -170,13 +175,10 @@ public AccountController(IComponentContext componentContext, IConfiguration conf
     }
 ```
 
-如果不写继承，如何批量注入呢。
-1.类名有规则
-2.基于特殊标签
-3.继承接口。
+如果不写继承，如何批量注入呢。 1.类名有规则 2.基于特殊标签 3.继承接口。
 
 - 类名有规则
-比如仓储后缀，全是`Repository`,其中`Assembly`为仓储的实现所在程序集。将自动注入所有的仓储，仓储必须有接口。
+  比如仓储后缀，全是`Repository`,其中`Assembly`为仓储的实现所在程序集。将自动注入所有的仓储，仓储必须有接口。
 
 ```csharp
     Assembly assemblysRepository = Assembly.Load("LinCms.Infrastructure");
@@ -186,24 +188,26 @@ public AccountController(IComponentContext componentContext, IConfiguration conf
             .InstancePerLifetimeScope();
 ```
 
-
 - 注入服务后就执行一段逻辑
+
 ```csharp
 builder.RegisterType<MigrationStartupTask>().SingleInstance();
 builder.RegisterBuildCallback(async (c) => await c.Resolve<MigrationStartupTask>().StartAsync());
 ```
 
 ### 动态代理
+
 ```csharp
 dotnet add package Autofac.Extras.DynamicProxy
 dotnet add package Castle.Core.AsyncInterceptor
 ```
+
 - 服务注册
 
-AOP+属性注入+以后缀为Service的服务实现，注入Scope 范围的生命周期+启用接口的拦截器。
+AOP+属性注入+以后缀为 Service 的服务实现，注入 Scope 范围的生命周期+启用接口的拦截器。
 
 - 使用`EnableInterfaceInterceptors`创建执行拦截的接口代理，
-- 使用`EnableClassInterceptors()` 动态对子类进行重写, 执行virtual方法的拦截
+- 使用`EnableClassInterceptors()` 动态对子类进行重写, 执行 virtual 方法的拦截
 
 ```csharp
 builder.RegisterType<UnitOfWorkInterceptor>();
@@ -226,21 +230,20 @@ builder.RegisterAssemblyTypes(servicesDllFile)
 ```
 
 这二个类，请参考如下代码
+
 - 同步：UnitOfWorkInterceptor.cs https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Middleware/UnitOfWorkInterceptor.cs
 - 异步拦截：UnitOfWorkAsyncInterceptor.cs https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Middleware/UnitOfWorkInterceptor.cs
 
-
-
-`Autofac.Extras.DynamicProxy`依赖Castle.Core,即只支持同步方法的拦截。
+`Autofac.Extras.DynamicProxy`依赖 Castle.Core,即只支持同步方法的拦截。
 异步方法的拦截需要安装包：`Castle.Core.AsyncInterceptor`。
 
 - 异步方法,分为有/无返回值：`async Task RunAsync()`,`asyn Task<Result> RunAsync()`
 - 同步方法：`void Run()`,`Result Run()`
 
-
 ### 同步拦截
 
 1.定义拦截器
+
 ```csharp
 public class CallLogger : IInterceptor
 {
@@ -265,6 +268,7 @@ public class CallLogger : IInterceptor
 ```
 
 2.注册拦截器。
+
 ```csharp
 // Named registration
 builder.Register(c => new CallLogger(Console.Out))
@@ -275,6 +279,7 @@ builder.Register(c => new CallLogger(Console.Out));
 ```
 
 将拦截器与要拦截的类型 关联
+
 ```csharp
 [Intercept(typeof(CallLogger))]
 public class First
@@ -297,8 +302,8 @@ public class Second
 }
 ```
 
-
 ## 链接
+
 - 官网 https://autofac.org/
 - GitHub https://github.com/autofac/Autofac
 - 文档 https://autofac.readthedocs.io/en/latest/

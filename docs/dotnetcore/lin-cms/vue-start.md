@@ -1,14 +1,14 @@
-
 # 前端准备
 
 ## 开源地址
 
-- 管理端UI [https://github.com/luoyunchong/lin-cms-vue](https://github.com/luoyunchong/lin-cms-vue)
-- 用户端UI [https://github.com/luoyunchong/lin-cms-vvlog](https://github.com/luoyunchong/lin-cms-vvlog)
+- 管理端 UI [https://github.com/luoyunchong/lin-cms-vue](https://github.com/luoyunchong/lin-cms-vue)
+- 用户端 UI [https://github.com/luoyunchong/lin-cms-vvlog](https://github.com/luoyunchong/lin-cms-vvlog)
 
-## 博客模块线上地址 
-- 本项目swagger地址 [https://api.igeekfan.cn/swagger/index.html](https://api.igeekfan.cn/swagger/index.html)
-- 用户端 lin-cms-vvlog [https://vvlog.baimocore.cn](https://vvlog.baimocore.cn) 
+## 博客模块线上地址
+
+- 本项目 swagger 地址 [https://api.igeekfan.cn/swagger/index.html](https://api.igeekfan.cn/swagger/index.html)
+- 用户端 lin-cms-vvlog [https://vvlog.baimocore.cn](https://vvlog.baimocore.cn)
   - 普通用户：710277267@qq.com
   - 密码：123qwe
 - 管理员 lin-cms-vue [https://cms.baimocore.cn/](https://cms.baimocore.cn)
@@ -19,10 +19,11 @@
 
 开发必备
 
-- [Node.js 10+](https://nodejs.org/en/) 版本即可，我须安装12.7
+- [Node.js 10+](https://nodejs.org/en/) 版本即可，我须安装 12.7
 - [yarn](https://yarnpkg.com/zh-Hant/docs/install#windows-stable)
 
-如果以下命令有问题，请删除yarn.lock，node_modules文件夹后，重新执行yarn，yarn serve
+如果以下命令有问题，请删除 yarn.lock，node_modules 文件夹后，重新执行 yarn，yarn serve
+
 ```
 # clone the project
 git clone https://github.com/luoyunchong/lin-cms-vue.git
@@ -38,17 +39,20 @@ yarn deploy
 ```
 
 ## deploy 发布
-scp2方便快速发布，一行命令就能快速发布成功。
+
+scp2 方便快速发布，一行命令就能快速发布成功。
 
 必备条件：（参数）
-- 一台linux的服务器，ip
+
+- 一台 linux 的服务器，ip
 - 用户名
 - 密码
-- 端口：默认是22
-- 发布的地址。这里放到/var/www/lin-cms-vue目录中。
+- 端口：默认是 22
+- 发布的地址。这里放到/var/www/lin-cms-vue 目录中。
 
 ## 步骤
-根目录新建deploy目录，创建index.js文件。
+
+根目录新建 deploy 目录，创建 index.js 文件。
 
 ```
 'use strict'
@@ -75,10 +79,12 @@ client.scp('dist/', {
 ```
 
 快速发布，需要安装 scp2
+
 ```
 cnpm install scp2
 ```
-package.json中增加
+
+package.json 中增加
 
 ```
   "scripts": {
@@ -86,13 +92,14 @@ package.json中增加
 }
 ```
 
-
 ```
 yarn deploy
 ```
 
 ## nginx 配置
-- vue 使用history的配置
+
+- vue 使用 history 的配置
+
 ```
 server {
     listen 8080;
@@ -100,10 +107,10 @@ server {
 
    charset utf-8;
    location / {
-       try_files $uri $uri/ /index.html; 
+       try_files $uri $uri/ /index.html;
 
      }
-        
+
     error_page   500 502 503 504  /50x.html;
     location = /50x.html {
         root   html;
@@ -112,13 +119,8 @@ server {
 }
 ```
 
-
 ## 配置项
 
 1. 配置 api 地址： 打开配置文件 src/config/index.js 配置 baseUrl ，本地开发阶段配置本地虚拟域名(https://localhost:5001/)，线上部署生产域名。
 
-
-2. 用户名：**admin**  密码 **123qwe**
-
-
-
+2. 用户名：**admin** 密码 **123qwe**

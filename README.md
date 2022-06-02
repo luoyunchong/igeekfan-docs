@@ -1,85 +1,90 @@
-## 简介
-项目使用vuepress，其可专注于文档构建
+# Freekit Docs
 
+项目使用 vuepress，其可专注于文档构建
+
+## install
+
+```bash
+npm install -g pnpm@next-7
+```
+
+```bash
+pnpm install
+```
+
+## run
+
+```bash
+pnpm dev:vite
+```
+
+## build
+
+```bash
+pnpm build:vite
+```
+
+## upgrade package
+
+```bash
+pnpm i -D vuepress@next
+```
 
 ## vuepress
 
-该采用`vuepress`搭建，内置`md`，可以采用`vue`语法，vue作者出品,UI主题是vuepress-theme-reco
+该采用`vuepress-next`搭建，内置`md`，可以采用`vue`语法，vue 作者出品,UI 主题是 vuepress-theme-hope
 
-- [https://github.com/vuejs/vuepress](https://github.com/vuejs/vuepress)
-- [https://vuepress-theme-reco.recoluan.com/](https://vuepress-theme-reco.recoluan.com/)
+- [https://vuepress-theme-hope.github.io/v2/](https://vuepress-theme-hope.github.io/v2/)
 
 ## 文档源码
-- [https://github.com/luoyunchong/vovo-docs](https://github.com/luoyunchong/vovo-docs)
-- [https://gitee.com/igeekfan/vovo-docs](httpsgiteegithub.com/igeekfan/vovo-docs)
+
+- [https://github.com/luoyunchong/igeekfan-docs](https://github.com/luoyunchong/igeekfan-docs)
+- [https://gitee.com/igeekfan/igeekfan-docs](httpsgiteegithub.com/igeekfan/igeekfan-docs)
 
 ## 部署地址
 
-- [https://luoyunchong.github.io/vovo-docs/](https://luoyunchong.github.io/vovo-docs)
-- [https://igeekfan.gitee.io/vovo-docs/](https://igeekfan.gitee.io/vovo-docs)
+- [https://luoyunchong.github.io/igeekfan-docs/](https://luoyunchong.github.io/igeekfan-docs)
+- [https://igeekfan.gitee.io/igeekfan-docs/](https://igeekfan.gitee.io/igeekfan-docs)
 - [https://igeekfan.cn](https://igeekfan.cn)
 
-## 如何构建运行
-前提
-- node.js
-- yarn或npm
-- vuepress 
+## package.json 介绍
 
-最好是安装yarn [https://yarnpkg.com/lang/zh-hans/docs/install/#windows-stable](https://yarnpkg.com/lang/zh-hans/docs/install/#windows-stable)
+package.json 有这些命令
 
-## 安装依赖包，开发运行
-~~~
-PS D:\code\github\vovo-docs>yarn install
-PS D:\code\github\vovo-docs>yarn dev
-~~~
-
-如果不能正常运行，就删除 yarn.lock、node_modules文件夹,再重新执行上面的命令
-
-## 生成发布包
-```ps1
-PS D:\code\github\vovo-docs>yarn build 
-```
-
-## 发布
-
-发布至github pages 中的gh-pages分支
-
-```ps1
-PS D:\code\github\vovo-docs>.\deploy.ps1
-```
-
-.sh 也不懂，关键我本地是windows，不能正常执行，git bash 也许可以 
-
-
-### package.json介绍
-package.json有这些命令
-```
+```bash
   "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
-    "deploy": "bash deploy.sh"
+    "build:vite": "vuepress-vite build docs",
+    "dev:vite": "vuepress-vite dev docs",
   },
 ```
 
-所以我们可以 yarn dev或yarn build 
+所以我们可以 pnpm dev:vite 或 pnpm build:vite
 
-# 自动发布 至github pages
-## 在git bash中执行
-``` 
-yarn deploy
+## 自动发布 至 github pages
+
+### 在 git bash 中执行
+
+```bash
+pnpm deploy
 ```
+
 或
 
-## powershell中执行如下内容
-```
+### powershell 中执行如下内容
+
+```bash
 .\deploy.ps1
 ```
 
-
 ## 自动发布至 linux
 
-根目录创建deploy文件夹，新增一个index.js文件。里面放至如下代码，修改自己的ip，用户名，密码，目录
+```bash
+npm install scp2 
 ```
+
+根目录创建 deploy 文件夹，新增一个 index.js 文件。里面放至如下代码，修改自己的 ip，用户名，密码，目录
+
+```js
 'use strict'
 // 引入scp2模块
 var client = require('scp2');
@@ -95,26 +100,33 @@ client.scp('docs/.vuepress/dist/', {
 }, function (err) {
     spinner.stop()
     if (!err) {
-        console.log("npm run build-scp2: scp2工具上传完毕,远端服务路径：/var/www/html/vovo-docs")
+        console.log("npm run build-scp2: scp2工具上传完毕,远端服务路径：/var/www/html/igeekfan-docs")
     } else {
         console.log("err", err)
     }
 })
 ```
+
 执行如下代码
-```
+
+```bash
 yarn deploy:linux
 ```
 
-nginx相关配置，/etc/nginx/conf.d/新建一个以.conf为后缀的文件即可。
+## nginx 配置 
+
+nginx 相关配置，/etc/nginx/conf.d/新建一个以.conf 为后缀的文件即可。
+
 ```bash
-touch vovo-docs.conf
+cd /etc/nginx/conf.d/
+touch igeekfan-docs.conf
 ```
+
 ```conf
-server {  
+server {
     listen 80;
     server_name www.igeekfan.cn;
-    root /var/www/html/vovo-docs;	
+    root /var/www/html/igeekfan-docs;
     charset utf-8;
     location /  {
         proxy_set_header   X-Real-IP $remote_addr;
@@ -123,7 +135,7 @@ server {
 }
 ```
 
-```
+```bash
 # 判断配置是否有效
 nginx -t
 # 加载配置项

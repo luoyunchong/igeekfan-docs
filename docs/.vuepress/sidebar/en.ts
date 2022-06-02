@@ -1,8 +1,9 @@
-//侧边栏
-module.exports = {
+import { sidebar } from "vuepress-theme-hope";
+
+export const enSidebarConfig = sidebar({
     '/dotnetcore/examples/': [
         {
-            title: '.NET Core示例',
+            text: '.NET Core示例',
             collapsable: true,
             children: [
                 'console-hello-world',
@@ -18,7 +19,7 @@ module.exports = {
         }
     ],
     '/dotnetcore/lin-cms/': [{
-        title: '起步',
+        text: '起步',
         collapsable: true,
         children: [
             'dotnetcore-start.md',
@@ -32,7 +33,7 @@ module.exports = {
             'change-sqlserver.md',
         ]
     }, {
-        title: '.NET Core',
+        text: '.NET Core',
         collapsable: true,
         children: [
             'file-upload.md',
@@ -44,7 +45,7 @@ module.exports = {
             'aspnetcore-repository-unitofwork.md'
         ]
     }, {
-        title: '开发者文档',
+        text: '开发者文档',
         collapsable: true,
         children: [
             'dev-start',
@@ -62,13 +63,15 @@ module.exports = {
     }],
     '/about/': [
         {
-            title: '关于',
+            text: '关于',
+            prefix: "/about/",
+            link: "/about/",
             collapsable: true
         }
     ],
     '/blogs/': [
         {
-            title: '技术分享',
+            text: '技术分享',
             collapsable: true,
             children: [
                 'git-emoji',
@@ -79,7 +82,7 @@ module.exports = {
     ],
     '/colorui/': [
         {
-            title: 'ColorUI文档',
+            text: 'ColorUI文档',
             collapsable: true,
             children: [
                 'docs/button',
@@ -87,4 +90,4 @@ module.exports = {
             ]
         }
     ],
-}
+});

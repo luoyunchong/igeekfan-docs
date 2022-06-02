@@ -1,0 +1,58 @@
+# This is a basic workflow to help you get started with Actions
+name: Deploy To Server
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          # if your docs needs submodules, uncomment the following line
+          # submodules: true
+
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+          run_install: true
+
+      # Setup Node
+      # https://github.com/marketplace/actions/setup-node-js-environment
+      - name: Setup Node.js
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: pnpm
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run build:vite
+
+      # https://github.com/marketplace/actions/ssh-deploy
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "--delete"
+          SOURCE: "docs/.vuepress/dist/"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}

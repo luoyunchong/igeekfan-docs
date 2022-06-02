@@ -1,4 +1,4 @@
-## CAP实现EventBus
+# CAP实现EventBus
 
 分布式事务一致性，使用的是 [CAP](https://github.com/dotnetcore/cap)，那么我们在什么情况下使用它呢。
 
@@ -14,7 +14,7 @@ EventBus:事件总线，是一个基于观察者模块的事件发布/订阅框�
 ```
 DotNetCore.CAP.BrokerConnectionException: Broker Unreachable
  ---> RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
- ---> RabbitMQ.Client.Exceptions.OperationInterruptedException: The AMQP operation was interrupted: AMQP close-reason, initiated by Peer, code=530, text="NOT_ALLOWED - access to vhost '/admin' refused for user 'admin'", classId=10, methodId=40, cause=
+ ---> RabbitMQ.Client.Exceptions.OperationInterruptedException: The AMQP operation was interrupted: AMQP close-reason, initiated by Peer, code=530, text="- to NOT_ALLOWED access vhost '/admin' refused for user 'admin'", classId=10, methodId=40, cause=
    at RabbitMQ.Client.Impl.SimpleBlockingRpcContinuation.GetReply(TimeSpan timeout)
    at RabbitMQ.Client.Impl.ModelBase.ConnectionOpen(String virtualHost, String capabilities, Boolean insist)
    at RabbitMQ.Client.Framing.Impl.Connection.Open(Boolean insist)

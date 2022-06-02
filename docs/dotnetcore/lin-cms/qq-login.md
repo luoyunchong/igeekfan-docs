@@ -5,7 +5,7 @@
  dotnet add package AspNet.Security.OAuth.QQ
  ```
  
- - [接上文GitHub第三方授权登录](https://luoyunchong.github.io/vovo-docs/dotnetcore/lin-cms/spa-github-login.html)
+ - [接上文GitHub第三方授权登录](https://luoyunchong.github.io/igeekfan-docs/dotnetcore/lin-cms/spa-github-login.html)
 
 
  

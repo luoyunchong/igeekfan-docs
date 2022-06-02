@@ -165,7 +165,7 @@ AuthorizeAttribute能做的权限控制如下
 说了这么多官方提供的，我们讲一下lin-cms-dotnetcore中的权限设计
 
 完整的表结构如下
-[https://luoyunchong.github.io/vovo-docs/dotnetcore/lin-cms/table.html](https://luoyunchong.github.io/vovo-docs/dotnetcore/lin-cms/table.html)
+[https://luoyunchong.github.io/igeekfan-docs/dotnetcore/lin-cms/table.html](https://luoyunchong.github.io/igeekfan-docs/dotnetcore/lin-cms/table.html)
 
 
 #### LinCmsAuthorizeAttribute
@@ -265,7 +265,7 @@ public class GroupController : ControllerBase
 ```
 
 这样在方法上已经加了权限的标签，但我们怎么得到系统中的所有权限，让用户配置呢。
-[获取控制器及方法特性标签](https://igeekfan.gitee.io/vovo-docs/dotnetcore/lin-cms/reflex-assembly-get-controller-methods-attribute.html#%E8%8E%B7%E5%8F%96%E6%8E%A7%E5%88%B6%E5%99%A8%E5%8F%8A%E6%96%B9%E6%B3%95%E7%89%B9%E6%80%A7%E6%A0%87%E7%AD%BE)。本质上，是通过反射,扫描当前程序集，会获取到一个List，我们可以在系统启动时把这些数据存到数据库中。
+[获取控制器及方法特性标签](https://igeekfan.gitee.io/igeekfan-docs/dotnetcore/lin-cms/reflex-assembly-get-controller-methods-attribute.html#%E8%8E%B7%E5%8F%96%E6%8E%A7%E5%88%B6%E5%99%A8%E5%8F%8A%E6%96%B9%E6%B3%95%E7%89%B9%E6%80%A7%E6%A0%87%E7%AD%BE)。本质上，是通过反射,扫描当前程序集，会获取到一个List，我们可以在系统启动时把这些数据存到数据库中。
 
  最新的方式是采用此方法，原理都相同。name，module唯一值。存入lin_permission表中，这时就有id值了。lin_group_permission就能用分组关联了。
 ```

@@ -1,23 +1,33 @@
 {
-    "name": "vovo-docs",
+    "name": "igeekfan-docs",
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "dev": "vuepress dev docs",
-        "build": "vuepress build docs",
+        "build:vite": "vuepress-vite build docs",
+        "build:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite build docs",
+        "build:webpack": "vuepress-webpack build docs",
+        "build:webpack-debug": "cross-env DEBUG=vuepress* vuepress-webpack build docs",
+        "dev:vite": "vuepress-vite dev docs",
+        "dev:vite-clean": "vuepress-vite dev docs --clean-cache",
+        "dev:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite dev docs",
+        "dev:webpack": "vuepress-webpack dev docs",
+        "dev:webpack-clean": "vuepress-webpack dev docs --clean-cache",
+        "dev:webpack-debug": "cross-env DEBUG=vuepress* vuepress-webpack dev docs",
+        "lint": "prettier --check --write .",
+        "lint:check": "prettier --check .",
+        "lint-md": "markdownlint **/*.md --ignore node_modules --fix",
+        "test": "echo \"Warning: no test specified\" && exit 0",
         "deploy": "bash deploy.sh",
-        "deploy:linux": "yarn build&node ./deploy"
+        "deploy:linux": "pnpm build:vite&node ./deploy"
     },
     "dependencies": {
-        "@vuepress/plugin-pwa": "^1.8.2",
-        "ora": "^4.0.5",
-        "scp2": "^0.5.0",
-        "vuepress": "^1.5.0",
-        "vuepress-plugin-boxx": "0.0.7",
-        "vuepress-plugin-flowchart": "1.4.3",
-        "vuepress-plugin-sitemap": "2.3.1",
-        "vuepress-theme-reco": "^1.6.10",
-        "whatwg-fetch": "^3.6.2"
+        "@vuepress/cli": "2.0.0-beta.43",
+        "@vuepress/client": "2.0.0-beta.43",
+        "@vuepress/plugin-docsearch": "2.0.0-beta.43",
+        "vue": "3.2.33",
+        "vuepress-theme-hope": "2.0.0-beta.53",
+        "vuepress-vite": "2.0.0-beta.43",
+        "vuepress-webpack": "2.0.0-beta.43"
     }
 }

@@ -4,7 +4,7 @@
 set -e
 
 # 生成静态文件
-npm run build
+pnpm build:vite
 
 # 进入生成的文件夹
 cd docs/.vuepress/dist
@@ -20,6 +20,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>  REPO=github上的项目
-git push -f git@github.com:luoyunchong/vovo-docs.git master:gh-pages
+git push -f git@github.com:luoyunchong/igeekfan-docs.git master:gh-pages
 
 cd -
