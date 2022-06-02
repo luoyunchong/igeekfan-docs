@@ -1,6 +1,5 @@
 ---
 title: GitHub第三方授权登录
-date: 2019-12-27 23:12
 tags:
   - 开源
   - .NET Core
@@ -27,12 +26,12 @@ category:
 
 ```
 client_id:0be6b05fc717bfc4fb67
-client_secret:dcaced9f176afba64e89d88b9b06ffc4a887a609
+client_secret:xxxxxxxxxxxxxxx
 ```
 
 Get
 
-```
+```text
 https://github.com/login/oauth/authorize?client_id=0be6b05fc717bfc4fb67&redirect_uri=https://localhost:5001/signin-github
 ```
 
@@ -43,51 +42,51 @@ https://github.com/login/oauth/authorize?client_id=0be6b05fc717bfc4fb67&redirect
 这个 code 放到下面的请求中，获取 access_token
 POST 方式（PostMan 去请求）
 
-```
-https://github.com/login/oauth/access_token?client_id=0be6b05fc717bfc4fb67&client_secret=dcaced9f176afba64e89d88b9b06ffc4a887a609&code=07537a84d12bbae08361
+```text
+https://github.com/login/oauth/access_token?client_id=0be6b05fc717bfc4fb67&client_secret=xxxxxxxxxxxxxxx&code=07537a84d12bbae08361
 ```
 
 Get 方式
 
-```
+```text
 https://api.github.com/user?access_token=787506afa3271d077b98f18af56d7cfdc8db43b4
 ```
 
 然后就能获取用户信息
 
-```
+```json
 {
-   "login": "luoyunchong",
-   "id": 18613266,
-   "node_id": "MDQ6VXNlcjE4NjEzMjY2",
-   "avatar_url": "https://avatars1.githubusercontent.com/u/18613266?v=4",
-   "gravatar_id": "",
-   "url": "https://api.github.com/users/luoyunchong",
-   "html_url": "https://github.com/luoyunchong",
-   "followers_url": "https://api.github.com/users/luoyunchong/followers",
-   "following_url": "https://api.github.com/users/luoyunchong/following{/other_user}",
-   "gists_url": "https://api.github.com/users/luoyunchong/gists{/gist_id}",
-   "starred_url": "https://api.github.com/users/luoyunchong/starred{/owner}{/repo}",
-   "subscriptions_url": "https://api.github.com/users/luoyunchong/subscriptions",
-   "organizations_url": "https://api.github.com/users/luoyunchong/orgs",
-   "repos_url": "https://api.github.com/users/luoyunchong/repos",
-   "events_url": "https://api.github.com/users/luoyunchong/events{/privacy}",
-   "received_events_url": "https://api.github.com/users/luoyunchong/received_events",
-   "type": "User",
-   "site_admin": false,
-   "name": "IGeekFan",
-   "company": null,
-   "blog": "https://blog.igeekfan.cn",
-   "location": null,
-   "email": "luoyunchong@foxmail.com",
-   "hireable": null,
-   "bio": "学习之路漫漫无期。",
-   "public_repos": 14,
-   "public_gists": 0,
-   "followers": 16,
-   "following": 11,
-   "created_at": "2016-04-22T10:33:44Z",
-   "updated_at": "2019-12-21T14:49:33Z"
+  "login": "luoyunchong",
+  "id": 18613266,
+  "node_id": "MDQ6VXNlcjE4NjEzMjY2",
+  "avatar_url": "https://avatars1.githubusercontent.com/u/18613266?v=4",
+  "gravatar_id": "",
+  "url": "https://api.github.com/users/luoyunchong",
+  "html_url": "https://github.com/luoyunchong",
+  "followers_url": "https://api.github.com/users/luoyunchong/followers",
+  "following_url": "https://api.github.com/users/luoyunchong/following{/other_user}",
+  "gists_url": "https://api.github.com/users/luoyunchong/gists{/gist_id}",
+  "starred_url": "https://api.github.com/users/luoyunchong/starred{/owner}{/repo}",
+  "subscriptions_url": "https://api.github.com/users/luoyunchong/subscriptions",
+  "organizations_url": "https://api.github.com/users/luoyunchong/orgs",
+  "repos_url": "https://api.github.com/users/luoyunchong/repos",
+  "events_url": "https://api.github.com/users/luoyunchong/events{/privacy}",
+  "received_events_url": "https://api.github.com/users/luoyunchong/received_events",
+  "type": "User",
+  "site_admin": false,
+  "name": "IGeekFan",
+  "company": null,
+  "blog": "https://blog.igeekfan.cn",
+  "location": null,
+  "email": "luoyunchong@foxmail.com",
+  "hireable": null,
+  "bio": "学习之路漫漫无期。",
+  "public_repos": 14,
+  "public_gists": 0,
+  "followers": 16,
+  "following": 11,
+  "created_at": "2016-04-22T10:33:44Z",
+  "updated_at": "2019-12-21T14:49:33Z"
 }
 ```
 
@@ -160,7 +159,7 @@ appSettings.json
 "Authentication": {
     "GitHub": {
       "ClientId": "0be6b05fc717bfc4fb67",
-      "ClientSecret": "dcaced9f176afba64e89d88b9b06ffc4a887a609"
+      "ClientSecret": "xxxxxxxxxxxxxxx"
     }
 }
 ```
@@ -346,21 +345,21 @@ AppSettings.json 配置改成
 },
 "GitHub": {
   "ClientId": "0be6b05fc717bfc4fb67",
-  "ClientSecret": "dcaced9f176afba64e89d88b9b06ffc4a887a609"
+  "ClientSecret": "xxxxxxxxxxxxxxx"
 }
 }
 ```
 
 在 signin-callback 路由中，得到 authenticateResult.Principal，其中默认包含了(id,login,name,url)，授权得到 eamil，另外 MapJsonKey 扩展了以下字段（avatar_url、bio、blog)
 
-```
+```cs
 var authenticateResult = await _contextAccessor.HttpContext.AuthenticateAsync(provider);
 string token = this.CreateToken(authenticateResult.Principal);
 ```
 
 根据 ClaimsPrincipal 值生成 token 值。
 
-```
+```cs
 private string CreateToken(ClaimsPrincipal claimsPrincipal)
 {
 
@@ -390,7 +389,7 @@ private string CreateToken(ClaimsPrincipal claimsPrincipal)
 
 AddJwtConfiguration 改成如下内容
 
-```
+```cs
 public static void AddJwtConfiguration(this IServiceCollection services, IConfiguration configuration)
 {
 
@@ -445,7 +444,7 @@ public static void AddJwtConfiguration(this IServiceCollection services, IConfig
 
 前端运行
 
-```
+```bash
 yarn install
 yarn serve
 ```

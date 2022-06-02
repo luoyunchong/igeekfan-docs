@@ -32,7 +32,6 @@ export default hopeTheme({
     },
 
     pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime", "Word"],
-    record: '苏ICP备16046457号-3',
     encrypt: {
 
     },
@@ -43,7 +42,46 @@ export default hopeTheme({
             updatedTime: true,
             contributors: true,
         },
-        pwa: true,
+        pwa: {
+            update: "hint",
+            favicon: "/favicon.ico",
+            themeColor: "#46bd87",
+            appendBase: true,
+            apple: {
+                icon: "/logo.png",
+                statusBarColor: "black",
+            },
+            msTile: {
+                image: "/logo.png",
+                color: "#ffffff",
+            },
+            manifest: {
+                icons: [
+                    {
+                        src: "/logo.png",
+                        sizes: "512x512",
+                        purpose: "maskable",
+                        type: "image/png",
+                    },
+                    {
+                        src: "/logo.png",
+                        sizes: "192x192",
+                        purpose: "maskable",
+                        type: "image/png",
+                    },
+                    {
+                        src: "/logo.png",
+                        sizes: "512x512",
+                        type: "image/png",
+                    },
+                    {
+                        src: "/logo.png",
+                        sizes: "192x192",
+                        type: "image/png",
+                    },
+                ]
+            },
+        },
         feed: {
             atom: true,
             json: true,

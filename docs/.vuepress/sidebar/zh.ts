@@ -6,12 +6,13 @@ export const zhSidebarConfig = sidebar({
             text: '.NET Core示例',
             collapsable: true,
             children: [
+                'README.md',
                 'console-hello-world',
                 'console-news-types',
                 'freesql-in-aspnetcore-webapi-how-to-use',
                 'freesql-sample-blog-restful-use-automapper',
                 'identityserver4',
-                'qiniu-object-storage',
+                'qiniu-object-storages',
                 'imcore-chat',
                 'nacos-aspnetcore',
                 'serilog-tutorial'
@@ -22,6 +23,7 @@ export const zhSidebarConfig = sidebar({
         text: '起步',
         collapsable: true,
         children: [
+            'README.md',
             'dotnetcore-start.md',
             'cms-start.md',
             'technology.md',
@@ -52,7 +54,7 @@ export const zhSidebarConfig = sidebar({
             'newtonsoft-json-question',
             'dependency-injection-scrutor',
             'dynamic-authorization-in-aspnetcore',
-            'reflex-assembly-get-controller-methods-attribute',
+            'Reflex-Assembly',
             'identityserver4-jwt',
             'stopwords',
             'spa-github-login',
@@ -61,6 +63,22 @@ export const zhSidebarConfig = sidebar({
             'scriban-README.md'
         ]
     }],
+    '/dotnetcore/freekit/': [
+        {
+            text: 'FreeKit',
+            collapsable: true,
+            link: 'README.md',
+            children: [
+                'README.md',
+                'Core.md',
+                'AspNetCore.Identity.FreeSql.md',
+                'Email.md',
+                'Extras.md',
+                'Modularity.md',
+                'Localization.FreeSql.md',
+            ]
+        }
+    ],
     '/about/': [
         {
             text: '关于',
@@ -74,6 +92,7 @@ export const zhSidebarConfig = sidebar({
             text: '技术分享',
             collapsable: true,
             children: [
+                'README.md',
                 'git-emoji',
                 'net-sqlite-encryption',
                 'net-encoded-1',

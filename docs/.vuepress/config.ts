@@ -7,8 +7,8 @@ export default defineUserConfig({
     locales: {
         "/": {
             lang: "zh-CN",
-            title: "IGeekFan的文档",
-            description: "IGeekFan Documents",
+            title: "IGeekFan 开发者文档",
+            description: "问君能有几多愁？恰似一江春水向东流。",
         },
         "/en/": {
             lang: "en-US",
@@ -17,7 +17,6 @@ export default defineUserConfig({
         },
     },
     base: base,
-    title: 'IGeekFan的文档',
     description: '小楼昨夜又东风',
     head: [
         [
