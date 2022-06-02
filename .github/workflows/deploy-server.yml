@@ -9,17 +9,12 @@ on:
   pull_request:
     branches: [main]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  deploy-gh-pages:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
           # if your docs needs submodules, uncomment the following line
@@ -32,10 +27,9 @@ jobs:
           version: 7
           run_install: true
 
-      # Setup Node
-      # https://github.com/marketplace/actions/setup-node-js-environment
+
       - name: Setup Node.js
-      - uses: actions/setup-node@v3
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           cache: pnpm
@@ -47,7 +41,7 @@ jobs:
         env:
           NODE_OPTIONS: --max_old_space_size=4096
         run: pnpm run build:vite
-        
+
       # https://github.com/marketplace/actions/ssh-deploy
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v2.1.5
