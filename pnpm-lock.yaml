@@ -4,6 +4,7 @@ specifiers:
   '@vuepress/cli': 2.0.0-beta.43
   '@vuepress/client': 2.0.0-beta.43
   '@vuepress/plugin-docsearch': 2.0.0-beta.43
+  '@vuepress/plugin-google-analytics': 2.0.0-beta.43
   vue: 3.2.33
   vuepress-theme-hope: 2.0.0-beta.53
   vuepress-vite: 2.0.0-beta.43
@@ -13,6 +14,7 @@ dependencies:
   '@vuepress/cli': 2.0.0-beta.43
   '@vuepress/client': 2.0.0-beta.43
   '@vuepress/plugin-docsearch': 2.0.0-beta.43
+  '@vuepress/plugin-google-analytics': 2.0.0-beta.43
   vue: 3.2.33
   vuepress-theme-hope: 2.0.0-beta.53
   vuepress-vite: 2.0.0-beta.43_2ec4c2c85c0ba60ac22cf57d314e490b
@@ -1957,7 +1959,7 @@ packages:
       '@vuepress/utils': 2.0.0-beta.43
       gray-matter: 4.0.3
       toml: 3.0.0
-      vue: 3.2.33
+      vue: 3.2.36
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2052,6 +2054,16 @@ packages:
     dependencies:
       '@vuepress/core': 2.0.0-beta.43
       execa: 5.1.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@vuepress/plugin-google-analytics/2.0.0-beta.43:
+    resolution: {integrity: sha512-8IX0FXLNVnNc426w4ojZO7Oi7w54FLM0Abu3ytBjQltf2XWVhCUPe1UNQz6Ks4TmGp5uNESlo+S1+HZri49Kfw==}
+    dependencies:
+      '@vuepress/client': 2.0.0-beta.43
+      '@vuepress/core': 2.0.0-beta.43
+      '@vuepress/utils': 2.0.0-beta.43
     transitivePeerDependencies:
       - supports-color
     dev: false

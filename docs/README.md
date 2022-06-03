@@ -1,7 +1,7 @@
 ---
 home: true
 actions:
-  - text: 从FreeKit开始 💡
+  - text: 从FreeKit开始 ✨
     link: /dotnetcore/freekit/
     type: primary
   - text: 关于我 💻
@@ -15,7 +15,7 @@ features:
   details: .NET Core 学习示例文档  
   link : /dotnetcore/examples/
 - title: FreeKit
-  details: 一个纯CSS UI库 
+  details: FreeKit为.NET Core提供了更多的扩展实现，包括FreeSql、ASP.NET Core Identity的FreeSql存储、本地化的FreeSql实现
   link : /dotnetcore/freekit/
 footer: "MIT Licensed | Copyright © 2021-present luoyunchong"
 displayFooter: true

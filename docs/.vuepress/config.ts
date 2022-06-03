@@ -1,6 +1,7 @@
 import { defineUserConfig } from "@vuepress/cli";
 import theme from "./theme";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
+import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 const base = (process.env.BASE as "/" | `/${string}/`) || "/";
 
 export default defineUserConfig({
@@ -17,26 +18,8 @@ export default defineUserConfig({
         },
     },
     base: base,
-    description: '小楼昨夜又东风',
+    shouldPrefetch: false,
     head: [
-        [
-            "link",
-            {
-                rel: "icon",
-                type: "image/png",
-                sizes: "16x16",
-                href: `/assets/icon/favicon-16x16.png`,
-            },
-        ],
-        [
-            "link",
-            {
-                rel: "icon",
-                type: "image/png",
-                sizes: "32x32",
-                href: `/assets/icon/favicon-32x32.png`,
-            },
-        ],
         ['meta', { name: 'application-name', content: 'IGeekFan' }],
         ['meta', { name: 'apple-mobile-web-app-title', content: 'IGeekFan' }],
         [
@@ -47,15 +30,14 @@ export default defineUserConfig({
             'link',
             { rel: 'apple-touch-icon', href: `/apple-touch-icon.png` },
         ],
-        ['link', { rel: 'stylesheet', href: '//at.alicdn.com/t/font_2410206_mfj6e1vbwo.css' }],
-        // ...其他标签
+        ['link', { rel: 'stylesheet', href: '//at.alicdn.com/t/font_2410206_mfj6e1vbwo.css' }]
     ],
     theme,
     plugins: [
         docsearchPlugin({
             appId: "8QM97XX5VE",
             apiKey: "4f26d8ac064a7f23065db5354cb5cfe6",
-            indexName: "freesql",
+            indexName: "igeekfan",
             locales: {
                 "/zh/": {
                     placeholder: "搜索文档",
@@ -100,5 +82,8 @@ export default defineUserConfig({
                 },
             },
         }),
+        googleAnalyticsPlugin({
+            id: 'G-ZPF56S01D2'
+        })
     ],
 });

@@ -1,12 +1,14 @@
 # 后端准备
 
 ## Server 端必备环境
-* 安装软件开发包 [.NET SDK 6.0](https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0)   
-* 安装开发工具  [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hans/vs/)  或 [Rider](https://www.jetbrains.com/rider/)
-* 安装MySQL（version 5.7+)
-* Redis 4.0.14.2 for Windows [https://github.com/tporadowski/redis/releases](https://github.com/tporadowski/redis/releases)
+
+- 安装软件开发包 [.NET SDK 6.0](https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0)
+- 安装开发工具 [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hans/vs/) 或 [Rider](https://www.jetbrains.com/rider/)
+- 安装 MySQL（version 5.7+)
+- Redis 4.0.14.2 for Windows [https://github.com/tporadowski/redis/releases](https://github.com/tporadowski/redis/releases)
 
 ## 获取工程项目
+
 ```bash
 git clone https://github.com/luoyunchong/lin-cms-dotnetcore.git
 ```
@@ -15,7 +17,8 @@ git clone https://github.com/luoyunchong/lin-cms-dotnetcore.git
 
 文件位置`src/LinCms.Web/appsettings.json`，当数据库中存储表情包是，`Charset`为`utf8mb4`
 
-**请务必根据自己的实际情况修改此配置项**，`DefaultDB`为0时，代表使用`MySQL`，`DefaultDB`为1时，代表使用`SqlServer`,以此类推。
+**请务必根据自己的实际情况修改此配置项**，`DefaultDB`为 0 时，代表使用`MySQL`，`DefaultDB`为 1 时，代表使用`SqlServer`,以此类推。
+
 ```json
  "ConnectionStrings": {
     "DefaultDB": "0",
@@ -34,6 +37,7 @@ git clone https://github.com/luoyunchong/lin-cms-dotnetcore.git
     "CsRedis": "127.0.0.1:6379,password=,defaultDatabase=0"
   },
 ```
+
 `LinCms.IdentityServer4` 项目不是必须的，需要需要运行，需要修改数据库配置项
 
 `identityserver4/LinCms.IdentityServer4/appsettings.json` 数据库配置、同`LinCms.Web`中的配置项相同
@@ -54,7 +58,8 @@ git clone https://github.com/luoyunchong/lin-cms-dotnetcore.git
   },
 ```
 
-其中MariaDB（看做MySql）,通过`Serilog`记录日志，需要配置相应的链接串。
+其中 MariaDB（看做 MySql）,通过`Serilog`记录日志，需要配置相应的链接串。
+
 ```json
 {
         "Name": "MariaDB",
@@ -64,42 +69,42 @@ git clone https://github.com/luoyunchong/lin-cms-dotnetcore.git
 ```
 
 ## 数据迁移
+
 该项目使用[FreeSql](https://github.com/2881099/FreeSql)，默认自动迁移数据表结构，会自动根据配置项创建数据库，初始化种子数据
 
 默认会创建用户`admin`，密码`123qwe`
 
+## visual studio 2022 运行项目
 
-## visual studio 2022运行项目
-双击lin-cms-dotnetcore.sln，使用vs2022打开项目。右键解决方案，点击生成解决方案。
+双击 lin-cms-dotnetcore.sln，使用 vs2022 打开项目。右键解决方案，点击生成解决方案。
 
-由于将identityserver4单独拆成了一个项目，所以需要同时启动二个项目，**右键解决方案，属性。**,选择多个启动项目，勾选二个项目同时启动。如下图所示。
+由于将 identityserver4 单独拆成了一个项目，所以需要同时启动二个项目，**右键解决方案，属性。**,选择多个启动项目，勾选二个项目同时启动。如下图所示。
 
 ![](https://pic.downk.cc/item/5e83fd74504f4bcb04cf5474.png)
 
-这时候会打开二个网页  https://localhost:5001/swagger/index.html，即可看到swagger页面。
-
-
+这时候会打开二个网页 https://localhost:5001/swagger/index.html，即可看到 swagger 页面。
 
 ![](https://pic.downk.cc/item/5e83ffd1504f4bcb04d0f039.jpg)
 
-会打开浏览器，访问[https://localhosst:5001/swagger/index.html](https://localhosst:5001/swagger/index.html)，会看到swagger的文档。
-访问[https://localhosst:5003/swagger/index.html](https://localhosst:5001/swagger/index.html) 是ids4的接口文档，什么也看不到。
+会打开浏览器，访问[https://localhosst:5001/swagger/index.html](https://localhosst:5001/swagger/index.html)，会看到 swagger 的文档。
+访问[https://localhosst:5003/swagger/index.html](https://localhosst:5001/swagger/index.html) 是 ids4 的接口文档，什么也看不到。
 
-LinCms.Web运行效果：
+LinCms.Web 运行效果：
 ![](https://ae01.alicdn.com/kf/He52bc4d3708242d2995419bb584e1f53Q.jpg)
 
-
-
 ## 部署
-- [部署至Linux(Ubuntu16.06)](https://blog.igeekfan.cn/2022/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Ubuntu)
-- [部署至Linux(Ubuntu16.06)下的Docker](https://blog.igeekfan.cn/2022/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Docker-Ubuntu/)
+
+- [部署至 Linux(Ubuntu16.06)](https://blog.igeekfan.cn/2022/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Ubuntu)
+- [部署至 Linux(Ubuntu16.06)下的 Docker](https://blog.igeekfan.cn/2022/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Docker-Ubuntu/)
 
 ## 部署前准备
-因为该项目基于IdentityServer4,实现的授权认证服务，
 
-开发阶段使用`AddDeveloperSigningCredential()`方法即可完成签名认证，但是在生产环境，我们必须使用`AddSigningCredential()`方法并且使用OpenSSL生成自己的签名证书
+因为该项目基于 IdentityServer4,实现的授权认证服务，
+
+开发阶段使用`AddDeveloperSigningCredential()`方法即可完成签名认证，但是在生产环境，我们必须使用`AddSigningCredential()`方法并且使用 OpenSSL 生成自己的签名证书
 
 Startup.cs
+
 ```
             services.AddIdentityServer()
 #if  DEBUG
@@ -129,26 +134,30 @@ appsettings.Production.json
 }
 ```
 
-### 使用OpenSSL生成证书
+### 使用 OpenSSL 生成证书
 
-官网下载并安装OpenSSL [OpenSSL官网](https://slproweb.com/products/Win32OpenSSL.html)
+官网下载并安装 OpenSSL [OpenSSL 官网](https://slproweb.com/products/Win32OpenSSL.html)
 
 下载 Win64 OpenSSL v1.1.1b 版本
 
-在OpenSSL的bin文件夹，以管理员身份打开CMD执行以下命令：
+在 OpenSSL 的 bin 文件夹，以管理员身份打开 CMD 执行以下命令：
 
 ```
 openssl req -newkey rsa:2048 -nodes -keyout ids4.key -x509 -days 365 -out ids4.cer
 ```
-下面将生成的证书和Key封装成一个文件，以便IdentityServer可以使用它们去正确地签名tokens
-```
-openssl pkcs12 -export -in ids4.cer -inkey ids4.key -out ids4.pfx 
-```
-##### (注：在生成的过程中会让我们输入Export Password)
-这个 密码与appsettings.Production.json配置项相同。
 
-发布时，把ids4.pfx，放到项目根目录
+下面将生成的证书和 Key 封装成一个文件，以便 IdentityServer 可以使用它们去正确地签名 tokens
+
+```
+openssl pkcs12 -export -in ids4.cer -inkey ids4.key -out ids4.pfx
+```
+
+##### (注：在生成的过程中会让我们输入 Export Password)
+
+这个 密码与 appsettings.Production.json 配置项相同。
+
+发布时，把 ids4.pfx，放到项目根目录
 
 ## 参考
-- [IdentityServer4之JWT签名(RSA加密证书)及验签](https://www.cnblogs.com/guolianyu/p/9872661.html)
 
+- [IdentityServer4 之 JWT 签名(RSA 加密证书)及验签](https://www.cnblogs.com/guolianyu/p/9872661.html)

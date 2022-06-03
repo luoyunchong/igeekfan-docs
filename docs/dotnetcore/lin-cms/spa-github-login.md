@@ -76,7 +76,7 @@ https://api.github.com/user?access_token=787506afa3271d077b98f18af56d7cfdc8db43b
   "site_admin": false,
   "name": "IGeekFan",
   "company": null,
-  "blog": "https://blog.igeekfan.cn",
+  "blog": "https://igeekfan.cn",
   "location": null,
   "email": "luoyunchong@foxmail.com",
   "hireable": null,
