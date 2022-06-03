@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 02 Jun 2022 18:20:03 GMT</pubDate>
-    <lastBuildDate>Thu, 02 Jun 2022 18:20:03 GMT</lastBuildDate>
+    <pubDate>Fri, 03 Jun 2022 14:31:58 GMT</pubDate>
+    <lastBuildDate>Fri, 03 Jun 2022 14:31:58 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>lin-cms-dotnetcore</category>
@@ -6493,6 +6493,28 @@ ProcessDictionaryKeys 功能：A flag indicating whether dictionary keys should 
       <content:encoded><![CDATA[<h1 id="about" tabindex="-1"> About</h1>
 <h2 id="欢迎" tabindex="-1"> 欢迎</h2>
 <p>👋 你好，我是 <code>IGeekFan</code> ，我会写<code>c#</code>，会写一点点<code>javascript</code>。</p>
+<p><img src="https://img.shields.io/badge/OS-Win11-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=2bbc8a" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/OS-MAC-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=fff5e8" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/Editor-VisualStudio2022-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=80ccff" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/Editor-VisualStudioCode-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=424a53" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/Editor-VisualStudioForMAC-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=80ccff" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/Code-Csharp-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=FD8C73" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/Code-JavaScript-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=0969da" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/Code-Vue-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=b6e3ff" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/Code-Python-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=2bbc8a" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/Code-Go-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=80ccff" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/Tools-Docker-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=eac54f" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/Tools-AzureDevops-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=ffddb0" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/Shell-PowerShell-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=f79939" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/FrameWork-ASPNETCore-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=d8b9ff" alt="" loading="lazy">
+<img src="https://img.shields.io/badge/FrameWork-ABP-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=ffadda" alt="" loading="lazy"></p>
+<h2 id="推荐项目" tabindex="-1"> 推荐项目</h2>
+<a href="https://github.com/luoyunchong/freekit">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=luoyunchong&repo=freekit&title_color=fff&icon_color=f9f9f9&text_color=9f9f9f&bg_color=151515" />
+</a>
+<a href="https://github.com/luoyunchong/igeekfan-docs">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=luoyunchong&repo=igeekfan-docs&title_color=fff&icon_color=f9f9f9&text_color=9f9f9f&bg_color=151515" />
+</a>
 <h2 id="联系我-💬" tabindex="-1"> 联系我 💬</h2>
 <ul>
 <li><a href="https://github.com/luoyunchong" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong</a></li>
@@ -6507,7 +6529,7 @@ ProcessDictionaryKeys 功能：A flag indicating whether dictionary keys should 
 <p>微信搜索：dotNET 搬砖队</p>
 <img src="/images/wechat.png">
 ]]></content:encoded>
-      <enclosure url="https://github-readme-stats.vercel.app/api?username=luoyunchong&show_icons=true&theme=radical" type="image/"/>
+      <enclosure url="https://img.shields.io/badge/OS-Win11-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a" type="image/"/>
     </item>
     <item>
       <title>ColorUI</title>
@@ -7843,15 +7865,15 @@ Fsql.Aop.AuditValue += (s, e) =>
 <h2 id="server-端必备环境" tabindex="-1"> Server 端必备环境</h2>
 <ul>
 <li>安装软件开发包 <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0" target="_blank" rel="noopener noreferrer">.NET SDK 6.0</a></li>
-<li>安装开发工具  <a href="https://visualstudio.microsoft.com/zh-hans/vs/" target="_blank" rel="noopener noreferrer">Visual Studio 2022</a>  或 <a href="https://www.jetbrains.com/rider/" target="_blank" rel="noopener noreferrer">Rider</a></li>
-<li>安装MySQL（version 5.7+)</li>
+<li>安装开发工具 <a href="https://visualstudio.microsoft.com/zh-hans/vs/" target="_blank" rel="noopener noreferrer">Visual Studio 2022</a> 或 <a href="https://www.jetbrains.com/rider/" target="_blank" rel="noopener noreferrer">Rider</a></li>
+<li>安装 MySQL（version 5.7+)</li>
 <li>Redis 4.0.14.2 for Windows <a href="https://github.com/tporadowski/redis/releases" target="_blank" rel="noopener noreferrer">https://github.com/tporadowski/redis/releases</a></li>
 </ul>
 <h2 id="获取工程项目" tabindex="-1"> 获取工程项目</h2>
 <div><pre><code><span>git</span> clone https://github.com/luoyunchong/lin-cms-dotnetcore.git
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><h2 id="数据库配置" tabindex="-1"> 数据库配置</h2>
 <p>文件位置<code>src/LinCms.Web/appsettings.json</code>，当数据库中存储表情包是，<code>Charset</code>为<code>utf8mb4</code></p>
-<p><strong>请务必根据自己的实际情况修改此配置项</strong>，<code>DefaultDB</code>为0时，代表使用<code>MySQL</code>，<code>DefaultDB</code>为1时，代表使用<code>SqlServer</code>,以此类推。</p>
+<p><strong>请务必根据自己的实际情况修改此配置项</strong>，<code>DefaultDB</code>为 0 时，代表使用<code>MySQL</code>，<code>DefaultDB</code>为 1 时，代表使用<code>SqlServer</code>,以此类推。</p>
 <div><pre><code> <span>"ConnectionStrings"</span><span>:</span> <span>{</span>
     <span>"DefaultDB"</span><span>:</span> <span>"0"</span><span>,</span>
     <span>"DataType"</span><span>:</span> <span>{</span>
@@ -7883,7 +7905,7 @@ Fsql.Aop.AuditValue += (s, e) =>
     <span>"SqlServer"</span><span>:</span> <span>"Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1"</span><span>,</span>
     <span>"Sqlite"</span><span>:</span> <span>"Data Source=|DataDirectory|\\lincms.db; Attachs=lincms.db; Pooling=true;Min Pool Size=1"</span>
   <span>}</span><span>,</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br></div></div><p>其中MariaDB（看做MySql）,通过<code>Serilog</code>记录日志，需要配置相应的链接串。</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br></div></div><p>其中 MariaDB（看做 MySql）,通过<code>Serilog</code>记录日志，需要配置相应的链接串。</p>
 <div><pre><code><span>{</span>
         <span>"Name"</span><span>:</span> <span>"MariaDB"</span><span>,</span>
         <span>"Args"</span><span>:</span> <span>{</span>
@@ -7892,24 +7914,24 @@ Fsql.Aop.AuditValue += (s, e) =>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><h2 id="数据迁移" tabindex="-1"> 数据迁移</h2>
 <p>该项目使用<a href="https://github.com/2881099/FreeSql" target="_blank" rel="noopener noreferrer">FreeSql</a>，默认自动迁移数据表结构，会自动根据配置项创建数据库，初始化种子数据</p>
 <p>默认会创建用户<code>admin</code>，密码<code>123qwe</code></p>
-<h2 id="visual-studio-2022运行项目" tabindex="-1"> visual studio 2022运行项目</h2>
-<p>双击lin-cms-dotnetcore.sln，使用vs2022打开项目。右键解决方案，点击生成解决方案。</p>
-<p>由于将identityserver4单独拆成了一个项目，所以需要同时启动二个项目，<strong>右键解决方案，属性。</strong>,选择多个启动项目，勾选二个项目同时启动。如下图所示。</p>
+<h2 id="visual-studio-2022-运行项目" tabindex="-1"> visual studio 2022 运行项目</h2>
+<p>双击 lin-cms-dotnetcore.sln，使用 vs2022 打开项目。右键解决方案，点击生成解决方案。</p>
+<p>由于将 identityserver4 单独拆成了一个项目，所以需要同时启动二个项目，<strong>右键解决方案，属性。</strong>,选择多个启动项目，勾选二个项目同时启动。如下图所示。</p>
 <p><img src="https://pic.downk.cc/item/5e83fd74504f4bcb04cf5474.png" alt="" loading="lazy"></p>
-<p>这时候会打开二个网页  https://localhost:5001/swagger/index.html，即可看到swagger页面。</p>
+<p>这时候会打开二个网页 https://localhost:5001/swagger/index.html，即可看到 swagger 页面。</p>
 <p><img src="https://pic.downk.cc/item/5e83ffd1504f4bcb04d0f039.jpg" alt="" loading="lazy"></p>
-<p>会打开浏览器，访问<a href="https://localhosst:5001/swagger/index.html" target="_blank" rel="noopener noreferrer">https://localhosst:5001/swagger/index.html</a>，会看到swagger的文档。
-访问<a href="https://localhosst:5001/swagger/index.html" target="_blank" rel="noopener noreferrer">https://localhosst:5003/swagger/index.html</a> 是ids4的接口文档，什么也看不到。</p>
-<p>LinCms.Web运行效果：
+<p>会打开浏览器，访问<a href="https://localhosst:5001/swagger/index.html" target="_blank" rel="noopener noreferrer">https://localhosst:5001/swagger/index.html</a>，会看到 swagger 的文档。
+访问<a href="https://localhosst:5001/swagger/index.html" target="_blank" rel="noopener noreferrer">https://localhosst:5003/swagger/index.html</a> 是 ids4 的接口文档，什么也看不到。</p>
+<p>LinCms.Web 运行效果：
 <img src="https://ae01.alicdn.com/kf/He52bc4d3708242d2995419bb584e1f53Q.jpg" alt="" loading="lazy"></p>
 <h2 id="部署" tabindex="-1"> 部署</h2>
 <ul>
-<li><a href="https://blog.igeekfan.cn/2022/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Ubuntu" target="_blank" rel="noopener noreferrer">部署至Linux(Ubuntu16.06)</a></li>
-<li><a href="https://blog.igeekfan.cn/2022/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Docker-Ubuntu/" target="_blank" rel="noopener noreferrer">部署至Linux(Ubuntu16.06)下的Docker</a></li>
+<li><a href="https://blog.igeekfan.cn/2022/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Ubuntu" target="_blank" rel="noopener noreferrer">部署至 Linux(Ubuntu16.06)</a></li>
+<li><a href="https://blog.igeekfan.cn/2022/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Docker-Ubuntu/" target="_blank" rel="noopener noreferrer">部署至 Linux(Ubuntu16.06)下的 Docker</a></li>
 </ul>
 <h2 id="部署前准备" tabindex="-1"> 部署前准备</h2>
-<p>因为该项目基于IdentityServer4,实现的授权认证服务，</p>
-<p>开发阶段使用<code>AddDeveloperSigningCredential()</code>方法即可完成签名认证，但是在生产环境，我们必须使用<code>AddSigningCredential()</code>方法并且使用OpenSSL生成自己的签名证书</p>
+<p>因为该项目基于 IdentityServer4,实现的授权认证服务，</p>
+<p>开发阶段使用<code>AddDeveloperSigningCredential()</code>方法即可完成签名认证，但是在生产环境，我们必须使用<code>AddSigningCredential()</code>方法并且使用 OpenSSL 生成自己的签名证书</p>
 <p>Startup.cs</p>
 <div><pre><code>            services.AddIdentityServer()
 #if  DEBUG
@@ -7933,19 +7955,19 @@ Fsql.Aop.AuditValue += (s, e) =>
         "Password":"123qwe"
     }
 }
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div><h3 id="使用openssl生成证书" tabindex="-1"> 使用OpenSSL生成证书</h3>
-<p>官网下载并安装OpenSSL <a href="https://slproweb.com/products/Win32OpenSSL.html" target="_blank" rel="noopener noreferrer">OpenSSL官网</a></p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div><h3 id="使用-openssl-生成证书" tabindex="-1"> 使用 OpenSSL 生成证书</h3>
+<p>官网下载并安装 OpenSSL <a href="https://slproweb.com/products/Win32OpenSSL.html" target="_blank" rel="noopener noreferrer">OpenSSL 官网</a></p>
 <p>下载 Win64 OpenSSL v1.1.1b 版本</p>
-<p>在OpenSSL的bin文件夹，以管理员身份打开CMD执行以下命令：</p>
+<p>在 OpenSSL 的 bin 文件夹，以管理员身份打开 CMD 执行以下命令：</p>
 <div><pre><code>openssl req -newkey rsa:2048 -nodes -keyout ids4.key -x509 -days 365 -out ids4.cer
-</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>下面将生成的证书和Key封装成一个文件，以便IdentityServer可以使用它们去正确地签名tokens</p>
-<div><pre><code>openssl pkcs12 -export -in ids4.cer -inkey ids4.key -out ids4.pfx 
-</code></pre><div aria-hidden="true"><span>1</span><br></div></div><h5 id="注-在生成的过程中会让我们输入export-password" tabindex="-1"> (注：在生成的过程中会让我们输入Export Password)</h5>
-<p>这个 密码与appsettings.Production.json配置项相同。</p>
-<p>发布时，把ids4.pfx，放到项目根目录</p>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>下面将生成的证书和 Key 封装成一个文件，以便 IdentityServer 可以使用它们去正确地签名 tokens</p>
+<div><pre><code>openssl pkcs12 -export -in ids4.cer -inkey ids4.key -out ids4.pfx
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><h5 id="注-在生成的过程中会让我们输入-export-password" tabindex="-1"> (注：在生成的过程中会让我们输入 Export Password)</h5>
+<p>这个 密码与 appsettings.Production.json 配置项相同。</p>
+<p>发布时，把 ids4.pfx，放到项目根目录</p>
 <h2 id="参考" tabindex="-1"> 参考</h2>
 <ul>
-<li><a href="https://www.cnblogs.com/guolianyu/p/9872661.html" target="_blank" rel="noopener noreferrer">IdentityServer4之JWT签名(RSA加密证书)及验签</a></li>
+<li><a href="https://www.cnblogs.com/guolianyu/p/9872661.html" target="_blank" rel="noopener noreferrer">IdentityServer4 之 JWT 签名(RSA 加密证书)及验签</a></li>
 </ul>
 ]]></content:encoded>
       <enclosure url="https://pic.downk.cc/item/5e83fd74504f4bcb04cf5474.png" type="image/png"/>
@@ -8290,7 +8312,7 @@ POST 方式（PostMan 去请求）</p>
   <span>"site_admin"</span><span>:</span> <span>false</span><span>,</span>
   <span>"name"</span><span>:</span> <span>"IGeekFan"</span><span>,</span>
   <span>"company"</span><span>:</span> <span>null</span><span>,</span>
-  <span>"blog"</span><span>:</span> <span>"https://blog.igeekfan.cn"</span><span>,</span>
+  <span>"blog"</span><span>:</span> <span>"https://igeekfan.cn"</span><span>,</span>
   <span>"location"</span><span>:</span> <span>null</span><span>,</span>
   <span>"email"</span><span>:</span> <span>"luoyunchong@foxmail.com"</span><span>,</span>
   <span>"hireable"</span><span>:</span> <span>null</span><span>,</span>
