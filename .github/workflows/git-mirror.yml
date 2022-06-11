@@ -17,10 +17,10 @@ jobs:
                   source-repo: "git@github.com:luoyunchong/igeekfan-docs.git"
                   destination-repo: "git@gitee.com:igeekfan/igeekfan-docs.git"
                   
-            - name: Build Gitee Pages
-              uses: yanglbme/gitee-pages-action@main
-              with:
-                  gitee-username: igeekfan
-                  gitee-password: ${{ secrets.GITEE_PASSWORD }}
-                  gitee-repo: igeekfan/igeekfan-docs
-                  branch: gh-pages
+            # - name: Build Gitee Pages
+            #   uses: yanglbme/gitee-pages-action@main
+            #   with:
+            #       gitee-username: igeekfan
+            #       gitee-password: ${{ secrets.GITEE_PASSWORD }}
+            #       gitee-repo: igeekfan/igeekfan-docs
+            #       branch: gh-pages
