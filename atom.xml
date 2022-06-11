@@ -3,11 +3,109 @@
   <id>https://igeekfan.cn/igeekfan-docs/</id>
   <title>IGeekFan 开发者文档</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
-  <updated>2022-06-03T14:31:58.223Z</updated>
+  <updated>2022-06-11T09:02:20.578Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
+  <category term="ASP.NET Core"/>
   <category term="lin-cms-dotnetcore"/>
+  <contributor>
+    <name>Talking Dotnet</name>
+  </contributor>
+  <entry>
+    <title type="html">在 ASP.NET Core 6 如何添加 Startup.cs</title>
+    <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/NET6Startup.html</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/NET6Startup.html"/>
+    <updated>2022-06-11T09:01:13.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<ul>
+<li>原文：<a href="https://www.talkingdotnet.com/how-to-add-startup-cs-in-asp-net-core-6-project/#more-8202" target="_blank" rel="noopener noreferrer">https://www.talkingdotnet.com/how-to-add-startup-cs-in-asp-net-core-6-project/#more-8202</a></li>
+<li>作者: Talking Dotnet</li>
+</ul>
+</blockquote>
+<p>使用 <code>ASP.NET Core 6.0</code>项目，您将找不到<code>Startup.cs</code>文件。默认情况下，此文件将被删除，并且是将注册依赖项和中间件放到了<code>Program.cs</code>中。但是，如果您是 <code>Startup.cs</code> 的粉丝或将项目升级到 <code>ASP.NET Core 6.0</code>，你可能仍想要使用 <code>Startup.cs</code> 文件。因此，在这篇文章中，让我们将了解如何在 <code>ASP.NET Core 6</code> 项目中添加 <code>Startup.cs</code></p>
+<p>使用 <code>ASP.NET Core 6.0</code>项目时，您的<code>Program.cs</code>文件可能会这样。<code>Program.cs</code>是 ASP.NET Core Web 6应用模板的文件</p>
+<div><pre><code><span><span>var</span></span> builder <span>=</span> WebApplication<span>.</span><span>CreateBuilder</span><span>(</span>args<span>)</span><span>;</span>
+
+<span>// Add services to the container.</span>
+builder<span>.</span>Services<span>.</span><span>AddRazorPages</span><span>(</span><span>)</span><span>;</span>
+
+<span><span>var</span></span> app <span>=</span> builder<span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
+
+<span>// Configure the HTTP request pipeline.</span>
+<span>if</span> <span>(</span><span>!</span>app<span>.</span>Environment<span>.</span><span>IsDevelopment</span><span>(</span><span>)</span><span>)</span>
+<span>{</span>
+    app<span>.</span><span>UseExceptionHandler</span><span>(</span><span>"/Error"</span><span>)</span><span>;</span>
+    <span>// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.</span>
+    app<span>.</span><span>UseHsts</span><span>(</span><span>)</span><span>;</span>
+<span>}</span>
+app<span>.</span><span>UseHttpsRedirection</span><span>(</span><span>)</span><span>;</span>
+app<span>.</span><span>UseStaticFiles</span><span>(</span><span>)</span><span>;</span>
+app<span>.</span><span>UseRouting</span><span>(</span><span>)</span><span>;</span>
+app<span>.</span><span>UseAuthorization</span><span>(</span><span>)</span><span>;</span>
+app<span>.</span><span>MapRazorPages</span><span>(</span><span>)</span><span>;</span>
+app<span>.</span><span>Run</span><span>(</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br></div></div><p>正如您在此处看到的，服务和中间件注册现在是此文件的一部分。而 <code>Statup.cs</code> 有 2 个方法 <code>ConfigureServices()</code> 和 <code>Configure()</code>，我们在方法 <code>ConfigureServices</code> 中注册依赖关系/服务，在 <code>Configure</code> 中注册中间件。</p>
+<p>现在使用 <code>Program.cs</code>，您需要在第 4 行之后注册您的服务/依赖项<code>builder.Services.AddRazorPages();</code>，并在第 6 行之后注册中间件<code>var app = builder.Build();</code>。请记住，在管道中注册中间件时，顺序很重要。</p>
+<p>若要将 <code>Startup.cs</code> 添加到 <code>ASP.NET Core 6.0</code> 项目中 ，请添加一个名为<code>Startup.cs</code>的新文件 并添加以下代码。</p>
+<div><pre><code><span>public</span> <span>class</span> <span>Startup</span>
+<span>{</span>
+    <span>public</span> <span>Startup</span><span>(</span><span>IConfiguration</span> configuration<span>)</span>
+    <span>{</span>
+        Configuration <span>=</span> configuration<span>;</span>
+    <span>}</span>
+
+    <span>public</span> <span>IConfiguration</span> Configuration <span>{</span> <span>get</span><span>;</span> <span>}</span>
+
+    <span>public</span> <span><span>void</span></span> <span>ConfigureServices</span><span>(</span><span>IServiceCollection</span> services<span>)</span>
+    <span>{</span>
+        services<span>.</span><span>AddRazorPages</span><span>(</span><span>)</span><span>;</span>
+    <span>}</span>
+
+    <span>public</span> <span><span>void</span></span> <span>Configure</span><span>(</span><span>WebApplication</span> app<span>,</span> <span>IWebHostEnvironment</span> env<span>)</span>
+    <span>{</span>
+        <span>if</span> <span>(</span><span>!</span>app<span>.</span>Environment<span>.</span><span>IsDevelopment</span><span>(</span><span>)</span><span>)</span>
+        <span>{</span>
+            app<span>.</span><span>UseExceptionHandler</span><span>(</span><span>"/Error"</span><span>)</span><span>;</span>
+            <span>// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.</span>
+            app<span>.</span><span>UseHsts</span><span>(</span><span>)</span><span>;</span>
+        <span>}</span>
+        app<span>.</span><span>UseHttpsRedirection</span><span>(</span><span>)</span><span>;</span>
+        app<span>.</span><span>UseStaticFiles</span><span>(</span><span>)</span><span>;</span>
+        app<span>.</span><span>UseRouting</span><span>(</span><span>)</span><span>;</span>
+        app<span>.</span><span>UseAuthorization</span><span>(</span><span>)</span><span>;</span>
+        app<span>.</span><span>MapRazorPages</span><span>(</span><span>)</span><span>;</span>
+        app<span>.</span><span>Run</span><span>(</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br></div></div><p>构造函数和这两个方法中的代码是非常熟悉。从文件<code>Program.cs</code>中删除依赖项注册的代码并将其放入<code>ConfigureService()</code>方法中。同样，中间件注册码也从文件中删除并放入<code>Configure()</code> 方法中。</p>
+<p>接下来，我们需要介绍 <code>Program.cs</code> 如何调用 <code>Startup.cs</code> 。因此，请将文件代码更新为以下内容。</p>
+<div><pre><code><span><span>var</span></span> builder <span>=</span> WebApplication<span>.</span><span>CreateBuilder</span><span>(</span>args<span>)</span><span>;</span>
+
+<span><span>var</span></span> startup <span>=</span> <span>new</span> <span>Startup</span><span>(</span>builder<span>.</span>Configuration<span>)</span><span>;</span>
+startup<span>.</span><span>ConfigureServices</span><span>(</span>builder<span>.</span>Services<span>)</span><span>;</span>
+
+<span><span>var</span></span> app <span>=</span> builder<span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
+startup<span>.</span><span>Configure</span><span>(</span>app<span>,</span> builder<span>.</span>Environment<span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div><p>Startup.cs 类所需的所有对象都存在于 builder 对象中，因此我们可以将所需的对象传递给<code>ConfigureService()</code>和<code>Configure()</code>方法。就是这样。您的项目应该正常运行</p>
+<h2 id="我们还能做什么" tabindex="-1"> 我们还能做什么？</h2>
+<p>这是添加<code>Startup.cs</code>的自定义方式，因此实际上我们不必遵循任何与该类相关的内置规则。我从不喜欢<code>ConfigureService()</code>和<code>Configure()</code>这两个名称，因为它们并没有确切定义它们的用途。以前，无法重命名这些名称，但现在我可以给出一个有意义的名称。类似地，<code>ConfigureService</code>变成<code>RegisterServices</code>，<code>Configure</code>变成<code>SetupMiddleware</code>。</p>
+<div><pre><code><span><span>var</span></span> startup <span>=</span> <span>new</span> <span>Startup</span><span>(</span>builder<span>.</span>Configuration<span>)</span><span>;</span>
+startup<span>.</span><span>RegisterServices</span><span>(</span>builder<span>.</span>Services<span>)</span><span>;</span>
+
+<span><span>var</span></span> app <span>=</span> builder<span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
+startup<span>.</span><span>SetupMiddlewares</span><span>(</span>app<span>,</span> builder<span>.</span>Environment<span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div>]]></content>
+    <author>
+      <name>Talking Dotnet</name>
+    </author>
+    <category term="ASP.NET Core"/>
+    <contributor>
+      <name>Talking Dotnet</name>
+    </contributor>
+    <published>2022-06-11T09:01:13.000Z</published>
+    <rights>Copyright by Talking Dotnet</rights>
+  </entry>
   <entry>
     <title type="html">七牛云对象存储</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/qiniu-object-storages.html</id>
