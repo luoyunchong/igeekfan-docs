@@ -15,7 +15,8 @@ export const zhSidebarConfig = sidebar({
                 'qiniu-object-storages',
                 'imcore-chat',
                 'nacos-aspnetcore',
-                'serilog-tutorial'
+                'serilog-tutorial',
+                'NET6Startup'
             ]
         }
     ],
