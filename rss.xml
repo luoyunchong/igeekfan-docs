@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 13 Jun 2022 14:08:09 GMT</pubDate>
-    <lastBuildDate>Mon, 13 Jun 2022 14:08:09 GMT</lastBuildDate>
+    <pubDate>Mon, 13 Jun 2022 15:27:48 GMT</pubDate>
+    <lastBuildDate>Mon, 13 Jun 2022 15:27:48 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>ASP.NET Core</category>
@@ -76,6 +76,10 @@ app<span>.</span><span>Run</span><span>(</span><span>)</span><span>;</span>
     <span>.</span><span>SetupMiddleware</span><span>(</span><span>)</span>
     <span>.</span><span>Run</span><span>(</span><span>)</span><span>;</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><p>现在，这看起来更加清晰、可读和易于管理。就是这么简单。</p>
+<h2 id="源码" tabindex="-1"> 源码</h2>
+<ul>
+<li><a href="https://github.com/luoyunchong/dotnetcore-examples/blob/master/999-Others/NET6/NET6Extensions/Program.cs" target="_blank" rel="noopener noreferrer">dotnetcore-examples/Program.cs at master · luoyunchong/dotnetcore-examples (github.com)</a></li>
+</ul>
 ]]></content:encoded>
     </item>
     <item>
@@ -163,7 +167,11 @@ startup<span>.</span><span>RegisterServices</span><span>(</span>builder<span>.</
 
 <span><span>var</span></span> app <span>=</span> builder<span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
 startup<span>.</span><span>SetupMiddlewares</span><span>(</span>app<span>,</span> builder<span>.</span>Environment<span>)</span><span>;</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div>]]></content:encoded>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><h2 id="源码" tabindex="-1"> 源码</h2>
+<ul>
+<li><a href="https://github.com/luoyunchong/dotnetcore-examples/blob/master/999-Others/NET6/NET6Startup/Program.cs" target="_blank" rel="noopener noreferrer">dotnetcore-examples/Program.cs at master · luoyunchong/dotnetcore-examples (github.com)</a></li>
+</ul>
+]]></content:encoded>
     </item>
     <item>
       <title>七牛云对象存储</title>
