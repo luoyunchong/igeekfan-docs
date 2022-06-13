@@ -3,7 +3,7 @@
   <id>https://igeekfan.cn/igeekfan-docs/</id>
   <title>IGeekFan 开发者文档</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
-  <updated>2022-06-11T16:00:18.156Z</updated>
+  <updated>2022-06-13T14:08:09.046Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -12,6 +12,79 @@
   <contributor>
     <name>Talking Dotnet</name>
   </contributor>
+  <entry>
+    <title type="html">在 ASP.NET Core 6 中添加Startup.cs的整洁方式</title>
+    <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/ASPNETCore6-Add-Startup-Clean.html</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/ASPNETCore6-Add-Startup-Clean.html"/>
+    <updated>2022-06-13T14:06:43.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<ul>
+<li><a href="https://www.talkingdotnet.com/clean-way-to-add-startup-class-in-asp-net-core-6-project/" target="_blank" rel="noopener noreferrer">https://www.talkingdotnet.com/clean-way-to-add-startup-class-in-asp-net-core-6-project/</a></li>
+<li>作者: Talking Dotnet</li>
+</ul>
+</blockquote>
+<p>如果您关注<code>ASP.NET Core 6</code>，那么您可能发现，对于<code>ASP.NET Core 6</code>项目，没有<code>Startup.cs</code>文件。我发布了关于<a href="https://igeekfan.cn/dotnetcore/examples/NET6Startup.html" target="_blank" rel="noopener noreferrer">如何在ASP.NETCore 6项目中添加Startup.cs</a>，这种方法以传统的方式将类引入到项目中，这是我们今天使用的<code>ASP.NET Core 5</code>及其早期版本。但是，如果我们能够改进，让它变得更好呢。好的，在这篇文章中，让我们看一看在<code>ASP.NET Core6</code>中添加<code>Startup</code>类的整洁方法</p>
+<p>为了以整洁的方式实现，我们将利用<a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods" target="_blank" rel="noopener noreferrer">扩展方法</a>。扩展方法允许您向现有类型“添加”方法，而无需创建新的派生类型、重新编译或以其他方式修改原始类型。<code>ASP.NET Core 6.0</code>使用和来引导<code>ASP.NET Core应用程序</code>。因此，我们将为这二个(<code>WebApplicationBuilder</code>、<code>WebApplication</code>)类创建扩展方法</p>
+<p>记住，这2个是<code>ASP.NET Core 6.0</code>新引入的。阅读<a href="https://andrewlock.net/exploring-dotnet-6-part-2-comparing-webapplicationbuilder-to-the-generic-host/" target="_blank" rel="noopener noreferrer">Comparing WebApplicationBuilder to the Generic Host</a>，并<a href="https://andrewlock.net/exploring-dotnet-6-part-3-exploring-the-code-behind-webapplicationbuilder/" target="_blank" rel="noopener noreferrer">Exploring the code behind WebApplicationBuilder</a>以了解有关此新引导模型的更多信息。</p>
+<p>该类用于注册/配置服务或依赖项。由于扩展方法是静态方法，所以请使用名为的静态方法创建一个静态类。现在，将依赖项注册代码从移动到这里。如下</p>
+<div><pre><code><span>public</span> <span>static</span> <span>class</span> <span>RegisterStartupServices</span>
+<span>{</span>
+    <span>public</span> <span>static</span> <span>WebApplicationBuilder</span> <span>RegisterServices</span><span>(</span><span>this</span> <span>WebApplicationBuilder</span> builder<span>)</span>
+    <span>{</span>
+        builder<span>.</span>Services<span>.</span><span>AddControllers</span><span>(</span><span>)</span><span>;</span>
+        <span>// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle</span>
+        builder<span>.</span>Services<span>.</span><span>AddEndpointsApiExplorer</span><span>(</span><span>)</span><span>;</span>
+        builder<span>.</span>Services<span>.</span><span>AddSwaggerGen</span><span>(</span><span>)</span><span>;</span>
+        <span>return</span> builder<span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br></div></div><p>现在，让我们创建另一个静态类<code>RegisterStartupMiddlewares</code>，它扩展了用于中间件注册的类<code>WebApplication</code>。在这个类中，从中移动中间件注册码并将其引入方法。Program.cs中的<code>SetupMiddleware</code></p>
+<div><pre><code><span>public</span> <span>static</span> <span>class</span> <span>RegisterStartupMiddlewares</span>
+<span>{</span>
+    <span>public</span> <span>static</span> <span>WebApplication</span> <span>SetupMiddleware</span><span>(</span><span>this</span> <span>WebApplication</span> app<span>)</span>
+    <span>{</span>
+        <span>// Configure the HTTP request pipeline.</span>
+        <span>if</span> <span>(</span>app<span>.</span>Environment<span>.</span><span>IsDevelopment</span><span>(</span><span>)</span><span>)</span>
+        <span>{</span>
+            app<span>.</span><span>UseSwagger</span><span>(</span><span>)</span><span>;</span>
+            app<span>.</span><span>UseSwaggerUI</span><span>(</span><span>)</span><span>;</span>
+        <span>}</span>
+
+        app<span>.</span><span>UseHttpsRedirection</span><span>(</span><span>)</span><span>;</span>
+
+        app<span>.</span><span>UseAuthorization</span><span>(</span><span>)</span><span>;</span>
+
+        app<span>.</span><span>MapControllers</span><span>(</span><span>)</span><span>;</span>
+
+        <span>return</span> app<span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br></div></div><p>完成后，让我们返回到<code>Program.cs</code>中更新代码并使用这些扩展方法。如下</p>
+<div><pre><code><span><span>var</span></span> builder <span>=</span> WebApplication<span>.</span><span>CreateBuilder</span><span>(</span>args<span>)</span>
+             <span>.</span><span>RegisterServices</span><span>(</span><span>)</span><span>;</span>
+
+<span><span>var</span></span> app <span>=</span> builder<span>.</span><span>Build</span><span>(</span><span>)</span>
+        <span>.</span><span>SetupMiddleware</span><span>(</span><span>)</span><span>;</span>
+
+app<span>.</span><span>Run</span><span>(</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div><p>或者，我们可以让他更加整洁，并将其排成一行，如下</p>
+<div><pre><code>WebApplication<span>.</span><span>CreateBuilder</span><span>(</span>args<span>)</span>
+    <span>.</span><span>RegisterServices</span><span>(</span><span>)</span>
+    <span>.</span><span>Build</span><span>(</span><span>)</span>
+    <span>.</span><span>SetupMiddleware</span><span>(</span><span>)</span>
+    <span>.</span><span>Run</span><span>(</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><p>现在，这看起来更加清晰、可读和易于管理。就是这么简单。</p>
+]]></content>
+    <author>
+      <name>Talking Dotnet</name>
+    </author>
+    <category term="ASP.NET Core"/>
+    <contributor>
+      <name>Talking Dotnet</name>
+    </contributor>
+    <published>2022-06-13T14:06:43.000Z</published>
+    <rights>Copyright by Talking Dotnet</rights>
+  </entry>
   <entry>
     <title type="html">在 ASP.NET Core 6 如何添加 Startup.cs</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/NET6Startup.html</id>
@@ -8084,7 +8157,7 @@ Fsql.Aop.AuditValue += (s, e) =>
     <title type="html">功能模块的设计</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/pm-design-modules.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/pm-design-modules.html"/>
-    <updated>2020-05-08T05:46:31.000Z</updated>
+    <updated>2022-06-13T14:06:43.000Z</updated>
     <content type="html"><![CDATA[<h1 id="功能模块的设计" tabindex="-1"> 功能模块的设计</h1>
 <h2 id="基础权限模块" tabindex="-1"> 基础权限模块</h2>
 <ul>
@@ -8346,7 +8419,7 @@ update_time	        datetime
     <title type="html">GitHub第三方授权登录</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/spa-github-login.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/spa-github-login.html"/>
-    <updated>2022-06-03T14:30:48.000Z</updated>
+    <updated>2022-06-13T14:06:43.000Z</updated>
     <content type="html"><![CDATA[<p>使用 SPA+.NET Core3.1 实现 GitHub 第三方授权登录 类似使用 AspNet.Security.OAuth.GitHub，前端使用如下：VUE+Vue-Router+axios</p>
 <h2 id="aspnet-security-oauth-github" tabindex="-1"> AspNet.Security.OAuth.GitHub</h2>
 <ul>
