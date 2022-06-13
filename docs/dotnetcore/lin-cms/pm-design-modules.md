@@ -1,12 +1,12 @@
 ---
 title: 功能模块的设计
 date: 2019-11-24 12:44:22
-tags:
-- 开源
-- .NET Core
-- lin-cms
+tag:
+ - 开源
+ - .NET Core
+ - lin-cms
 category:
-- lin-cms-dotnetcore
+ - lin-cms-dotnetcore
 ---
 
 # 功能模块的设计

@@ -16,7 +16,8 @@ export const zhSidebarConfig = sidebar({
                 'imcore-chat',
                 'nacos-aspnetcore',
                 'serilog-tutorial',
-                'NET6Startup'
+                'NET6Startup',
+                'ASPNETCore6-Add-Startup-Clean'
             ]
         }
     ],

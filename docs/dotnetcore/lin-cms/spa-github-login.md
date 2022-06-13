@@ -1,6 +1,6 @@
 ---
 title: GitHub第三方授权登录
-tags:
+tag:
   - 开源
   - .NET Core
   - lin-cms
