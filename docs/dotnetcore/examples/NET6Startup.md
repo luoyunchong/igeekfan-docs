@@ -105,3 +105,8 @@ startup.RegisterServices(builder.Services);
 var app = builder.Build();
 startup.SetupMiddlewares(app, builder.Environment);
 ```
+
+## 源码
+
+- [dotnetcore-examples/Program.cs at master · luoyunchong/dotnetcore-examples (github.com)](https://github.com/luoyunchong/dotnetcore-examples/blob/master/999-Others/NET6/NET6Startup/Program.cs)
+

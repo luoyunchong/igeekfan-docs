@@ -80,3 +80,7 @@ WebApplication.CreateBuilder(args)
 ```
 
 现在，这看起来更加清晰、可读和易于管理。就是这么简单。
+
+## 源码
+
+- [dotnetcore-examples/Program.cs at master · luoyunchong/dotnetcore-examples (github.com)](https://github.com/luoyunchong/dotnetcore-examples/blob/master/999-Others/NET6/NET6Extensions/Program.cs)
