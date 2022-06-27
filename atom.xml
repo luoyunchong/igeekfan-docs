@@ -3,7 +3,7 @@
   <id>https://igeekfan.cn/igeekfan-docs/</id>
   <title>IGeekFan 开发者文档</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
-  <updated>2022-06-13T15:27:48.026Z</updated>
+  <updated>2022-06-27T18:38:32.176Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -921,7 +921,7 @@ builder<span>.</span>Services<span>.</span><span><span>AddModule</span><span><sp
     <title type="html">FreeKit</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/"/>
-    <updated>2022-06-02T18:18:50.000Z</updated>
+    <updated>2022-06-27T18:37:15.000Z</updated>
     <content type="html"><![CDATA[<h1 id="freekit" tabindex="-1"> FreeKit</h1>
 <div align="center">
     <h1 align="center"> .NET <img alt="logo" src="/images/dotnet-20-years.png" width="80px"/>YEARS </h1>
@@ -969,6 +969,16 @@ builder<span>.</span>Services<span>.</span><span><span>AddModule</span><span><sp
 <td><a href="https://www.nuget.org/packages/IGeekFan.Localization.FreeSql/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/v/IGeekFan.Localization.FreeSql.svg?style=flat-square&amp;label=nuget" alt="NuGet" loading="lazy"></a></td>
 <td><img src="https://img.shields.io/nuget/dt/IGeekFan.Localization.FreeSql.svg" alt="downloads" loading="lazy"></td>
 </tr>
+<tr>
+<td><code>IGeekFan.AspNetCore.DataProtection.FreeRedis</code></td>
+<td><a href="https://www.nuget.org/packages/IGeekFan.AspNetCore.DataProtection.FreeRedis/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/v/IGeekFan.AspNetCore.DataProtection.FreeRedis.svg?style=flat-square&amp;label=nuget" alt="NuGet" loading="lazy"></a></td>
+<td><img src="https://img.shields.io/nuget/dt/IGeekFan.AspNetCore.DataProtection.FreeRedis.svg" alt="downloads" loading="lazy"></td>
+</tr>
+<tr>
+<td><code>IGeekFan.AspNetCore.DataProtection.FreeSql</code></td>
+<td><a href="https://www.nuget.org/packages/IGeekFan.AspNetCore.DataProtection.FreeSql/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/nuget/v/IGeekFan.AspNetCore.DataProtection.FreeSql.svg?style=flat-square&amp;label=nuget" alt="NuGet" loading="lazy"></a></td>
+<td><img src="https://img.shields.io/nuget/dt/IGeekFan.AspNetCore.DataProtection.FreeSql.svg" alt="downloads" loading="lazy"></td>
+</tr>
 </tbody>
 </table>
 <h2 id="baget-packages" tabindex="-1"> BaGet Packages</h2>
@@ -1003,6 +1013,14 @@ builder<span>.</span>Services<span>.</span><span><span>AddModule</span><span><sp
 <tr>
 <td><code>IGeekFan.Localization.FreeSql</code></td>
 <td><a href="http://124.70.130.97:5555/packages/IGeekFan.Localization.FreeSql" target="_blank" rel="noopener noreferrer">BaGet</a></td>
+</tr>
+<tr>
+<td><code>IGeekFan.AspNetCore.DataProtection.FreeRedis</code></td>
+<td><a href="http://124.70.130.97:5555/packages/IGeekFan.AspNetCore.DataProtection.FreeRedis" target="_blank" rel="noopener noreferrer">BaGet</a></td>
+</tr>
+<tr>
+<td><code>IGeekFan.AspNetCore.DataProtection.FreeSql</code></td>
+<td><a href="http://124.70.130.97:5555/packages/IGeekFan.AspNetCore.DataProtection.FreeSql" target="_blank" rel="noopener noreferrer">BaGet</a></td>
 </tr>
 </tbody>
 </table>
