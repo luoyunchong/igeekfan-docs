@@ -6,12 +6,537 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 27 Jun 2022 18:38:32 GMT</pubDate>
-    <lastBuildDate>Mon, 27 Jun 2022 18:38:32 GMT</lastBuildDate>
+    <pubDate>Wed, 29 Jun 2022 19:19:13 GMT</pubDate>
+    <lastBuildDate>Wed, 29 Jun 2022 19:19:13 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>ASP.NET Core</category>
     <category>lin-cms-dotnetcore</category>
+    <item>
+      <title>Docker 配置 Baget</title>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Baget.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Baget.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Docker 配置 Baget</source>
+      <pubDate>Wed, 29 Jun 2022 19:17:23 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="docker-配置-baget" tabindex="-1"> Docker 配置 Baget</h1>
+<h2 id="docker" tabindex="-1"> Docker</h2>
+<p>在baget.env同目录创建一个<code>baget-data</code> 的目录</p>
+<div><pre><code>mkdir baget-data
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>拉取baget最新的镜像</p>
+<div><pre><code>docker pull loicsharma/baget
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>运行BaGet</p>
+<div><pre><code>cd /var/baget
+docker run --name nuget-server --restart=always -d -p 5555:80 --env-file baget.env -v &quot;$(pwd)/baget-data:/var/baget&quot; loicsharma/baget:latest 
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><h2 id="发布包" tabindex="-1"> 发布包</h2>
+<p>发布第一个nuget包</p>
+<div><pre><code>dotnet nuget push -s http://localhost:5555/v3/index.json -k HnoR4Sgntd8V7caqEY
+package.1.0.0.nupkg
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>发布第一个symbol  package </p>
+<div><pre><code>dotnet nuget push -s http://localhost:5555/v3/index.json -k HnoR4Sgntd8V7caqEY package.1.0.0.snupkg
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>示例</p>
+<div><pre><code>dotnet nuget push -s http://124.70.130.97:5555/v3/index.json src/IGeekFan.Localization.FreeSql/bin/Debug/IGeekFan.Localization.FreeSql.0.0.3.nupkg -k HnoR4Sgntd8V7caqEY
+
+dotnet nuget push -s http://124.70.130.97:5555/v3/index.json src/IGeekFan.Localization.FreeSql/bin/Debug/IGeekFan.Localization.FreeSql.0.0.3.snupkg -k HnoR4Sgntd8V7caqEY
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><h2 id="还原包" tabindex="-1"> 还原包</h2>
+<p>你可以通过以下源还原包</p>
+<div><pre><code>http://localhost:5555/v3/index.json
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>可以通过打开URL来浏览包<a href="http://localhost:5555/%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E3%80%82" target="_blank" rel="noopener noreferrer">http://localhost:5555/在浏览器中。</a></p>
+<h2 id="symbol-server" tabindex="-1"> Symbol server</h2>
+<p>‎可以使用以下符号位置加载符号：</p>
+<div><pre><code>http://localhost:5555/api/download/symbols
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><h3 id="https-loic-sharma-github-io-baget-installation-docker" tabindex="-1"> <a href="https://loic-sharma.github.io/BaGet/installation/docker/" target="_blank" rel="noopener noreferrer">https://loic-sharma.github.io/BaGet/installation/docker/</a></h3>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Docker部署CMS命令</title>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-CMS.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-CMS.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Docker部署CMS命令</source>
+      <pubDate>Wed, 29 Jun 2022 19:17:23 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="docker部署cms命令" tabindex="-1"> Docker部署CMS命令</h1>
+<h2 id="部署docker" tabindex="-1"> 部署docker</h2>
+<div><pre><code><span>#判断是否存在webnotebook容器</span>
+<span>docker</span> <span>ps</span> <span>|</span> <span>grep</span> lincms-web-1 <span>&amp;></span> /dev/null
+<span>#如果不存在，则Remove</span>
+<span>if</span> <span>[</span> <span>$?</span> -ne <span>0</span> <span>]</span>
+<span>then</span>
+    <span>echo</span> <span>"lincms-web container not exist continue.. "</span>
+<span>else</span>
+    <span>echo</span> <span>"remove lincms-web-1 container"</span>
+    <span>docker</span> <span>rm</span> lincms-web-1 -f
+<span>fi</span>
+
+<span>docker</span> images <span>|</span> <span>grep</span> registry.cn-hangzhou.aliyuncs.com/igeekfan/lincms-web <span>&amp;></span> /dev/null
+
+<span>if</span> <span>[</span> <span>$?</span> -ne <span>0</span> <span>]</span>
+<span>then</span>
+    <span>echo</span> <span>"image does not exist , continue..."</span>
+<span>else</span>
+    <span>echo</span> <span>"image exists !!! remove it"</span>
+    <span>docker</span> rmi --force registry.cn-hangzhou.aliyuncs.com/igeekfan/lincms-web
+<span>fi</span>
+<span>#从阿里云拉取刚刚push的镜像</span>
+<span>docker</span> pull registry.cn-hangzhou.aliyuncs.com/igeekfan/lincms-web
+
+<span>docker</span> run --restart unless-stopped -p <span>5011</span>:80 --name lincms-web-1 -d registry.cn-hangzhou.aliyuncs.com/igeekfan/lincms-web
+
+<span>docker</span> <span>rm</span> lincms-web-2 -f
+<span>docker</span> <span>rm</span> lincms-web-3 -f
+<span>docker</span> <span>rm</span> lincms-web-4 -f
+
+<span>docker</span> run --restart unless-stopped -p <span>5012</span>:80 --name lincms-web-2 -d registry.cn-hangzhou.aliyuncs.com/igeekfan/lincms-web
+<span>docker</span> run --restart unless-stopped -p <span>5020</span>:80 --name lincms-web-3 -d registry.cn-hangzhou.aliyuncs.com/igeekfan/lincms-web
+<span>docker</span> run --restart unless-stopped -p <span>5021</span>:80 --name lincms-web-4 -d registry.cn-hangzhou.aliyuncs.com/igeekfan/lincms-web
+
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br></div></div><h2 id="nuget-api-key" tabindex="-1"> nuget api key</h2>
+<div><pre><code>Your-API-Key
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><div><pre><code>nuget SetApiKey Your-API-Key
+dotnet nuget push IGeekFan.AspNetCore.Knife4jUI.0.0.11.nupkg --api-key Your-API-Key --source https://api.nuget.org/v3/index.json
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><div><pre><code><span>{</span>
+  <span>//"DefaultConnection": "Data Source=|DataDirectory|\\SampleApp.db;",</span>
+  <span>"Sqlite1"</span><span>:</span> <span>"Data Source=d:\\SampleApp1.db"</span><span>,</span>
+  <span>"Sqlite2"</span><span>:</span> <span>"Data Source=d:\\SampleApp2.db"</span><span>,</span>
+  <span>"Oracle"</span><span>:</span> <span>"user id=test;password=123qwe; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1"</span><span>,</span>
+  <span>"MySql"</span><span>:</span> <span>"Data Source=127.0.0.1;Port=3306;User ID=root;Password=root; Initial Catalog=cccddd;Charset=utf8; SslMode=none;Min pool size=1"</span><span>,</span>
+  <span>"SqlServer"</span><span>:</span> <span>"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=cccddd;Pooling=true;Min Pool Size=1"</span><span>,</span>
+  <span>"PostgreSQL"</span><span>:</span> <span>"Host=127.0.0.1;Port=5432;Username=postgres;Password=postgresql; Database=postgres;Pooling=true;Minimum Pool Size=1"</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br></div></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>Docker 命令行</title>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Command.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Command.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Docker 命令行</source>
+      <pubDate>Wed, 29 Jun 2022 19:17:23 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="docker-命令行" tabindex="-1"> Docker 命令行</h1>
+<ul>
+<li>Command-Line Interfaces <a href="https://docs.docker.com/engine/reference/run/" title="https://docs.docker.com/engine/reference/run/" target="_blank" rel="noopener noreferrer">https://docs.docker.com/engine/reference/run/</a></li>
+</ul>
+<div><pre><code><span>docker</span> images  <span># 查看所有镜像</span>
+
+<span>docker</span> <span>ps</span> -a <span>#显示所有的容器，包括未运行的。</span>
+<span>docker</span> <span>ps</span> -l <span>#最后启动的容器</span>
+
+<span>docker</span> <span>rm</span> 容器id   <span>#删除容器</span>
+<span>docker</span> <span>rm</span> <span><span>$(</span><span>docker</span> <span>ps</span> -q -a<span>)</span></span> <span>#一次性删除所有的容器</span>
+
+<span>docker</span> rmi 镜像id/镜像名称  <span>#删除镜像</span>
+<span>docker</span> rmi <span><span>$(</span><span>docker</span> images -q<span>)</span></span> <span>#一次性删除所有的镜像。</span>
+
+<span>docker</span> build -t igeekfan/demo <span>.</span>  <span>#运行构建命令,构建Docker 镜像。 </span>
+
+<span>docker</span> run 镜像 <span>#运行</span>
+<span>docker</span> run -it -p <span>5000</span>:80 igeekfan/demo
+<span>#5000是运行后，docker对外的端口，80是这个服务对外的端口，其中Dockerfile 存在语句EXPOSE 80</span>
+<span>docker</span> run -d -p <span>5000</span>:80 igeekfan/demo 
+-d 参数后台运行
+
+<span>docker</span> start 容器id
+<span>docker</span> restart 容器id
+<span>docker</span> stop 容器id <span>#终止容器。</span>
+<span>docker</span> logs <span>$CONTAINER_ID</span> <span>##在container外面查看它的输出 </span>
+<span>docker</span> attach <span>$CONTAINER_ID</span> <span>##连接上容器实时查看：</span>
+
+<span>docker</span> pull microsoft/dotnet  <span>#单独安装某一镜像</span>
+
+<span>docker</span> save 镜像id <span>></span> 文件 <span>#持久化镜像</span>
+<span>docker</span> load <span>&lt;</span> 文件
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br></div></div><p>我们如果想将Docker 放置到其他机器运行，很简单。</p>
+<div><pre><code><span>#直接保存镜像，然后复制镜像到其他机器，然后使用docker 命令load 既可。</span>
+
+<span>docker</span> save igeekfan/demo <span>></span> demo.tar
+
+<span>#然后加载命令</span>
+
+<span>docker</span> load <span>&lt;</span> demo.tar
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div><p>我们如果想将Docker 放置到其他机器运行，很简单。</p>
+<div><pre><code><span>#直接保存镜像，然后复制镜像到其他机器，然后使用docker 命令load 既可。</span>
+
+<span>docker</span> save igeekfan/demo <span>></span> demo.tar
+
+<span>#然后加载命令</span>
+
+<span>docker</span> load <span>&lt;</span> demo.tar
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div><p>Docker删除</p>
+<div><pre><code><span># 查询相关软件包</span>
+dpkg -l <span>|</span> <span>grep</span> <span>docker</span>
+<span># 删除这个包 上面查到什么，删除什么</span>
+<span>sudo</span> <span>apt</span> remove --purge docker.io
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>Docker 配置 Jenkins</title>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Jenkins.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Jenkins.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Docker 配置 Jenkins</source>
+      <pubDate>Wed, 29 Jun 2022 19:17:23 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="docker-配置-jenkins" tabindex="-1"> Docker 配置 Jenkins</h1>
+<p><a href="https://www.cnblogs.com/hanease/p/15690225.html" target="_blank" rel="noopener noreferrer">docker安装jenkins - hanease - 博客园 (cnblogs.com)</a></p>
+<h2 id="配置-docker-镜像" tabindex="-1"> 配置 Docker 镜像</h2>
+<div><pre><code><span>curl</span> -sSL https://get.daocloud.io/daotools/set_mirror.sh <span>|</span> <span>sh</span> -s http://f1361db2.m.daocloud.io
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><h2 id="docker拉取镜像" tabindex="-1"> Docker拉取镜像</h2>
+<div><pre><code><span>docker</span> pull jenkins/jenkins:lts
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><h2 id="配置本地存储目录" tabindex="-1"> 配置本地存储目录</h2>
+<div><pre><code><span>mkdir</span> -p /apps/devops/jenkins
+<span>chmod</span> <span>777</span> /apps/devops/jenkins
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><h3 id="启动jenkins容器" tabindex="-1"> 启动Jenkins容器</h3>
+<div><pre><code><span>docker</span> stop jenkins
+<span>docker</span> rmi jenkins
+
+<span>sudo</span> <span>usermod</span> -a -G <span>docker</span> root
+<span>sudo</span> <span>chmod</span> <span>666</span> /var/run/docker.sock
+
+
+<span>docker</span> run -itd -p <span>9003</span>:8080 -p <span>9004</span>:50000 <span>\</span>
+--restart always <span>\</span>
+-v /apps/devops/jenkins:/var/jenkins_home <span>\</span>
+--name jenkins <span>\</span>
+--volume /var/run/docker.sock:/var/run/docker.sock <span>\</span>
+-v <span><span>$(</span><span>which</span> <span>docker</span><span>)</span></span>:/usr/bin/docker <span>\</span>
+-v <span><span>$(</span><span>which</span> <span>docker</span><span>)</span></span>:/usr/bin/com.docker.cli <span>\</span>
+jenkins/jenkins:lts
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div><h2 id="docker-运行aspnetcore项目" tabindex="-1"> Docker 运行aspnetcore项目</h2>
+<div><pre><code><span>docker</span> run -it -d -p <span>7000</span>:80 --name aspnetcoredemo aspnetcoredemo
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><h2 id="构建项目" tabindex="-1"> 构建项目</h2>
+<div><pre><code><span>docker</span> build -f src/aspnetcoredemo/Dockerfile -t aspnetcoredemo <span>.</span>
+
+<span>GITHASH</span><span>=</span><span><span>`</span><span>git</span> rev-parse --short HEAD<span>`</span></span>
+<span>docker</span> build -f src/aspnetcoredemo/Dockerfile -t aspnetcoredemo:<span>$GITHASH</span> <span>.</span>
+<span>docker</span> tag aspnetcoredemo:<span>$GITHASH</span> aspnetcoredemo:latest
+
+<span>docker</span> build -f src/Services/ToDo/IGeekFan.FreeKit.Todos.API/Dockerfile -t igeekfan.freekit.todos.api <span>.</span>
+  
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br></div></div><p>IGeekFan.Freekit.Service bash脚本</p>
+<div><pre><code><span>#!/bin/bash</span>
+<span># 获取短版本号</span>
+<span>GITHASH</span><span>=</span><span><span>`</span><span>git</span> rev-parse --short HEAD<span>`</span></span>
+<span>docker</span> stop igeekfan.freekit.todos.api
+<span>docker</span> <span>rm</span> igeekfan.freekit.todos.api
+<span>echo</span> ---------------Building Docker Image<span>..</span>.------------------
+<span>docker</span> build -f src/Services/ToDo/IGeekFan.FreeKit.Todos.API/Dockerfile -t igeekfan.freekit.todos.api:<span>$GITHASH</span> <span>.</span>
+<span>docker</span> tag igeekfan.freekit.todos.api:<span>$GITHASH</span> igeekfan.freekit.todos.api:latest
+<span>echo</span> ---------------Launching Container<span>..</span>igeekfan.freekit.todos.api.------------------
+<span>docker</span> run -it -d -p <span>7002</span>:80 --name igeekfan.freekit.todos.api igeekfan.freekit.todos.api -v
+
+
+<span>docker</span> stop igeekfan.freekit.files.api
+<span>docker</span> <span>rm</span> igeekfan.freekit.files.api
+<span>echo</span> ---------------Building Docker Image<span>..</span>.------------------
+<span>docker</span> build -f src/Services/File/IGeekFan.FreeKit.Files.API/Dockerfile -t igeekfan.freekit.files.api:<span>$GITHASH</span> <span>.</span>
+<span>docker</span> tag igeekfan.freekit.files.api:<span>$GITHASH</span> igeekfan.freekit.files.api:latest
+<span>echo</span> ---------------Launching Container<span>..</span>igeekfan.freekit.files.api.------------------
+<span>docker</span> run -it -d -p <span>7003</span>:80 --name igeekfan.freekit.files.api igeekfan.freekit.files.api -v
+
+<span>docker</span> stop igeekfan.freekit.identity.api
+<span>docker</span> <span>rm</span> igeekfan.freekit.identity.api
+<span>echo</span> ---------------Building Docker Image<span>..</span>.------------------
+<span>docker</span> build -f src/Services/Identity/IGeekFan.FreeKit.Identity.API/Dockerfile -t igeekfan.freekit.identity.api:<span>$GITHASH</span> <span>.</span>
+<span>docker</span> tag igeekfan.freekit.identity.api:<span>$GITHASH</span> igeekfan.freekit.identity.api:latest
+<span>echo</span> ---------------Launching Container<span>..</span>igeekfan.freekit.identity.api.------------------
+<span>docker</span> run -it -d -p <span>7004</span>:80 --name igeekfan.freekit.identity.api igeekfan.freekit.identity.api -v
+
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br></div></div><p>aspnetcoredemo项目 bash脚本</p>
+<div><pre><code><span>#!/bin/bash</span>
+<span># 获取短版本号</span>
+<span>GITHASH</span><span>=</span><span><span>`</span><span>git</span> rev-parse --short HEAD<span>`</span></span>
+<span>docker</span> stop aspnetcoredemo
+<span>docker</span> <span>rm</span> aspnetcoredemo
+<span>echo</span> ---------------Building Docker Image<span>..</span>aspnetcoredemo.------------------
+<span>docker</span> build -f src/aspnetcoredemo/Dockerfile -t aspnetcoredemo:<span>$GITHASH</span> <span>.</span>
+<span>docker</span> tag aspnetcoredemo:<span>$GITHASH</span> aspnetcoredemo:latest
+<span>echo</span> ---------------Launching Container<span>..</span>aspnetcoredemo.------------------
+<span>docker</span> run -it -d -p <span>7000</span>:80 --name aspnetcoredemo aspnetcoredemo -v 
+
+<span>echo</span> ---------------Finish<span>..</span>aspnetcoredemo.------------------
+
+<span>docker</span> stop webapplicationdemo
+<span>docker</span> <span>rm</span> webapplicationdemo
+<span>echo</span> ---------------Building Docker Image<span>..</span>webapplicationdemo.------------------
+<span>docker</span> build -f src/webapplicationdemo/Dockerfile -t webapplicationdemo:<span>$GITHASH</span> <span>.</span>
+<span>docker</span> tag webapplicationdemo:<span>$GITHASH</span> webapplicationdemo:latest
+<span>echo</span> ---------------Launching Container<span>..</span>webapplicationdemo.------------------
+<span>docker</span> run -it -d -p <span>7001</span>:80 --name webapplicationdemo webapplicationdemo -v 
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br></div></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>Docker 配置 MySql</title>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-MySql.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-MySql.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Docker 配置 MySql</source>
+      <pubDate>Wed, 29 Jun 2022 19:17:23 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="docker-配置-mysql" tabindex="-1"> Docker 配置 MySql</h1>
+<h2 id="_1-拉取镜像" tabindex="-1"> 1.拉取镜像</h2>
+<div><pre><code><span>docker</span> pull mysql:5.7   <span># 拉取 mysql 5.7</span>
+<span>docker</span> pull mysql       <span># 拉取最新版mysql镜像</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><h2 id="_2不指定目录映射" tabindex="-1"> 2不指定目录映射</h2>
+<div><pre><code><span>sudo</span> <span>docker</span> run -p <span>3306</span>:3306 --name mysql -e <span>MYSQL_ROOT_PASSWORD</span><span>=</span><span>123456</span> -d mysql
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>-p 端口配置 主机3306/容器3306
+-name 容器名，此处为mysql
+-e 配置信息 MYSQL_ROOT_PASSWORD=123456 指定密码为123456
+-d 指定镜像
+sudo docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql</p>
+<blockquote>
+<p>默认的配置文件是：/etc/mysql/my.cnf
+默认的数据目录是：/var/lib/mysql</p>
+</blockquote>
+<p>我们进入mysql容器中，查看my.cnf.</p>
+<div><pre><code><span>docker</span> <span>exec</span> -it mysql <span>bash</span>
+<span>cat</span> /etc/mysql/my.cnf
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>my.cnf 加载了 /etc/mysql/conf.d目录中所有以后缀为.cnf的配置文件，所以我们映射目录，只需要映射conf.d目录即可。</p>
+<p>先在linux上创建目录</p>
+<div><pre><code><span>sudo</span> <span>mkdir</span> -p /usr/local/docker/mysql/conf.d
+<span>sudo</span> <span>vim</span> mysql-docker.cnf
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>保存内容</p>
+<div><pre><code><span>[</span>mysqld<span>]</span>
+server-id <span>=</span> <span>1</span> <span>#服务Id唯一</span>
+port <span>=</span> <span>3306</span>
+log-error    <span>=</span> /var/log/mysql/error.log
+<span>#只能用IP地址</span>
+skip_name_resolve 
+<span>#数据库默认字符集</span>
+character-set-server <span>=</span> utf8mb4
+<span>#数据库字符集对应一些排序等规则 </span>
+collation-server <span>=</span> utf8mb4_general_ci
+<span>#设置client连接mysql时的字符集,防止乱码</span>
+<span>init_connect</span><span>=</span><span>'SET NAMES utf8mb4'</span>
+<span>#最大连接数</span>
+max_connections <span>=</span> <span>300</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br></div></div><div><pre><code><span>#如果遇到这个错就执行下权限</span>
+<span>#mysqld: [Warning] World-writable config file '/etc/mysql/conf.d/mysql-docker.cnf' is ignored</span>
+<span>sudo</span> <span>chmod</span> <span>644</span> mysql-docker.cnf
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><h2 id="_3-建立目录映射" tabindex="-1"> 3.建立目录映射</h2>
+<p>在linux上创建目录，用于存放mysql的日志和数据。</p>
+<div><pre><code><span>sudo</span> <span>mkdir</span> -p /usr/local/docker/mysql/logs
+<span>sudo</span> <span>mkdir</span> -p /usr/local/docker/mysql/data
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><div><pre><code><span>sudo</span> <span>docker</span> run -p <span>3310</span>:3306 --name mysql <span>\</span>
+-v /usr/local/docker/mysql/conf.d:/etc/mysql/conf.d <span>\</span>
+-v /usr/local/docker/mysql/logs:/var/log/mysql <span>\</span>
+-v /usr/local/docker/mysql/data:/var/lib/mysql <span>\</span>
+-e <span>MYSQL_ROOT_PASSWORD</span><span>=</span><span>123456</span> <span>\</span>
+--restart<span>=</span>always <span>\</span>
+-d mysql
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><div><pre><code><span>#查看docker 下进程，mysql是否启动</span>
+<span>docker</span> <span>ps</span> 
+<span>#由于 mysql /var/log/mysql 默认情况下查看</span>
+<span>docker</span> <span>exec</span> mysql <span>chown</span> mysql:root /var/log/mysql
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><ul>
+<li>-p 端口配置 linux主机3310/容器3306</li>
+<li>-name 容器名，此处为mysql</li>
+<li>-v 指定容器及其挂载的卷，此外为 宿主机文件目录:容器文件目录，可指定多个数据文件目录</li>
+<li>-e 配置信息 MYSQL_ROOT_PASSWORD=123456 设置 MySql服务的root密码为123456</li>
+<li>--restart=always 容器退出时总是重启</li>
+<li>-d 后台运行。</li>
+<li>镜像名</li>
+</ul>
+<h2 id="docker相关命令" tabindex="-1"> Docker相关命令</h2>
+<p>其中mysql为容器的name或id</p>
+<div><pre><code><span>#重启容器</span>
+<span>docker</span> restart mysql
+<span>#暂停容器</span>
+<span>docker</span> stop mysql
+<span>#删除容器</span>
+<span>docker</span> <span>rm</span> mysql
+<span>#启动容器</span>
+<span>docker</span> start mysql
+<span>#更新容器 开机也能重启</span>
+<span>docker</span> update mysql --restart<span>=</span>always
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><h3 id="配置远程navicat可访问" tabindex="-1"> 配置远程Navicat可访问</h3>
+<p>如果遇到无法访问时，可以使用此方式</p>
+<div><pre><code><span>sudo</span> <span>docker</span> <span>exec</span> -it mysql /bin/bash
+mysql -uroot -p123456
+use mysql<span>;</span>
+ALTER <span>USER</span> <span>'root'</span>@<span>'%'</span> IDENTIFIED WITH mysql_native_password BY <span>'123456'</span><span>;</span>
+flush privileges<span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><h3 id="restart参数" tabindex="-1"> Restart参数</h3>
+<p>Docker 中restart参数用于指定自动重启docker容器策略，包含3个选项：no，on-failure[:times]，always，unless-stopped</p>
+<p>no 默认值，表示容器退出时，docker不自动重启容器</p>
+<div><pre><code><span>docker</span> run --restart<span>=</span>no <span>[</span>容器名<span>]</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>on-failure 若容器的退出状态非0，则docker自动重启容器，还可以指定重启次数，若超过指定次数未能启动容器则放弃**</p>
+<div><pre><code><span>docker</span> run --restart<span>=</span>on-failure:3 <span>[</span>容器名<span>]</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>always 容器退出时总是重启**</p>
+<div><pre><code><span>docker</span> run --restart<span>=</span>always <span>[</span>容器名<span>]</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>unless-stopped 容器退出时总是重启，但不考虑Docker守护进程启动时就已经停止的容器**</p>
+<div><pre><code><span>docker</span> run --restart<span>=</span>unless-stopped <span>[</span>容器名<span>]</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>如果容器启动时没有设置–restart参数，则通过下面命令进行更新：* *</p>
+<div><pre><code><span>docker</span> update --restart<span>=</span>always <span>[</span>容器名<span>]</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>Docker 配置 Nacos</title>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Nacos.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Nacos.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Docker 配置 Nacos</source>
+      <pubDate>Wed, 29 Jun 2022 19:17:23 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="docker-配置-nacos" tabindex="-1"> Docker 配置 Nacos</h1>
+<h2 id="_2、创建本地的映射文件" tabindex="-1"> 2、创建本地的映射文件</h2>
+<p>创建目录</p>
+<div><pre><code><span>mkdir</span> -p  /usr/local/docker/nacos/logs /usr/local/docker/nacos/conf
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>配置数据库 application.properties</p>
+<div><pre><code><span>vim</span> /usr/local/docker/nacos/conf/application.properties
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><ul>
+<li>application.properties</li>
+</ul>
+<div><pre><code>spring.datasource.platform<span>=</span>mysql
+db.num<span>=</span><span>1</span>
+db.url.0<span>=</span>jdbc:mysql://localhost:3310/nacos_config?characterEncoding<span>=</span>utf8<span>&amp;</span><span>connectTimeout</span><span>=</span><span>1000</span><span>&amp;</span><span>socketTimeout</span><span>=</span><span>3000</span><span>&amp;</span><span>autoReconnect</span><span>=</span>true
+db.user<span>=</span>user
+db.password<span>=</span>password
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><p>下面通过配置来暴露除了/shutdown之外的所有端点。下面通过配置来暴露除了/shutdown之外的所有端点</p>
+<div><pre><code>management.endpoints.web.exposure.include<span>=</span>* 
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>运行容器：使用<code>standalone</code>(单机)模式并开放8848端口，并映射配置文件和日志目录，数据库在application.properties中配置</p>
+<div><pre><code><span>docker</span> run -d <span>\</span>
+-p <span>8848</span>:8848 -p <span>9848</span>:9848 -p <span>9555</span>:9555 <span>\</span>
+-e <span>MODE</span><span>=</span>standalone <span>\</span>
+-e <span>TZ</span><span>=</span><span>"Asia/Shanghai"</span> <span>\</span>
+-e <span>PREFER_HOST_MODE</span><span>=</span>hostname <span>\</span>
+-v /usr/local/docker/nacos/logs:/home/nacos/logs <span>\</span>
+-v /usr/local/docker/nacos/conf/application.properties:/home/nacos/conf/application.properties <span>\</span>
+--restart always <span>\</span>
+--name nacos <span>\</span>
+nacos/nacos-server
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><p>其中-v 指定映射配置。左侧为linux文件，右侧为docker目录</p>
+<div><pre><code><span>docker</span> network create mysql-net
+<span># 创建桥接网络 mysql-net</span>
+<span>docker</span> network connect mysql-net mysql
+<span># 容器 mysql 连入 mysql-net</span>
+<span>docker</span> network connect mysql-net nacos
+<span># 同上，nacos</span>
+<span>docker</span> network inspect mysql-net
+<span># 配置完后容器运行起来使用该命令查看该桥接网络下容器信息</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div>]]></content:encoded>
+    </item>
+    <item>
+      <title>Docker 配置Portainer</title>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Portainer.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Portainer.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Docker 配置Portainer</source>
+      <pubDate>Wed, 29 Jun 2022 19:17:23 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="docker-配置portainer" tabindex="-1"> Docker 配置Portainer</h1>
+<h2 id="docker-可视化管" tabindex="-1"> Docker 可视化管</h2>
+<ul>
+<li>portainer 默认9000端口</li>
+</ul>
+<div><pre><code><span>docker</span> pull portainer/portainer
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><div><pre><code><span>sudo</span> <span>docker</span> run -d -p <span>9000</span>:9000 <span>\</span>
+--restart<span>=</span>always <span>\</span>
+-v /var/run/docker.sock:/var/run/docker.sock <span>\</span>
+-v portainer_data:/data <span>\</span>
+--name portainer <span>\</span>
+-d portainer/portainer
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><ul>
+<li>-d 后台运行</li>
+<li>-p 端口映射 主机端口9000:容器端口9000</li>
+<li>--restart=always 容器退出时总是重启</li>
+<li>-v 本地docker.sock</li>
+<li><code>--</code>name指定容器名</li>
+<li>-d 指定镜像名</li>
+</ul>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Docker 配置 Redis</title>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Redis.html</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Redis.html</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Docker 配置 Redis</source>
+      <pubDate>Wed, 29 Jun 2022 19:17:23 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="docker-配置-redis" tabindex="-1"> Docker 配置 Redis</h1>
+<h2 id="目录" tabindex="-1"> 目录</h2>
+<ul>
+<li>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h2 id="_2-本地配置文件映射" tabindex="-1"> 2.本地配置文件映射</h2>
+<p>创建/etc/redis/conf/redis.conf文件，并且daemonize=no。一定要是非后台模式，如果 是YES,会导致redis无法启动，因为后台会导致docker无任务可做而退出</p>
+<div><pre><code><span>mkdir</span> -p /etc/redis/conf/
+<span>cd</span> /etc/redis/conf/
+<span>vim</span> redis.conf
+
+<span>##redis.conf文件内容</span>
+daemonize no
+port <span>6379</span>
+requirepass <span>123456</span>
+<span>bind</span> <span>0.0</span>.0.0
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><h2 id="_3-启动docker" tabindex="-1"> 3.启动Docker</h2>
+<div><pre><code><span>docker</span> run <span>\</span>
+-p <span>6379</span>:6379 <span>\</span>
+--name redis <span>\</span>
+-v /etc/redis/conf/redis.conf:/etc/redis/redis.conf <span>\</span>
+-v /etc/redis/data:/data <span>\</span>
+-d redis <span>\</span>
+redis-server /etc/redis/redis.conf <span>\</span>
+--requirepass <span>'123456'</span> <span>\</span>
+--appendonly <span>yes</span>
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><p><strong>docker 镜像reids 默认 无配置文件启动</strong></p>
+<ul>
+<li>-p：表示端口映射，冒号左面的是我们的服务器的端口，右侧则表示的是容器内mysql的端口</li>
+<li><code>--</code>name：是我们给redis容器取的名字</li>
+<li>-v：表示挂载路径\映射配置文件</li>
+</ul>
+<p>/etc/redis/conf/redis.conf左侧，代表linux上的路径，映射到容器上的/etc/redis/redis.conf。</p>
+<p>/etc/redis/data代现linux上的redis的数据路径，映射到窗口中的/data目录</p>
+<ul>
+<li>-d redis  后台模式启动 redis</li>
+<li>redis-server /etc/redis/redis.conf    redis 将以 /etc/redis/redis.conf 为配置文件启动</li>
+<li>--appendonly yes  开启redis 持久化</li>
+<li>--requirepass '123456' 指定密码为123456</li>
+<li>--appendonly yes：开启持久化</li>
+</ul>
+<p>后续可通过修改linux上的/etc/redis/conf/redis.conf文件来修改容器的redis服务，如密码requireapss+ 密码</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Docker</source>
+      <pubDate>Wed, 29 Jun 2022 19:17:23 GMT</pubDate>
+      <content:encoded><![CDATA[<h1 id="docker" tabindex="-1"> Docker</h1>
+<p>Docker 中的三个概念，镜像（Image)、容器（Container)、仓库（Repository）</p>
+<p>一个Image可有多个Container，我们可以把Image发布至Dokcer Hub提供的Repository中或阿里云Docker镜像仓库（Docker Registry），供他人使用。</p>
+<h2 id="docker-安装" tabindex="-1"> Docker 安装</h2>
+<p><a href="https://cloud.tencent.com/developer/article/1853467" title="Ubuntu Docker 安装 - 云+社区 - 腾讯云 (tencent.com)" target="_blank" rel="noopener noreferrer">Ubuntu Docker 安装 - 云+社区 - 腾讯云 (tencent.com)</a></p>
+<h2 id="docker-理论到实战" tabindex="-1"> Docker 理论到实战</h2>
+<p><a href="https://www.cnblogs.com/codelove/p/10030439.html" title="Docker最全教程——从理论到实战(一)" target="_blank" rel="noopener noreferrer">Docker最全教程——从理论到实战(一)</a></p>
+<p><a href="http://dockone.io/article/126" title="八个Docker的真实应用场景" target="_blank" rel="noopener noreferrer">八个Docker的真实应用场景</a></p>
+<p><a href="https://blog.csdn.net/julien71/article/details/79760919" title="docker pull很慢解决办法、配置阿里镜像" target="_blank" rel="noopener noreferrer">docker pull很慢解决办法、配置阿里镜像</a></p>
+<p><a href="https://www.cnblogs.com/zxtceq/p/7403953.html" title="ASP.NET Core开发Docker部署" target="_blank" rel="noopener noreferrer">ASP.NET Core开发Docker部署</a></p>
+<h2 id="docker学习记录" tabindex="-1"> Docker学习记录</h2>
+<p>Docker Desktop 在windows 10下安装正常，Hyper-V也正常安装，但Hyper-V下无法打开虚拟交换机管理器，提示“尝试检索虚拟交换列表时出错”，也无法快速创建虚拟机，提示“xx异常”。事件查看器-&gt;Windows日志-&gt;系统中，Hyper-V-VmSwitch 一直提示 类似&quot;VMSwitch driver due to error&quot;</p>
+<p><a href="https://www.cnblogs.com/GeDiao/p/7975667.html" title="Hyper-V管理器无法打开虚拟交换机管理，别人的方法，但无济于事" target="_blank" rel="noopener noreferrer">Hyper-V管理器无法打开虚拟交换机管理，别人的方法，但无济于事</a></p>
+<p>别人都是说去在windows功能上打开Hyper-v即可，而我开启了一直不行，我这个主要是Hyper-V问题，导致Docker服务一直无法正常启动。微软的论坛也找了，没人能解决，说重装系统？这只能终极解决方案。下面这个链接，我也回答了一下。</p>
+<p><a href="https://social.msdn.microsoft.com/Forums/healthvault/zh-CN/cf5c267b-1ca0-40dd-9959-5ecb3475a06c/hyperv?forum=window10app" title="hyperv 无法打开虚拟交换机管理器，报错“尝试检索虚拟交换机列表时出错" target="_blank" rel="noopener noreferrer">hyperv 无法打开虚拟交换机管理器，报错“尝试检索虚拟交换机列表时出错</a></p>
+<p>后来找到解决办法，在设置-更新和安全-Windows预览体验计划，先去官网申请，申请后，升级系统，他会帮我修复Hyper-V.</p>
+<p>AMD 启用了虚拟化也无法使用,命令行设置hyper-v参数.管理员模式下的命令提示符中输入</p>
+<div><pre><code>bcdedit /set hypervisorlaunchtype Auto
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>然后重启电脑，启动docker</p>
+<h2 id="docker运行aspnetcore项目" tabindex="-1"> docker运行aspnetcore项目</h2>
+<div><pre><code><span>docker</span> run --restart unless-stopped -p <span>5020</span>:80 --name lincms-web-1 -d registry.cn-hangzhou.aliyuncs.com/igeekfan/lincms-web
+
+<span>docker</span> run --restart unless-stopped -p <span>5021</span>:80 --name lincms-web-2 -d registry.cn-hangzhou.aliyuncs.com/igeekfan/lincms-web
+
+<span>docker</span> run --restart unless-stopped -p <span>5022</span>:80 --name lincms-web-3 -d registry.cn-hangzhou.aliyuncs.com/igeekfan/lincms-web
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><p>docker 提示hype-v冲突，以管理员身份运行命令提示符 执行命令</p>
+<div><pre><code>bcdedit /set hypervisorlaunchtype off 
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>重启，运行vm即可。</p>
+<p>如果想要恢复hyper启动</p>
+<div><pre><code>bcdedit /set hypervisorlaunchtype auto
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div>]]></content:encoded>
+    </item>
     <item>
       <title>在 ASP.NET Core 6 中添加Startup.cs的整洁方式</title>
       <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/examples/ASPNETCore6-Add-Startup-Clean.html</link>
@@ -336,11 +861,10 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
 </ul>
 <div><pre><code>dotnet <span>add</span> package IGeekFan.AspNetCore.Identity.FreeSql
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><ul>
-<li>新增 FreeSql 相关包</li>
+<li>新增 FreeSql的Provider 相关包</li>
 </ul>
 <div><pre><code>dotnet <span>add</span> package FreeSql.Provider.MySqlConnector
-dotnet <span>add</span> package FreeSql.DbContext
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><h3 id="扩展用户、角色" tabindex="-1"> 扩展用户、角色</h3>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><h3 id="扩展用户、角色" tabindex="-1"> 扩展用户、角色</h3>
 <div><pre><code><span>public</span> <span>class</span> <span>AppUser</span> <span>:</span> <span><span>IdentityUser<span>&lt;</span>Guid<span>></span></span></span>
 <span>{</span>
 <span>}</span>
@@ -366,7 +890,7 @@ dotnet <span>add</span> package FreeSql.DbContext
     <span>}</span>
 <span>}</span>
 
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br></div></div><h3 id="配置用户、角色的配置" tabindex="-1"> 配置用户、角色的配置</h3>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br></div></div><h3 id="配置用户、角色的fulentapi" tabindex="-1"> 配置用户、角色的FulentAPI</h3>
 <div><pre><code><span>public</span> <span>class</span> <span>AppUserConfiguration</span> <span>:</span> <span><span>IEntityTypeConfiguration<span>&lt;</span>AppUser<span>></span></span></span>
 <span>{</span>
     <span>public</span> <span><span>void</span></span> <span>Configure</span><span>(</span><span>EfCoreTableFluent<span>&lt;</span>AppUser<span>></span></span> model<span>)</span>
@@ -383,31 +907,19 @@ dotnet <span>add</span> package FreeSql.DbContext
 <span>}</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br></div></div><ul>
 <li>appsettings.json
-该配置通过扩展方法<code>UseConnectionString</code>读取如下配置，DefaultDB 配置 0 代表使用配置串 MySql。需要安装<code>FreeSql.Provider.MySqlConnector</code></li>
+该配置通过方法<code>UseConnectionString</code>读取如下配置</li>
 </ul>
 <div><pre><code><span>"ConnectionStrings"</span><span>:</span> <span>{</span>
-    <span>"DefaultDB"</span><span>:</span> <span>"0"</span><span>,</span>
-    <span>"DataType"</span><span>:</span> <span>{</span>
-        <span>"MySql"</span><span>:</span> <span>0</span><span>,</span>
-        <span>"SqlServer"</span><span>:</span> <span>1</span><span>,</span>
-        <span>"PostgreSQL"</span><span>:</span> <span>2</span><span>,</span>
-        <span>"Oracle"</span><span>:</span> <span>3</span><span>,</span>
-        <span>"Sqlite"</span><span>:</span> <span>4</span>
-    <span>}</span><span>,</span>
-    <span>"MySql"</span><span>:</span> <span>"Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=file;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"</span><span>,</span>
-    <span>"SqlServer"</span><span>:</span> <span>"Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1"</span><span>,</span>
-    <span>"PostgreSQL"</span><span>:</span> <span>"Host=localhost;Port=5432;Username=postgres;Password=123456; Database=lincms;Pooling=true;Minimum Pool Size=1"</span><span>,</span>
-    <span>"Oracle"</span><span>:</span> <span>"user id=root;password=root; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1"</span><span>,</span>
-    <span>"Sqlite"</span><span>:</span> <span>"Data Source=|DataDirectory|\\lincms.db; Attachs=lincms.db; Pooling=true;Min Pool Size=1"</span>
-<span>}</span><span>,</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div><h3 id="配置-identity-freesql" tabindex="-1"> 配置 Identity+FreeSql</h3>
+    <span>"MySql"</span><span>:</span> <span>"Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=file;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><h3 id="配置-identity-freesql" tabindex="-1"> 配置 Identity+FreeSql</h3>
 <ul>
 <li>新增一个扩展方法，引用 aspnetcore identity 相关服务</li>
 </ul>
 <div><pre><code><span>public</span> <span>static</span> <span>IServiceCollection</span> <span>AddFreeSql</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>,</span> <span>IConfiguration</span> configuration<span>)</span>
 <span>{</span>
     <span>IFreeSql</span> fsql <span>=</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
-            <span>.</span><span>UseConnectionString</span><span>(</span>configuration<span>)</span>
+            <span>.</span><span>UseConnectionString</span><span>(</span>DataType<span>.</span>MySql<span>,</span> configuration<span>[</span><span>"ConnectionStrings:MySql"</span><span>]</span><span>)</span>
             <span>.</span><span>UseNameConvert</span><span>(</span>NameConvertType<span>.</span>PascalCaseToUnderscoreWithLower<span>)</span>
             <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span> <span>//自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。</span>
             <span>.</span><span>UseMonitorCommand</span><span>(</span>cmd <span>=></span>
@@ -415,7 +927,7 @@ dotnet <span>add</span> package FreeSql.DbContext
                 Trace<span>.</span><span>WriteLine</span><span>(</span>cmd<span>.</span>CommandText <span>+</span> <span>";"</span><span>)</span><span>;</span>
             <span>}</span><span>)</span>
             <span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
-
+    <span>//软删除</span>
     fsql<span>.</span>GlobalFilter<span>.</span><span><span>Apply</span><span><span>&lt;</span>ISoftDelete<span>></span></span></span><span>(</span><span>"IsDeleted"</span><span>,</span> a <span>=></span> a<span>.</span>IsDeleted <span>==</span> <span>false</span><span>)</span><span>;</span>
 
     services<span>.</span><span><span>AddSingleton</span><span><span>&lt;</span>IFreeSql<span>></span></span></span><span>(</span>fsql<span>)</span><span>;</span>
@@ -447,11 +959,8 @@ dotnet <span>add</span> package FreeSql.DbContext
       <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">基础包</source>
       <pubDate>Thu, 02 Jun 2022 18:18:50 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="基础包" tabindex="-1"> 基础包</h1>
-<h2 id="igeekfan-freekit" tabindex="-1"> IGeekFan.FreeKit</h2>
+<h2 id="安装-igeekfan-freekit" tabindex="-1"> 安装 IGeekFan.FreeKit</h2>
 <p>该项目无任何依赖</p>
-<ul>
-<li>安装</li>
-</ul>
 <div><pre><code>dotnet <span>add</span> package IGeekFan.FreeKit
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><h3 id="实体审计类" tabindex="-1"> 实体审计类</h3>
 <p>仅包含一些基础的审计类</p>
@@ -463,6 +972,7 @@ dotnet <span>add</span> package FreeSql.DbContext
 <li>IUpdateAuditEntity</li>
 <li>IDeleteAduitEntity</li>
 <li>ISoftDelete</li>
+<li>IFullAduitEntity</li>
 </ul>
 <h3 id="依赖注入接口" tabindex="-1"> 依赖注入接口</h3>
 <p>只是空接口</p>
@@ -586,15 +1096,15 @@ dotnet <span>add</span> package FreeSql.DbContext
       <content:encoded><![CDATA[<h1 id="extras-扩展包" tabindex="-1"> Extras 扩展包</h1>
 <p>该项目是基于 FreeSql 实现的一些扩展包、AOP 事务，当前用户，简化依赖注入</p>
 <ul>
-<li>依赖项</li>
+<li>IGeekFan.FreeKit.Extras的依赖项</li>
 </ul>
-<div><pre><code><span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>FreeSql.DbContext<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>3.0.100<span>"</span></span> <span>/></span></span>
-<span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>Autofac.Extensions.DependencyInjection<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>7.2.0<span>"</span></span> <span>/></span></span>
-<span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>Autofac.Extras.DynamicProxy<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>6.0.0<span>"</span></span> <span>/></span></span>
-<span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>Castle.Core.AsyncInterceptor<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>2.0.0<span>"</span></span> <span>/></span></span>
+<div><pre><code><span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>FreeSql.DbContext<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>3.2.664<span>"</span></span> <span>/></span></span>
+<span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>Autofac.Extensions.DependencyInjection<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>8.0.0<span>"</span></span> <span>/></span></span>
+<span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>Autofac.Extras.DynamicProxy<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>6.0.1<span>"</span></span> <span>/></span></span>
+<span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>Castle.Core.AsyncInterceptor<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>2.1.0<span>"</span></span> <span>/></span></span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><p>根据自己访问数据库的不同，安装对应的<a href="http://freesql.net/guide/install.html#packages" target="_blank" rel="noopener noreferrer">Provider</a></p>
-<div><pre><code>dotnet <span>add</span> package FreeSql.Provider.Sqlite
-dotnet <span>add</span> package IGeekFan.FreeKit.Extras
+<div><pre><code>dotnet <span>add</span> package IGeekFan.FreeKit.Extras
+dotnet <span>add</span> package FreeSql.Provider.Sqlite
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><h2 id="一些扩展包" tabindex="-1"> 一些扩展包</h2>
 <ul>
 <li>简化 FreeSql 单库的配置：UseConnectionString 扩展方法</li>
@@ -607,8 +1117,26 @@ dotnet <span>add</span> package IGeekFan.FreeKit.Extras
 <li>CaseQuery 支持 Get 请求参数 key，大小驼峰转换</li>
 </ul>
 <h3 id="简化-freesql-单库的配置" tabindex="-1"> 简化 FreeSql 单库的配置</h3>
-<p>UseConnectionString 扩展方法</p>
-<div><pre><code>    <span>public</span> <span>static</span> <span>IServiceCollection</span> <span>AddFreeSql</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>,</span> <span>IConfiguration</span> configuration<span>)</span>
+<p>UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySql。需要安装<code>FreeSql.Provider.MySqlConnector</code>,<code>DefaultDB</code>配置的值实际为<code>FreeSql.DataType</code>的枚举值</p>
+<ul>
+<li>appsettings.json</li>
+</ul>
+<div><pre><code><span>"ConnectionStrings"</span><span>:</span> <span>{</span>
+    <span>"DefaultDB"</span><span>:</span> <span>"0"</span><span>,</span>
+    <span>"DataType"</span><span>:</span> <span>{</span>
+        <span>"MySql"</span><span>:</span> <span>0</span><span>,</span>
+        <span>"SqlServer"</span><span>:</span> <span>1</span><span>,</span>
+        <span>"PostgreSQL"</span><span>:</span> <span>2</span><span>,</span>
+        <span>"Oracle"</span><span>:</span> <span>3</span><span>,</span>
+        <span>"Sqlite"</span><span>:</span> <span>4</span>
+     <span>}</span><span>,</span>
+    <span>"MySql"</span><span>:</span> <span>"Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=freekit;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"</span><span>,</span>
+    <span>"SqlServer"</span><span>:</span> <span>"Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1"</span><span>,</span>
+    <span>"PostgreSQL"</span><span>:</span> <span>"Host=localhost;Port=5432;Username=postgres;Password=123456; Database=lincms;Pooling=true;Minimum Pool Size=1"</span><span>,</span>
+    <span>"Oracle"</span><span>:</span> <span>"user id=user1;password=123456; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1"</span><span>,</span>
+    <span>"Sqlite"</span><span>:</span> <span>"Data Source=|DataDirectory|\\freekit.db; Attachs=freekit.db; Pooling=true;Min Pool Size=1"</span>
+    <span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div><div><pre><code>    <span>public</span> <span>static</span> <span>IServiceCollection</span> <span>AddFreeSql</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>,</span> <span>IConfiguration</span> configuration<span>)</span>
     <span>{</span>
         <span>IFreeSql</span> fsql <span>=</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
                   <span>.</span><span>UseConnectionString</span><span>(</span>configuration<span>)</span>
@@ -628,25 +1156,7 @@ dotnet <span>add</span> package IGeekFan.FreeKit.Extras
 
         <span>return</span> services<span>;</span>
     <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br></div></div><ul>
-<li>appsettings.json</li>
-</ul>
-<div><pre><code><span>"ConnectionStrings"</span><span>:</span> <span>{</span>
-    <span>"DefaultDB"</span><span>:</span> <span>"0"</span><span>,</span>
-    <span>"DataType"</span><span>:</span> <span>{</span>
-        <span>"MySql"</span><span>:</span> <span>0</span><span>,</span>
-        <span>"SqlServer"</span><span>:</span> <span>1</span><span>,</span>
-        <span>"PostgreSQL"</span><span>:</span> <span>2</span><span>,</span>
-        <span>"Oracle"</span><span>:</span> <span>3</span><span>,</span>
-        <span>"Sqlite"</span><span>:</span> <span>4</span>
-     <span>}</span><span>,</span>
-    <span>"MySql"</span><span>:</span> <span>"Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=freekit;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"</span><span>,</span>
-    <span>"SqlServer"</span><span>:</span> <span>"Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1"</span><span>,</span>
-    <span>"PostgreSQL"</span><span>:</span> <span>"Host=localhost;Port=5432;Username=postgres;Password=123456; Database=lincms;Pooling=true;Minimum Pool Size=1"</span><span>,</span>
-    <span>"Oracle"</span><span>:</span> <span>"user id=user1;password=123456; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1"</span><span>,</span>
-    <span>"Sqlite"</span><span>:</span> <span>"Data Source=|DataDirectory|\\freekit.db; Attachs=freekit.db; Pooling=true;Min Pool Size=1"</span>
-    <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div><h3 id="基于特性标签的-aop-事务" tabindex="-1"> 基于特性标签的 AOP 事务</h3>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br></div></div><h3 id="基于特性标签的-aop-事务" tabindex="-1"> 基于特性标签的 AOP 事务</h3>
 <ul>
 <li>特性标签 <strong>[Transactional]</strong></li>
 </ul>
@@ -748,10 +1258,60 @@ containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new
 <div><pre><code>containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span><span>typeof</span><span>(</span><span>FreeKitModule</span><span>)</span><span>,</span> <span>typeof</span><span>(</span><span>Program</span><span>)</span><span>)</span><span>)</span>
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>其中，此程序集中的类 如果继承了<code>IScopedDependency</code>,<code>ISingletonDependency</code>、<code>ITransientDependency</code>这些接口， 都会按照对应的生命周期注入到依赖注入的集合中 ，可直接使用。</p>
 <h3 id="currentuser-当前登录人信息" tabindex="-1"> CurrentUser 当前登录人信息</h3>
-<p>如何使用</p>
-<div><pre><code>
-</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>因为我们无法确定用户 Id 的类型，可能是<code>long</code>,也可能是<code>Guid</code>，ICurrentUser&lt;T&gt;是泛型的，默认有一个实现<code>ICurrentUser:ICurrentUser&lt;long&gt;</code></p>
-<h3 id="实体审计类" tabindex="-1"> 实体审计类</h3>
+<p>如何使用，先注入<code>IHttpContextAccessor</code></p>
+<div><pre><code>    services<span>.</span><span>AddHttpContextAccessor</span><span>(</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>因为我们无法确定用户 Id 的类型，可能是<code>long</code>,也可能是<code>Guid</code>，ICurrentUser&lt;T&gt;是泛型的，默认有一个实现<code>ICurrentUser:ICurrentUser&lt;string&gt;</code>,所以通过 <code>ICurrentUser</code>，默认Id为string?类型，如果想改变类型，可使用<code>ICurrentUser</code>接口<code>FindUserIdToLong</code>扩展方法，获取<code>long?</code>类型的用户<code>Id</code>,或使用<code>ICurrentUser</code>接口<code>FindUserIdToGuid</code>的扩展方法</p>
+<p>此接口定义如下继承了<code>ITransientDependency</code>,所以他是瞬时</p>
+<div><pre><code><span>public</span> <span>interface</span> <span>ICurrentUser<span>&lt;</span>T<span>></span></span> <span>:</span> <span><span>ITransientDependency</span></span>
+<span>{</span>
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 是否登录</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span><span>bool</span></span> IsAuthenticated <span>{</span> <span>get</span><span>;</span> <span>}</span>
+
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 用户Id</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span>T<span>?</span></span> Id <span>{</span> <span>get</span><span>;</span> <span>}</span>
+
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 登录名，用户名，唯一值</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span><span>string</span></span> UserName <span>{</span> <span>get</span><span>;</span> <span>}</span>
+
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 昵称</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span><span>string</span><span>?</span></span> NickName <span>{</span> <span>get</span><span>;</span> <span>}</span>
+
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 邮件</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span><span>string</span><span>?</span></span> Email <span>{</span> <span>get</span><span>;</span> <span>}</span>
+
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 角色</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span><span>string</span><span>[</span><span>]</span></span> Roles <span>{</span> <span>get</span><span>;</span> <span>}</span>
+
+    <span>Claim</span> <span>FindClaim</span><span>(</span><span><span>string</span></span> claimType<span>)</span><span>;</span>
+
+    <span>Claim<span>[</span><span>]</span></span> <span>FindClaims</span><span>(</span><span><span>string</span></span> claimType<span>)</span><span>;</span>
+
+    <span>Claim<span>[</span><span>]</span></span> <span>GetAllClaims</span><span>(</span><span>)</span><span>;</span>
+
+    <span><span>bool</span></span> <span>IsInRole</span><span>(</span><span><span>string</span></span> roleId<span>)</span><span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br></div></div><p>当然可增加一个扩展方法，用于不确定主键类型,所有的方法都调用此方法，需要更改类型，则只用更改此方法即可,比如如果用户Id类型是int类型，可自行创建此扩展类进行处理</p>
+<div><pre><code><span>public</span> <span>static</span> <span>class</span> <span>Extensions</span>
+｛
+    <span>public</span> <span>static</span> <span><span>int</span><span>?</span></span> <span>FindUserId</span><span>(</span><span>this</span> <span>ICurrentUser</span> currentUser<span>)</span>
+    <span>{</span>
+        <span>if</span> <span>(</span>currentUser<span>.</span>Id <span>==</span> <span>null</span><span>)</span> <span>return</span> <span>null</span><span>;</span>
+        <span>return</span> <span>int</span><span>.</span><span>Parse</span><span>(</span>currentUser<span>.</span>Id<span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><h3 id="实体审计类" tabindex="-1"> 实体审计类</h3>
 <ul>
 <li>FullAduitEntity</li>
 </ul>
@@ -1013,7 +1573,6 @@ builder<span>.</span>Services<span>.</span><span><span>AddModule</span><span><sp
 </tbody>
 </table>
 <h2 id="igeekfan-aspnetcore-identity-freesql" tabindex="-1"> IGeekFan.AspNetCore.Identity.FreeSql</h2>
-<p><code>asp.net core 6</code> 的<code>identity</code>的<code>freesql</code>实现</p>
 <ul>
 <li>查看<a href="/dotnetcore/freekit/AspNetCore.Identity.FreeSql.html">IGeekFan.AspNetCore.Identity.FreeSql</a><strong>文档</strong></li>
 </ul>
@@ -5032,7 +5591,7 @@ BaseType 有一条数据，TypeCode 为 字符串 category、FullName 文章类�
 <h2 id="freesql-简介" tabindex="-1"> FreeSql 简介</h2>
 <p>国人写的一个功能强大的ORM,FreeSql 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite，特点：轻量级、可扩展、基于 .NET Standard 跨平台。</p>
 <h2 id="源码" tabindex="-1"> 源码</h2>
-<p>代码托管在GitHub上 <a href="https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-freesql" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-freesql</a></p>
+<p>代码托管在GitHub上 <a href="https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.FreeSql.Repository/Controllers/BlogController.cs" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/dotnetcore-examples</a></p>
 <h2 id="参考" tabindex="-1"> 参考</h2>
 <ul>
 <li>FreeSql github <a href="https://github.com/2881099/FreeSql" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeSql</a></li>
