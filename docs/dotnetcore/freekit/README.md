@@ -23,7 +23,6 @@
 | `IGeekFan.AspNetCore.DataProtection.FreeRedis`| [![NuGet](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.DataProtection.FreeRedis.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/IGeekFan.AspNetCore.DataProtection.FreeRedis/)| ![downloads](https://img.shields.io/nuget/dt/IGeekFan.AspNetCore.DataProtection.FreeRedis.svg)|
 | `IGeekFan.AspNetCore.DataProtection.FreeSql`| [![NuGet](https://img.shields.io/nuget/v/IGeekFan.AspNetCore.DataProtection.FreeSql.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/IGeekFan.AspNetCore.DataProtection.FreeSql/)| ![downloads](https://img.shields.io/nuget/dt/IGeekFan.AspNetCore.DataProtection.FreeSql.svg)|
 
-
 ## BaGet Packages
 
 | Package name                           | Version                                                                          |
@@ -38,8 +37,6 @@
 | `IGeekFan.AspNetCore.DataProtection.FreeSql`            | [BaGet](http://124.70.130.97:5555/packages/IGeekFan.AspNetCore.DataProtection.FreeSql)|
 
 ## IGeekFan.AspNetCore.Identity.FreeSql
-
-`asp.net core 6` 的`identity`的`freesql`实现
 
 - 查看[IGeekFan.AspNetCore.Identity.FreeSql](./AspNetCore.Identity.FreeSql.md)**文档**
 
