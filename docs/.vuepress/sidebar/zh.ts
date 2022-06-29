@@ -65,19 +65,34 @@ export const zhSidebarConfig = sidebar({
             'scriban-README.md'
         ]
     }],
-    '/dotnetcore/freekit/': [
+    '/dotnetcore/': [
         {
             text: 'FreeKit',
             collapsable: true,
-            link: 'README.md',
+            link: 'freekit/README.md',
             children: [
-                'README.md',
-                'Core.md',
-                'AspNetCore.Identity.FreeSql.md',
-                'Email.md',
-                'Extras.md',
-                'Modularity.md',
-                'Localization.FreeSql.md',
+                'freekit/README.md',
+                'freekit/Core.md',
+                'freekit/AspNetCore.Identity.FreeSql.md',
+                'freekit/Email.md',
+                'freekit/Extras.md',
+                'freekit/Modularity.md',
+                'freekit/Localization.FreeSql.md',
+            ]
+        }, {
+            text: 'Docker',
+            collapsable: true,
+            link: 'docker/README.md',
+            children: [
+                'docker/README.md',
+                'docker/Docker-Command.md',
+                'docker/Docker-Baget.md',
+                'docker/Docker-Jenkins.md',
+                'docker/Docker-MySql.md',
+                'docker/Docker-Nacos.md',
+                'docker/Docker-Portainer.md',
+                'docker/Docker-Redis.md',
+                'docker/Docker-CMS.md',
             ]
         }
     ],

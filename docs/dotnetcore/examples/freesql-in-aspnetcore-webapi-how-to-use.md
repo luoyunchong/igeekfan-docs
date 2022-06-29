@@ -7,7 +7,7 @@
 国人写的一个功能强大的ORM,FreeSql 支持 MySql/SqlServer/PostgreSQL/Oracle/Sqlite，特点：轻量级、可扩展、基于 .NET Standard 跨平台。
 
 ## 源码
-代码托管在GitHub上 [https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-freesql](https://github.com/luoyunchong/dotnetcore-examples/tree/master/aspnetcore-freesql)
+代码托管在GitHub上 [https://github.com/luoyunchong/dotnetcore-examples](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.FreeSql.Repository/Controllers/BlogController.cs)
 
 ## 参考
 - FreeSql github [https://github.com/2881099/FreeSql](https://github.com/2881099/FreeSql) 

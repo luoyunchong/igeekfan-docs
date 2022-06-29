@@ -1,14 +1,12 @@
 # 基础包
 
-## IGeekFan.FreeKit
+## 安装 IGeekFan.FreeKit
 
 该项目无任何依赖
 
-- 安装
 ```bash
 dotnet add package IGeekFan.FreeKit
 ```
-
 
 ### 实体审计类
 
@@ -21,6 +19,7 @@ dotnet add package IGeekFan.FreeKit
 - IUpdateAuditEntity
 - IDeleteAduitEntity
 - ISoftDelete
+- IFullAduitEntity
 
 ### 依赖注入接口
 

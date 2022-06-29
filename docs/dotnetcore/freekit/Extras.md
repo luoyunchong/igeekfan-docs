@@ -2,20 +2,20 @@
 
 该项目是基于 FreeSql 实现的一些扩展包、AOP 事务，当前用户，简化依赖注入
 
-- 依赖项
+- IGeekFan.FreeKit.Extras的依赖项
 
 ```xml
-<PackageReference Include="FreeSql.DbContext" Version="3.0.100" />
-<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="7.2.0" />
-<PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.0" />
-<PackageReference Include="Castle.Core.AsyncInterceptor" Version="2.0.0" />
+<PackageReference Include="FreeSql.DbContext" Version="3.2.664" />
+<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+<PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.1" />
+<PackageReference Include="Castle.Core.AsyncInterceptor" Version="2.1.0" />
 ```
 
 根据自己访问数据库的不同，安装对应的[Provider](http://freesql.net/guide/install.html#packages)
 
 ```bash
-dotnet add package FreeSql.Provider.Sqlite
 dotnet add package IGeekFan.FreeKit.Extras
+dotnet add package FreeSql.Provider.Sqlite
 ```
 
 ## 一些扩展包
@@ -31,7 +31,27 @@ dotnet add package IGeekFan.FreeKit.Extras
 
 ### 简化 FreeSql 单库的配置
 
-UseConnectionString 扩展方法
+UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySql。需要安装`FreeSql.Provider.MySqlConnector`,`DefaultDB`配置的值实际为`FreeSql.DataType`的枚举值
+
+- appsettings.json
+
+```json
+"ConnectionStrings": {
+    "DefaultDB": "0",
+    "DataType": {
+        "MySql": 0,
+        "SqlServer": 1,
+        "PostgreSQL": 2,
+        "Oracle": 3,
+        "Sqlite": 4
+     },
+    "MySql": "Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=freekit;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20",
+    "SqlServer": "Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1",
+    "PostgreSQL": "Host=localhost;Port=5432;Username=postgres;Password=123456; Database=lincms;Pooling=true;Minimum Pool Size=1",
+    "Oracle": "user id=user1;password=123456; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1",
+    "Sqlite": "Data Source=|DataDirectory|\\freekit.db; Attachs=freekit.db; Pooling=true;Min Pool Size=1"
+    }
+```
 
 ```csharp
     public static IServiceCollection AddFreeSql(this IServiceCollection services, IConfiguration configuration)
@@ -56,25 +76,6 @@ UseConnectionString 扩展方法
     }
 ```
 
-- appsettings.json
-
-```json
-"ConnectionStrings": {
-    "DefaultDB": "0",
-    "DataType": {
-        "MySql": 0,
-        "SqlServer": 1,
-        "PostgreSQL": 2,
-        "Oracle": 3,
-        "Sqlite": 4
-     },
-    "MySql": "Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=freekit;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20",
-    "SqlServer": "Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1",
-    "PostgreSQL": "Host=localhost;Port=5432;Username=postgres;Password=123456; Database=lincms;Pooling=true;Minimum Pool Size=1",
-    "Oracle": "user id=user1;password=123456; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1",
-    "Sqlite": "Data Source=|DataDirectory|\\freekit.db; Attachs=freekit.db; Pooling=true;Min Pool Size=1"
-    }
-```
 
 ### 基于特性标签的 AOP 事务
 
@@ -214,13 +215,72 @@ containerBuilder.RegisterModule(new FreeKitModule(typeof(FreeKitModule), typeof(
 
 ### CurrentUser 当前登录人信息
 
-如何使用
+如何使用，先注入`IHttpContextAccessor`
 
 ```csharp
-
+    services.AddHttpContextAccessor();
 ```
 
-因为我们无法确定用户 Id 的类型，可能是`long`,也可能是`Guid`，ICurrentUser\<T\>是泛型的，默认有一个实现`ICurrentUser:ICurrentUser<long>`
+因为我们无法确定用户 Id 的类型，可能是`long`,也可能是`Guid`，ICurrentUser\<T\>是泛型的，默认有一个实现`ICurrentUser:ICurrentUser<string>`,所以通过 `ICurrentUser`，默认Id为string?类型，如果想改变类型，可使用`ICurrentUser`接口`FindUserIdToLong`扩展方法，获取`long?`类型的用户`Id`,或使用`ICurrentUser`接口`FindUserIdToGuid`的扩展方法
+
+此接口定义如下继承了`ITransientDependency`,所以他是瞬时
+
+```csharp
+public interface ICurrentUser<T> : ITransientDependency
+{
+    /// <summary>
+    /// 是否登录
+    /// </summary>
+    bool IsAuthenticated { get; }
+
+    /// <summary>
+    /// 用户Id
+    /// </summary>
+    T? Id { get; }
+
+    /// <summary>
+    /// 登录名，用户名，唯一值
+    /// </summary>
+    string UserName { get; }
+
+    /// <summary>
+    /// 昵称
+    /// </summary>
+    string? NickName { get; }
+
+    /// <summary>
+    /// 邮件
+    /// </summary>
+    string? Email { get; }
+
+    /// <summary>
+    /// 角色
+    /// </summary>
+    string[] Roles { get; }
+
+    Claim FindClaim(string claimType);
+
+    Claim[] FindClaims(string claimType);
+
+    Claim[] GetAllClaims();
+
+    bool IsInRole(string roleId);
+}
+```
+
+当然可增加一个扩展方法，用于不确定主键类型,所有的方法都调用此方法，需要更改类型，则只用更改此方法即可,比如如果用户Id类型是int类型，可自行创建此扩展类进行处理
+
+```csharp
+public static class Extensions
+｛
+    public static int? FindUserId(this ICurrentUser currentUser)
+    {
+        if (currentUser.Id == null) return null;
+        return int.Parse(currentUser.Id);
+    }
+}
+```
+
 
 ### 实体审计类
 

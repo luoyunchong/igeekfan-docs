@@ -10,11 +10,10 @@
 dotnet add package IGeekFan.AspNetCore.Identity.FreeSql
 ```
 
-- 新增 FreeSql 相关包
+- 新增 FreeSql的Provider 相关包
 
 ```bash
 dotnet add package FreeSql.Provider.MySqlConnector
-dotnet add package FreeSql.DbContext
 ```
 
 ### 扩展用户、角色
@@ -47,7 +46,7 @@ public class IdentityContext : IdentityDbContext<AppUser, AppRole, Guid>
 
 ```
 
-### 配置用户、角色的配置
+### 配置用户、角色的FulentAPI
 
 ```csharp
 public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
@@ -67,24 +66,12 @@ public class AppRoleConfiguration : IEntityTypeConfiguration<AppRole>
 ```
 
 - appsettings.json
-  该配置通过扩展方法`UseConnectionString`读取如下配置，DefaultDB 配置 0 代表使用配置串 MySql。需要安装`FreeSql.Provider.MySqlConnector`
+  该配置通过方法`UseConnectionString`读取如下配置
 
 ```json
 "ConnectionStrings": {
-    "DefaultDB": "0",
-    "DataType": {
-        "MySql": 0,
-        "SqlServer": 1,
-        "PostgreSQL": 2,
-        "Oracle": 3,
-        "Sqlite": 4
-    },
-    "MySql": "Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=file;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20",
-    "SqlServer": "Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1",
-    "PostgreSQL": "Host=localhost;Port=5432;Username=postgres;Password=123456; Database=lincms;Pooling=true;Minimum Pool Size=1",
-    "Oracle": "user id=root;password=root; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1",
-    "Sqlite": "Data Source=|DataDirectory|\\lincms.db; Attachs=lincms.db; Pooling=true;Min Pool Size=1"
-},
+    "MySql": "Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=file;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"
+}
 ```
 
 ### 配置 Identity+FreeSql
@@ -95,7 +82,7 @@ public class AppRoleConfiguration : IEntityTypeConfiguration<AppRole>
 public static IServiceCollection AddFreeSql(this IServiceCollection services, IConfiguration configuration)
 {
     IFreeSql fsql = new FreeSqlBuilder()
-            .UseConnectionString(configuration)
+            .UseConnectionString(DataType.MySql, configuration["ConnectionStrings:MySql"])
             .UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower)
             .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
             .UseMonitorCommand(cmd =>
@@ -103,7 +90,7 @@ public static IServiceCollection AddFreeSql(this IServiceCollection services, IC
                 Trace.WriteLine(cmd.CommandText + ";");
             })
             .Build();
-
+    //软删除
     fsql.GlobalFilter.Apply<ISoftDelete>("IsDeleted", a => a.IsDeleted == false);
 
     services.AddSingleton<IFreeSql>(fsql);

@@ -31,13 +31,18 @@ export default defineUserConfig({
             'link',
             { rel: 'apple-touch-icon', href: `/apple-touch-icon.png` },
         ],
-        ['link', { rel: 'stylesheet', href: '//at.alicdn.com/t/font_2410206_mfj6e1vbwo.css' }]
-        ,
+        ['link', { rel: 'stylesheet', href: '//at.alicdn.com/t/font_2410206_mfj6e1vbwo.css' }],
         [
             'script', {
                 type: 'text/javascript',
                 crossorigin: 'anonymous',
                 src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7223766210897652'
+            }
+        ],
+        [
+            'script', {
+                type: 'text/javascript',
+                src: '/js/base.js'
             }
         ]
     ],
