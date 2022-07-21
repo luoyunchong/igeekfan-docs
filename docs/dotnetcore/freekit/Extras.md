@@ -84,10 +84,35 @@ UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySq
 通过 Autofac 配置哪些类需要基于特性标签的 AOP 事务
 
 ```csharp
+public interface IGroupService
+{
+    Task DeleteAsync(long id);
+}
+public class GroupService : IGroupService
+{
+    private readonly IBaseRepository<LinGroup, long> _groupRepository;
+    private readonly IBaseRepository<LinGroupPermission, long> _groupPermissionRepository;
 
+    public GroupService(IBaseRepository<LinGroup, long> groupRepository,IBaseRepository<LinGroupPermission, long> groupPermissionRepository)
+    {
+        _groupRepository = groupRepository;
+        _groupPermissionRepository = groupPermissionRepository;
+    }
+    /// <summary>
+    /// 删除group拥有的权限、删除group表的数据
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Transactional]
+    public async Task DeleteAsync(long id)
+    {
+        await _groupRepository.DeleteAsync(id);
+        await _groupPermissionRepository.DeleteAsync(r => r.GroupId == id);
+    }
+}
 ```
 
-如果依旧是 Startup 的模式，可通过 ConfigureContainer 配置服务
+如果依旧是 Startup 的模式，可通过 ConfigureContainer 配置服务，其中`ServiceModule`是一个Autofac的Module，此外为Demo
 
 - Program.cs 配置
 
@@ -109,7 +134,7 @@ UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySq
     }
 ```
 
-或
+ASP.NET Core6配置服务、
 
 ```csharp
 builder.Host

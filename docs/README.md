@@ -36,13 +36,9 @@ footer: "MIT Licensed | Copyright © 2021-present igeekfan"
 displayFooter: true
 copyright: '<a href="https://beian.miit.gov.cn/" data-v-c3cf170c="">苏ICP备16046457号-1</a>'
 ---
-<!-- F -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-7223766210897652"
-     data-ad-slot="3947811616"
+     data-ad-slot="3532742594"
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
-<script>
-    //  (adsbygoogle = window.adsbygoogle || []).push({});
-</script>

@@ -107,7 +107,10 @@ public static IServiceCollection AddFreeSql(this IServiceCollection services, IC
     );
 
     services.AddIdentityCore<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            .AddFreeSqlStores<IdentityContext>();
+            .AddRoles<AppRole>()
+            .AddSignInManager()
+            .AddFreeSqlStores<IdentityContext>()
+            .AddDefaultTokenProviders();;
 
     //fsql.CodeFirst.ApplyConfiguration(new TodoConfiguration());
 
