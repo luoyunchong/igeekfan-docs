@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 04 Jul 2022 17:30:34 GMT</pubDate>
-    <lastBuildDate>Mon, 04 Jul 2022 17:30:34 GMT</lastBuildDate>
+    <pubDate>Thu, 21 Jul 2022 15:30:14 GMT</pubDate>
+    <lastBuildDate>Thu, 21 Jul 2022 15:30:14 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>ASP.NET Core</category>
@@ -963,13 +963,16 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
     <span>)</span><span>;</span>
 
     services<span>.</span><span><span>AddIdentityCore</span><span><span>&lt;</span>AppUser<span>></span></span></span><span>(</span>options <span>=></span> options<span>.</span>SignIn<span>.</span>RequireConfirmedAccount <span>=</span> <span>true</span><span>)</span>
-            <span>.</span><span><span>AddFreeSqlStores</span><span><span>&lt;</span>IdentityContext<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+            <span>.</span><span><span>AddRoles</span><span><span>&lt;</span>AppRole<span>></span></span></span><span>(</span><span>)</span>
+            <span>.</span><span>AddSignInManager</span><span>(</span><span>)</span>
+            <span>.</span><span><span>AddFreeSqlStores</span><span><span>&lt;</span>IdentityContext<span>></span></span></span><span>(</span><span>)</span>
+            <span>.</span><span>AddDefaultTokenProviders</span><span>(</span><span>)</span><span>;</span><span>;</span>
 
     <span>//fsql.CodeFirst.ApplyConfiguration(new TodoConfiguration());</span>
 
     <span>return</span> services<span>;</span>
 <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br></div></div>]]></content:encoded>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br></div></div>]]></content:encoded>
     </item>
     <item>
       <title>基础包</title>
@@ -1180,8 +1183,33 @@ dotnet <span>add</span> package FreeSql.Provider.Sqlite
 <li>特性标签 <strong>[Transactional]</strong></li>
 </ul>
 <p>通过 Autofac 配置哪些类需要基于特性标签的 AOP 事务</p>
-<div><pre><code>
-</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>如果依旧是 Startup 的模式，可通过 ConfigureContainer 配置服务</p>
+<div><pre><code><span>public</span> <span>interface</span> <span>IGroupService</span>
+<span>{</span>
+    <span>Task</span> <span>DeleteAsync</span><span>(</span><span><span>long</span></span> id<span>)</span><span>;</span>
+<span>}</span>
+<span>public</span> <span>class</span> <span>GroupService</span> <span>:</span> <span><span>IGroupService</span></span>
+<span>{</span>
+    <span>private</span> <span>readonly</span> <span>IBaseRepository<span>&lt;</span>LinGroup<span>,</span> <span>long</span><span>></span></span> _groupRepository<span>;</span>
+    <span>private</span> <span>readonly</span> <span>IBaseRepository<span>&lt;</span>LinGroupPermission<span>,</span> <span>long</span><span>></span></span> _groupPermissionRepository<span>;</span>
+
+    <span>public</span> <span>GroupService</span><span>(</span><span>IBaseRepository<span>&lt;</span>LinGroup<span>,</span> <span>long</span><span>></span></span> groupRepository<span>,</span><span>IBaseRepository<span>&lt;</span>LinGroupPermission<span>,</span> <span>long</span><span>></span></span> groupPermissionRepository<span>)</span>
+    <span>{</span>
+        _groupRepository <span>=</span> groupRepository<span>;</span>
+        _groupPermissionRepository <span>=</span> groupPermissionRepository<span>;</span>
+    <span>}</span>
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 删除group拥有的权限、删除group表的数据</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>id<span>"</span></span><span>></span></span><span><span><span>&lt;/</span>param</span><span>></span></span></span>
+    <span>/// <span><span><span>&lt;</span>returns</span><span>></span></span><span><span><span>&lt;/</span>returns</span><span>></span></span></span>
+    <span>[</span>Transactional<span>]</span>
+    <span>public</span> <span>async</span> <span>Task</span> <span>DeleteAsync</span><span>(</span><span><span>long</span></span> id<span>)</span>
+    <span>{</span>
+        <span>await</span> _groupRepository<span>.</span><span>DeleteAsync</span><span>(</span>id<span>)</span><span>;</span>
+        <span>await</span> _groupPermissionRepository<span>.</span><span>DeleteAsync</span><span>(</span>r <span>=></span> r<span>.</span>GroupId <span>==</span> id<span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br></div></div><p>如果依旧是 Startup 的模式，可通过 ConfigureContainer 配置服务，其中<code>ServiceModule</code>是一个Autofac的Module，此外为Demo</p>
 <ul>
 <li>Program.cs 配置</li>
 </ul>
@@ -1198,7 +1226,7 @@ dotnet <span>add</span> package FreeSql.Provider.Sqlite
     <span>{</span>
         builder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>ServiceModule</span><span>(</span><span>)</span><span>)</span><span>;</span>
     <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><p>或</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><p>ASP.NET Core6配置服务、</p>
 <div><pre><code>builder<span>.</span>Host
     <span>.</span><span>UseServiceProviderFactory</span><span>(</span><span>new</span> <span>AutofacServiceProviderFactory</span><span>(</span><span>)</span><span>)</span>
     <span>.</span><span><span>ConfigureContainer</span><span><span>&lt;</span>ContainerBuilder<span>></span></span></span><span>(</span><span>(</span>webBuilder<span>,</span> containerBuilder<span>)</span> <span>=></span>
