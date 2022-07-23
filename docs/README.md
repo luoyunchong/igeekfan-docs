@@ -1,5 +1,6 @@
 ---
 home: true
+heroImage: /images/left-logo.png
 actions:
   - text: 从FreeKit开始 ✨
     link: /dotnetcore/freekit/
