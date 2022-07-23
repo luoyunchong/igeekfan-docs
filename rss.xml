@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 23 Jul 2022 09:20:29 GMT</pubDate>
-    <lastBuildDate>Sat, 23 Jul 2022 09:20:29 GMT</lastBuildDate>
+    <pubDate>Sat, 23 Jul 2022 15:54:05 GMT</pubDate>
+    <lastBuildDate>Sat, 23 Jul 2022 15:54:05 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>ASP.NET Core</category>
@@ -1543,7 +1543,7 @@ builder<span>.</span>Services<span>.</span><span><span>AddModule</span><span><sp
       <pubDate>Thu, 02 Jun 2022 18:18:50 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="freekit" tabindex="-1"> FreeKit</h1>
 <div align="center">
-<h2 id="net-years" tabindex="-1"> .NET <img src=/images/dotnet-20-years.png width=80  /> YEARS</h2>
+<h2 id="net-years" tabindex="-1"> <img src=/images/dotnet-bot_skating.png width=100 /> .NET <img src=/images/dotnet-20-years.png width=80  /> YEARS</h2>
 <p><strong>Freekit</strong> 为.NET Core提供了更多的扩展实现</p>
 <p><a href="https://www.jetbrains.com/rider/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/static/v1?style=float&amp;logo=rider&amp;label=Rider&amp;message=jetbrains&amp;color=red" alt=".NET IDE Rider" loading="lazy"></a>
 <a href="https://raw.githubusercontent.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license" loading="lazy"></a></p>

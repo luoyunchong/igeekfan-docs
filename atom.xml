@@ -3,7 +3,7 @@
   <id>https://igeekfan.cn/igeekfan-docs/</id>
   <title>.NET 开发指南</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
-  <updated>2022-07-23T09:20:29.482Z</updated>
+  <updated>2022-07-23T15:54:05.932Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -1552,10 +1552,10 @@ builder<span>.</span>Services<span>.</span><span><span>AddModule</span><span><sp
     <title type="html">FreeKit</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/"/>
-    <updated>2022-07-23T09:18:51.000Z</updated>
+    <updated>2022-07-23T15:52:42.000Z</updated>
     <content type="html"><![CDATA[<h1 id="freekit" tabindex="-1"> FreeKit</h1>
 <div align="center">
-<h2 id="net-years" tabindex="-1"> .NET <img src=/images/dotnet-20-years.png width=80  /> YEARS</h2>
+<h2 id="net-years" tabindex="-1"> <img src=/images/dotnet-bot_skating.png width=100 /> .NET <img src=/images/dotnet-20-years.png width=80  /> YEARS</h2>
 <p><strong>Freekit</strong> 为.NET Core提供了更多的扩展实现</p>
 <p><a href="https://www.jetbrains.com/rider/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/static/v1?style=float&amp;logo=rider&amp;label=Rider&amp;message=jetbrains&amp;color=red" alt=".NET IDE Rider" loading="lazy"></a>
 <a href="https://raw.githubusercontent.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license" loading="lazy"></a></p>
