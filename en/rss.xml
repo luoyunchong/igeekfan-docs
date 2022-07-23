@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <atom:link href="https://igeekfan.cn/igeekfan-docs/rss.xml" rel="self" type="application/rss+xml"/>
-    <title>IGeekFan Documents</title>
+    <title>.NET Devlopement Guide</title>
     <link>https://igeekfan.cn/igeekfan-docs/en/</link>
-    <description>IGeekFan Documents</description>
+    <description>.NET Devlopement Guide</description>
     <language>en-US</language>
-    <pubDate>Sat, 23 Jul 2022 08:24:10 GMT</pubDate>
-    <lastBuildDate>Sat, 23 Jul 2022 08:24:10 GMT</lastBuildDate>
+    <pubDate>Sat, 23 Jul 2022 09:20:29 GMT</pubDate>
+    <lastBuildDate>Sat, 23 Jul 2022 09:20:29 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   </channel>

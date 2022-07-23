@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
   <id>https://igeekfan.cn/igeekfan-docs/en/</id>
-  <title>IGeekFan Documents</title>
-  <subtitle>IGeekFan Documents</subtitle>
-  <updated>2022-07-23T08:24:10.500Z</updated>
+  <title>.NET Devlopement Guide</title>
+  <subtitle>.NET Devlopement Guide</subtitle>
+  <updated>2022-07-23T09:20:29.482Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/en/"/>

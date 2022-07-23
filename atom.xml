@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
   <id>https://igeekfan.cn/igeekfan-docs/</id>
-  <title>IGeekFan 开发者文档</title>
+  <title>.NET 开发指南</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
-  <updated>2022-07-23T08:24:10.500Z</updated>
+  <updated>2022-07-23T09:20:29.482Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -13,11 +13,11 @@
     <name>Talking Dotnet</name>
   </contributor>
   <entry>
-    <title type="html">Docker配置Baget</title>
+    <title type="html">Docker 配置 Baget</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Baget.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Baget.html"/>
-    <updated>2022-07-04T17:29:28.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="docker配置baget" tabindex="-1"> Docker配置Baget</h1>
+    <updated>2022-07-23T09:18:51.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="docker-配置-baget" tabindex="-1"> Docker 配置 Baget</h1>
 <p>创建一个名为baget.env存储BaGet的配置：</p>
 <div><pre><code><span>cd</span> /var
 <span>mkdir</span> baget
@@ -433,11 +433,11 @@ nacos/nacos-server
     <published>2022-06-29T19:17:23.000Z</published>
   </entry>
   <entry>
-    <title type="html">Docker 配置Portainer</title>
+    <title type="html">Docker 配置 Portainer</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Portainer.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Portainer.html"/>
-    <updated>2022-06-29T19:17:23.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="docker-配置portainer" tabindex="-1"> Docker 配置Portainer</h1>
+    <updated>2022-07-23T09:18:51.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="docker-配置-portainer" tabindex="-1"> Docker 配置 Portainer</h1>
 <h2 id="docker-可视化管" tabindex="-1"> Docker 可视化管</h2>
 <ul>
 <li>portainer 默认9000端口</li>
@@ -880,14 +880,15 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
     <published>2022-06-02T18:18:50.000Z</published>
   </entry>
   <entry>
-    <title type="html">aspnetcore identity freesql 的实现</title>
+    <title type="html">aspnetcore identity freesql实现</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/AspNetCore.Identity.FreeSql.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/AspNetCore.Identity.FreeSql.html"/>
-    <updated>2022-07-21T15:28:53.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="aspnetcore-identity-freesql-的实现" tabindex="-1"> aspnetcore identity freesql 的实现</h1>
+    <updated>2022-07-23T09:18:51.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="aspnetcore-identity-freesql实现" tabindex="-1"> aspnetcore identity freesql实现</h1>
 <h2 id="igeekfan-aspnetcore-identity-freesql" tabindex="-1"> IGeekFan.AspNetCore.Identity.FreeSql</h2>
-<p><code>asp.net core 6</code> 的<code>identity</code>的<code>freesql</code>实现</p>
+<p>是<code>asp.net core 6</code> 的<code>identity</code>的<code>freesql</code>的实现</p>
 <ul>
+<li>支持.NET 6.0</li>
 <li>安装包</li>
 </ul>
 <div><pre><code>dotnet <span>add</span> package IGeekFan.AspNetCore.Identity.FreeSql
@@ -903,9 +904,9 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
 <span>{</span>
 
 <span>}</span>
-<span>public</span> <span>class</span> <span>IdentityContext</span> <span>:</span> <span><span>IdentityDbContext<span>&lt;</span>AppUser<span>,</span> AppRole<span>,</span> Guid<span>></span></span></span>
+<span>public</span> <span>class</span> <span>AppIdentityDbContext</span> <span>:</span> <span><span>IdentityDbContext<span>&lt;</span>AppUser<span>,</span> AppRole<span>,</span> Guid<span>></span></span></span>
 <span>{</span>
-    <span>public</span> <span>IdentityContext</span><span>(</span><span>IOptions<span>&lt;</span>IdentityOptions<span>></span></span> identityOptions<span>,</span> <span>IFreeSql</span> fsql<span>,</span> <span>DbContextOptions</span> options<span>)</span>
+    <span>public</span> <span>AppIdentityDbContext</span><span>(</span><span>IOptions<span>&lt;</span>IdentityOptions<span>></span></span> identityOptions<span>,</span> <span>IFreeSql</span> fsql<span>,</span> <span>DbContextOptions</span> options<span>)</span>
     <span>:</span> <span>base</span><span>(</span>identityOptions<span>.</span>Value<span>,</span> fsql<span>,</span> options<span>)</span>
     <span>{</span>
     <span>}</span>
@@ -918,10 +919,11 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
     <span>protected</span> <span>override</span> <span><span>void</span></span> <span>OnModelCreating</span><span>(</span><span>ICodeFirst</span> codefirst<span>)</span>
     <span>{</span>
         <span>base</span><span>.</span><span>OnModelCreating</span><span>(</span>codefirst<span>)</span><span>;</span>
+        codefirst<span>.</span><span>ApplyConfigurationsFromAssembly</span><span>(</span><span>typeof</span><span>(</span><span>AppUserConfiguration</span><span>)</span><span>.</span>Assembly<span>)</span><span>;</span>
     <span>}</span>
 <span>}</span>
 
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br></div></div><h3 id="配置用户、角色的fulentapi" tabindex="-1"> 配置用户、角色的FulentAPI</h3>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br></div></div><h3 id="配置用户、角色的fulentapi" tabindex="-1"> 配置用户、角色的FulentAPI</h3>
 <div><pre><code><span>public</span> <span>class</span> <span>AppUserConfiguration</span> <span>:</span> <span><span>IEntityTypeConfiguration<span>&lt;</span>AppUser<span>></span></span></span>
 <span>{</span>
     <span>public</span> <span><span>void</span></span> <span>Configure</span><span>(</span><span>EfCoreTableFluent<span>&lt;</span>AppUser<span>></span></span> model<span>)</span>
@@ -965,26 +967,55 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
     services<span>.</span><span>AddFreeRepository</span><span>(</span><span>)</span><span>;</span>
     services<span>.</span><span><span>AddScoped</span><span><span>&lt;</span>UnitOfWorkManager<span>></span></span></span><span>(</span><span>)</span><span>;</span>
 
-    <span>//只有实例化了ToDoContext，才能正常调用OnModelCreating，不然直接使用仓储，无法调用DbContext中的OnModelCreating方法，，配置的TodoConfiguration 就会没有生效</span>
-    services<span>.</span><span><span>AddFreeDbContext</span><span><span>&lt;</span>IdentityContext<span>></span></span></span><span>(</span>options <span>=></span> options
+    <span>//只有实例化了AppIdentityDbContext，才能正常调用OnModelCreating，不然直接使用仓储，无法调用DbContext中的OnModelCreating方法，，配置的AppUserConfiguration 就会没有生效</span>
+    services<span>.</span><span><span>AddFreeDbContext</span><span><span>&lt;</span>AppIdentityDbContext<span>></span></span></span><span>(</span>options <span>=></span> options
                 <span>.</span><span>UseFreeSql</span><span>(</span>fsql<span>)</span>
                 <span>.</span><span>UseOptions</span><span>(</span><span>new</span> <span>DbContextOptions</span><span>(</span><span>)</span>
                 <span>{</span>
-                    EnableAddOrUpdateNavigateList <span>=</span> <span>true</span>
+                    EnableCascadeSave <span>=</span> <span>true</span>
                 <span>}</span><span>)</span>
     <span>)</span><span>;</span>
 
-    services<span>.</span><span><span>AddIdentityCore</span><span><span>&lt;</span>AppUser<span>></span></span></span><span>(</span>options <span>=></span> options<span>.</span>SignIn<span>.</span>RequireConfirmedAccount <span>=</span> <span>true</span><span>)</span>
+    services<span>.</span><span><span>AddIdentityCore</span><span><span>&lt;</span>AppUser<span>></span></span></span><span>(</span>o <span>=></span>
+            <span>{</span>
+                o<span>.</span>SignIn<span>.</span>RequireConfirmedEmail <span>=</span> <span>false</span><span>;</span>
+                o<span>.</span>Stores<span>.</span>MaxLengthForKeys <span>=</span> <span>128</span><span>;</span>
+            <span>}</span><span>)</span>
             <span>.</span><span><span>AddRoles</span><span><span>&lt;</span>AppRole<span>></span></span></span><span>(</span><span>)</span>
             <span>.</span><span>AddSignInManager</span><span>(</span><span>)</span>
-            <span>.</span><span><span>AddFreeSqlStores</span><span><span>&lt;</span>IdentityContext<span>></span></span></span><span>(</span><span>)</span>
+            <span>.</span><span><span>AddFreeSqlStores</span><span><span>&lt;</span>AppIdentityDbContext<span>></span></span></span><span>(</span><span>)</span>
             <span>.</span><span>AddDefaultTokenProviders</span><span>(</span><span>)</span><span>;</span><span>;</span>
-
-    <span>//fsql.CodeFirst.ApplyConfiguration(new TodoConfiguration());</span>
 
     <span>return</span> services<span>;</span>
 <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br></div></div>]]></content>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br></div></div><h3 id="软删除" tabindex="-1"> 软删除</h3>
+<div><pre><code><span>public</span> <span>interface</span> <span>ISoftDelete</span>
+<span>{</span>
+    <span><span>bool</span></span> IsDeleted <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><p>因为FreeSql只有运行时才会生成表,我们增加定义一个扩展方法</p>
+<div><pre><code><span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+<span>/// 获取一下Scope Service 以执行 DbContext中的OnModelCreating</span>
+<span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+<span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>serviceProvider<span>"</span></span><span>></span></span><span><span><span>&lt;/</span>param</span><span>></span></span></span>
+<span>public</span> <span>static</span> <span><span>void</span></span> <span><span>RunScopeService</span><span><span>&lt;</span>T<span>></span></span></span><span>(</span><span>this</span> <span>IServiceProvider</span> serviceProvider<span>)</span> <span>where</span> <span>T</span> <span>:</span> <span><span>DbContext</span></span>
+<span>{</span>
+    <span>using</span> <span><span>var</span></span> serviceScope <span>=</span> serviceProvider<span>.</span><span>CreateScope</span><span>(</span><span>)</span><span>;</span>
+    <span>try</span>
+    <span>{</span>
+        <span>using</span> <span><span>var</span></span> myDependency <span>=</span> serviceScope<span>.</span>ServiceProvider<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>T<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+    <span>}</span>
+    <span>catch</span> <span>(</span><span>Exception</span> ex<span>)</span>
+    <span>{</span>
+        <span><span>var</span></span> logger <span>=</span> serviceScope<span>.</span>ServiceProvider<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>ILogger<span>&lt;</span>Program<span>></span><span>></span></span></span><span>(</span><span>)</span><span>;</span>
+        logger<span>.</span><span>LogError</span><span>(</span>ex<span>,</span> <span>"An error occurred."</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br></div></div><p>在<code>Program</code>中Build后，我们执行此方法，以保证DbContext中的OnModelCreating生效</p>
+<div><pre><code><span>WebApplication</span> app <span>=</span> builder<span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
+<span>//自定义Scope 的Serivce 执行 DbContext中的OnModelCreating</span>
+app<span>.</span>Services<span>.</span><span><span>RunScopeService</span><span><span>&lt;</span>IdentityFreeSqlContext<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div>]]></content>
     <published>2022-06-02T18:18:50.000Z</published>
   </entry>
   <entry>
@@ -1521,11 +1552,11 @@ builder<span>.</span>Services<span>.</span><span><span>AddModule</span><span><sp
     <title type="html">FreeKit</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/"/>
-    <updated>2022-06-29T19:17:49.000Z</updated>
+    <updated>2022-07-23T09:18:51.000Z</updated>
     <content type="html"><![CDATA[<h1 id="freekit" tabindex="-1"> FreeKit</h1>
 <div align="center">
-    <h1 align="center"> .NET <img alt="logo" src="/images/dotnet-20-years.png" width="80px"/>YEARS </h1>
-<p><strong>Freekit</strong> 为.NET Core 提供了更多的扩展实现</p>
+<h2 id="net-years" tabindex="-1"> .NET <img src=/images/dotnet-20-years.png width=80  /> YEARS</h2>
+<p><strong>Freekit</strong> 为.NET Core提供了更多的扩展实现</p>
 <p><a href="https://www.jetbrains.com/rider/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/static/v1?style=float&amp;logo=rider&amp;label=Rider&amp;message=jetbrains&amp;color=red" alt=".NET IDE Rider" loading="lazy"></a>
 <a href="https://raw.githubusercontent.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/master/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license" loading="lazy"></a></p>
 </div>
@@ -1636,16 +1667,17 @@ builder<span>.</span>Services<span>.</span><span><span>AddModule</span><span><sp
 </ul>
 <h2 id="igeekfan-freekit-extras" tabindex="-1"> IGeekFan.FreeKit.Extras</h2>
 <ul>
-<li>FreeSql 扩展+Autofac UnitOfWork</li>
-<li>FreeSql+AduitEntity</li>
-<li>Autofac+ITransientDependency+IScopedDependency+ISingletonDependency</li>
+<li>FreeSql 扩展+AOP基于特性标签的事务 UnitOfWork</li>
+<li>FreeSql中的复合主键仓储实现</li>
+<li>FreeSql+AduitEntity 审计日志实体</li>
+<li>Autofac+继承接口<code>ITransientDependency+IScopedDependency+ISingletonDependency</code> 即可实现依赖注入</li>
 <li>CaseQuery</li>
 <li>Security 登录人信息</li>
 <li>查看<a href="/dotnetcore/freekit/Extras.html">IGeekFan.FreeKit.Extras</a><strong>文档</strong></li>
 </ul>
 <h2 id="igeekfan-freekit-email" tabindex="-1"> IGeekFan.FreeKit.Email</h2>
 <ul>
-<li>查看<a href="/dotnetcore/freekit/Email.html">IGeekFan.FreeKit.Email</a><strong>文档</strong></li>
+<li>基于MailKit实现发送邮件<a href="/dotnetcore/freekit/Email.html">IGeekFan.FreeKit.Email</a><strong>文档</strong></li>
 </ul>
 ]]></content>
     <published>2022-06-02T18:18:50.000Z</published>
