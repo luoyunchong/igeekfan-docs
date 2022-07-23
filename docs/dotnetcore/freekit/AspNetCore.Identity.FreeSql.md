@@ -1,9 +1,10 @@
-# aspnetcore identity freesql 的实现
+# aspnetcore identity freesql实现
 
 ## IGeekFan.AspNetCore.Identity.FreeSql
 
-`asp.net core 6` 的`identity`的`freesql`实现
+是`asp.net core 6` 的`identity`的`freesql`的实现
 
+- 支持.NET 6.0
 - 安装包
 
 ```bash
@@ -26,9 +27,9 @@ public class AppRole : IdentityRole<Guid>
 {
 
 }
-public class IdentityContext : IdentityDbContext<AppUser, AppRole, Guid>
+public class AppIdentityDbContext : IdentityDbContext<AppUser, AppRole, Guid>
 {
-    public IdentityContext(IOptions<IdentityOptions> identityOptions, IFreeSql fsql, DbContextOptions options)
+    public AppIdentityDbContext(IOptions<IdentityOptions> identityOptions, IFreeSql fsql, DbContextOptions options)
     : base(identityOptions.Value, fsql, options)
     {
     }
@@ -41,6 +42,7 @@ public class IdentityContext : IdentityDbContext<AppUser, AppRole, Guid>
     protected override void OnModelCreating(ICodeFirst codefirst)
     {
         base.OnModelCreating(codefirst);
+        codefirst.ApplyConfigurationsFromAssembly(typeof(AppUserConfiguration).Assembly);
     }
 }
 
@@ -97,23 +99,64 @@ public static IServiceCollection AddFreeSql(this IServiceCollection services, IC
     services.AddFreeRepository();
     services.AddScoped<UnitOfWorkManager>();
 
-    //只有实例化了ToDoContext，才能正常调用OnModelCreating，不然直接使用仓储，无法调用DbContext中的OnModelCreating方法，，配置的TodoConfiguration 就会没有生效
-    services.AddFreeDbContext<IdentityContext>(options => options
+    //只有实例化了AppIdentityDbContext，才能正常调用OnModelCreating，不然直接使用仓储，无法调用DbContext中的OnModelCreating方法，，配置的AppUserConfiguration 就会没有生效
+    services.AddFreeDbContext<AppIdentityDbContext>(options => options
                 .UseFreeSql(fsql)
                 .UseOptions(new DbContextOptions()
                 {
-                    EnableAddOrUpdateNavigateList = true
+                    EnableCascadeSave = true
                 })
     );
 
-    services.AddIdentityCore<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    services.AddIdentityCore<AppUser>(o =>
+            {
+                o.SignIn.RequireConfirmedEmail = false;
+                o.Stores.MaxLengthForKeys = 128;
+            })
             .AddRoles<AppRole>()
             .AddSignInManager()
-            .AddFreeSqlStores<IdentityContext>()
+            .AddFreeSqlStores<AppIdentityDbContext>()
             .AddDefaultTokenProviders();;
-
-    //fsql.CodeFirst.ApplyConfiguration(new TodoConfiguration());
 
     return services;
 }
+```
+
+### 软删除
+
+```csharp
+public interface ISoftDelete
+{
+    bool IsDeleted { get; set; }
+}
+```
+
+因为FreeSql只有运行时才会生成表,我们增加定义一个扩展方法
+
+```csharp
+/// <summary>
+/// 获取一下Scope Service 以执行 DbContext中的OnModelCreating
+/// </summary>
+/// <param name="serviceProvider"></param>
+public static void RunScopeService<T>(this IServiceProvider serviceProvider) where T : DbContext
+{
+    using var serviceScope = serviceProvider.CreateScope();
+    try
+    {
+        using var myDependency = serviceScope.ServiceProvider.GetRequiredService<T>();
+    }
+    catch (Exception ex)
+    {
+        var logger = serviceScope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred.");
+    }
+}
+```
+
+在`Program`中Build后，我们执行此方法，以保证DbContext中的OnModelCreating生效
+
+```csharp
+WebApplication app = builder.Build();
+//自定义Scope 的Serivce 执行 DbContext中的OnModelCreating
+app.Services.RunScopeService<IdentityFreeSqlContext>();
 ```

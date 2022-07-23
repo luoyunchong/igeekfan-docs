@@ -1,4 +1,4 @@
-# Docker配置Baget
+# Docker 配置 Baget
 
 创建一个名为baget.env存储BaGet的配置：
 

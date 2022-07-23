@@ -9,13 +9,13 @@ export default defineUserConfig({
     locales: {
         "/": {
             lang: "zh-CN",
-            title: "IGeekFan 开发者文档",
+            title: ".NET 开发指南",
             description: "问君能有几多愁？恰似一江春水向东流。",
         },
         "/en/": {
             lang: "en-US",
-            title: "IGeekFan Documents",
-            description: "IGeekFan Documents",
+            title: ".NET Devlopement Guide",
+            description: ".NET Devlopement Guide",
         },
     },
     base: base,

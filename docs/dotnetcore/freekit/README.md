@@ -1,9 +1,10 @@
 # FreeKit
 
 <div align="center">
-    <h1 align="center"> .NET <img alt="logo" src="/images/dotnet-20-years.png" width="80px"/>YEARS </h1>
 
-**Freekit** 为.NET Core 提供了更多的扩展实现
+## .NET <img src=/images/dotnet-20-years.png width=80  /> YEARS
+
+**Freekit** 为.NET Core提供了更多的扩展实现
 
 [![.NET IDE Rider](https://img.shields.io/static/v1?style=float&logo=rider&label=Rider&message=jetbrains&color=red)](https://www.jetbrains.com/rider/)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc/master/LICENSE)
@@ -48,13 +49,14 @@
 
 ## IGeekFan.FreeKit.Extras
 
-- FreeSql 扩展+Autofac UnitOfWork
-- FreeSql+AduitEntity
-- Autofac+ITransientDependency+IScopedDependency+ISingletonDependency
+- FreeSql 扩展+AOP基于特性标签的事务 UnitOfWork
+- FreeSql中的复合主键仓储实现
+- FreeSql+AduitEntity 审计日志实体
+- Autofac+继承接口`ITransientDependency+IScopedDependency+ISingletonDependency` 即可实现依赖注入
 - CaseQuery
 - Security 登录人信息
 - 查看[IGeekFan.FreeKit.Extras](./Extras.md)**文档**
 
 ## IGeekFan.FreeKit.Email
 
-- 查看[IGeekFan.FreeKit.Email](./Email.md)**文档**
+- 基于MailKit实现发送邮件[IGeekFan.FreeKit.Email](./Email.md)**文档**
