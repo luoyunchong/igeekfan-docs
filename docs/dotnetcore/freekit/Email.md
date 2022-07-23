@@ -2,7 +2,7 @@
 
 ## IGeekFan.FreeKit.Email
 
-该包是一个独立的开发包，内部由 MailKit 实现发送邮件。
+该包是一个独立的开发包，内部由MailKit实现发送邮件。
 
 1. 安装包
 
@@ -10,16 +10,18 @@
 dotnet add package IGeekFan.FreeKit.Email
 ```
 
-- ConfigureServices 方法
+1).通过配置文件配置Email服务
+
+- ConfigureServices方法
 
 ```csharp
-    Services.Configure<MailKitOptions>(Configuration.GetSection("MailKitOptions"));
+    services.AddEmailSender(configuration);
 ```
 
 - appsettings.json
 
 ```json
-  "MailKitOptions": {
+  "MailKitOptions":{
     "Host": "smtp.163.com",
     "Port": "25",
     "EnableSsl": true,
@@ -27,6 +29,20 @@ dotnet add package IGeekFan.FreeKit.Email
     "Password": "",
     "Domain": ""
   },
+```
+
+2).通过回调函数配置
+
+```csharp
+    services.AddEmailSender(r =>
+    {
+        r.Host = "smtp.163.com";
+        r.Port = 25;
+        r.EnableSsl = true;
+        r.UserName = "igeekfan@163.com";
+        r.Password = "";
+        r.Domain = "";
+    });
 ```
 
 - 业务逻辑
@@ -74,7 +90,7 @@ dotnet add package IGeekFan.FreeKit.Email
 简单的实体，在发送之前应验证必填项、密码强度和邮件格式等
 
 ```csharp
-    public class RegisterDto
+    public class RegisterDto 
     {
         /// <summary>
         /// 昵称
@@ -87,35 +103,6 @@ dotnet add package IGeekFan.FreeKit.Email
         /// <summary>
         /// 邮件
         /// </summary>
-        public string Email { get; set; }
+        public string Email { get; set; } 
    }
-```
-
-**IEmailSender**还不能直接使用。
-
-有二种方式
-
-1.使用 ASPNETCore 默认的 DI。
-
-```
-    services.AddTransient<IEmailSender, EmailSender>();
-```
-
-2.由于继承了接口**ITransientDependency**，可通过`IGeekFan.FreeKit.Extras`依赖包中，默认的注册机制，通过 Autofac 配置继承此接口的接口将注入到依赖注入的集合中。
-
-- 增加依赖包
-
-```bash
-dotnet add package IGeekFan.FreeKit.Extras
-```
-
-- 配置依赖
-
-```csharp
-builder.Host
-    .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-    .ConfigureContainer<ContainerBuilder>((webBuilder, containerBuilder) =>
-    {
-        containerBuilder.RegisterModule(new FreeKitModule(typeof(FreeKitModule), typeof(Program),typeof(MailKitOptions)))
-    });
 ```
