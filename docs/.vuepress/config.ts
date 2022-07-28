@@ -49,8 +49,8 @@ export default defineUserConfig({
     theme,
     plugins: [
         docsearchPlugin({
-            appId: "8QM97XX5VE",
-            apiKey: "4f26d8ac064a7f23065db5354cb5cfe6",
+            appId: "PIKEGX2V6X",
+            apiKey: "249d0288a940c78dd9f7224054af745d",
             indexName: "igeekfan",
             locales: {
                 "/zh/": {
