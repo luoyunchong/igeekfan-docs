@@ -32,12 +32,12 @@ lin-cms 是一个 lin 团队经数打磨的模板项目，本人是 c#的开发�
 | delete_user_id | datetime | 删除人 id     |
 | is_deleted     | datetime | 是否删除      |
 
-审计字段可通过继承父类**FullAduitEntity**即可,当然，也可只有创建时间，创建人二个字段，继承**ICreateAduitEntity**接口，实现二个字段即可。如果不想要这些记录，只需要继承**Entity**类，仅有一个 ID 字段，支持泛型。
+审计字段可通过继承父类**FullAuditEntity**即可,当然，也可只有创建时间，创建人二个字段，继承**ICreateAuditEntity**接口，实现二个字段即可。如果不想要这些记录，只需要继承**Entity**类，仅有一个 ID 字段，支持泛型。
 
 **is_deleted**字段本身没有什么稀奇的，但我们可以配合 FreeSql 实现逻辑删除（软删除），在 LinCms.Web/Configs/DependencyInjectionExtensions.cs 文件中。配置 了如下内容，如果我们筛选数据时，会全局启用 [过滤器](https://github.com/dotnetcore/FreeSql/wiki/%E8%BF%87%E6%BB%A4%E5%99%A8)。像创建时间，创建人。这些字段都不需要我们赋值，如果我们全部使用仓储**IAuditBaseRepository**访问数据库，这些字段会自动赋值。
 
 ```
-fsql.GlobalFilter.Apply<IDeleteAduitEntity>("IsDeleted", a => a.IsDeleted == false);
+fsql.GlobalFilter.Apply<IDeleteAuditEntity>("IsDeleted", a => a.IsDeleted == false);
 ```
 
 ## 模型层
@@ -50,7 +50,7 @@ using FreeSql.DataAnnotations;
 namespace LinCms.Core.Entities
 {
     [Table(Name = "book")]
-    public class Book : FullAduitEntity
+    public class Book : FullAuditEntity
     {
         [Column(DbType = "varchar(30)")]
         public string Author { get; set; } = string.Empty;

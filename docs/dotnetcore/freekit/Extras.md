@@ -309,7 +309,7 @@ public static class Extensions
 
 ### 实体审计类
 
-- FullAduitEntity
+- FullAuditEntity
 
 ### CaseQuery 支持 Get 请求参数 key，大小驼峰转换
 

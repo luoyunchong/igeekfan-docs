@@ -45,7 +45,7 @@ namespace LinCms.Entities.Base
     /// <summary>
     /// 文档
     /// </summary>
-    public class Doc : FullAduitEntity
+    public class Doc : FullAuditEntity
     {
         /// <summary>
         /// 文档名

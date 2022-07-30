@@ -161,7 +161,7 @@ id  name        info
  ```
  
 ### 审计日志
-大多数表存在如下8个字段，用于记录行的变化状态，is_deleted为软删除，执行删除操作时，将其状态置为true，默认实体类继承 **FullAduitEntity**  即可拥有以下8个字段。该设计参考ABP中的实现。FullAduitEntity为泛型，默认id为long类型，FullAduitEntity\<Guid\>,即可改变主键类型，默认LinUser表主键long，保持**create_user_id**,**delete_user_id**,**update_user_id**都与LinUser的主键相同
+大多数表存在如下8个字段，用于记录行的变化状态，is_deleted为软删除，执行删除操作时，将其状态置为true，默认实体类继承 **FullAuditEntity**  即可拥有以下8个字段。该设计参考ABP中的实现。FullAuditEntity为泛型，默认id为long类型，FullAuditEntity\<Guid\>,即可改变主键类型，默认LinUser表主键long，保持**create_user_id**,**delete_user_id**,**update_user_id**都与LinUser的主键相同
 ```
 
 id	                bigint

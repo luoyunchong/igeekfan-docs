@@ -43,7 +43,7 @@
 
 ## IGeekFan.FreeKit
 
-- AduitEntity 审计日志实体
+- AuditEntity 审计日志实体
 - Dependency 依赖注入接口
 - 查看[IGeekFan.FreeKit](./Core.md)**文档**
 
@@ -51,7 +51,7 @@
 
 - FreeSql 扩展+AOP基于特性标签的事务 UnitOfWork
 - FreeSql中的复合主键仓储实现
-- FreeSql+AduitEntity 审计日志实体
+- FreeSql+AuditEntity 审计日志实体
 - Autofac+继承接口`ITransientDependency+IScopedDependency+ISingletonDependency` 即可实现依赖注入
 - CaseQuery
 - Security 登录人信息
