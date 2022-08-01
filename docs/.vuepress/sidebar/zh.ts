@@ -113,6 +113,8 @@ export const zhSidebarConfig = sidebar({
                 'git-emoji',
                 'net-sqlite-encryption',
                 'net-encoded-1',
+                'delegate',
+                'idlebus-freesql'
             ]
         }
     ],
