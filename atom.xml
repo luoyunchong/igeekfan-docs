@@ -3,7 +3,7 @@
   <id>https://igeekfan.cn/igeekfan-docs/</id>
   <title>.NET 开发指南</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
-  <updated>2022-07-30T11:19:56.286Z</updated>
+  <updated>2022-08-01T13:28:50.418Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -12,6 +12,591 @@
   <contributor>
     <name>Talking Dotnet</name>
   </contributor>
+  <entry>
+    <title type="html">C#委托的介绍</title>
+    <id>https://igeekfan.cn/igeekfan-docs/blogs/delegate.html</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/blogs/delegate.html"/>
+    <updated>2022-08-01T13:27:15.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="c-委托的介绍" tabindex="-1"> C#委托的介绍</h1>
+<h2 id="c-委托的介绍-delegate、action、func、predicate" tabindex="-1"> C#委托的介绍(delegate、Action、Func、predicate)</h2>
+<p>委托是一个类，它定义了方法的类型，使得可以将方法当作另一个方法的参数来进行传递。事件是一种特殊的委托。</p>
+<p>类似 c++的函数指针，但是他是类型安全的，</p>
+<ol>
+<li>允许将方法作为参数传递。</li>
+<li>可用于定义回调方法。</li>
+<li>委托可以链接在一起。例如，可以对一个事件调用多个方法。</li>
+</ol>
+<h2 id="delegate" tabindex="-1"> delegate</h2>
+<p>委托的关键字是 <strong>delegate</strong>,一个委托相当于一个新的类，可使用访问修饰符 public、private、protected 等，作用域同类的修饰符.</p>
+<p>定义了委托类型与参数,使得可以将方法当作另一个方法参数来传递。事件是一种特殊的委托。</p>
+<p>Delegate 至少 0 个参数，至多 32 个参数，可以无返回值，也可以指定返回值类型。</p>
+<p>定义一个委托，有二个参数，并返回 Int 类型的值。</p>
+<div><pre><code>    <span>delegate</span> <span><span>int</span></span> <span>CalculateMethodInvoker</span><span>(</span><span><span>int</span></span> a<span>,</span> <span><span>int</span></span> b<span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>定义方法,方法参数与返回值与委托保持一致</p>
+<div><pre><code>    <span>public</span> <span>class</span> <span>CalculateHelper</span>
+    <span>{</span>
+        <span>public</span> <span>static</span> <span><span>int</span></span> <span>Sum</span><span>(</span><span><span>int</span></span> x<span>,</span> <span><span>int</span></span> y<span>)</span>
+        <span>{</span>
+            <span>return</span> x <span>+</span> y<span>;</span>
+        <span>}</span>
+        <span>public</span> <span>static</span> <span><span>int</span></span> <span>Multiply</span><span>(</span><span><span>int</span></span> x<span>,</span> <span><span>int</span></span> y<span>)</span>
+        <span>{</span>
+            <span>return</span> x <span>*</span> y<span>;</span>
+        <span>}</span>
+    <span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br></div></div><p>调用</p>
+<div><pre><code><span>class</span> <span>Program</span>
+<span>{</span>
+    <span>static</span> <span><span>void</span></span> <span>Main</span><span>(</span><span><span>string</span><span>[</span><span>]</span></span> args<span>)</span>
+    <span>{</span>
+        <span>CalculateMethodInvoker</span> calculateSumInvoker <span>=</span> CalculateHelper<span>.</span>Sum<span>;</span>
+        <span>CalculateMethodInvoker</span> calculateSumInvoker2 <span>=</span> <span>new</span> <span>CalculateMethodInvoker</span><span>(</span>CalculateHelper<span>.</span>Sum<span>)</span><span>;</span><span>//实例化一个委托</span>
+        <span>CalculateMethodInvoker</span> calculateMultiplyInvoker <span>=</span> CalculateHelper<span>.</span>Multiply<span>;</span>
+
+        <span><span>int</span></span> x <span>=</span> <span>20</span><span>,</span> y <span>=</span> <span>10</span><span>;</span>
+
+        <span><span>int</span></span> addResult <span>=</span> <span>calculateSumInvoker</span><span>(</span>x<span>,</span> y<span>)</span><span>;</span>
+        <span><span>int</span></span> addResult2 <span>=</span> <span>calculateSumInvoker2</span><span>(</span>x<span>,</span> y<span>)</span><span>;</span>
+        <span><span>int</span></span> invokeResult <span>=</span> calculateSumInvoker<span>.</span><span>Invoke</span><span>(</span>x<span>,</span> y<span>)</span><span>;</span>
+
+        Console<span>.</span><span>WriteLine</span><span>(</span><span><span>$"x,y相加，得到</span><span><span>{</span><span>addResult</span><span>}</span></span><span>,</span><span><span>{</span><span>addResult2</span><span>}</span></span><span>,</span><span><span>{</span><span>invokeResult</span><span>}</span></span><span>"</span></span><span>)</span><span>;</span>
+        Console<span>.</span><span>WriteLine</span><span>(</span><span><span>$"x,y相乘，得到</span><span><span>{</span><span><span>calculateMultiplyInvoker</span><span>(</span>x<span>,</span>y<span>)</span></span><span>}</span></span><span>"</span></span><span>)</span><span>;</span>
+
+        Console<span>.</span><span>ReadKey</span><span>(</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br></div></div><p>一个委托可以将多个方法链接在一起。也可以移除某个方法</p>
+<div><pre><code><span>public</span> <span>static</span> <span><span>void</span></span> <span>ContactDelegate</span><span>(</span><span>)</span>
+<span>{</span>
+    <span>CalculateMethodInvoker</span> calculateInvoker <span>=</span> CalculateHelper<span>.</span>Sum<span>;</span>
+    calculateInvoker <span>+=</span> CalculateHelper<span>.</span>Multiply<span>;</span>
+
+    <span><span>int</span></span> r1 <span>=</span> <span>calculateInvoker</span><span>(</span><span>10</span><span>,</span> <span>20</span><span>)</span><span>;</span>
+    Console<span>.</span><span>WriteLine</span><span>(</span><span><span>$"ContactDelegate:</span><span><span>{</span><span>r1</span><span>}</span></span><span>"</span></span><span>)</span><span>;</span>
+
+    calculateInvoker <span>-=</span> CalculateHelper<span>.</span>Multiply<span>;</span>
+    <span><span>int</span></span> r2 <span>=</span> <span>calculateInvoker</span><span>(</span><span>10</span><span>,</span> <span>20</span><span>)</span><span>;</span>
+    Console<span>.</span><span>WriteLine</span><span>(</span><span><span>$"ContactDelegate:</span><span><span>{</span><span>r2</span><span>}</span></span><span>"</span></span><span>)</span><span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br></div></div><h2 id="action" tabindex="-1"> Action</h2>
+<p>Action 是无返回值的泛型委托。特点是：至少 0 个参数，至多 16 个参数，无返回值。</p>
+<ol>
+<li>调用方法、可以传入参数</li>
+</ol>
+<div><pre><code><span>public</span> <span>static</span> <span><span>void</span></span> <span>ActionParams</span><span>(</span><span>)</span>
+<span>{</span>
+    <span>Action<span>&lt;</span><span>int</span><span>,</span> <span>int</span><span>></span></span> action <span>=</span> <span>new</span> <span>Action<span>&lt;</span><span>int</span><span>,</span> <span>int</span><span>></span></span><span>(</span>Sum<span>)</span><span>;</span>
+    <span>action</span><span>(</span><span>1</span><span>,</span> <span>2</span><span>)</span><span>;</span>
+<span>}</span>
+<span>public</span> <span>static</span> <span><span>void</span></span> <span>Sum</span><span>(</span><span><span>int</span></span> x<span>,</span> <span><span>int</span></span> y<span>)</span>
+<span>{</span>
+    Console<span>.</span><span>WriteLine</span><span>(</span><span><span>$"x+y=</span><span><span>{</span><span>x <span>+</span> y</span><span>}</span></span><span>"</span></span><span>)</span><span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br></div></div><ol start="2">
+<li>使用 lambda 表达式</li>
+</ol>
+<div><pre><code><span>public</span> <span>static</span> <span><span>void</span></span> <span>ActionLambda</span><span>(</span><span>)</span>
+<span>{</span>
+    <span>Action<span>&lt;</span><span>int</span><span>,</span> <span>int</span><span>></span></span> action <span>=</span> <span>(</span>x<span>,</span> y<span>)</span> <span>=></span>
+    <span>{</span>
+        Console<span>.</span><span>WriteLine</span><span>(</span><span><span>$"x+y=</span><span><span>{</span><span>x <span>+</span> y</span><span>}</span></span><span>"</span></span><span>)</span><span>;</span>
+    <span>}</span><span>;</span>
+    <span>action</span><span>(</span><span>1</span><span>,</span> <span>2</span><span>)</span><span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><h2 id="func" tabindex="-1"> Func</h2>
+<p>Func 是有返回值的泛型委托，Func 特点：至少 0 个参数，至多 16 个参数，根据返回值泛型返回。必须有返回值，不可 void</p>
+<p><code>Func&lt;int</code>&gt; 表示无参，返回值为 int 的委托</p>
+<p><code>Func&lt;int, int, string&gt;</code> 表示传入参数为 int, int。 返回值为 string 的委托</p>
+<p>1.调用方法，传入参数</p>
+<div><pre><code><span>public</span> <span>static</span> <span><span>void</span></span> <span>FuncMethod</span><span>(</span><span>)</span>
+<span>{</span>
+    <span>Func<span>&lt;</span><span>int</span><span>,</span> <span>int</span><span>,</span> <span>int</span><span>></span></span> fc1 <span>=</span> <span>new</span> <span>Func<span>&lt;</span><span>int</span><span>,</span> <span>int</span><span>,</span> <span>int</span><span>></span></span><span>(</span>CalculateHelper<span>.</span>Sum<span>)</span><span>;</span>
+    <span><span>int</span></span> result <span>=</span> <span>fc1</span><span>(</span><span>1</span><span>,</span> <span>2</span><span>)</span><span>;</span><span>//调用委托</span>
+    Console<span>.</span><span>WriteLine</span><span>(</span>result<span>)</span><span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><p>2.使用 lambda</p>
+<div><pre><code><span>public</span> <span>static</span> <span><span>void</span></span> <span>FuncLambda</span><span>(</span><span>)</span>
+<span>{</span>
+    <span>Func<span>&lt;</span><span>int</span><span>,</span> <span>int</span><span>,</span> <span>string</span><span>></span></span> fc <span>=</span> <span>(</span>x<span>,</span> y<span>)</span> <span>=></span> <span>{</span> <span>return</span> <span>(</span>x <span>+</span> y<span>)</span><span>.</span><span>ToString</span><span>(</span><span>)</span><span>;</span> <span>}</span><span>;</span>
+    <span><span>string</span></span> r <span>=</span> <span>fc</span><span>(</span><span>1</span><span>,</span><span>2</span><span>)</span><span>;</span>
+    Console<span>.</span><span>WriteLine</span><span>(</span>r<span>)</span><span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><h2 id="predicate" tabindex="-1"> Predicate</h2>
+<p>predicate 是返回 bool 型的泛型委托</p>
+<p><code>predicate&lt;int&gt;</code> 表示传入参数为 int 返回 bool 的委托</p>
+<p>Predicate 有且只有一个参数，返回值固定为 bool</p>
+<p>1、使用单行 lambda,带括号的 lambda（可多行代码），独立的方法。都返回 bool 类型的值。</p>
+<div><pre><code><span>public</span> <span>static</span> <span><span>void</span></span> <span>PredicateBoolean</span><span>(</span><span>)</span>
+<span>{</span>
+    <span>Point<span>[</span><span>]</span></span> points <span>=</span> <span>{</span>
+                <span>new</span> <span>Point</span><span>(</span><span>100</span><span>,</span> <span>200</span><span>)</span><span>,</span>
+                <span>new</span> <span>Point</span><span>(</span><span>150</span><span>,</span> <span>250</span><span>)</span><span>,</span>
+                <span>new</span> <span>Point</span><span>(</span><span>250</span><span>,</span> <span>375</span><span>)</span><span>,</span>
+                <span>new</span> <span>Point</span><span>(</span><span>275</span><span>,</span> <span>395</span><span>)</span><span>,</span>
+                <span>new</span> <span>Point</span><span>(</span><span>295</span><span>,</span> <span>450</span><span>)</span>
+            <span>}</span><span>;</span>
+    <span>Predicate<span>&lt;</span>Point<span>></span></span> predicate1 <span>=</span> p <span>=></span> p<span>.</span>X <span>*</span> p<span>.</span>Y <span>></span> <span>100000</span><span>;</span>
+    <span>Predicate<span>&lt;</span>Point<span>></span></span> predicate2 <span>=</span> p <span>=></span>
+    <span>{</span>
+        <span>if</span> <span>(</span>p<span>.</span>X <span>*</span> p<span>.</span>Y <span>></span> <span>100000</span><span>)</span>
+        <span>{</span>
+            <span>return</span> <span>true</span><span>;</span>
+        <span>}</span>
+        <span>else</span>
+        <span>{</span>
+            <span>return</span> <span>false</span><span>;</span>
+        <span>}</span>
+    <span>}</span><span>;</span>
+    <span>Point</span> first <span>=</span> Array<span>.</span><span>Find</span><span>(</span>points<span>,</span> ProductGT10<span>)</span><span>;</span>
+    <span>Point</span> p1 <span>=</span> Array<span>.</span><span>Find</span><span>(</span>points<span>,</span> predicate1<span>)</span><span>;</span>
+    <span>Point</span> p2 <span>=</span> Array<span>.</span><span>Find</span><span>(</span>points<span>,</span> predicate2<span>)</span><span>;</span>
+
+    Console<span>.</span><span>WriteLine</span><span>(</span><span>"Found: X = {0}, Y = {1}"</span><span>,</span> first<span>.</span>X<span>,</span> first<span>.</span>Y<span>)</span><span>;</span>
+    Console<span>.</span><span>WriteLine</span><span>(</span><span>"Found: X = {0}, Y = {1}"</span><span>,</span> p1<span>.</span>X<span>,</span> p1<span>.</span>Y<span>)</span><span>;</span>
+    Console<span>.</span><span>WriteLine</span><span>(</span><span>"Found: X = {0}, Y = {1}"</span><span>,</span> p2<span>.</span>X<span>,</span> p2<span>.</span>Y<span>)</span><span>;</span>
+    Console<span>.</span><span>ReadKey</span><span>(</span><span>)</span><span>;</span>
+<span>}</span>
+<span>private</span> <span>static</span> <span><span>bool</span></span> <span>ProductGT10</span><span>(</span><span>Point</span> p<span>)</span>
+<span>{</span>
+    <span>if</span> <span>(</span>p<span>.</span>X <span>*</span> p<span>.</span>Y <span>></span> <span>100000</span><span>)</span>
+    <span>{</span>
+        <span>return</span> <span>true</span><span>;</span>
+    <span>}</span>
+    <span>else</span>
+    <span>{</span>
+        <span>return</span> <span>false</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br></div></div><p>Array.Find 方法，使用 Predicate 委托搜索 Point 结构的数组，只有是 x 和 y 字段的乘积大于 100000,方法 ProductGT10 返回 true,找到符合要求的元素后停止。</p>
+<h2 id="事件" tabindex="-1"> 事件</h2>
+<p><strong>事件自身就是委托类型</strong>，由于委托可以绑定调用多个方法，这会给事件的处理带来方便 。类只需要对外公开事件，就可以与外部的其他地方关联，从而实现事件订阅。</p>
+<p>1.由于不同的事件要传递的参数不同，我们通过继承 EventArgs，</p>
+<div><pre><code><span>public</span> <span>class</span> <span>KeyPressEventArgs</span> <span>:</span> <span><span>EventArgs</span></span>
+<span>{</span>
+    <span>public</span> <span>ConsoleKey</span> PressdKey <span>{</span> <span>get</span><span>;</span> <span>private</span> <span>set</span><span>;</span> <span>}</span>
+    <span>public</span> <span>KeyPressEventArgs</span><span>(</span><span>ConsoleKey</span> consoleKey<span>)</span>
+    <span>{</span>
+        <span>this</span><span>.</span>PressdKey <span>=</span> consoleKey<span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><p>2.带有泛型参数的事件处理委托。</p>
+<p>系统函数内置如下委托</p>
+<div><pre><code><span>public</span> <span>delegate</span> <span><span>void</span></span> <span><span>EventHandler</span><span><span>&lt;</span>TEventArgs<span>></span></span></span><span>(</span><span><span>object</span></span> sender<span>,</span><span>TEventArgs</span> e<span>)</span><span>;</span>   TEventArgs 是一个泛型参数
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><div><pre><code><span>class</span> <span>App</span>
+<span>{</span>
+    <span>public</span> <span>event</span> <span>EventHandler<span>&lt;</span>KeyPressEventArgs<span>></span></span> KeyPressed<span>;</span>
+    <span>protected</span> <span>virtual</span> <span><span>void</span></span> <span>OnSpaceKeyPressed</span><span>(</span><span>KeyPressEventArgs</span> e<span>)</span>
+    <span>{</span>
+        KeyPressed<span>?.</span><span>Invoke</span><span>(</span><span>this</span><span>,</span> e<span>)</span><span>;</span>
+    <span>}</span>
+
+    <span>public</span> <span><span>void</span></span> <span>StartRun</span><span>(</span><span>)</span>
+    <span>{</span>
+        <span>while</span> <span>(</span><span>true</span><span>)</span>
+        <span>{</span>
+            <span>ConsoleKeyInfo</span> keyInfo <span>=</span> Console<span>.</span><span>ReadKey</span><span>(</span><span>)</span><span>;</span>
+            <span>if</span> <span>(</span>keyInfo<span>.</span>Key <span>==</span> ConsoleKey<span>.</span>Spacebar<span>)</span>
+            <span>{</span>
+                <span>OnSpaceKeyPressed</span><span>(</span><span>new</span> <span>KeyPressEventArgs</span><span>(</span>keyInfo<span>.</span>Key<span>)</span><span>)</span><span>;</span>
+            <span>}</span>
+
+            <span>if</span> <span>(</span>keyInfo<span>.</span>Key <span>==</span> ConsoleKey<span>.</span>Escape<span>)</span>
+            <span>{</span>
+                <span>break</span><span>;</span>
+            <span>}</span>
+        <span>}</span>
+    <span>}</span>
+<span>}</span>
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br></div></div><div><pre><code><span>class</span> <span>Program</span>
+<span>{</span>
+    <span>static</span> <span><span>void</span></span> <span>Main</span><span>(</span><span><span>string</span><span>[</span><span>]</span></span> args<span>)</span>
+    <span>{</span>
+        Console<span>.</span><span>WriteLine</span><span>(</span><span>"空格：输入当前时间"</span><span>)</span><span>;</span>
+        Console<span>.</span><span>WriteLine</span><span>(</span><span>"ESC:退出系统"</span><span>)</span><span>;</span>
+
+        <span>App</span> app <span>=</span> <span>new</span> <span>App</span><span>(</span><span>)</span><span>;</span>
+        app<span>.</span>KeyPressed <span>+=</span> MyApp_SpaceKeyPressed<span>;</span>
+        app<span>.</span><span>StartRun</span><span>(</span><span>)</span><span>;</span>
+    <span>}</span>
+
+    <span>public</span> <span>static</span> <span><span>void</span></span> <span>MyApp_SpaceKeyPressed</span><span>(</span><span><span>object</span></span> sender<span>,</span><span>KeyPressEventArgs</span> e<span>)</span>
+    <span>{</span>
+        Console<span>.</span><span>WriteLine</span><span>(</span><span><span>$"</span><span><span>{</span><span>DateTime<span>.</span>Now<span>.</span><span>ToLongTimeString</span><span>(</span><span>)</span></span><span>}</span></span><span>按下空格键,</span><span><span>{</span><span>e<span>.</span>PressdKey<span>.</span><span>ToString</span><span>(</span><span>)</span></span><span>}</span></span><span>"</span></span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br></div></div><h2 id="参考" tabindex="-1"> 参考</h2>
+<ul>
+<li><a href="https://www.cnblogs.com/akwwl/p/3232679.html" target="_blank" rel="noopener noreferrer">C#委托的介绍(delegate、Action、Func、predicate)</a></li>
+<li><a href="https://www.cnblogs.com/hjxzjp/p/7667536.html" target="_blank" rel="noopener noreferrer">c# 定义委托和使用委托（事件的使用）</a></li>
+</ul>
+]]></content>
+    <published>2022-08-01T13:27:15.000Z</published>
+  </entry>
+  <entry>
+    <title type="html">多个 IFreeSql实例，如何注入使用</title>
+    <id>https://igeekfan.cn/igeekfan-docs/blogs/idlebus-freesql.html</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/blogs/idlebus-freesql.html"/>
+    <updated>2022-08-01T13:27:15.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="多个-ifreesql实例-如何注入使用" tabindex="-1"> 多个 IFreeSql实例，如何注入使用</h1>
+<p>多库切换，动态切库，动态注册数据库</p>
+<h2 id="一、定义多个-ifreesql" tabindex="-1"> 一、定义多个 IFreeSql</h2>
+<p>该方法适用于固定数据库，固定配置项</p>
+<p>1、定义两个标识类：</p>
+<div><pre><code><span>class</span> <span>MySqlFlag</span> <span>{</span><span>}</span>
+<span>class</span> <span>SqlServerFlag</span> <span>{</span><span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>2、在 Startup.cs 中单例注入</p>
+<div><pre><code><span>public</span> <span><span>void</span></span> <span>ConfigureServices</span><span>(</span><span>IServiceCollection</span> services<span>)</span>
+<span>{</span>
+    <span><span>var</span></span> fsql1 <span>=</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span><span>.</span><span>UseConnectionString</span><span>(</span>DataType<span>.</span>MySql<span>,</span> <span>"str1"</span><span>)</span>
+        <span>.</span><span><span>Build</span><span><span>&lt;</span>MySqlFlag<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+    <span><span>var</span></span> fsql2 <span>=</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span><span>.</span><span>UseConnectionString</span><span>(</span>DataType<span>.</span>MySql<span>,</span> <span>"str1"</span><span>)</span>
+        <span>.</span><span><span>Build</span><span><span>&lt;</span>SqlServerFlag<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+
+    services<span>.</span><span><span>AddSingleton</span><span><span>&lt;</span>IFreeSql<span>&lt;</span>MySqlFlag<span>></span><span>></span></span></span><span>(</span>fsql1<span>)</span><span>;</span>
+    services<span>.</span><span><span>AddSingleton</span><span><span>&lt;</span>IFreeSql<span>&lt;</span>SqlServerFlag<span>></span><span>></span></span></span><span>(</span>fsql2<span>)</span><span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><p>3、在 Controller 中使用</p>
+<div><pre><code><span>[</span><span><span>Route</span><span><span>(</span><span>"api/[controller]"</span><span>)</span></span></span><span>]</span>
+<span>[</span><span><span>ApiController</span></span><span>]</span>
+<span>public</span> <span>class</span> <span>ValuesController</span> <span>:</span> <span><span>ControllerBase</span></span>
+<span>{</span>
+    <span>public</span> <span>ValuesController</span><span>(</span><span>IFreeSql<span>&lt;</span>MySqlFlag<span>></span></span> mysql<span>,</span> <span>IFreeSql<span>&lt;</span>SqlServerFlag<span>></span></span> sqlserver<span>)</span>
+    <span>{</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><h2 id="二、利用-idlebus-重写-ifreesql" tabindex="-1"> 二、利用 IdleBus 重写 IFreeSql</h2>
+<p>在 <a href="http://asp.net" target="_blank" rel="noopener noreferrer">asp.net</a> core 利用 IdleBus 重写 IFreeSql 支持多库操作，支持多库动态配置</p>
+<div><pre><code><span><span><span>&lt;</span>ItemGroup</span><span>></span></span>
+    <span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>FreeSql<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>3.2.664<span>"</span></span> <span>/></span></span>
+    <span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>IdleBus<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>1.5.2<span>"</span></span> <span>/></span></span>
+    <span><span><span>&lt;</span>PackageReference</span> <span>Include</span><span><span>=</span><span>"</span>FreeSql.Provider.Sqlite<span>"</span></span> <span>Version</span><span><span>=</span><span>"</span>3.2.664<span>"</span></span> <span>/></span></span>
+<span><span><span>&lt;/</span>ItemGroup</span><span>></span></span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><h3 id="_1、multifreesql-cs-代码定义" tabindex="-1"> 1、MultiFreeSql.cs 代码定义</h3>
+<div><pre><code><span>using</span> <span>System</span><span>;</span>
+<span>using</span> <span>System<span>.</span>Threading</span><span>;</span>
+<span>using</span> <span>FreeSql<span>.</span>Internal</span><span>;</span>
+<span>using</span> <span>FreeSql<span>.</span>Internal<span>.</span>CommonProvider</span><span>;</span>
+
+<span>namespace</span> <span>FreeSql</span>
+<span>{</span>
+    <span>public</span> <span>class</span> <span>MultiFreeSql</span> <span>:</span> <span><span>MultiFreeSql<span>&lt;</span><span>string</span><span>></span></span></span>
+    <span>{</span>
+        <span>public</span> <span>MultiFreeSql</span><span>(</span><span>TimeSpan</span> timeSpan<span>)</span> <span>:</span> <span>base</span><span>(</span>timeSpan<span>)</span>
+        <span>{</span>
+        <span>}</span>
+
+        <span>public</span> <span>MultiFreeSql</span><span>(</span><span>IdleBus<span>&lt;</span><span>string</span><span>,</span> IFreeSql<span>></span></span> idleBus<span>)</span> <span>:</span> <span>base</span><span>(</span>idleBus<span>)</span>
+        <span>{</span>
+        <span>}</span>
+    <span>}</span>
+    <span>public</span> <span>class</span> <span>MultiFreeSql<span>&lt;</span>TDBKey<span>></span></span> <span>:</span> <span><span>BaseDbProvider</span><span>,</span> <span>IFreeSql</span></span>
+    <span>{</span>
+        <span>internal</span> <span>TDBKey</span> _dbkeyMaster<span>;</span>
+        <span>internal</span> <span>AsyncLocal<span>&lt;</span>TDBKey<span>></span></span> _dbkeyCurrent <span>=</span> <span>new</span> <span>AsyncLocal<span>&lt;</span>TDBKey<span>></span></span><span>(</span><span>)</span><span>;</span>
+        <span>BaseDbProvider</span> _ormMaster <span>=></span> _ib<span>.</span><span>Get</span><span>(</span>_dbkeyMaster<span>)</span> <span>as</span> <span>BaseDbProvider</span><span>;</span>
+        <span>BaseDbProvider</span> _ormCurrent <span>=></span> _ib<span>.</span><span>Get</span><span>(</span><span>Equals</span><span>(</span>_dbkeyCurrent<span>.</span>Value<span>,</span> <span>default</span><span>(</span><span>TDBKey</span><span>)</span><span>)</span> <span>?</span> _dbkeyMaster <span>:</span> _dbkeyCurrent<span>.</span>Value<span>)</span> <span>as</span> <span>BaseDbProvider</span><span>;</span>
+        <span>internal</span> <span>IdleBus<span>&lt;</span>TDBKey<span>,</span> IFreeSql<span>></span></span> _ib<span>;</span>
+
+        <span>public</span> <span>MultiFreeSql</span><span>(</span><span>TimeSpan</span> timeSpan<span>)</span>
+        <span>{</span>
+            _ib <span>=</span> <span>new</span> <span>IdleBus<span>&lt;</span>TDBKey<span>,</span> IFreeSql<span>></span></span><span>(</span>timeSpan<span>)</span><span>;</span>
+            _ib<span>.</span>Notice <span>+=</span> <span>(</span>_<span>,</span> __<span>)</span> <span>=></span> <span>{</span> <span>}</span><span>;</span>
+        <span>}</span>
+
+        <span>public</span> <span>MultiFreeSql</span><span>(</span><span>IdleBus<span>&lt;</span>TDBKey<span>,</span> IFreeSql<span>></span></span> idleBus<span>)</span>
+        <span>{</span>
+            _ib <span>=</span> idleBus<span>;</span>
+        <span>}</span>
+
+        <span>public</span> <span>override</span> <span>IAdo</span> Ado <span>=></span> _ormCurrent<span>.</span>Ado<span>;</span>
+        <span>public</span> <span>override</span> <span>IAop</span> Aop <span>=></span> _ormCurrent<span>.</span>Aop<span>;</span>
+        <span>public</span> <span>override</span> <span>ICodeFirst</span> CodeFirst <span>=></span> _ormCurrent<span>.</span>CodeFirst<span>;</span>
+        <span>public</span> <span>override</span> <span>IDbFirst</span> DbFirst <span>=></span> _ormCurrent<span>.</span>DbFirst<span>;</span>
+        <span>public</span> <span>override</span> <span>GlobalFilter</span> GlobalFilter <span>=></span> _ormCurrent<span>.</span>GlobalFilter<span>;</span>
+        <span>public</span> <span>override</span> <span><span>void</span></span> <span>Dispose</span><span>(</span><span>)</span> <span>=></span> _ib<span>.</span><span>Dispose</span><span>(</span><span>)</span><span>;</span>
+
+        <span>public</span> <span>override</span> <span>CommonExpression</span> InternalCommonExpression <span>=></span> _ormCurrent<span>.</span>InternalCommonExpression<span>;</span>
+        <span>public</span> <span>override</span> <span>CommonUtils</span> InternalCommonUtils <span>=></span> _ormCurrent<span>.</span>InternalCommonUtils<span>;</span>
+
+        <span>public</span> <span>override</span> <span>ISelect<span>&lt;</span>T1<span>></span></span> <span><span>CreateSelectProvider</span><span><span>&lt;</span>T1<span>></span></span></span><span>(</span><span><span>object</span></span> dywhere<span>)</span> <span>=></span> _ormCurrent<span>.</span><span><span>CreateSelectProvider</span><span><span>&lt;</span>T1<span>></span></span></span><span>(</span>dywhere<span>)</span><span>;</span>
+        <span>public</span> <span>override</span> <span>IDelete<span>&lt;</span>T1<span>></span></span> <span><span>CreateDeleteProvider</span><span><span>&lt;</span>T1<span>></span></span></span><span>(</span><span><span>object</span></span> dywhere<span>)</span> <span>=></span> _ormCurrent<span>.</span><span><span>CreateDeleteProvider</span><span><span>&lt;</span>T1<span>></span></span></span><span>(</span>dywhere<span>)</span><span>;</span>
+        <span>public</span> <span>override</span> <span>IUpdate<span>&lt;</span>T1<span>></span></span> <span><span>CreateUpdateProvider</span><span><span>&lt;</span>T1<span>></span></span></span><span>(</span><span><span>object</span></span> dywhere<span>)</span> <span>=></span> _ormCurrent<span>.</span><span><span>CreateUpdateProvider</span><span><span>&lt;</span>T1<span>></span></span></span><span>(</span>dywhere<span>)</span><span>;</span>
+        <span>public</span> <span>override</span> <span>IInsert<span>&lt;</span>T1<span>></span></span> <span><span>CreateInsertProvider</span><span><span>&lt;</span>T1<span>></span></span></span><span>(</span><span>)</span> <span>=></span> _ormCurrent<span>.</span><span><span>CreateInsertProvider</span><span><span>&lt;</span>T1<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+        <span>public</span> <span>override</span> <span>IInsertOrUpdate<span>&lt;</span>T1<span>></span></span> <span><span>CreateInsertOrUpdateProvider</span><span><span>&lt;</span>T1<span>></span></span></span><span>(</span><span>)</span> <span>=></span> _ormCurrent<span>.</span><span><span>CreateInsertOrUpdateProvider</span><span><span>&lt;</span>T1<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br></div></div><p>所以 MultiFreeSql 支持外部定义IdleBus,用于配置 Idlebus的Notice事件</p>
+<div><pre><code> <span>//可传递IdleBus</span>
+    <span>IdleBus</span> idlebus  <span>=</span> <span>new</span> <span>IdleBus<span>&lt;</span><span>string</span><span>,</span> IFreeSql<span>></span></span><span>(</span>TimeSpan<span>.</span><span>FromHours</span><span>(</span><span>2</span><span>)</span><span>)</span><span>;</span>
+    idlebus<span>.</span>Notice <span>+=</span> <span>(</span>_<span>,</span> __<span>)</span> <span>=></span> <span>{</span> <span>}</span><span>;</span>
+    <span>IFreeSql</span> fsql <span>=</span> <span>new</span> <span>MultiFreeSql</span><span>(</span>idlebus<span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><h3 id="_2、multifreesqlextensions" tabindex="-1"> 2、MultiFreeSqlExtensions</h3>
+<div><pre><code><span>using</span> <span>System</span><span>;</span>
+
+<span>namespace</span> <span>FreeSql</span>
+<span>{</span>
+    <span>public</span> <span>static</span> <span>class</span> <span>MultiFreeSqlExtensions</span>
+    <span>{</span>
+        <span>public</span> <span>static</span> <span>IFreeSql</span> <span><span>ChangeDatabaseByKey</span><span><span>&lt;</span>TDBKey<span>></span></span></span><span>(</span><span>this</span> <span>IFreeSql</span> fsql<span>,</span> <span>TDBKey</span> dbkey<span>)</span>
+        <span>{</span>
+            <span><span>var</span></span> multiFsql <span>=</span> fsql <span>as</span> <span>MultiFreeSql<span>&lt;</span>TDBKey<span>></span></span><span>;</span>
+            <span>if</span> <span>(</span>multiFsql <span>==</span> <span>null</span><span>)</span> <span>throw</span> <span>new</span> <span>Exception</span><span>(</span><span>"fsql 类型不是 MultiFreeSql&lt;TDBKey>"</span><span>)</span><span>;</span>
+            multiFsql<span>.</span>_dbkeyCurrent<span>.</span>Value <span>=</span> dbkey<span>;</span>
+            <span>return</span> multiFsql<span>;</span>
+        <span>}</span>
+
+        <span>public</span> <span>static</span> <span>IDisposable</span> <span><span>Change</span><span><span>&lt;</span>TDBKey<span>></span></span></span><span>(</span><span>this</span> <span>IFreeSql</span> fsql<span>,</span> <span>TDBKey</span> dbkey<span>)</span>
+        <span>{</span>
+            <span><span>var</span></span> multiFsql <span>=</span> fsql <span>as</span> <span>MultiFreeSql<span>&lt;</span>TDBKey<span>></span></span><span>;</span>
+            <span>if</span> <span>(</span>multiFsql <span>==</span> <span>null</span><span>)</span> <span>throw</span> <span>new</span> <span>Exception</span><span>(</span><span>"fsql 类型不是 MultiFreeSql&lt;TDBKey>"</span><span>)</span><span>;</span>
+            <span><span>var</span></span> olddbkey <span>=</span> multiFsql<span>.</span>_dbkeyCurrent<span>.</span>Value<span>;</span>
+            multiFsql<span>.</span><span>ChangeDatabaseByKey</span><span>(</span>dbkey<span>)</span><span>;</span>
+            <span>return</span> <span>new</span> <span>DBChangeDisposable</span><span>(</span><span>(</span><span>)</span> <span>=></span> multiFsql<span>.</span><span>ChangeDatabaseByKey</span><span>(</span>olddbkey<span>)</span><span>)</span><span>;</span>
+        <span>}</span>
+
+        <span>public</span> <span>static</span> <span>IFreeSql</span> <span><span>Register</span><span><span>&lt;</span>TDBKey<span>></span></span></span><span>(</span><span>this</span> <span>IFreeSql</span> fsql<span>,</span> <span>TDBKey</span> dbkey<span>,</span> <span>Func<span>&lt;</span>IFreeSql<span>></span></span> create<span>)</span>
+        <span>{</span>
+            <span><span>var</span></span> multiFsql <span>=</span> fsql <span>as</span> <span>MultiFreeSql<span>&lt;</span>TDBKey<span>></span></span><span>;</span>
+            <span>if</span> <span>(</span>multiFsql <span>==</span> <span>null</span><span>)</span> <span>throw</span> <span>new</span> <span>Exception</span><span>(</span><span>"fsql 类型不是 MultiFreeSql&lt;TDBKey>"</span><span>)</span><span>;</span>
+            <span>if</span> <span>(</span>multiFsql<span>.</span>_ib<span>.</span><span>TryRegister</span><span>(</span>dbkey<span>,</span> create<span>)</span><span>)</span>
+                <span>if</span> <span>(</span>multiFsql<span>.</span>_ib<span>.</span><span>GetKeys</span><span>(</span><span>)</span><span>.</span>Length <span>==</span> <span>1</span><span>)</span>
+                    multiFsql<span>.</span>_dbkeyMaster <span>=</span> dbkey<span>;</span>
+            <span>return</span> multiFsql<span>;</span>
+        <span>}</span>
+    <span>}</span>
+
+    <span>class</span> <span>DBChangeDisposable</span> <span>:</span> <span><span>IDisposable</span></span>
+    <span>{</span>
+        <span>Action</span> _cancel<span>;</span>
+        <span>public</span> <span>DBChangeDisposable</span><span>(</span><span>Action</span> cancel<span>)</span> <span>=></span> _cancel <span>=</span> cancel<span>;</span>
+        <span>public</span> <span><span>void</span></span> <span>Dispose</span><span>(</span><span>)</span> <span>=></span> _cancel<span>?.</span><span>Invoke</span><span>(</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br></div></div><h3 id="_3、定义和注入-其中multifreesql-cs" tabindex="-1"> 3、定义和注入,其中MultiFreeSql.cs</h3>
+<div><pre><code><span>public</span> <span>static</span> <span>IServiceCollection</span> <span>AddMultiFreeSql</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>)</span>
+<span>{</span>
+    <span><span>var</span></span> fsql <span>=</span> <span>new</span> <span>MultiFreeSql</span><span>(</span>TimeSpan<span>.</span><span>FromHours</span><span>(</span><span>2</span><span>)</span><span>)</span><span>;</span>
+
+    fsql<span>.</span><span>Register</span><span>(</span><span>"db1"</span><span>,</span> <span>(</span><span>)</span> <span>=></span> 
+    <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
+        <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span>
+        <span>.</span><span>UseConnectionString</span><span>(</span>DataType<span>.</span>Sqlite<span>,</span> <span>"Data Source=|DataDirectory|\\SampleApp1.db;"</span><span>)</span>
+        <span>.</span><span>Build</span><span>(</span><span>)</span>
+    <span>)</span><span>;</span>
+    fsql<span>.</span><span>Register</span><span>(</span><span>"db2"</span><span>,</span> <span>(</span><span>)</span> <span>=></span> 
+    <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
+        <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span>
+        <span>.</span><span>UseConnectionString</span><span>(</span>DataType<span>.</span>Sqlite<span>,</span> <span>"Data Source=|DataDirectory|\\SampleApp2.db;"</span><span>)</span>
+        <span>.</span><span>Build</span><span>(</span><span>)</span>
+    <span>)</span><span>;</span>
+
+    services<span>.</span><span><span>AddSingleton</span><span><span>&lt;</span>IFreeSql<span>></span></span></span><span>(</span>fsql<span>)</span><span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br></div></div><h3 id="_4、如何使用" tabindex="-1"> 4、如何使用</h3>
+<blockquote>
+<p>额外增加 Register/Change 两个扩展方法，其他跟 IFreeSql 用法几乎一样</p>
+</blockquote>
+<div><pre><code><span>//查db1</span>
+<span><span>var</span></span> db1_list <span>=</span> fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>T<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+
+<span>//切换 db2 数据库，一旦切换之后 fsql 操作都是针对 db2</span>
+fsql<span>.</span><span>Change</span><span>(</span><span>"db2"</span><span>)</span><span>;</span>
+<span><span>var</span></span> db2_list <span>=</span> fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>T<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+
+<span>using</span> <span>(</span>fsql<span>.</span><span>Change</span><span>(</span><span>"db1"</span><span>)</span><span>)</span>
+<span>{</span>
+    <span>//查询 db1</span>
+    <span><span>var</span></span> b3 <span>=</span> _fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>T<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+    <span>//插入到 db1</span>
+    fsql<span>.</span><span>Insert</span><span>(</span><span>new</span> <span>T</span><span>{</span> UserName <span>=</span> <span>"db1"</span> <span>}</span><span>)</span><span>.</span><span>ExecuteAffrows</span><span>(</span><span>)</span><span>;</span>
+<span>}</span>
+<span>//还是查db2</span>
+<span><span>var</span></span> db2 <span>=</span> fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>T<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br></div></div><p>示例</p>
+<ul>
+<li>定义SysUser</li>
+</ul>
+<div><pre><code><span>public</span> <span>class</span> <span>SysUser</span>
+<span>{</span>
+    <span>[</span><span><span>Column</span><span><span>(</span>IsPrimary <span>=</span> <span>true</span><span>,</span> IsIdentity <span>=</span> <span>true</span><span>)</span></span></span><span>]</span>
+    <span>public</span> <span><span>int</span></span> Id <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+    <span>public</span> <span><span>string</span></span> UserName <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><ul>
+<li>创建HomeController</li>
+</ul>
+<div><pre><code><span>private</span> <span>readonly</span> <span>IFreeSql</span> _fsql<span>;</span>
+<span>public</span> <span>HomeController</span><span>(</span> <span>IFreeSql</span> fsql<span>)</span>
+<span>{</span>
+    _fsql <span>=</span> fsql<span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><p>获取db1,db2的数据库信息，插入db1,db2数据</p>
+<div><pre><code><span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+<span>/// 获取db1,db2，插入db1,db2</span>
+<span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+<span>/// <span><span><span>&lt;</span>returns</span><span>></span></span><span><span><span>&lt;/</span>returns</span><span>></span></span></span>
+<span>[</span><span>HttpGet</span><span>(</span><span>"get1"</span><span>)</span><span>]</span>
+<span>public</span> <span>IEnumerable<span>&lt;</span>SysUser<span>></span></span> <span>Get1</span><span>(</span><span>)</span>
+<span>{</span>
+    <span>//查询 db1</span>
+    <span><span>var</span></span> b0 <span>=</span> _fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>SysUser<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+
+    <span><span>var</span></span> b1 <span>=</span> _fsql<span>.</span><span>Change</span><span>(</span><span>"db2"</span><span>)</span><span>;</span>
+    <span>//查询 db2</span>
+    <span><span>var</span></span> b2 <span>=</span> _fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>SysUser<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+    <span>//插入到 db2</span>
+    <span><span>var</span></span> c0 <span>=</span> _fsql<span>.</span><span>Insert</span><span>(</span><span>new</span> <span>SysUser</span> <span>{</span> UserName <span>=</span> <span>"db2"</span> <span>}</span><span>)</span><span>.</span><span>ExecuteAffrows</span><span>(</span><span>)</span><span>;</span>
+    <span>using</span> <span>(</span>_fsql<span>.</span><span>Change</span><span>(</span><span>"db1"</span><span>)</span><span>)</span>
+    <span>{</span>
+        <span>//查询 db1</span>
+        <span><span>var</span></span> b3 <span>=</span> _fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>SysUser<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+        <span>//插入到 db1</span>
+        _fsql<span>.</span><span>Insert</span><span>(</span><span>new</span> <span>SysUser</span> <span>{</span> UserName <span>=</span> <span>"db1"</span> <span>}</span><span>)</span><span>.</span><span>ExecuteAffrows</span><span>(</span><span>)</span><span>;</span>
+    <span>}</span>
+
+    <span>//查询 db2</span>
+    <span><span>var</span></span> db2 <span>=</span> _fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>SysUser<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+    _fsql<span>.</span><span>Change</span><span>(</span><span>"db2"</span><span>)</span><span>;</span>
+    <span>return</span> db2<span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br></div></div><ul>
+<li>默认从第一个数据库中获取</li>
+</ul>
+<div><pre><code><span>[</span><span><span>HttpGet</span><span><span>(</span><span>"getdb1"</span><span>)</span></span></span><span>]</span>
+<span>public</span> <span>IEnumerable<span>&lt;</span>SysUser<span>></span></span> <span>GetDB1</span><span>(</span><span>)</span>
+<span>{</span>
+    <span>//查询 db1</span>
+    <span><span>var</span></span> b0 <span>=</span> _fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>SysUser<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+    <span>return</span> b0<span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div><ul>
+<li>注册第3个数据库</li>
+</ul>
+<div><pre><code><span>[</span><span><span>HttpGet</span><span><span>(</span><span>"register"</span><span>)</span></span></span><span>]</span>
+<span>public</span> <span><span>void</span></span> <span>Register</span><span>(</span><span>)</span>
+<span>{</span>
+    _fsql<span>.</span><span>Register</span><span>(</span><span>"db3"</span><span>,</span> <span>(</span><span>)</span> <span>=></span>
+    <span>{</span>
+        <span>return</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span><span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span>
+        <span>.</span><span>UseMonitorCommand</span><span>(</span>
+        cmd <span>=></span> Trace<span>.</span><span>WriteLine</span><span>(</span><span>"\r\n线程"</span> <span>+</span> Thread<span>.</span>CurrentThread<span>.</span>ManagedThreadId <span>+</span> <span>": "</span> <span>+</span> cmd<span>.</span>CommandText<span>)</span>
+        <span>)</span>
+        <span>.</span><span>UseConnectionString</span><span>(</span>DataType<span>.</span>Sqlite<span>,</span> <span>"Data Source=|DataDirectory|\\SampleApp3.db;"</span><span>)</span>
+        <span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
+    <span>}</span><span>)</span><span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br></div></div><ul>
+<li>根据dbname change，但只对本次请求有效</li>
+</ul>
+<div><pre><code><span>[</span><span><span>HttpGet</span><span><span>(</span><span>"change"</span><span>)</span></span></span><span>]</span>
+<span>public</span> <span><span>int</span></span> <span>Change</span><span>(</span><span><span>string</span></span> dbname<span>)</span>
+<span>{</span>
+  <span>//仅对本次请求有效</span>
+  _fsql<span>.</span><span>Change</span><span>(</span>dbname<span>)</span><span>;</span>
+  <span>return</span> <span>1</span><span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div><ul>
+<li>获取DB3，在未注册前，会报错</li>
+</ul>
+<div><pre><code><span>[</span><span><span>HttpGet</span><span><span>(</span><span>"getdb3"</span><span>)</span></span></span><span>]</span>
+<span>public</span> <span>IEnumerable<span>&lt;</span>SysUser<span>></span></span> <span>Get3</span><span>(</span><span>)</span>
+<span>{</span>
+    _fsql<span>.</span><span>Change</span><span>(</span><span>"db3"</span><span>)</span><span>;</span>
+    <span>//查询 db1</span>
+    <span><span>var</span></span> b0 <span>=</span> _fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>SysUser<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+    <span>return</span> b0<span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><blockquote>
+<p>如果需要分布多事务 TCC/Saga 请移步到：<a href="https://github.com/2881099/FreeSql.Cloud" target="_blank" rel="noopener noreferrer">https://github.com/2881099/FreeSql.Cloud</a></p>
+</blockquote>
+<h2 id="三、静态类管理多数据库" tabindex="-1"> 三、静态类管理多数据库？</h2>
+<p>基于第二种方法 MultiFreeSql 增加静态类如下：</p>
+<div><pre><code><span>using</span> <span>System</span><span>;</span>
+
+<span>namespace</span> <span>FreeSql</span>
+<span>{</span>
+  <span>public</span> <span>class</span> <span>StaticDB</span> <span>:</span> <span><span>StaticDB<span>&lt;</span><span>string</span><span>></span></span></span> <span>{</span> <span>}</span>
+  
+  <span>public</span> <span>abstract</span> <span>class</span> <span>StaticDB<span>&lt;</span>DBKey<span>></span></span>
+  <span>{</span>
+      <span>protected</span> <span>static</span> <span>Lazy<span>&lt;</span>IFreeSql<span>></span></span> multiFreeSql <span>=</span> <span>new</span> <span>Lazy<span>&lt;</span>IFreeSql<span>></span></span><span>(</span><span>(</span><span>)</span> <span>=></span> <span>new</span> <span>MultiFreeSql</span><span>(</span>TimeSpan<span>.</span><span>FromHours</span><span>(</span><span>2</span><span>)</span><span>)</span>
+      <span>)</span><span>;</span>
+      <span>public</span> <span>static</span> <span>IFreeSql</span> Instance <span>=></span> multiFreeSql<span>.</span>Value<span>;</span>
+  <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br></div></div><ul>
+<li>根据静态类</li>
+</ul>
+<div><pre><code><span>#<span>region</span> 1.静态类的注册方式</span>
+<span>IFreeSql</span> db <span>=</span> StaticDB<span>.</span>Instance<span>;</span>
+
+db<span>.</span><span>Register</span><span>(</span><span>"db1"</span><span>,</span> <span>(</span><span>)</span> <span>=></span>
+<span>{</span>
+    <span>return</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
+        <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span>
+        <span>.</span><span>UseMonitorCommand</span><span>(</span>
+        cmd <span>=></span> Trace<span>.</span><span>WriteLine</span><span>(</span><span>"\r\n线程"</span> <span>+</span> Thread<span>.</span>CurrentThread<span>.</span>ManagedThreadId <span>+</span> <span>": "</span> <span>+</span> cmd<span>.</span>CommandText<span>)</span>
+        <span>)</span>
+        <span>.</span><span>UseConnectionString</span><span>(</span>DataType<span>.</span>Sqlite<span>,</span> <span>"Data Source=|DataDirectory|\\SampleApp1.db;"</span><span>)</span>
+        <span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
+<span>}</span><span>)</span><span>;</span>
+db<span>.</span><span>Register</span><span>(</span><span>"db2"</span><span>,</span> <span>(</span><span>)</span> <span>=></span>
+<span>{</span>
+    <span>return</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
+        <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span>
+        <span>.</span><span>UseMonitorCommand</span><span>(</span>
+        cmd <span>=></span> Trace<span>.</span><span>WriteLine</span><span>(</span><span>"\r\n线程"</span> <span>+</span> Thread<span>.</span>CurrentThread<span>.</span>ManagedThreadId <span>+</span> <span>": "</span> <span>+</span> cmd<span>.</span>CommandText<span>)</span>
+        <span>)</span>
+        <span>.</span><span>UseConnectionString</span><span>(</span>DataType<span>.</span>Sqlite<span>,</span> <span>"Data Source=|DataDirectory|\\SampleApp2.db;"</span><span>)</span>
+        <span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
+<span>}</span><span>)</span><span>;</span>
+<span>#<span>endregion</span></span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br></div></div><ul>
+<li>创建StaticDBController，可以直接使用静态方法，不使用DI，但使用方式和注入方式相同</li>
+</ul>
+<div><pre><code>   <span>private</span> <span>readonly</span> <span>IFreeSql</span> _fsql <span>=</span> StaticDB<span>.</span>Instance<span>;</span>
+
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 获取db1,db2，插入db1,db2</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span>/// <span><span><span>&lt;</span>returns</span><span>></span></span><span><span><span>&lt;/</span>returns</span><span>></span></span></span>
+    <span>[</span><span>HttpGet</span><span>(</span><span>"get1"</span><span>)</span><span>]</span>
+    <span>public</span> <span>IEnumerable<span>&lt;</span>SysUser<span>></span></span> <span>Get1</span><span>(</span><span>)</span>
+    <span>{</span>
+        <span>//查询 db1</span>
+        <span><span>var</span></span> b0 <span>=</span> _fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>SysUser<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+
+        <span><span>var</span></span> b1 <span>=</span> _fsql<span>.</span><span>Change</span><span>(</span><span>"db2"</span><span>)</span><span>;</span>
+        <span>//查询 db2</span>
+        <span><span>var</span></span> b2 <span>=</span> _fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>SysUser<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+        <span>//插入到 db2</span>
+        <span><span>var</span></span> c0 <span>=</span> _fsql<span>.</span><span>Insert</span><span>(</span><span>new</span> <span>SysUser</span> <span>{</span> UserName <span>=</span> <span>"db2"</span> <span>}</span><span>)</span><span>.</span><span>ExecuteAffrows</span><span>(</span><span>)</span><span>;</span>
+        <span>using</span> <span>(</span>_fsql<span>.</span><span>Change</span><span>(</span><span>"db1"</span><span>)</span><span>)</span>
+        <span>{</span>
+            <span>//查询 db1</span>
+            <span><span>var</span></span> b3 <span>=</span> _fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>SysUser<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+            <span>//插入到 db1</span>
+            _fsql<span>.</span><span>Insert</span><span>(</span><span>new</span> <span>SysUser</span> <span>{</span> UserName <span>=</span> <span>"db1"</span> <span>}</span><span>)</span><span>.</span><span>ExecuteAffrows</span><span>(</span><span>)</span><span>;</span>
+        <span>}</span>
+
+        <span>//查询 db2</span>
+        <span><span>var</span></span> db2 <span>=</span> _fsql<span>.</span><span><span>Select</span><span><span>&lt;</span>SysUser<span>></span></span></span><span>(</span><span>)</span><span>.</span><span>ToList</span><span>(</span><span>)</span><span>;</span>
+        _fsql<span>.</span><span>Change</span><span>(</span><span>"db2"</span><span>)</span><span>;</span>
+        <span>return</span> db2<span>;</span>
+    <span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br></div></div><h2 id="参考" tabindex="-1"> 参考</h2>
+<p><a href="https://github.com/luoyunchong/SampleApp/blob/master/SampleApi/Controllers/HomeController.cs" target="_blank" rel="noopener noreferrer">SampleApp/HomeController.cs at master · luoyunchong/SampleApp (github.com)</a></p>
+<p><a href="https://github.com/luoyunchong/SampleApp/blob/master/SampleCore/MultiFreeSql.cs" target="_blank" rel="noopener noreferrer">SampleApp/MultiFreeSql.cs at master · luoyunchong/SampleApp (github.com)</a></p>
+<p><a href="https://github.com/dotnetcore/FreeSql/issues/44" target="_blank" rel="noopener noreferrer">多个 IFreeSql 实例，如何注入使用？ · Issue #44 · dotnetcore/FreeSql (github.com)</a></p>
+<blockquote>
+<p>与此文章有点区别，增加了一些配置项和静态方法的理解，把<code>Change</code> 下放到<code>MultiFreeSqlExtensions</code>扩展中，从而保持简单，静态方法和DI保持一致的写法</p>
+</blockquote>
+]]></content>
+    <published>2022-08-01T13:27:15.000Z</published>
+  </entry>
   <entry>
     <title type="html">Docker 配置 Baget</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/docker/Docker-Baget.html</id>
