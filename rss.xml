@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 06 Aug 2022 14:13:43 GMT</pubDate>
-    <lastBuildDate>Sat, 06 Aug 2022 14:13:43 GMT</lastBuildDate>
+    <pubDate>Sat, 06 Aug 2022 14:45:13 GMT</pubDate>
+    <lastBuildDate>Sat, 06 Aug 2022 14:45:13 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>ASP.NET Core</category>
@@ -1745,14 +1745,16 @@ dotnet <span>add</span> package FreeSql.Provider.Sqlite
 <li>FluentAPI 基于接口的配置实体</li>
 <li>注入以 Service 为后缀接口所在的程序集</li>
 <li>CaseQuery 支持 Get 请求参数 key，大小驼峰转换</li>
+<li>基于审计的FreeSql仓储</li>
+<li>复合主键仓储</li>
 </ul>
 <h3 id="简化-freesql-单库的配置" tabindex="-1"> 简化 FreeSql 单库的配置</h3>
-<p>UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySql。需要安装<code>FreeSql.Provider.MySqlConnector</code>,<code>DefaultDB</code>配置的值实际为<code>FreeSql.DataType</code>的枚举值</p>
+<p>UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySql。需要安装<code>FreeSql.Provider.Sqlite</code>,<code>DefaultDB</code>配置的值实际为<code>FreeSql.DataType</code>的枚举值</p>
 <ul>
 <li>appsettings.json</li>
 </ul>
 <div><pre><code><span>"ConnectionStrings"</span><span>:</span> <span>{</span>
-    <span>"DefaultDB"</span><span>:</span> <span>"0"</span><span>,</span>
+    <span>"DefaultDB"</span><span>:</span> <span>"4"</span><span>,</span>
     <span>"DataType"</span><span>:</span> <span>{</span>
         <span>"MySql"</span><span>:</span> <span>0</span><span>,</span>
         <span>"SqlServer"</span><span>:</span> <span>1</span><span>,</span>
@@ -1778,7 +1780,7 @@ dotnet <span>add</span> package FreeSql.Provider.Sqlite
                   <span>}</span><span>)</span>
                   <span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
 
-        fsql<span>.</span>GlobalFilter<span>.</span><span><span>Apply</span><span><span>&lt;</span>ISoftDelete<span>></span></span></span><span>(</span><span>"IsDeleted"</span><span>,</span> a <span>=></span> a<span>.</span>IsDeleted <span>==</span> <span>false</span><span>)</span><span>;</span>
+        <span>//fsql.GlobalFilter.Apply&lt;ISoftDelete>("IsDeleted", a => a.IsDeleted == false);</span>
 
         services<span>.</span><span><span>AddSingleton</span><span><span>&lt;</span>IFreeSql<span>></span></span></span><span>(</span>fsql<span>)</span><span>;</span>
         services<span>.</span><span>AddFreeRepository</span><span>(</span><span>)</span><span>;</span>
@@ -1818,8 +1820,8 @@ dotnet <span>add</span> package FreeSql.Provider.Sqlite
 </ul>
 <div><pre><code>builder<span>.</span>Services<span>.</span><span><span>Configure</span><span><span>&lt;</span>UnitOfWorkDefualtOptions<span>></span></span></span><span>(</span>c <span>=></span>
 <span>{</span>
-    c<span>.</span>IsolationLevel<span>=</span>System<span>.</span>Data<span>.</span>IsolationLevel<span>.</span>ReadCommitted<span>;</span>（默认为<span>null</span>时未指定时，依旧为<span>null</span>，根据数据库的事务隔离级别）
-    c<span>.</span>Propagation <span>=</span> Propagation<span>.</span>Required<span>;</span>（默认为<span>null</span>时未指定时，则指定Required）
+    c<span>.</span>IsolationLevel<span>=</span>System<span>.</span>Data<span>.</span>IsolationLevel<span>.</span>ReadCommitted<span>;</span><span>//（默认为null时未指定时，依旧为null，根据数据库的事务隔离级别）</span>
+    c<span>.</span>Propagation <span>=</span> Propagation<span>.</span>Required<span>;</span><span>//（默认为null时未指定时，则指定Required）</span>
 <span>}</span><span>)</span><span>;</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><table>
 <thead>
@@ -2081,7 +2083,112 @@ containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new
 <li>LowerApiDescriptionProvider（小写）</li>
 <li>CamelCaseApiDescriptionProvider（首字母小写）</li>
 </ul>
-]]></content:encoded>
+<h3 id="基于审计的freesql仓储" tabindex="-1"> 基于审计的FreeSql仓储</h3>
+<p><code>IAuditBaseRepository&lt;TEntity, TKey&gt;</code>、<code>IAuditBaseRepository&lt;TEntity&gt;</code></p>
+<p>什么是实体审计：记录修改实体的时间，修改实体的用户，创建人，创建的时间，删除人，删除时间等</p>
+<div><pre><code>services<span>.</span><span>AddCurrentUser</span><span>(</span><span>)</span><span>.</span><span>AddAuditRepostiory</span><span>(</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p><code>AddAuditRepostiory</code>支持配置用户表的主键类型,默认为Guid,可指定类型，比如<code>AddAuditRepostiory(typeof(Long))</code>,</p>
+<p>用户表主键类型支持情况</p>
+<ul>
+<li>
+<p>Guid</p>
+</li>
+<li>
+<p>Long</p>
+</li>
+<li>
+<p>Int</p>
+</li>
+<li>
+<p>定义实体类</p>
+</li>
+</ul>
+<div><pre><code><span>public</span> <span>class</span> <span>Todo</span> <span>:</span> <span><span>FullAuditEntity</span></span>
+<span>{</span>
+    <span>public</span> <span><span>string</span></span> Message <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+    <span>public</span> <span>DateTime<span>?</span></span> NotifictionTime <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+    <span>public</span> <span><span>bool</span></span> IsDone <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><ul>
+<li>AuditRepositoryTest</li>
+</ul>
+<div><pre><code><span>public</span> <span>class</span> <span>AuditRepositoryTest</span>
+<span>{</span>
+    <span>private</span> <span>readonly</span> <span>IAuditBaseRepository<span>&lt;</span>Todo<span>></span></span> _repository<span>;</span>
+
+    <span>public</span> <span>AuditRepositoryTest</span><span>(</span><span>IAuditBaseRepository<span>&lt;</span>Todo<span>></span></span> repository<span>)</span>
+    <span>{</span>
+        _repository <span>=</span> repository<span>;</span>
+    <span>}</span>
+
+    <span>[</span><span><span>Fact</span></span><span>]</span>
+    <span>public</span> <span><span>void</span></span> <span>InsertEntityListTest</span><span>(</span><span>)</span>
+    <span>{</span>
+        <span><span>var</span></span> list <span>=</span> <span>new</span> <span>List<span>&lt;</span>Todo<span>></span></span><span>(</span><span>)</span>
+        <span>{</span>
+            <span>new</span> <span>Todo</span> <span>{</span>Message <span>=</span> <span>"这是一个要完成的TODO______1"</span><span>,</span> NotifictionTime <span>=</span> <span>null</span><span>,</span> IsDone <span>=</span> <span>false</span><span>}</span><span>,</span>
+            <span>new</span> <span>Todo</span> <span>{</span>Message <span>=</span> <span>"这是一个要完成的TODO______2"</span><span>,</span> NotifictionTime <span>=</span> <span>null</span><span>,</span> IsDone <span>=</span> <span>false</span><span>}</span>
+        <span>}</span><span>;</span>
+        _repository<span>.</span><span>Insert</span><span>(</span>list<span>)</span><span>;</span>
+        _repository<span>.</span><span>Delete</span><span>(</span>list<span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br></div></div><div><pre><code><span>INSERT</span> <span>INTO</span> <span>"Todo"</span><span>(</span><span>"Id"</span><span>,</span> <span>"CreateUserId"</span><span>,</span> <span>"CreateUserName"</span><span>,</span> <span>"CreateTime"</span><span>,</span> <span>"UpdateUserId"</span><span>,</span> <span>"UpdateUserName"</span><span>,</span> <span>"UpdateTime"</span><span>,</span> <span>"DeleteUserId"</span><span>,</span> <span>"DeleteUserName"</span><span>,</span> <span>"DeleteTime"</span><span>,</span> <span>"IsDeleted"</span><span>,</span> <span>"Message"</span><span>,</span> <span>"NotifictionTime"</span><span>,</span> <span>"IsDone"</span><span>)</span> <span>VALUES</span><span>(</span><span>'62eeeb97-ab46-67ec-00be-3ffb646bebab'</span><span>,</span> <span>'f56b95fa-3f6c-4b75-a597-b1a7dd032516'</span><span>,</span> <span>'Name'</span><span>,</span> <span>'2022-08-06 22:30:45'</span><span>,</span> <span>'f56b95fa-3f6c-4b75-a597-b1a7dd032516'</span><span>,</span> <span>'Name'</span><span>,</span> <span>'2022-08-06 22:30:45'</span><span>,</span> <span>NULL</span><span>,</span> <span>NULL</span><span>,</span> <span>NULL</span><span>,</span> <span>0</span><span>,</span> <span>'这是一个要完成的TODO______1'</span><span>,</span> <span>NULL</span><span>,</span> <span>0</span><span>)</span><span>,</span> <span>(</span><span>'62eeeb97-ab46-67ec-00be-3ffc4461ef3c'</span><span>,</span> <span>'f56b95fa-3f6c-4b75-a597-b1a7dd032516'</span><span>,</span> <span>'Name'</span><span>,</span> <span>'2022-08-06 22:30:47'</span><span>,</span> <span>'f56b95fa-3f6c-4b75-a597-b1a7dd032516'</span><span>,</span> <span>'Name'</span><span>,</span> <span>'2022-08-06 22:30:47'</span><span>,</span> <span>NULL</span><span>,</span> <span>NULL</span><span>,</span> <span>NULL</span><span>,</span> <span>0</span><span>,</span> <span>'这是一个要完成的TODO______2'</span><span>,</span> <span>NULL</span><span>,</span> <span>0</span><span>)</span>
+
+<span>UPDATE</span> <span>"Todo"</span> <span>SET</span> <span>"DeleteUserId"</span> <span>=</span> <span>CASE</span> <span>"Id"</span> 
+<span>WHEN</span> <span>'62eeeb97-ab46-67ec-00be-3ffb646bebab'</span> <span>THEN</span> <span>'f56b95fa-3f6c-4b75-a597-b1a7dd032516'</span> 
+<span>WHEN</span> <span>'62eeeb97-ab46-67ec-00be-3ffc4461ef3c'</span> <span>THEN</span> <span>'f56b95fa-3f6c-4b75-a597-b1a7dd032516'</span> <span>END</span><span>,</span> <span>"DeleteUserName"</span> <span>=</span> <span>CASE</span> <span>"Id"</span> 
+<span>WHEN</span> <span>'62eeeb97-ab46-67ec-00be-3ffb646bebab'</span> <span>THEN</span> <span>'Name'</span> 
+<span>WHEN</span> <span>'62eeeb97-ab46-67ec-00be-3ffc4461ef3c'</span> <span>THEN</span> <span>'Name'</span> <span>END</span><span>,</span> <span>"DeleteTime"</span> <span>=</span> <span>CASE</span> <span>"Id"</span> 
+<span>WHEN</span> <span>'62eeeb97-ab46-67ec-00be-3ffb646bebab'</span> <span>THEN</span> <span>'2022-08-06 22:30:47'</span> 
+<span>WHEN</span> <span>'62eeeb97-ab46-67ec-00be-3ffc4461ef3c'</span> <span>THEN</span> <span>'2022-08-06 22:30:47'</span> <span>END</span><span>,</span> <span>"IsDeleted"</span> <span>=</span> <span>CASE</span> <span>"Id"</span> 
+<span>WHEN</span> <span>'62eeeb97-ab46-67ec-00be-3ffb646bebab'</span> <span>THEN</span> <span>1</span> 
+<span>WHEN</span> <span>'62eeeb97-ab46-67ec-00be-3ffc4461ef3c'</span> <span>THEN</span> <span>1</span> <span>END</span> 
+<span>WHERE</span> <span>(</span><span>"Id"</span> <span>IN</span> <span>(</span><span>'62eeeb97-ab46-67ec-00be-3ffb646bebab'</span><span>,</span><span>'62eeeb97-ab46-67ec-00be-3ffc4461ef3c'</span><span>)</span><span>)</span> <span>AND</span> <span>(</span><span>"IsDeleted"</span> <span>=</span> <span>0</span><span>)</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br></div></div><h3 id="复合主键仓储" tabindex="-1"> 复合主键仓储</h3>
+<ul>
+<li>配置服务</li>
+</ul>
+<div><pre><code>services<span>.</span><span>AddCompositeRepostiory</span><span>(</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><ul>
+<li>定义复合主键的类</li>
+</ul>
+<div><pre><code><span>public</span> <span>class</span> <span>UserRole</span>
+<span>{</span>
+    <span>[</span><span><span>Column</span><span><span>(</span>IsPrimary <span>=</span> <span>true</span><span>)</span></span></span><span>]</span>
+    <span>public</span> <span><span>int</span></span> UserId <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+    <span>[</span><span><span>Column</span><span><span>(</span>IsPrimary <span>=</span> <span>true</span><span>)</span></span></span><span>]</span>
+    <span>public</span> <span><span>int</span></span> RoleId <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+    <span>public</span> <span>DateTime</span> CreateTime <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><ul>
+<li>调用实例</li>
+</ul>
+<div><pre><code><span>public</span> <span>class</span> <span>BaseRepositoryTest</span>
+<span>{</span>
+    <span>private</span> <span>readonly</span> <span>IBaseRepository<span>&lt;</span>UserRole<span>,</span> <span>int</span><span>,</span> <span>int</span><span>></span></span> _repository<span>;</span>
+    <span>public</span> <span>BaseRepositoryTest</span><span>(</span><span>IBaseRepository<span>&lt;</span>UserRole<span>,</span> <span>int</span><span>,</span> <span>int</span><span>></span></span> repository<span>)</span>
+    <span>{</span>
+        _repository <span>=</span> repository<span>;</span>
+    <span>}</span>
+
+    <span>[</span><span><span>Fact</span></span><span>]</span>
+    <span>public</span> <span><span>void</span></span> <span>GetTest</span><span>(</span><span>)</span>
+    <span>{</span>
+        _repository<span>.</span><span>Insert</span><span>(</span><span>new</span> <span>UserRole</span><span>(</span><span>)</span> <span>{</span> UserId <span>=</span> <span>1</span><span>,</span> RoleId <span>=</span> <span>1</span><span>,</span> CreateTime <span>=</span> DateTime<span>.</span>Now <span>}</span><span>)</span><span>;</span>
+        <span>UserRole</span> userRole <span>=</span> _repository<span>.</span><span>Get</span><span>(</span><span>1</span><span>,</span> <span>1</span><span>)</span><span>;</span>
+        _repository<span>.</span><span>Delete</span><span>(</span><span>1</span><span>,</span> <span>1</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br></div></div><div><pre><code><span>INSERT</span> <span>INTO</span> <span>"UserRole"</span><span>(</span><span>"UserId"</span><span>,</span> <span>"RoleId"</span><span>,</span> <span>"CreateTime"</span><span>)</span> <span>VALUES</span><span>(</span><span>1</span><span>,</span> <span>1</span><span>,</span> <span>'2022-08-06 22:33:02'</span><span>)</span>
+
+<span>SELECT</span> a<span>.</span><span>"UserId"</span><span>,</span> a<span>.</span><span>"RoleId"</span><span>,</span> a<span>.</span><span>"CreateTime"</span> 
+<span>FROM</span> <span>"UserRole"</span> a 
+<span>WHERE</span> <span>(</span>a<span>.</span><span>"UserId"</span> <span>=</span> <span>1</span> <span>AND</span> a<span>.</span><span>"RoleId"</span> <span>=</span> <span>1</span><span>)</span> 
+<span>limit</span> <span>0</span><span>,</span><span>1</span>
+
+<span>DELETE</span> <span>FROM</span> <span>"UserRole"</span> <span>WHERE</span> <span>(</span><span>"UserId"</span> <span>=</span> <span>1</span> <span>AND</span> <span>"RoleId"</span> <span>=</span> <span>1</span><span>)</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div>]]></content:encoded>
     </item>
     <item>
       <title>本地化</title>
