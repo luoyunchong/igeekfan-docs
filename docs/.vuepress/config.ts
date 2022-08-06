@@ -18,6 +18,7 @@ export default defineUserConfig({
             description: ".NET Devlopement Guide",
         },
     },
+    port: 3000,
     base: base,
     shouldPrefetch: false,
     head: [

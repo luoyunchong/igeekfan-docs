@@ -23,7 +23,6 @@ dotnet add package FreeSql.Provider.Sqlite
 - 简化 FreeSql 单库的配置：UseConnectionString 扩展方法
 - 基于特性标签的 AOP 事务
 - 基于接口的注入
-- 通用 CRUD 的
 - Security 当前登录人信息
 - FluentAPI 基于接口的配置实体
 - 注入以 Service 为后缀接口所在的程序集
@@ -54,10 +53,10 @@ UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySq
 ```
 
 ```csharp
-    public static IServiceCollection AddFreeSql(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddFreeSql(this IServiceCollection services, IConfiguration c)
     {
         IFreeSql fsql = new FreeSqlBuilder()
-                  .UseConnectionString(configuration)
+                  .UseConnectionString(c)
                   .UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower)
                   .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
                   .UseMonitorCommand(cmd =>
@@ -76,10 +75,39 @@ UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySq
     }
 ```
 
-
 ### 基于特性标签的 AOP 事务
 
+该特性支持以Service为后缀的方法，并且需要继承接口
+
 - 特性标签 **[Transactional]**
+- `Propagation` 事务传播方式
+  - Required  如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中，默认的选择。
+  - Supports 支持当前事务，如果没有当前事务，就以非事务方法执行
+  - Mandatory 使用当前事务，如果没有当前事务，就抛出异常。
+  - NotSupported 以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。
+  - Never 以非事务方式执行操作，如果当前事务存在则抛出异常。
+  - Nested 以嵌套事务方式执行
+- `IsolationLevel` 事务隔离级别（默认为ReadCommitted）
+  - ReadUncommitted 该事务可以读取还未被别的事务提交的数据（脏读）
+  - ReadCommitted  (sql server的默认隔离) 事务只可读取到别的事务中已经被提交的(Committed)数据，避免了"脏读"
+  - RepeatableRead  (InnoDB 的默认隔离级别) 为了保证多次读取数据的一致性，解决不可重复读(non-repeatable reads)
+  - Serializable 为了解决"幻读"(Phantom reads)问题
+
+- 配置默认的事务级别（可不配置）
+
+```csharp
+builder.Services.Configure<UnitOfWorkDefualtOptions>(c =>
+{
+    c.IsolationLevel=System.Data.IsolationLevel.ReadCommitted;（默认为null时未指定时，依旧为null，根据数据库的事务隔离级别）
+    c.Propagation = Propagation.Required;（默认为null时未指定时，则指定Required）
+});
+```
+
+|数据库|默认隔离级别|
+|---|---|
+|Oracle| read committed|
+|SqlServer| read committed|
+|MySQL(InnoDB)|Read-Repeatable|
 
 通过 Autofac 配置哪些类需要基于特性标签的 AOP 事务
 
@@ -130,18 +158,26 @@ public class GroupService : IGroupService
 ```csharp
     public void ConfigureContainer(ContainerBuilder builder)
     {
-        builder.RegisterModule(new ServiceModule());
+           Assembly[] currentAssemblies = AppDomain.CurrentDomain.GetAssemblies().Where(r =>
+r.FullName.Contains("IGeekFan.FreeKit.Extras")||
+r.FullName.Contains("Module1")
+).ToArray();
+        builder.RegisterModule(new UnitOfWorkModule(currentAssemblies));
     }
 ```
 
-ASP.NET Core6配置服务、
+.NET6 配置Autofac服务
 
 ```csharp
 builder.Host
     .UseServiceProviderFactory(new AutofacServiceProviderFactory())
     .ConfigureContainer<ContainerBuilder>((webBuilder, containerBuilder) =>
     {
-        containerBuilder.RegisterModule(new ServiceModule());
+           Assembly[] currentAssemblies = AppDomain.CurrentDomain.GetAssemblies().Where(r =>
+r.FullName.Contains("IGeekFan.FreeKit.Extras")||
+r.FullName.Contains("Module1")
+).ToArray();
+        builder.RegisterModule(new UnitOfWorkModule(currentAssemblies));
     });
 ```
 
@@ -305,7 +341,6 @@ public static class Extensions
     }
 }
 ```
-
 
 ### 实体审计类
 
