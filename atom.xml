@@ -3,7 +3,7 @@
   <id>https://igeekfan.cn/igeekfan-docs/</id>
   <title>.NET 开发指南</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
-  <updated>2022-08-01T13:28:50.418Z</updated>
+  <updated>2022-08-06T14:13:43.542Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -1735,7 +1735,7 @@ app<span>.</span>Services<span>.</span><span><span>RunScopeService</span><span><
     <title type="html">Extras 扩展包</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Extras.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Extras.html"/>
-    <updated>2022-07-30T11:18:46.000Z</updated>
+    <updated>2022-08-06T14:12:23.000Z</updated>
     <content type="html"><![CDATA[<h1 id="extras-扩展包" tabindex="-1"> Extras 扩展包</h1>
 <p>该项目是基于 FreeSql 实现的一些扩展包、AOP 事务，当前用户，简化依赖注入</p>
 <ul>
@@ -1753,7 +1753,6 @@ dotnet <span>add</span> package FreeSql.Provider.Sqlite
 <li>简化 FreeSql 单库的配置：UseConnectionString 扩展方法</li>
 <li>基于特性标签的 AOP 事务</li>
 <li>基于接口的注入</li>
-<li>通用 CRUD 的</li>
 <li>Security 当前登录人信息</li>
 <li>FluentAPI 基于接口的配置实体</li>
 <li>注入以 Service 为后缀接口所在的程序集</li>
@@ -1779,10 +1778,10 @@ dotnet <span>add</span> package FreeSql.Provider.Sqlite
     <span>"Oracle"</span><span>:</span> <span>"user id=user1;password=123456; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1"</span><span>,</span>
     <span>"Sqlite"</span><span>:</span> <span>"Data Source=|DataDirectory|\\freekit.db; Attachs=freekit.db; Pooling=true;Min Pool Size=1"</span>
     <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div><div><pre><code>    <span>public</span> <span>static</span> <span>IServiceCollection</span> <span>AddFreeSql</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>,</span> <span>IConfiguration</span> configuration<span>)</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div><div><pre><code>    <span>public</span> <span>static</span> <span>IServiceCollection</span> <span>AddFreeSql</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>,</span> <span>IConfiguration</span> c<span>)</span>
     <span>{</span>
         <span>IFreeSql</span> fsql <span>=</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
-                  <span>.</span><span>UseConnectionString</span><span>(</span>configuration<span>)</span>
+                  <span>.</span><span>UseConnectionString</span><span>(</span>c<span>)</span>
                   <span>.</span><span>UseNameConvert</span><span>(</span>NameConvertType<span>.</span>PascalCaseToUnderscoreWithLower<span>)</span>
                   <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span> <span>//自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。</span>
                   <span>.</span><span>UseMonitorCommand</span><span>(</span>cmd <span>=></span>
@@ -1800,9 +1799,62 @@ dotnet <span>add</span> package FreeSql.Provider.Sqlite
         <span>return</span> services<span>;</span>
     <span>}</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br></div></div><h3 id="基于特性标签的-aop-事务" tabindex="-1"> 基于特性标签的 AOP 事务</h3>
+<p>该特性支持以Service为后缀的方法，并且需要继承接口</p>
 <ul>
-<li>特性标签 <strong>[Transactional]</strong></li>
+<li>
+<p>特性标签 <strong>[Transactional]</strong></p>
+</li>
+<li>
+<p><code>Propagation</code> 事务传播方式</p>
+<ul>
+<li>Required  如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中，默认的选择。</li>
+<li>Supports 支持当前事务，如果没有当前事务，就以非事务方法执行</li>
+<li>Mandatory 使用当前事务，如果没有当前事务，就抛出异常。</li>
+<li>NotSupported 以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</li>
+<li>Never 以非事务方式执行操作，如果当前事务存在则抛出异常。</li>
+<li>Nested 以嵌套事务方式执行</li>
 </ul>
+</li>
+<li>
+<p><code>IsolationLevel</code> 事务隔离级别（默认为ReadCommitted）</p>
+<ul>
+<li>ReadUncommitted 该事务可以读取还未被别的事务提交的数据（脏读）</li>
+<li>ReadCommitted  (sql server的默认隔离) 事务只可读取到别的事务中已经被提交的(Committed)数据，避免了&quot;脏读&quot;</li>
+<li>RepeatableRead  (InnoDB 的默认隔离级别) 为了保证多次读取数据的一致性，解决不可重复读(non-repeatable reads)</li>
+<li>Serializable 为了解决&quot;幻读&quot;(Phantom reads)问题</li>
+</ul>
+</li>
+<li>
+<p>配置默认的事务级别（可不配置）</p>
+</li>
+</ul>
+<div><pre><code>builder<span>.</span>Services<span>.</span><span><span>Configure</span><span><span>&lt;</span>UnitOfWorkDefualtOptions<span>></span></span></span><span>(</span>c <span>=></span>
+<span>{</span>
+    c<span>.</span>IsolationLevel<span>=</span>System<span>.</span>Data<span>.</span>IsolationLevel<span>.</span>ReadCommitted<span>;</span>（默认为<span>null</span>时未指定时，依旧为<span>null</span>，根据数据库的事务隔离级别）
+    c<span>.</span>Propagation <span>=</span> Propagation<span>.</span>Required<span>;</span>（默认为<span>null</span>时未指定时，则指定Required）
+<span>}</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><table>
+<thead>
+<tr>
+<th>数据库</th>
+<th>默认隔离级别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Oracle</td>
+<td>read committed</td>
+</tr>
+<tr>
+<td>SqlServer</td>
+<td>read committed</td>
+</tr>
+<tr>
+<td>MySQL(InnoDB)</td>
+<td>Read-Repeatable</td>
+</tr>
+</tbody>
+</table>
 <p>通过 Autofac 配置哪些类需要基于特性标签的 AOP 事务</p>
 <div><pre><code><span>public</span> <span>interface</span> <span>IGroupService</span>
 <span>{</span>
@@ -1845,16 +1897,24 @@ dotnet <span>add</span> package FreeSql.Provider.Sqlite
 </ul>
 <div><pre><code>    <span>public</span> <span><span>void</span></span> <span>ConfigureContainer</span><span>(</span><span>ContainerBuilder</span> builder<span>)</span>
     <span>{</span>
-        builder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>ServiceModule</span><span>(</span><span>)</span><span>)</span><span>;</span>
+           <span>Assembly<span>[</span><span>]</span></span> currentAssemblies <span>=</span> AppDomain<span>.</span>CurrentDomain<span>.</span><span>GetAssemblies</span><span>(</span><span>)</span><span>.</span><span>Where</span><span>(</span>r <span>=></span>
+r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"IGeekFan.FreeKit.Extras"</span><span>)</span><span>||</span>
+r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module1"</span><span>)</span>
+<span>)</span><span>.</span><span>ToArray</span><span>(</span><span>)</span><span>;</span>
+        builder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>UnitOfWorkModule</span><span>(</span>currentAssemblies<span>)</span><span>)</span><span>;</span>
     <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><p>ASP.NET Core6配置服务、</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><p>.NET6 配置Autofac服务</p>
 <div><pre><code>builder<span>.</span>Host
     <span>.</span><span>UseServiceProviderFactory</span><span>(</span><span>new</span> <span>AutofacServiceProviderFactory</span><span>(</span><span>)</span><span>)</span>
     <span>.</span><span><span>ConfigureContainer</span><span><span>&lt;</span>ContainerBuilder<span>></span></span></span><span>(</span><span>(</span>webBuilder<span>,</span> containerBuilder<span>)</span> <span>=></span>
     <span>{</span>
-        containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>ServiceModule</span><span>(</span><span>)</span><span>)</span><span>;</span>
+           <span>Assembly<span>[</span><span>]</span></span> currentAssemblies <span>=</span> AppDomain<span>.</span>CurrentDomain<span>.</span><span>GetAssemblies</span><span>(</span><span>)</span><span>.</span><span>Where</span><span>(</span>r <span>=></span>
+r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"IGeekFan.FreeKit.Extras"</span><span>)</span><span>||</span>
+r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module1"</span><span>)</span>
+<span>)</span><span>.</span><span>ToArray</span><span>(</span><span>)</span><span>;</span>
+        builder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>UnitOfWorkModule</span><span>(</span>currentAssemblies<span>)</span><span>)</span><span>;</span>
     <span>}</span><span>)</span><span>;</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br></div></div><h3 id="基于接口的注入" tabindex="-1"> 基于接口的注入</h3>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><h3 id="基于接口的注入" tabindex="-1"> 基于接口的注入</h3>
 <p>只需要继承如下接口，会自动按照对应的生命周期注入到 DI 中。</p>
 <ul>
 <li>IScopedDependency 范围</li>
@@ -2040,8 +2100,182 @@ containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new
     <title type="html">本地化</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Localization.FreeSql.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Localization.FreeSql.html"/>
-    <updated>2022-06-02T18:18:50.000Z</updated>
+    <updated>2022-08-06T14:12:23.000Z</updated>
     <content type="html"><![CDATA[<h1 id="本地化" tabindex="-1"> 本地化</h1>
+<p>基于数据库存储的本地化，可以让你的程序支持多语言，会创建二个表。</p>
+<h3 id="localculture-本地化语言" tabindex="-1"> LocalCulture(本地化语言)</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>long</td>
+<td>Id</td>
+<td>11</td>
+</tr>
+<tr>
+<td>string</td>
+<td>Name</td>
+<td>50</td>
+</tr>
+<tr>
+<td>string</td>
+<td>DisplayName</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<h3 id="localresource-资源" tabindex="-1"> LocalResource(资源)</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>名称</th>
+<th>长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>long</td>
+<td>Id</td>
+<td>11</td>
+</tr>
+<tr>
+<td>string</td>
+<td>Key</td>
+<td>50</td>
+</tr>
+<tr>
+<td>string</td>
+<td>Value</td>
+<td>50</td>
+</tr>
+<tr>
+<td>long</td>
+<td>CultureId</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+<p>可支持自定义长度，通过FluentAPI进行设置</p>
+<h2 id="安装包" tabindex="-1"> 安装包</h2>
+<div><pre><code>dotnet <span>add</span> package IGeekFan.Localization.FreeSql
+dotnet <span>add</span> package FreeSql.Provider.Sqlite
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><h2 id="配置freesql服务" tabindex="-1"> 配置FreeSql服务</h2>
+<ul>
+<li>定义扩展方法</li>
+</ul>
+<div><pre><code><span>public</span> <span>static</span> <span>IServiceCollection</span> <span>AddFreeSql</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>,</span> <span>IConfiguration</span> c<span>)</span>
+<span>{</span>
+    <span>IFreeSql</span> fsql <span>=</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
+                <span>.</span><span>UseConnectionString</span><span>(</span>DataType<span>.</span>Sqlite<span>,</span> c<span>[</span><span>"ConnectionStrings:DefaultConnection"</span><span>]</span><span>)</span>
+                <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span>
+                <span>.</span><span>UseNameConvert</span><span>(</span>NameConvertType<span>.</span>PascalCaseToUnderscoreWithLower<span>)</span>
+                <span>.</span><span>UseMonitorCommand</span><span>(</span>
+                    cmd <span>=></span> Trace<span>.</span><span>WriteLine</span><span>(</span><span>"\r\n线程"</span> <span>+</span> Thread<span>.</span>CurrentThread<span>.</span>ManagedThreadId <span>+</span> <span>": "</span> <span>+</span> cmd<span>.</span>CommandText<span>)</span>
+                <span>)</span><span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
+
+    services<span>.</span><span>AddSingleton</span><span>(</span>fsql<span>)</span><span>;</span>
+
+    <span>return</span> services<span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br></div></div><ul>
+<li>appsettings.json</li>
+</ul>
+<div><pre><code>  <span>"ConnectionStrings"</span><span>:</span> <span>{</span>
+    <span>"DefaultConnection"</span><span>:</span> <span>"Data Source=|DataDirectory|\\web.db;"</span>
+  <span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><ul>
+<li>Program.cs配置服务</li>
+</ul>
+<div><pre><code>builder<span>.</span>Services<span>.</span><span>AddFreeSql</span><span>(</span>c<span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><h2 id="替换默认的istringlocalizerfactory" tabindex="-1"> 替换默认的IStringLocalizerFactory</h2>
+<div><pre><code>builder<span>.</span>Services<span>.</span><span><span>AddSingleton</span><span><span>&lt;</span>IStringLocalizerFactory<span>,</span> FreeSqlStringLocalizerFactory<span>></span></span></span><span>(</span><span>)</span><span>;</span> 
+builder<span>.</span>Services<span>.</span><span>TryAddTransient</span><span>(</span><span>typeof</span><span>(</span><span>IStringLocalizer<span>&lt;</span><span>></span></span><span>)</span><span>,</span> <span>typeof</span><span>(</span><span>StringLocalizer<span>&lt;</span><span>></span></span><span>)</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><h2 id="中间件引用" tabindex="-1"> 中间件引用</h2>
+<div><pre><code><span><span>var</span></span> supportedCultures <span>=</span> <span>new</span> <span>List<span>&lt;</span>CultureInfo<span>></span></span>
+<span>{</span>
+    <span>new</span><span>(</span><span>"en-US"</span><span>)</span><span>,</span>
+    <span>new</span><span>(</span><span>"ja-JP"</span><span>)</span><span>,</span>
+    <span>new</span><span>(</span><span>"fr-FR"</span><span>)</span><span>,</span>
+    <span>new</span><span>(</span><span>"zh-CN"</span><span>)</span>
+<span>}</span><span>;</span>
+<span><span>var</span></span> options <span>=</span> <span>new</span> <span>RequestLocalizationOptions</span>
+<span>{</span>
+    DefaultRequestCulture <span>=</span> <span>new</span> <span>RequestCulture</span><span>(</span><span>"zh-CN"</span><span>)</span><span>,</span>
+    SupportedCultures <span>=</span> supportedCultures<span>,</span>
+    SupportedUICultures <span>=</span> supportedCultures
+<span>}</span><span>;</span>
+app<span>.</span><span>UseRequestLocalization</span><span>(</span>options<span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br></div></div><h2 id="增加一些默认数据" tabindex="-1"> 增加一些默认数据</h2>
+<div><pre><code> <span>public</span> <span>static</span> <span>class</span> <span>CodeFirstExtension</span>
+    <span>{</span>
+        <span>public</span> <span>static</span> <span>ICodeFirst</span> <span>SeedData</span><span>(</span><span>this</span> <span>ICodeFirst</span> @<span>this</span><span>)</span>
+        <span>{</span>
+            @<span>this</span><span>.</span><span><span>Entity</span><span><span>&lt;</span>LocalCulture<span>></span></span></span><span>(</span>e <span>=></span>
+            <span>{</span>
+                e<span>.</span><span>HasData</span><span>(</span><span>new</span> <span>List<span>&lt;</span>LocalCulture<span>></span></span><span>(</span><span>)</span>
+                    <span>{</span>
+                        <span>new</span><span>(</span><span>"en-US"</span><span>,</span><span>"en-US"</span><span>)</span> <span>,</span>
+                        <span>new</span><span>(</span><span>"ja-JP"</span><span>,</span><span>"ja-JP"</span><span>)</span>
+                        <span>{</span>
+                            Resources<span>=</span><span>new</span> <span>List<span>&lt;</span>LocalResource<span>></span></span><span>(</span><span>)</span>
+                            <span>{</span>
+                                <span>new</span><span>(</span><span>"Hello"</span><span>,</span><span>"こんにちは"</span><span>)</span><span>,</span>
+                                <span>new</span><span>(</span><span>"Request Localization Sample"</span><span>,</span><span>"リクエストローカライズ"</span><span>)</span><span>,</span>
+                            <span>}</span>
+                        <span>}</span><span>,</span>
+                        <span>new</span><span>(</span><span>"fr-FR"</span><span>,</span><span>"fr-FR"</span><span>)</span>
+                        <span>{</span>
+                            Resources<span>=</span><span>new</span> <span>List<span>&lt;</span>LocalResource<span>></span></span><span>(</span><span>)</span>
+                            <span>{</span>
+                                <span>new</span><span>(</span><span>"Hello"</span><span>,</span><span>"Bonjour"</span><span>)</span><span>,</span>
+                                <span>new</span><span>(</span><span>"Request Localization Sample"</span><span>,</span><span>"Demander un échantillon localisé"</span><span>)</span><span>,</span>
+                            <span>}</span>
+                        <span>}</span><span>,</span>
+                        <span>new</span><span>(</span><span>"zh-CN"</span><span>,</span><span>"中文"</span><span>)</span>
+                        <span>{</span>
+                            Resources<span>=</span><span>new</span> <span>List<span>&lt;</span>LocalResource<span>></span></span><span>(</span><span>)</span>
+                            <span>{</span>
+                                <span>new</span><span>(</span><span>"Hello"</span><span>,</span><span>"你好"</span><span>)</span><span>,</span>
+                                <span>new</span><span>(</span><span>"Request Localization Sample"</span><span>,</span><span>"请求资源示例"</span><span>)</span><span>,</span>
+                            <span>}</span>
+                        <span>}</span>
+                    <span>}</span><span>)</span><span>;</span>
+            <span>}</span><span>)</span><span>;</span>
+            <span>return</span> @<span>this</span><span>;</span>
+        <span>}</span>
+    <span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br></div></div><p>在fsql定义中增加此方法的引用</p>
+<div><pre><code><span><span>+</span><span> fsql.CodeFirst.SeedData();
+</span></span>services.AddSingleton(fsql);
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><div><pre><code><span>[</span><span><span>Route</span><span><span>(</span><span>"[controller]/[action]"</span><span>)</span></span></span><span>]</span>
+<span>public</span> <span>class</span> <span>CultureController</span> <span>:</span> <span><span>Controller</span></span>
+<span>{</span>      
+    <span>private</span> <span>readonly</span> <span>ILogger<span>&lt;</span>CultureController<span>></span></span> _logger<span>;</span>
+    <span>private</span> <span>readonly</span> <span>IStringLocalizer<span>&lt;</span>CultureController<span>></span></span> _stringLocalizer<span>;</span>
+
+    <span>public</span> <span>CultureController</span><span>(</span><span>ILogger<span>&lt;</span>CultureController<span>></span></span> logger<span>,</span> <span>IStringLocalizer<span>&lt;</span>CultureController<span>></span></span> stringLocalizer<span>)</span>
+    <span>{</span>
+        _logger <span>=</span> logger<span>;</span>
+        _stringLocalizer <span>=</span> stringLocalizer<span>;</span>
+    <span>}</span>
+    
+    <span>[</span><span><span>HttpGet</span></span><span>]</span>
+    <span>public</span> <span><span>string</span></span> <span>Hello</span><span>(</span><span>)</span>
+    <span>{</span>
+        <span>return</span> _stringLocalizer<span>[</span><span>"Hello"</span><span>]</span><span>;</span>
+    <span>}</span> 
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br></div></div><ul>
+<li><a href="https://localhost:7273/Culture/Hello?culture=en-US&amp;ui-culture=en-US" target="_blank" rel="noopener noreferrer">https://localhost:7273/Culture/Hello?culture=en-US&amp;ui-culture=en-US</a></li>
+<li><a href="https://localhost:7273/Culture/Hello?culture=zh-CN&amp;ui-culture=zh-CN" target="_blank" rel="noopener noreferrer">https://localhost:7273/Culture/Hello?culture=zh-CN&amp;ui-culture=zh-CN</a></li>
+</ul>
 ]]></content>
     <published>2022-06-02T18:18:50.000Z</published>
   </entry>
