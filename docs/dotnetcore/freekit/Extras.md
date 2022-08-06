@@ -27,16 +27,18 @@ dotnet add package FreeSql.Provider.Sqlite
 - FluentAPI 基于接口的配置实体
 - 注入以 Service 为后缀接口所在的程序集
 - CaseQuery 支持 Get 请求参数 key，大小驼峰转换
+- 基于审计的FreeSql仓储
+- 复合主键仓储
 
 ### 简化 FreeSql 单库的配置
 
-UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySql。需要安装`FreeSql.Provider.MySqlConnector`,`DefaultDB`配置的值实际为`FreeSql.DataType`的枚举值
+UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySql。需要安装`FreeSql.Provider.Sqlite`,`DefaultDB`配置的值实际为`FreeSql.DataType`的枚举值
 
 - appsettings.json
 
 ```json
 "ConnectionStrings": {
-    "DefaultDB": "0",
+    "DefaultDB": "4",
     "DataType": {
         "MySql": 0,
         "SqlServer": 1,
@@ -65,7 +67,7 @@ UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySq
                   })
                   .Build();
 
-        fsql.GlobalFilter.Apply<ISoftDelete>("IsDeleted", a => a.IsDeleted == false);
+        //fsql.GlobalFilter.Apply<ISoftDelete>("IsDeleted", a => a.IsDeleted == false);
 
         services.AddSingleton<IFreeSql>(fsql);
         services.AddFreeRepository();
@@ -98,8 +100,8 @@ UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySq
 ```csharp
 builder.Services.Configure<UnitOfWorkDefualtOptions>(c =>
 {
-    c.IsolationLevel=System.Data.IsolationLevel.ReadCommitted;（默认为null时未指定时，依旧为null，根据数据库的事务隔离级别）
-    c.Propagation = Propagation.Required;（默认为null时未指定时，则指定Required）
+    c.IsolationLevel=System.Data.IsolationLevel.ReadCommitted;//（默认为null时未指定时，依旧为null，根据数据库的事务隔离级别）
+    c.Propagation = Propagation.Required;//（默认为null时未指定时，则指定Required）
 });
 ```
 
@@ -407,3 +409,126 @@ Provider 支持如下
 - SnakeApiDescriptionProvider（下划线写法）
 - LowerApiDescriptionProvider（小写）
 - CamelCaseApiDescriptionProvider（首字母小写）
+
+### 基于审计的FreeSql仓储
+
+`IAuditBaseRepository<TEntity, TKey>`、`IAuditBaseRepository<TEntity>`
+
+什么是实体审计：记录修改实体的时间，修改实体的用户，创建人，创建的时间，删除人，删除时间等
+
+```csharp
+services.AddCurrentUser().AddAuditRepostiory();
+```
+
+`AddAuditRepostiory`支持配置用户表的主键类型,默认为Guid,可指定类型，比如`AddAuditRepostiory(typeof(Long))`,
+
+用户表主键类型支持情况
+
+- Guid
+- Long
+- Int
+
+- 定义实体类
+
+```csharp
+public class Todo : FullAuditEntity
+{
+    public string Message { get; set; }
+    public DateTime? NotifictionTime { get; set; }
+    public bool IsDone { get; set; }
+}
+```
+
+- AuditRepositoryTest
+
+```csharp
+public class AuditRepositoryTest
+{
+    private readonly IAuditBaseRepository<Todo> _repository;
+
+    public AuditRepositoryTest(IAuditBaseRepository<Todo> repository)
+    {
+        _repository = repository;
+    }
+
+    [Fact]
+    public void InsertEntityListTest()
+    {
+        var list = new List<Todo>()
+        {
+            new Todo {Message = "这是一个要完成的TODO______1", NotifictionTime = null, IsDone = false},
+            new Todo {Message = "这是一个要完成的TODO______2", NotifictionTime = null, IsDone = false}
+        };
+        _repository.Insert(list);
+        _repository.Delete(list);
+    }
+}
+```
+
+```sql
+INSERT INTO "Todo"("Id", "CreateUserId", "CreateUserName", "CreateTime", "UpdateUserId", "UpdateUserName", "UpdateTime", "DeleteUserId", "DeleteUserName", "DeleteTime", "IsDeleted", "Message", "NotifictionTime", "IsDone") VALUES('62eeeb97-ab46-67ec-00be-3ffb646bebab', 'f56b95fa-3f6c-4b75-a597-b1a7dd032516', 'Name', '2022-08-06 22:30:45', 'f56b95fa-3f6c-4b75-a597-b1a7dd032516', 'Name', '2022-08-06 22:30:45', NULL, NULL, NULL, 0, '这是一个要完成的TODO______1', NULL, 0), ('62eeeb97-ab46-67ec-00be-3ffc4461ef3c', 'f56b95fa-3f6c-4b75-a597-b1a7dd032516', 'Name', '2022-08-06 22:30:47', 'f56b95fa-3f6c-4b75-a597-b1a7dd032516', 'Name', '2022-08-06 22:30:47', NULL, NULL, NULL, 0, '这是一个要完成的TODO______2', NULL, 0)
+
+UPDATE "Todo" SET "DeleteUserId" = CASE "Id" 
+WHEN '62eeeb97-ab46-67ec-00be-3ffb646bebab' THEN 'f56b95fa-3f6c-4b75-a597-b1a7dd032516' 
+WHEN '62eeeb97-ab46-67ec-00be-3ffc4461ef3c' THEN 'f56b95fa-3f6c-4b75-a597-b1a7dd032516' END, "DeleteUserName" = CASE "Id" 
+WHEN '62eeeb97-ab46-67ec-00be-3ffb646bebab' THEN 'Name' 
+WHEN '62eeeb97-ab46-67ec-00be-3ffc4461ef3c' THEN 'Name' END, "DeleteTime" = CASE "Id" 
+WHEN '62eeeb97-ab46-67ec-00be-3ffb646bebab' THEN '2022-08-06 22:30:47' 
+WHEN '62eeeb97-ab46-67ec-00be-3ffc4461ef3c' THEN '2022-08-06 22:30:47' END, "IsDeleted" = CASE "Id" 
+WHEN '62eeeb97-ab46-67ec-00be-3ffb646bebab' THEN 1 
+WHEN '62eeeb97-ab46-67ec-00be-3ffc4461ef3c' THEN 1 END 
+WHERE ("Id" IN ('62eeeb97-ab46-67ec-00be-3ffb646bebab','62eeeb97-ab46-67ec-00be-3ffc4461ef3c')) AND ("IsDeleted" = 0)
+```
+
+### 复合主键仓储
+
+- 配置服务
+
+```csharp
+services.AddCompositeRepostiory();
+```
+
+- 定义复合主键的类
+
+```csharp
+public class UserRole
+{
+    [Column(IsPrimary = true)]
+    public int UserId { get; set; }
+    [Column(IsPrimary = true)]
+    public int RoleId { get; set; }
+    public DateTime CreateTime { get; set; }
+}
+```
+
+- 调用实例
+
+```csharp
+public class BaseRepositoryTest
+{
+    private readonly IBaseRepository<UserRole, int, int> _repository;
+    public BaseRepositoryTest(IBaseRepository<UserRole, int, int> repository)
+    {
+        _repository = repository;
+    }
+
+    [Fact]
+    public void GetTest()
+    {
+        _repository.Insert(new UserRole() { UserId = 1, RoleId = 1, CreateTime = DateTime.Now });
+        UserRole userRole = _repository.Get(1, 1);
+        _repository.Delete(1, 1);
+    }
+}
+```
+
+```sql
+INSERT INTO "UserRole"("UserId", "RoleId", "CreateTime") VALUES(1, 1, '2022-08-06 22:33:02')
+
+SELECT a."UserId", a."RoleId", a."CreateTime" 
+FROM "UserRole" a 
+WHERE (a."UserId" = 1 AND a."RoleId" = 1) 
+limit 0,1
+
+DELETE FROM "UserRole" WHERE ("UserId" = 1 AND "RoleId" = 1)
+```
