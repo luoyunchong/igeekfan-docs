@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 06 Aug 2022 14:45:13 GMT</pubDate>
-    <lastBuildDate>Sat, 06 Aug 2022 14:45:13 GMT</lastBuildDate>
+    <pubDate>Sun, 14 Aug 2022 07:59:36 GMT</pubDate>
+    <lastBuildDate>Sun, 14 Aug 2022 07:59:36 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>ASP.NET Core</category>
@@ -1472,6 +1472,8 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><h3 id="扩展用户、角色" tabindex="-1"> 扩展用户、角色</h3>
 <div><pre><code><span>public</span> <span>class</span> <span>AppUser</span> <span>:</span> <span><span>IdentityUser<span>&lt;</span>Guid<span>></span></span></span>
 <span>{</span>
+    <span>public</span> <span><span>string</span></span> FirstName <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
+    <span>public</span> <span><span>string</span></span> LastName <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
 <span>}</span>
 <span>public</span> <span>class</span> <span>AppRole</span> <span>:</span> <span><span>IdentityRole<span>&lt;</span>Guid<span>></span></span></span>
 <span>{</span>
@@ -1492,23 +1494,26 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
     <span>protected</span> <span>override</span> <span><span>void</span></span> <span>OnModelCreating</span><span>(</span><span>ICodeFirst</span> codefirst<span>)</span>
     <span>{</span>
         <span>base</span><span>.</span><span>OnModelCreating</span><span>(</span>codefirst<span>)</span><span>;</span>
-        codefirst<span>.</span><span>ApplyConfigurationsFromAssembly</span><span>(</span><span>typeof</span><span>(</span><span>AppUserConfiguration</span><span>)</span><span>.</span>Assembly<span>)</span><span>;</span>
+        <span>//批量</span>
+        <span>//codefirst.ApplyConfigurationsFromAssembly(typeof(AppUserConfiguration).Assembly);</span>
+        codefirst<span>.</span><span>ApplyConfiguration</span><span>(</span><span>new</span> <span>AppUserConfiguration</span><span>(</span><span>)</span><span>)</span><span>;</span>
+        codefirst<span>.</span><span>ApplyConfiguration</span><span>(</span><span>new</span> <span>AppRoleConfiguration</span><span>(</span><span>)</span><span>)</span><span>;</span>
     <span>}</span>
 <span>}</span>
 
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br></div></div><h3 id="配置用户、角色的fulentapi" tabindex="-1"> 配置用户、角色的FulentAPI</h3>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br></div></div><h3 id="配置用户、角色的fulentapi" tabindex="-1"> 配置用户、角色的FulentAPI</h3>
 <div><pre><code><span>public</span> <span>class</span> <span>AppUserConfiguration</span> <span>:</span> <span><span>IEntityTypeConfiguration<span>&lt;</span>AppUser<span>></span></span></span>
 <span>{</span>
-    <span>public</span> <span><span>void</span></span> <span>Configure</span><span>(</span><span>EfCoreTableFluent<span>&lt;</span>AppUser<span>></span></span> model<span>)</span>
+    <span>public</span> <span><span>void</span></span> <span>Configure</span><span>(</span><span>EfCoreTableFluent<span>&lt;</span>AppUser<span>></span></span> builder<span>)</span>
     <span>{</span>
-        model<span>.</span><span>ToTable</span><span>(</span><span>"app_user"</span><span>)</span><span>;</span>
+        builder<span>.</span><span>Property</span><span>(</span>x <span>=></span> x<span>.</span>FirstName<span>)</span><span>.</span><span>HasMaxLength</span><span>(</span><span>50</span><span>)</span><span>;</span>
+        builder<span>.</span><span>Property</span><span>(</span>x <span>=></span> x<span>.</span>LastName<span>)</span><span>.</span><span>HasMaxLength</span><span>(</span><span>50</span><span>)</span><span>;</span>
     <span>}</span>
 <span>}</span>
 <span>public</span> <span>class</span> <span>AppRoleConfiguration</span> <span>:</span> <span><span>IEntityTypeConfiguration<span>&lt;</span>AppRole<span>></span></span></span>
 <span>{</span>
-    <span>public</span> <span><span>void</span></span> <span>Configure</span><span>(</span><span>EfCoreTableFluent<span>&lt;</span>AppRole<span>></span></span> model<span>)</span>
+    <span>public</span> <span><span>void</span></span> <span>Configure</span><span>(</span><span>EfCoreTableFluent<span>&lt;</span>AppRole<span>></span></span> builder<span>)</span>
     <span>{</span>
-        model<span>.</span><span>ToTable</span><span>(</span><span>"app_role"</span><span>)</span><span>;</span>
     <span>}</span>
 <span>}</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br></div></div><ul>
@@ -1516,7 +1521,7 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
 该配置通过方法<code>UseConnectionString</code>读取如下配置</li>
 </ul>
 <div><pre><code><span>"ConnectionStrings"</span><span>:</span> <span>{</span>
-    <span>"MySql"</span><span>:</span> <span>"Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=file;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"</span>
+    <span>"MySql"</span><span>:</span> <span>"Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=aspnetcoreidentity;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"</span>
 <span>}</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><h3 id="配置-identity-freesql" tabindex="-1"> 配置 Identity+FreeSql</h3>
 <ul>
@@ -1524,30 +1529,39 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
 </ul>
 <div><pre><code><span>public</span> <span>static</span> <span>IServiceCollection</span> <span>AddFreeSql</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>,</span> <span>IConfiguration</span> configuration<span>)</span>
 <span>{</span>
-    <span>IFreeSql</span> fsql <span>=</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
-            <span>.</span><span>UseConnectionString</span><span>(</span>DataType<span>.</span>MySql<span>,</span> configuration<span>[</span><span>"ConnectionStrings:MySql"</span><span>]</span><span>)</span>
-            <span>.</span><span>UseNameConvert</span><span>(</span>NameConvertType<span>.</span>PascalCaseToUnderscoreWithLower<span>)</span>
-            <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span> <span>//自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。</span>
-            <span>.</span><span>UseMonitorCommand</span><span>(</span>cmd <span>=></span>
-            <span>{</span>
-                Trace<span>.</span><span>WriteLine</span><span>(</span>cmd<span>.</span>CommandText <span>+</span> <span>";"</span><span>)</span><span>;</span>
-            <span>}</span><span>)</span>
-            <span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
-    <span>//软删除</span>
-    fsql<span>.</span>GlobalFilter<span>.</span><span><span>Apply</span><span><span>&lt;</span>ISoftDelete<span>></span></span></span><span>(</span><span>"IsDeleted"</span><span>,</span> a <span>=></span> a<span>.</span>IsDeleted <span>==</span> <span>false</span><span>)</span><span>;</span>
+    <span>Func<span>&lt;</span>IServiceProvider<span>,</span> IFreeSql<span>></span></span> fsql <span>=</span> r <span>=></span>
+    <span>{</span>
+        <span>IFreeSql</span> fsql <span>=</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
+                <span>.</span><span>UseConnectionString</span><span>(</span>DataType<span>.</span>MySql<span>,</span> configuration<span>[</span><span>"ConnectionStrings:MySql"</span><span>]</span><span>)</span>
+               <span>//.UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower)</span>
+                <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span> <span>//自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。</span>
+                <span>.</span><span>UseMappingPriority</span><span>(</span>MappingPriorityType<span>.</span>FluentApi<span>,</span> MappingPriorityType<span>.</span>Attribute<span>,</span> MappingPriorityType<span>.</span>Aop<span>)</span>
+                <span>.</span><span>UseMonitorCommand</span><span>(</span>cmd <span>=></span>
+                <span>{</span>
+                    Trace<span>.</span><span>WriteLine</span><span>(</span>cmd<span>.</span>CommandText <span>+</span> <span>";"</span><span>)</span><span>;</span>
+                <span>}</span><span>)</span>
+                <span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
+        <span>//软删除</span>
+        fsql<span>.</span>GlobalFilter<span>.</span><span><span>Apply</span><span><span>&lt;</span>ISoftDelete<span>></span></span></span><span>(</span><span>"IsDeleted"</span><span>,</span> a <span>=></span> a<span>.</span>IsDeleted <span>==</span> <span>false</span><span>)</span><span>;</span>      
+        <span>return</span> fsql<span>;</span>
+    <span>}</span><span>;</span>
 
     services<span>.</span><span><span>AddSingleton</span><span><span>&lt;</span>IFreeSql<span>></span></span></span><span>(</span>fsql<span>)</span><span>;</span>
     services<span>.</span><span>AddFreeRepository</span><span>(</span><span>)</span><span>;</span>
     services<span>.</span><span><span>AddScoped</span><span><span>&lt;</span>UnitOfWorkManager<span>></span></span></span><span>(</span><span>)</span><span>;</span>
 
-    <span>//只有实例化了AppIdentityDbContext，才能正常调用OnModelCreating，不然直接使用仓储，无法调用DbContext中的OnModelCreating方法，，配置的AppUserConfiguration 就会没有生效</span>
-    services<span>.</span><span><span>AddFreeDbContext</span><span><span>&lt;</span>AppIdentityDbContext<span>></span></span></span><span>(</span>options <span>=></span> options
-                <span>.</span><span>UseFreeSql</span><span>(</span>fsql<span>)</span>
-                <span>.</span><span>UseOptions</span><span>(</span><span>new</span> <span>DbContextOptions</span><span>(</span><span>)</span>
-                <span>{</span>
-                    EnableCascadeSave <span>=</span> <span>true</span>
-                <span>}</span><span>)</span>
-    <span>)</span><span>;</span>
+    <span>using</span> <span>(</span><span><span>var</span></span> scope <span>=</span> services<span>.</span><span>BuildServiceProvider</span><span>(</span><span>)</span><span>.</span><span>CreateScope</span><span>(</span><span>)</span><span>)</span>
+    <span>{</span>
+        <span><span>var</span></span> orm <span>=</span> scope<span>.</span>ServiceProvider<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>IFreeSql<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+
+        <span>//只有实例化了AppIdentityDbContext，才能正常调用OnModelCreating，不然直接使用仓储，无法调用DbContext中的OnModelCreating方法，配置的TodoConfiguration 就会没有生效</span>
+        services<span>.</span><span><span>AddFreeDbContext</span><span><span>&lt;</span>AppIdentityDbContext<span>></span></span></span><span>(</span>options <span>=></span> options
+                    <span>.</span><span>UseFreeSql</span><span>(</span>orm<span>)</span>
+                    <span>.</span><span>UseOptions</span><span>(</span><span>new</span> <span>DbContextOptions</span><span>(</span><span>)</span>
+                    <span>{</span>
+                        EnableCascadeSave <span>=</span> <span>true</span>
+                    <span>}</span><span>)</span><span>)</span><span>;</span>
+    <span>}</span>
 
     services<span>.</span><span><span>AddIdentityCore</span><span><span>&lt;</span>AppUser<span>></span></span></span><span>(</span>o <span>=></span>
             <span>{</span>
@@ -1559,35 +1573,48 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
             <span>.</span><span><span>AddFreeSqlStores</span><span><span>&lt;</span>AppIdentityDbContext<span>></span></span></span><span>(</span><span>)</span>
             <span>.</span><span>AddDefaultTokenProviders</span><span>(</span><span>)</span><span>;</span><span>;</span>
 
+    <span>// 如果是MVC 另外安装包 &lt;PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.7" /> 使用AddDefaultIdentity方法</span>
+    <span>// services.AddDefaultIdentity&lt;AppUser>(options => options.SignIn.RequireConfirmedAccount = true)</span>
+    <span>//        .AddFreeSqlStores&lt;AppIdentityDbContext>().AddDefaultTokenProviders();</span>
+
     <span>return</span> services<span>;</span>
 <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br></div></div><h3 id="软删除" tabindex="-1"> 软删除</h3>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br></div></div><h3 id="软删除" tabindex="-1"> 软删除</h3>
 <div><pre><code><span>public</span> <span>interface</span> <span>ISoftDelete</span>
 <span>{</span>
     <span><span>bool</span></span> IsDeleted <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
 <span>}</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><p>因为FreeSql只有运行时才会生成表,我们增加定义一个扩展方法</p>
 <div><pre><code><span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
-<span>/// 获取一下Scope Service 以执行 DbContext中的OnModelCreating</span>
+<span>/// 自定义Scope 的Serivce 执行 DbContext中的OnModelCreating</span>
 <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
 <span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>serviceProvider<span>"</span></span><span>></span></span><span><span><span>&lt;/</span>param</span><span>></span></span></span>
-<span>public</span> <span>static</span> <span><span>void</span></span> <span><span>RunScopeService</span><span><span>&lt;</span>T<span>></span></span></span><span>(</span><span>this</span> <span>IServiceProvider</span> serviceProvider<span>)</span> <span>where</span> <span>T</span> <span>:</span> <span><span>DbContext</span></span>
+<span>/// <span><span><span>&lt;</span>returns</span><span>></span></span><span><span><span>&lt;/</span>returns</span><span>></span></span></span>
+
+<span>public</span> <span>static</span> <span>IServiceProvider</span> <span>RunScopeService</span><span>(</span><span>this</span> <span>IServiceProvider</span> serviceProvider<span>)</span>
 <span>{</span>
-    <span>using</span> <span><span>var</span></span> serviceScope <span>=</span> serviceProvider<span>.</span><span>CreateScope</span><span>(</span><span>)</span><span>;</span>
-    <span>try</span>
+    <span>//在项目启动时，从容器中获取IFreeSql实例，并执行一些操作：同步表，种子数据,FluentAPI等</span>
+    <span>using</span> <span>(</span><span>IServiceScope</span> serviceScope <span>=</span> serviceProvider<span>.</span><span>CreateScope</span><span>(</span><span>)</span><span>)</span>
     <span>{</span>
-        <span>using</span> <span><span>var</span></span> myDependency <span>=</span> serviceScope<span>.</span>ServiceProvider<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>T<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+        <span><span>var</span></span> freeSql <span>=</span> serviceScope<span>.</span>ServiceProvider<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>IFreeSql<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+        <span>using</span> <span><span>var</span></span> dbContext <span>=</span> serviceScope<span>.</span>ServiceProvider<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>ApplicationDbContext<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+
+        freeSql<span>.</span>CodeFirst<span>.</span><span>SyncStructure</span><span>(</span>
+            <span>typeof</span><span>(</span><span>AppUser</span><span>)</span><span>,</span>
+            <span>typeof</span><span>(</span><span>AppRole</span><span>)</span><span>,</span>
+            <span>typeof</span><span>(</span><span>IdentityUserLogin<span>&lt;</span>Guid<span>></span></span><span>)</span><span>,</span>
+            <span>typeof</span><span>(</span><span>IdentityUserRole<span>&lt;</span>Guid<span>></span></span><span>)</span><span>,</span>
+            <span>typeof</span><span>(</span><span>IdentityUserClaim<span>&lt;</span>Guid<span>></span></span><span>)</span><span>,</span>
+            <span>typeof</span><span>(</span><span>IdentityRoleClaim<span>&lt;</span>Guid<span>></span></span><span>)</span><span>,</span>
+            <span>typeof</span><span>(</span><span>IdentityUserToken<span>&lt;</span>Guid<span>></span></span><span>)</span>
+            <span>)</span><span>;</span>
     <span>}</span>
-    <span>catch</span> <span>(</span><span>Exception</span> ex<span>)</span>
-    <span>{</span>
-        <span><span>var</span></span> logger <span>=</span> serviceScope<span>.</span>ServiceProvider<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>ILogger<span>&lt;</span>Program<span>></span><span>></span></span></span><span>(</span><span>)</span><span>;</span>
-        logger<span>.</span><span>LogError</span><span>(</span>ex<span>,</span> <span>"An error occurred."</span><span>)</span><span>;</span>
-    <span>}</span>
+    <span>return</span> serviceProvider<span>;</span>
 <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br></div></div><p>在<code>Program</code>中Build后，我们执行此方法，以保证DbContext中的OnModelCreating生效</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br></div></div><p>在<code>Program</code>中Build后，我们执行此方法，以保证DbContext中的OnModelCreating生效</p>
 <div><pre><code><span>WebApplication</span> app <span>=</span> builder<span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
 <span>//自定义Scope 的Serivce 执行 DbContext中的OnModelCreating</span>
-app<span>.</span>Services<span>.</span><span><span>RunScopeService</span><span><span>&lt;</span>IdentityFreeSqlContext<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+app<span>.</span>Services<span>.</span><span>RunScopeService</span><span>(</span><span>)</span><span>;</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div>]]></content:encoded>
     </item>
     <item>
