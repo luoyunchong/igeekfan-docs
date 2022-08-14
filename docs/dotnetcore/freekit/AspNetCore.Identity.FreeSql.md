@@ -22,6 +22,8 @@ dotnet add package FreeSql.Provider.MySqlConnector
 ```csharp
 public class AppUser : IdentityUser<Guid>
 {
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
 }
 public class AppRole : IdentityRole<Guid>
 {
@@ -42,7 +44,10 @@ public class AppIdentityDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     protected override void OnModelCreating(ICodeFirst codefirst)
     {
         base.OnModelCreating(codefirst);
-        codefirst.ApplyConfigurationsFromAssembly(typeof(AppUserConfiguration).Assembly);
+        //批量
+        //codefirst.ApplyConfigurationsFromAssembly(typeof(AppUserConfiguration).Assembly);
+        codefirst.ApplyConfiguration(new AppUserConfiguration());
+        codefirst.ApplyConfiguration(new AppRoleConfiguration());
     }
 }
 
@@ -53,16 +58,16 @@ public class AppIdentityDbContext : IdentityDbContext<AppUser, AppRole, Guid>
 ```csharp
 public class AppUserConfiguration : IEntityTypeConfiguration<AppUser>
 {
-    public void Configure(EfCoreTableFluent<AppUser> model)
+    public void Configure(EfCoreTableFluent<AppUser> builder)
     {
-        model.ToTable("app_user");
+        builder.Property(x => x.FirstName).HasMaxLength(50);
+        builder.Property(x => x.LastName).HasMaxLength(50);
     }
 }
 public class AppRoleConfiguration : IEntityTypeConfiguration<AppRole>
 {
-    public void Configure(EfCoreTableFluent<AppRole> model)
+    public void Configure(EfCoreTableFluent<AppRole> builder)
     {
-        model.ToTable("app_role");
     }
 }
 ```
@@ -72,7 +77,7 @@ public class AppRoleConfiguration : IEntityTypeConfiguration<AppRole>
 
 ```json
 "ConnectionStrings": {
-    "MySql": "Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=file;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"
+    "MySql": "Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=aspnetcoreidentity;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"
 }
 ```
 
@@ -83,30 +88,39 @@ public class AppRoleConfiguration : IEntityTypeConfiguration<AppRole>
 ```csharp
 public static IServiceCollection AddFreeSql(this IServiceCollection services, IConfiguration configuration)
 {
-    IFreeSql fsql = new FreeSqlBuilder()
-            .UseConnectionString(DataType.MySql, configuration["ConnectionStrings:MySql"])
-            .UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower)
-            .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
-            .UseMonitorCommand(cmd =>
-            {
-                Trace.WriteLine(cmd.CommandText + ";");
-            })
-            .Build();
-    //软删除
-    fsql.GlobalFilter.Apply<ISoftDelete>("IsDeleted", a => a.IsDeleted == false);
+    Func<IServiceProvider, IFreeSql> fsql = r =>
+    {
+        IFreeSql fsql = new FreeSqlBuilder()
+                .UseConnectionString(DataType.MySql, configuration["ConnectionStrings:MySql"])
+               //.UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower)
+                .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
+                .UseMappingPriority(MappingPriorityType.FluentApi, MappingPriorityType.Attribute, MappingPriorityType.Aop)
+                .UseMonitorCommand(cmd =>
+                {
+                    Trace.WriteLine(cmd.CommandText + ";");
+                })
+                .Build();
+        //软删除
+        fsql.GlobalFilter.Apply<ISoftDelete>("IsDeleted", a => a.IsDeleted == false);      
+        return fsql;
+    };
 
     services.AddSingleton<IFreeSql>(fsql);
     services.AddFreeRepository();
     services.AddScoped<UnitOfWorkManager>();
 
-    //只有实例化了AppIdentityDbContext，才能正常调用OnModelCreating，不然直接使用仓储，无法调用DbContext中的OnModelCreating方法，，配置的AppUserConfiguration 就会没有生效
-    services.AddFreeDbContext<AppIdentityDbContext>(options => options
-                .UseFreeSql(fsql)
-                .UseOptions(new DbContextOptions()
-                {
-                    EnableCascadeSave = true
-                })
-    );
+    using (var scope = services.BuildServiceProvider().CreateScope())
+    {
+        var orm = scope.ServiceProvider.GetRequiredService<IFreeSql>();
+
+        //只有实例化了AppIdentityDbContext，才能正常调用OnModelCreating，不然直接使用仓储，无法调用DbContext中的OnModelCreating方法，配置的TodoConfiguration 就会没有生效
+        services.AddFreeDbContext<AppIdentityDbContext>(options => options
+                    .UseFreeSql(orm)
+                    .UseOptions(new DbContextOptions()
+                    {
+                        EnableCascadeSave = true
+                    }));
+    }
 
     services.AddIdentityCore<AppUser>(o =>
             {
@@ -117,6 +131,10 @@ public static IServiceCollection AddFreeSql(this IServiceCollection services, IC
             .AddSignInManager()
             .AddFreeSqlStores<AppIdentityDbContext>()
             .AddDefaultTokenProviders();;
+
+    // 如果是MVC 另外安装包 <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.7" /> 使用AddDefaultIdentity方法
+    // services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    //        .AddFreeSqlStores<AppIdentityDbContext>().AddDefaultTokenProviders();
 
     return services;
 }
@@ -135,21 +153,30 @@ public interface ISoftDelete
 
 ```csharp
 /// <summary>
-/// 获取一下Scope Service 以执行 DbContext中的OnModelCreating
+/// 自定义Scope 的Serivce 执行 DbContext中的OnModelCreating
 /// </summary>
 /// <param name="serviceProvider"></param>
-public static void RunScopeService<T>(this IServiceProvider serviceProvider) where T : DbContext
+/// <returns></returns>
+
+public static IServiceProvider RunScopeService(this IServiceProvider serviceProvider)
 {
-    using var serviceScope = serviceProvider.CreateScope();
-    try
+    //在项目启动时，从容器中获取IFreeSql实例，并执行一些操作：同步表，种子数据,FluentAPI等
+    using (IServiceScope serviceScope = serviceProvider.CreateScope())
     {
-        using var myDependency = serviceScope.ServiceProvider.GetRequiredService<T>();
+        var freeSql = serviceScope.ServiceProvider.GetRequiredService<IFreeSql>();
+        using var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+        freeSql.CodeFirst.SyncStructure(
+            typeof(AppUser),
+            typeof(AppRole),
+            typeof(IdentityUserLogin<Guid>),
+            typeof(IdentityUserRole<Guid>),
+            typeof(IdentityUserClaim<Guid>),
+            typeof(IdentityRoleClaim<Guid>),
+            typeof(IdentityUserToken<Guid>)
+            );
     }
-    catch (Exception ex)
-    {
-        var logger = serviceScope.ServiceProvider.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred.");
-    }
+    return serviceProvider;
 }
 ```
 
@@ -158,5 +185,5 @@ public static void RunScopeService<T>(this IServiceProvider serviceProvider) whe
 ```csharp
 WebApplication app = builder.Build();
 //自定义Scope 的Serivce 执行 DbContext中的OnModelCreating
-app.Services.RunScopeService<IdentityFreeSqlContext>();
+app.Services.RunScopeService();
 ```
