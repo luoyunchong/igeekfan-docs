@@ -12,7 +12,7 @@
 
 - Microsoft Docs [https://docs.microsoft.com/zh-cn](https://docs.microsoft.com/zh-cn)
   其中包含如下
-  - .NET Core 指南 https://docs.microsoft.com/zh-cn/dotnet/core/
+  - .NET Core 指北 <https://docs.microsoft.com/zh-cn/dotnet/core/>
   - ASP .NET 文档 https://docs.microsoft.com/zh-cn/aspnet/
   - .NET Core CLI 文档 https://docs.microsoft.com/zh-cn/dotnet/core/tools/?tabs=netcore2x
 

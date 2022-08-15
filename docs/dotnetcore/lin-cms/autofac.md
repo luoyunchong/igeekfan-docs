@@ -4,11 +4,41 @@
 
 依赖接口而不依赖于实现，是面向对象的六大设计原则（SOLID)之一。即依赖倒置原则(`Dependence Inversion Principle`)
 
-生命周期分为三种，具体如下
+aspnetcore中的生命周期通常分为三种，具体如下
 
 - `Singleton` 单例（全局唯一实例）
 - `Scoped` 范围 （在同一个生命周期内是同一个实例）
 - `Transient` 瞬时（每次请求都是一个新的实例）
+
+Autofac命名有一些不同，但功能是一样的。
+
+- Instance Per Dependency瞬时的
+- Single Instance 单例
+- Instance Per Lifetime Scope 作用域
+
+### Autofac 生命周期
+
+- Instance Per Dependency 瞬时
+
+```csharp
+builder.RegisterType<Worker>().InstancePerDependency();
+// 如果不指定,默认就是InstancePerDependency
+builder.RegisterType<Worker>();
+```
+
+- Instance Per Lifetime Scope 作用域
+
+```csharp
+// 在同一个作用域中获得的是相同实例，在不同作用域获得的是不同实例
+builder.RegisterType<Worker>().InstancePerLifetimeScope();
+```
+
+- Single Instance 单例
+
+```csharp
+// 注册Worker类为SIngle Instance（单例），每次获取均返回同一个实例
+builder.RegisterType<Worker>().SingleInstance();
+```
 
 ## 使用说明
 
@@ -231,8 +261,8 @@ builder.RegisterAssemblyTypes(servicesDllFile)
 
 这二个类，请参考如下代码
 
-- 同步：UnitOfWorkInterceptor.cs https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Middleware/UnitOfWorkInterceptor.cs
-- 异步拦截：UnitOfWorkAsyncInterceptor.cs https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Middleware/UnitOfWorkInterceptor.cs
+- 同步：UnitOfWorkInterceptor.cs <https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Middleware/UnitOfWorkInterceptor.cs>
+- 异步拦截：UnitOfWorkAsyncInterceptor.cs <https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Middleware/UnitOfWorkInterceptor.cs>
 
 `Autofac.Extras.DynamicProxy`依赖 Castle.Core,即只支持同步方法的拦截。
 异步方法的拦截需要安装包：`Castle.Core.AsyncInterceptor`。

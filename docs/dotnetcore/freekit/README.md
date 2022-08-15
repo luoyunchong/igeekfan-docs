@@ -1,4 +1,4 @@
-# FreeKit
+# FreeKit 指北
 
 <div align="center">
 
@@ -60,3 +60,11 @@
 ## IGeekFan.FreeKit.Email
 
 - 基于MailKit实现发送邮件[IGeekFan.FreeKit.Email](./Email.md)**文档**
+
+## IGeekFan.Localization.FreeSql
+
+- 数据库多语言本地化[IGeekFan.Localization.FreeSql](./Localization.FreeSql.md)**文档**
+
+## IGeekFan.FreeKit.Modularity
+
+- 单体模块化[IGeekFan.FreeKit.Modularity](./Modularity.md)**文档**

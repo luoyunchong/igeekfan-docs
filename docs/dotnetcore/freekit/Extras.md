@@ -2,16 +2,14 @@
 
 该项目是基于 FreeSql 实现的一些扩展包、AOP 事务，当前用户，简化依赖注入
 
-- IGeekFan.FreeKit.Extras的依赖项
+## IGeekFan.FreeKit.Extras的依赖项
 
-```xml
-<PackageReference Include="FreeSql.DbContext" Version="3.2.664" />
-<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
-<PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.1" />
-<PackageReference Include="Castle.Core.AsyncInterceptor" Version="2.1.0" />
-```
+- FreeSql.DbContext
+- Autofac.Extensions.DependencyInjection
+- Autofac.Extras.DynamicProxy
+- Castle.Core.AsyncInterceptor
 
-根据自己访问数据库的不同，安装对应的[Provider](http://freesql.net/guide/install.html#packages)
+根据自己访问数据库的不同，安装FreeSql对应的[Provider](http://freesql.net/guide/install.html#packages)
 
 ```bash
 dotnet add package IGeekFan.FreeKit.Extras
@@ -20,19 +18,24 @@ dotnet add package FreeSql.Provider.Sqlite
 
 ## 一些扩展包
 
+- 审计类
 - 简化 FreeSql 单库的配置：UseConnectionString 扩展方法
 - 基于特性标签的 AOP 事务
 - 基于接口的注入
 - Security 当前登录人信息
-- FluentAPI 基于接口的配置实体
 - 注入以 Service 为后缀接口所在的程序集
 - CaseQuery 支持 Get 请求参数 key，大小驼峰转换
-- 基于审计的FreeSql仓储
+- 基于审计类的FreeSql仓储
 - 复合主键仓储
+
+### 审计类
+
+- `Entity<T>`、`Entity`，仅主键的实体类型,其中T为主键类型
+- `FullAuditEntity<T, U>` 包含审计实体基类,包含**创建、修改、删除**加主键等10个字段，其实T为当前主键类型，U为用户表主键类型
 
 ### 简化 FreeSql 单库的配置
 
-UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySql。需要安装`FreeSql.Provider.Sqlite`,`DefaultDB`配置的值实际为`FreeSql.DataType`的枚举值
+UseConnectionString 扩展方法，DefaultDB 配置 4 代表使用配置串 MySql。需要安装`FreeSql.Provider.Sqlite`,`DefaultDB`配置的值实际为`FreeSql.DataType`的枚举值
 
 - appsettings.json
 
@@ -50,7 +53,7 @@ UseConnectionString 扩展方法，DefaultDB 配置 0 代表使用配置串 MySq
     "SqlServer": "Data Source=.;User ID=sa;Password=123456;Integrated Security=True;Initial Catalog=LinCMS;Pooling=true;Min Pool Size=1",
     "PostgreSQL": "Host=localhost;Port=5432;Username=postgres;Password=123456; Database=lincms;Pooling=true;Minimum Pool Size=1",
     "Oracle": "user id=user1;password=123456; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1",
-    "Sqlite": "Data Source=|DataDirectory|\\freekit.db; Attachs=freekit.db; Pooling=true;Min Pool Size=1"
+    "Sqlite": "Data Source=|DataDirectory|/freekit.db; Attachs=freekit.db; Pooling=true;Min Pool Size=1"
     }
 ```
 
@@ -410,7 +413,7 @@ Provider 支持如下
 - LowerApiDescriptionProvider（小写）
 - CamelCaseApiDescriptionProvider（首字母小写）
 
-### 基于审计的FreeSql仓储
+### 基于审计类的FreeSql仓储
 
 `IAuditBaseRepository<TEntity, TKey>`、`IAuditBaseRepository<TEntity>`
 

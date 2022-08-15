@@ -1,8 +1,10 @@
 # 本地化
 
+## IGeekFan.Localization.FreeSql
+
 基于数据库存储的本地化，可以让你的程序支持多语言，会创建二个表。
 
-### LocalCulture(本地化语言)
+## LocalCulture(本地化语言)
 
 |类型|名称|长度|
 |---|---|---|
@@ -10,13 +12,13 @@
 |string | Name |50|
 |string |DisplayName |50|
 
-### LocalResource(资源)
+## LocalResource(资源)
 
 |类型|名称|长度|
 |---|---|---|
 |long | Id |11|
 |string | Key |50|
-|string |Value |50|
+|string |Value |500|
 |long |CultureId |11|
 
 可支持自定义长度，通过FluentAPI进行设置

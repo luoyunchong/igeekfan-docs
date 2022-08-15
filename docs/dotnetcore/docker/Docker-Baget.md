@@ -24,7 +24,7 @@ Mirror__Enabled=true
 
 ```
 
-有关配置的完整列表，请参阅[Configuration - BaGet (loic-sharma.github.io)](https://loic-sharma.github.io/BaGet/configuration/)的配置指南。
+有关配置的完整列表，请参阅[Configuration - BaGet (loic-sharma.github.io)](https://loic-sharma.github.io/BaGet/configuration/)的配置指北。
 
 ## Docker
 

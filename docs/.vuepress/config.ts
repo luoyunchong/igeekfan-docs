@@ -9,7 +9,7 @@ export default defineUserConfig({
     locales: {
         "/": {
             lang: "zh-CN",
-            title: ".NET 开发指南",
+            title: ".NET 开发者指北",
             description: "问君能有几多愁？恰似一江春水向东流。",
         },
         "/en/": {

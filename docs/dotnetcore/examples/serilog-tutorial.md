@@ -1,4 +1,4 @@
-# Serilog指南
+# Serilog指北
 
 - 原文：[https://blog.datalust.co/serilog-tutorial/#3eventsandlevels](https://blog.datalust.co/serilog-tutorial/#3eventsandlevels)
 - github: [https://github.com/serilog/serilog](https://github.com/serilog/serilog)

@@ -86,7 +86,7 @@ public class AppRoleConfiguration : IEntityTypeConfiguration<AppRole>
 - 新增一个扩展方法，引用 aspnetcore identity 相关服务
 
 ```csharp
-public static IServiceCollection AddFreeSql(this IServiceCollection services, IConfiguration configuration)
+public static IServiceCollection AddFreeSqlIdentity(this IServiceCollection services, IConfiguration configuration)
 {
     Func<IServiceProvider, IFreeSql> fsql = r =>
     {
@@ -133,7 +133,7 @@ public static IServiceCollection AddFreeSql(this IServiceCollection services, IC
             .AddDefaultTokenProviders();;
 
     // 如果是MVC 另外安装包 <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.7" /> 使用AddDefaultIdentity方法
-    // services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    // services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true).AddRoles<AppRole>()
     //        .AddFreeSqlStores<AppIdentityDbContext>().AddDefaultTokenProviders();
 
     return services;
@@ -183,7 +183,11 @@ public static IServiceProvider RunScopeService(this IServiceProvider serviceProv
 在`Program`中Build后，我们执行此方法，以保证DbContext中的OnModelCreating生效
 
 ```csharp
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+builder.Services.AddFreeSqlIdentity(builder.Configuration);
+
 WebApplication app = builder.Build();
 //自定义Scope 的Serivce 执行 DbContext中的OnModelCreating
 app.Services.RunScopeService();
+
 ```
