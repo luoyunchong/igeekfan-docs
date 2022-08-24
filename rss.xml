@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 15 Aug 2022 17:39:34 GMT</pubDate>
-    <lastBuildDate>Mon, 15 Aug 2022 17:39:34 GMT</lastBuildDate>
+    <pubDate>Wed, 24 Aug 2022 20:15:22 GMT</pubDate>
+    <lastBuildDate>Wed, 24 Aug 2022 20:15:22 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>ASP.NET Core</category>
@@ -980,7 +980,7 @@ flush privileges<span>;</span>
       <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Docker 配置 Nacos</source>
       <pubDate>Wed, 29 Jun 2022 19:17:23 GMT</pubDate>
       <content:encoded><![CDATA[<h1 id="docker-配置-nacos" tabindex="-1"> Docker 配置 Nacos</h1>
-<h2 id="_2、创建本地的映射文件" tabindex="-1"> 2、创建本地的映射文件</h2>
+<h2 id="_1、创建本地的映射文件" tabindex="-1"> 1、创建本地的映射文件</h2>
 <p>创建目录</p>
 <div><pre><code><span>mkdir</span> -p  /usr/local/docker/nacos/logs /usr/local/docker/nacos/conf
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>配置数据库 application.properties</p>
@@ -995,7 +995,9 @@ db.user<span>=</span>user
 db.password<span>=</span>password
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><p>下面通过配置来暴露除了/shutdown之外的所有端点。下面通过配置来暴露除了/shutdown之外的所有端点</p>
 <div><pre><code>management.endpoints.web.exposure.include<span>=</span>* 
-</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>运行容器：使用<code>standalone</code>(单机)模式并开放8848端口，并映射配置文件和日志目录，数据库在application.properties中配置</p>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><h2 id="_2、运行容器" tabindex="-1"> 2、运行容器</h2>
+<p>使用<code>standalone</code>(单机)模式并开放8848端口，并映射配置文件和日志目录，数据库在application.properties中配置</p>
+<p>其中 <code>\</code>(空格+反斜杠)来支持命令行换行</p>
 <div><pre><code><span>docker</span> run -d <span>\</span>
 -p <span>8848</span>:8848 -p <span>9848</span>:9848 -p <span>9555</span>:9555 <span>\</span>
 -e <span>MODE</span><span>=</span>standalone <span>\</span>
@@ -1452,14 +1454,14 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
       <enclosure url="https://upload-images.jianshu.io/upload_images/2001974-bcd72707e4fcc7f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" type="image/"/>
     </item>
     <item>
-      <title>aspnetcore identity freesql实现</title>
+      <title>AspNetCore Identity FreeSql的实现</title>
       <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/AspNetCore.Identity.FreeSql.html</link>
       <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/AspNetCore.Identity.FreeSql.html</guid>
-      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">aspnetcore identity freesql实现</source>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">AspNetCore Identity FreeSql的实现</source>
       <pubDate>Thu, 02 Jun 2022 18:18:50 GMT</pubDate>
-      <content:encoded><![CDATA[<h1 id="aspnetcore-identity-freesql实现" tabindex="-1"> aspnetcore identity freesql实现</h1>
+      <content:encoded><![CDATA[<h1 id="aspnetcore-identity-freesql的实现" tabindex="-1"> AspNetCore Identity FreeSql的实现</h1>
 <h2 id="igeekfan-aspnetcore-identity-freesql" tabindex="-1"> IGeekFan.AspNetCore.Identity.FreeSql</h2>
-<p>是<code>asp.net core 6</code> 的<code>identity</code>的<code>freesql</code>的实现</p>
+<p>是<code>asp.net core 6</code> 的<code>identity</code>的<code>freesql</code>存储的实现</p>
 <ul>
 <li>支持.NET 6.0</li>
 <li>安装包</li>
@@ -1597,7 +1599,7 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
     <span>using</span> <span>(</span><span>IServiceScope</span> serviceScope <span>=</span> serviceProvider<span>.</span><span>CreateScope</span><span>(</span><span>)</span><span>)</span>
     <span>{</span>
         <span><span>var</span></span> freeSql <span>=</span> serviceScope<span>.</span>ServiceProvider<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>IFreeSql<span>></span></span></span><span>(</span><span>)</span><span>;</span>
-        <span>using</span> <span><span>var</span></span> dbContext <span>=</span> serviceScope<span>.</span>ServiceProvider<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>ApplicationDbContext<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+        <span>using</span> <span><span>var</span></span> dbContext <span>=</span> serviceScope<span>.</span>ServiceProvider<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>AppIdentityDbContext<span>></span></span></span><span>(</span><span>)</span><span>;</span>
 
         freeSql<span>.</span>CodeFirst<span>.</span><span>SyncStructure</span><span>(</span>
             <span>typeof</span><span>(</span><span>AppUser</span><span>)</span><span>,</span>
@@ -1754,13 +1756,25 @@ app<span>.</span>Services<span>.</span><span>RunScopeService</span><span>(</span
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div>]]></content:encoded>
     </item>
     <item>
-      <title>Extras 扩展包</title>
+      <title>FreeKit Extras 扩展包</title>
       <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Extras.html</link>
       <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Extras.html</guid>
-      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Extras 扩展包</source>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">FreeKit Extras 扩展包</source>
       <pubDate>Thu, 02 Jun 2022 18:18:50 GMT</pubDate>
-      <content:encoded><![CDATA[<h1 id="extras-扩展包" tabindex="-1"> Extras 扩展包</h1>
+      <content:encoded><![CDATA[<h1 id="freekit-extras-扩展包" tabindex="-1"> FreeKit Extras 扩展包</h1>
 <p>该项目是基于 FreeSql 实现的一些扩展包、AOP 事务，当前用户，简化依赖注入</p>
+<h2 id="一些扩展包" tabindex="-1"> 一些扩展包</h2>
+<ul>
+<li>审计类</li>
+<li>简化 FreeSql 单库的配置：UseConnectionString 扩展方法</li>
+<li>基于特性标签的 AOP 事务</li>
+<li>基于接口的注入</li>
+<li><code>ICurrentUser</code> 当前登录人信息</li>
+<li>批量注入以 Service 为后缀接口的服务，根据所在的程序集</li>
+<li>CaseQuery 支持 Get 请求参数 key，大小驼峰转换</li>
+<li>基于审计类的FreeSql仓储</li>
+<li>复合主键仓储</li>
+</ul>
 <h2 id="igeekfan-freekit-extras的依赖项" tabindex="-1"> IGeekFan.FreeKit.Extras的依赖项</h2>
 <ul>
 <li>FreeSql.DbContext</li>
@@ -1771,19 +1785,46 @@ app<span>.</span>Services<span>.</span><span>RunScopeService</span><span>(</span
 <p>根据自己访问数据库的不同，安装FreeSql对应的<a href="http://freesql.net/guide/install.html#packages" target="_blank" rel="noopener noreferrer">Provider</a></p>
 <div><pre><code>dotnet <span>add</span> package IGeekFan.FreeKit.Extras
 dotnet <span>add</span> package FreeSql.Provider.Sqlite
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><h2 id="一些扩展包" tabindex="-1"> 一些扩展包</h2>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><h2 id="统一注入服务" tabindex="-1"> 统一注入服务</h2>
 <ul>
-<li>审计类</li>
-<li>简化 FreeSql 单库的配置：UseConnectionString 扩展方法</li>
-<li>基于特性标签的 AOP 事务</li>
-<li>基于接口的注入</li>
-<li>Security 当前登录人信息</li>
-<li>注入以 Service 为后缀接口所在的程序集</li>
-<li>CaseQuery 支持 Get 请求参数 key，大小驼峰转换</li>
-<li>基于审计类的FreeSql仓储</li>
-<li>复合主键仓储</li>
+<li>1.注入controller <code>UnitOfWorkActionFilter</code></li>
+<li>2.<code>IHttpContextAccessor</code>、及当前登录人（<code>ICurrentUser</code>）信息</li>
+<li>3.当前登录人上下文的accessor,方便中间件中获取当前登录人（<code>ICurrentUser</code>）信息</li>
+<li>4.审计仓储 <code>IAuditBaseRepository</code></li>
+<li>5.复合主键仓储 <code>IBaseRepository&lt;Entiy,TKey,UKey&gt;</code></li>
+<li>6 FreeSql中的<code>IBaseRepository</code>、<code>IBaseRepository&lt;,&gt;</code>、<code>UnitOfWorkManager</code></li>
 </ul>
-<h3 id="审计类" tabindex="-1"> 审计类</h3>
+<p>1.统一注入服务</p>
+<p>可指定用户主键类型，默认为Guid,支持TKey为<code>int,long,Guid</code>。比如：<code>typeof(long)</code></p>
+<div><pre><code>services<span>.</span><span>AddFreeKitCore</span><span>(</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>2.给controller 配置一个filtert,来支持controller级别的 <code>[Transactional]</code>特性事务</p>
+<div><pre><code>services<span>.</span><span>AddControllers</span><span>(</span>options <span>=></span>
+<span>{</span>
+    options<span>.</span>Filters<span>.</span><span>AddService</span><span>(</span><span>typeof</span><span>(</span><span>UnitOfWorkActionFilter</span><span>)</span><span>)</span><span>;</span>
+<span>}</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br></div></div><p>3.<code>UseCurrentUserAccessor</code>给ICurrentUserAccessor中的CurrentUser赋值,比如中间件租户Id的全局过滤器设置,在<code>UseAuthentication</code>后设置此中间件</p>
+<div><pre><code>app<span>.</span><span>UseAuthorization</span><span>(</span><span>)</span><span>;</span>
+app<span>.</span><span>UseAuthentication</span><span>(</span><span>)</span><span>;</span>
+app<span>.</span><span>UseCurrentUserAccessor</span><span>(</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><p>4 Autofac 配置</p>
+<ul>
+<li><code>UnitOfWorkModule</code>,自动注入以Service后缀的类，并支持<code>[Transactional]</code>特性事务</li>
+<li><code>FreeKitModule</code>继承三大接口<code>IScopedDependency</code> (范围)、<code>ISingletonDependency</code> (单例)、<code>ITransientDependency</code> (瞬时) 中任一接口，即可自动到容器中</li>
+</ul>
+<p><code>IGeekFan.FreeKit.Web</code>,<code>Module1</code>,<code>Module2</code>为类库的名称</p>
+<div><pre><code>builder<span>.</span>Host
+    <span>.</span><span>UseServiceProviderFactory</span><span>(</span><span>new</span> <span>AutofacServiceProviderFactory</span><span>(</span><span>)</span><span>)</span>
+    <span>.</span><span><span>ConfigureContainer</span><span><span>&lt;</span>ContainerBuilder<span>></span></span></span><span>(</span><span>(</span>webBuilder<span>,</span> containerBuilder<span>)</span> <span>=></span>
+    <span>{</span>
+           <span>Assembly<span>[</span><span>]</span></span> currentAssemblies <span>=</span> AppDomain<span>.</span>CurrentDomain<span>.</span><span>GetAssemblies</span><span>(</span><span>)</span><span>.</span><span>Where</span><span>(</span>r <span>=></span>
+r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"IGeekFan.FreeKit.Web"</span><span>)</span> 
+<span>||</span> r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module1"</span><span>)</span>
+<span>||</span> r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module2"</span><span>)</span>
+<span>)</span><span>.</span><span>ToArray</span><span>(</span><span>)</span><span>;</span>
+        containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>UnitOfWorkModule</span><span>(</span>currentAssemblies<span>)</span><span>)</span><span>;</span>
+        containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span>currentAssemblies<span>)</span><span>)</span><span>;</span>
+    <span>}</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br></div></div><h3 id="审计类" tabindex="-1"> 审计类</h3>
 <ul>
 <li><code>Entity&lt;T&gt;</code>、<code>Entity</code>，仅主键的实体类型,其中T为主键类型</li>
 <li><code>FullAuditEntity&lt;T, U&gt;</code> 包含审计实体基类,包含<strong>创建、修改、删除</strong>加主键等10个字段，其实T为当前主键类型，U为用户表主键类型</li>
@@ -1808,27 +1849,51 @@ dotnet <span>add</span> package FreeSql.Provider.Sqlite
     <span>"Oracle"</span><span>:</span> <span>"user id=user1;password=123456; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1"</span><span>,</span>
     <span>"Sqlite"</span><span>:</span> <span>"Data Source=|DataDirectory|/freekit.db; Attachs=freekit.db; Pooling=true;Min Pool Size=1"</span>
     <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div><div><pre><code>    <span>public</span> <span>static</span> <span>IServiceCollection</span> <span>AddFreeSql</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>,</span> <span>IConfiguration</span> c<span>)</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div><ul>
+<li>扩展方法配置 FreeSql，并设置 <code>ICurrentUserAccessor</code> 获取租户Id设置全局过滤器</li>
+</ul>
+<div><pre><code><span>public</span> <span>static</span> <span>class</span> <span>ServiceCollectionExtensions</span>
+<span>{</span>
+    <span>public</span> <span>static</span> <span>IServiceCollection</span> <span>AddFreeSql</span><span>(</span><span>this</span> <span>IServiceCollection</span> services<span>,</span> <span>IConfiguration</span> c<span>)</span>
     <span>{</span>
-        <span>IFreeSql</span> fsql <span>=</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
-                  <span>.</span><span>UseConnectionString</span><span>(</span>c<span>)</span>
-                  <span>.</span><span>UseNameConvert</span><span>(</span>NameConvertType<span>.</span>PascalCaseToUnderscoreWithLower<span>)</span>
-                  <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span> <span>//自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。</span>
-                  <span>.</span><span>UseMonitorCommand</span><span>(</span>cmd <span>=></span>
-                  <span>{</span>
-                      Trace<span>.</span><span>WriteLine</span><span>(</span>cmd<span>.</span>CommandText <span>+</span> <span>";"</span><span>)</span><span>;</span>
-                  <span>}</span><span>)</span>
-                  <span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
+        <span>Func<span>&lt;</span>IServiceProvider<span>,</span> IFreeSql<span>></span></span> fsql <span>=</span> r <span>=></span>
+        <span>{</span>
+            <span><span>var</span></span> currentAccessor <span>=</span> r<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>ICurrentUserAccessor<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+            <span>IFreeSql</span> fsql <span>=</span> <span>new</span> <span>FreeSqlBuilder</span><span>(</span><span>)</span>
+                    <span>.</span><span>UseConnectionString</span><span>(</span>c<span>)</span>
+                    <span>.</span><span>UseNameConvert</span><span>(</span>NameConvertType<span>.</span>PascalCaseToUnderscoreWithLower<span>)</span>
+                    <span>.</span><span>UseAutoSyncStructure</span><span>(</span><span>true</span><span>)</span> <span>//自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。</span>
+                    <span>.</span><span>UseGenerateCommandParameterWithLambda</span><span>(</span><span>true</span><span>)</span><span>//默认false,针对 lambda 表达式解析,设置成true时方便查看SQL</span>
+                    <span>.</span><span>UseNoneCommandParameter</span><span>(</span><span>true</span><span>)</span> <span>//默认true,针对insert/update/delete是否参数化</span>
+                    <span>.</span><span>UseMonitorCommand</span><span>(</span>cmd <span>=></span>
+                    <span>{</span>
+                        Console<span>.</span><span>WriteLine</span><span>(</span><span>"\r\n线程"</span> <span>+</span> Thread<span>.</span>CurrentThread<span>.</span>ManagedThreadId <span>+</span> <span>": "</span> <span>+</span> cmd<span>.</span>CommandText<span>)</span>
+                    <span>}</span><span>)</span>
+                    <span>.</span><span>Build</span><span>(</span><span>)</span><span>;</span>
 
-        <span>//fsql.GlobalFilter.Apply&lt;ISoftDelete>("IsDeleted", a => a.IsDeleted == false);</span>
+            fsql<span>.</span>GlobalFilter<span>.</span><span><span>ApplyOnly</span><span><span>&lt;</span>ISoftDelete<span>></span></span></span><span>(</span><span>"IsDeleted"</span><span>,</span> a <span>=></span> a<span>.</span>IsDeleted <span>==</span> <span>false</span><span>)</span><span>;</span>
+            fsql<span>.</span>GlobalFilter<span>.</span><span><span>ApplyOnlyIf</span><span><span>&lt;</span>ITenant<span>></span></span></span><span>(</span><span>"TenantId"</span><span>,</span> <span>(</span><span>)</span> <span>=></span> currentAccessor<span>.</span>CurrentUser<span>?.</span>TenantId <span>!=</span> <span>null</span><span>,</span> a <span>=></span> a<span>.</span>TenantId <span>==</span> currentAccessor<span>.</span>CurrentUser<span>.</span>TenantId<span>)</span><span>;</span>
+            <span>// 不使用IAuditBaseRepository的审计仓储 操作CRUD时，可使用此方式进行审计类的自动赋值</span>
+            fsql<span>.</span>Aop<span>.</span>AuditValue <span>+=</span> <span>(</span>_<span>,</span> e<span>)</span> <span>=></span> <span>{</span> e<span>.</span><span><span>AuditValue</span><span><span>&lt;</span>Guid<span>></span></span></span><span>(</span>currentAccessor<span>.</span>CurrentUser<span>)</span><span>;</span> <span>}</span><span>;</span>
 
+            <span>return</span> fsql<span>;</span>
+        <span>}</span><span>;</span>
         services<span>.</span><span><span>AddSingleton</span><span><span>&lt;</span>IFreeSql<span>></span></span></span><span>(</span>fsql<span>)</span><span>;</span>
-        services<span>.</span><span>AddFreeRepository</span><span>(</span><span>)</span><span>;</span>
-        services<span>.</span><span><span>AddScoped</span><span><span>&lt;</span>UnitOfWorkManager<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+        services<span>.</span><span>AddFreeKitCore</span><span>(</span><span>)</span><span>;</span>
+        <span>using</span> <span>(</span><span>IServiceScope</span> scope <span>=</span> services<span>.</span><span>BuildServiceProvider</span><span>(</span><span>)</span><span>.</span><span>CreateScope</span><span>(</span><span>)</span><span>)</span>
+        <span>{</span>
+            <span><span>var</span></span> freeSql <span>=</span> scope<span>.</span>ServiceProvider<span>.</span><span><span>GetRequiredService</span><span><span>&lt;</span>IFreeSql<span>></span></span></span><span>(</span><span>)</span><span>;</span>
+            <span>//freeSql.CodeFirst.SyncStructure(ReflexHelper.GetTypesByTableAttribute(typeof(Program)));</span>
+            freeSql<span>.</span>CodeFirst<span>.</span><span>SyncStructure</span><span>(</span><span>typeof</span><span>(</span><span>Song</span><span>)</span><span>)</span><span>;</span>
+        <span>}</span>
 
         <span>return</span> services<span>;</span>
     <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br></div></div><h3 id="基于特性标签的-aop-事务" tabindex="-1"> 基于特性标签的 AOP 事务</h3>
+<span>}</span>
+<span>//Program.cs</span>
+<span><span>var</span></span> c <span>=</span> builder<span>.</span>Configuration<span>;</span>
+builder<span>.</span>Services<span>.</span><span>AddFreeSql</span><span>(</span>c<span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br></div></div><h3 id="基于特性标签的-aop-事务" tabindex="-1"> 基于特性标签的 AOP 事务</h3>
 <p>该特性支持以Service为后缀的方法，并且需要继承接口</p>
 <ul>
 <li>
@@ -1928,23 +1993,27 @@ dotnet <span>add</span> package FreeSql.Provider.Sqlite
 <div><pre><code>    <span>public</span> <span><span>void</span></span> <span>ConfigureContainer</span><span>(</span><span>ContainerBuilder</span> builder<span>)</span>
     <span>{</span>
            <span>Assembly<span>[</span><span>]</span></span> currentAssemblies <span>=</span> AppDomain<span>.</span>CurrentDomain<span>.</span><span>GetAssemblies</span><span>(</span><span>)</span><span>.</span><span>Where</span><span>(</span>r <span>=></span>
-r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"IGeekFan.FreeKit.Extras"</span><span>)</span><span>||</span>
-r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module1"</span><span>)</span>
+r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"IGeekFan.FreeKit.Web"</span><span>)</span> 
+<span>||</span> r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module1"</span><span>)</span>
+<span>||</span> r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module2"</span><span>)</span>
 <span>)</span><span>.</span><span>ToArray</span><span>(</span><span>)</span><span>;</span>
         builder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>UnitOfWorkModule</span><span>(</span>currentAssemblies<span>)</span><span>)</span><span>;</span>
+        builder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span>currentAssemblies<span>)</span><span>)</span><span>;</span>
     <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><p>.NET6 配置Autofac服务</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><p>.NET6 配置Autofac服务</p>
 <div><pre><code>builder<span>.</span>Host
     <span>.</span><span>UseServiceProviderFactory</span><span>(</span><span>new</span> <span>AutofacServiceProviderFactory</span><span>(</span><span>)</span><span>)</span>
     <span>.</span><span><span>ConfigureContainer</span><span><span>&lt;</span>ContainerBuilder<span>></span></span></span><span>(</span><span>(</span>webBuilder<span>,</span> containerBuilder<span>)</span> <span>=></span>
     <span>{</span>
            <span>Assembly<span>[</span><span>]</span></span> currentAssemblies <span>=</span> AppDomain<span>.</span>CurrentDomain<span>.</span><span>GetAssemblies</span><span>(</span><span>)</span><span>.</span><span>Where</span><span>(</span>r <span>=></span>
-r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"IGeekFan.FreeKit.Extras"</span><span>)</span><span>||</span>
-r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module1"</span><span>)</span>
+r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"IGeekFan.FreeKit.Web"</span><span>)</span> 
+<span>||</span> r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module1"</span><span>)</span>
+<span>||</span> r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module2"</span><span>)</span>
 <span>)</span><span>.</span><span>ToArray</span><span>(</span><span>)</span><span>;</span>
-        builder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>UnitOfWorkModule</span><span>(</span>currentAssemblies<span>)</span><span>)</span><span>;</span>
+        containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>UnitOfWorkModule</span><span>(</span>currentAssemblies<span>)</span><span>)</span><span>;</span>
+        containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span>currentAssemblies<span>)</span><span>)</span><span>;</span>
     <span>}</span><span>)</span><span>;</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><h3 id="基于接口的注入" tabindex="-1"> 基于接口的注入</h3>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br></div></div><h3 id="基于接口的注入" tabindex="-1"> 基于接口的注入</h3>
 <p>只需要继承如下接口，会自动按照对应的生命周期注入到 DI 中。</p>
 <ul>
 <li>IScopedDependency 范围</li>
@@ -1995,30 +2064,26 @@ r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"M
 <span>}</span>
 
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br></div></div><p>1.获取所有的程序集合，然后根据 FullName，一般为项目名，过滤具体的程序集</p>
-<div><pre><code>builder<span>.</span>Host
-    <span>.</span><span>UseServiceProviderFactory</span><span>(</span><span>new</span> <span>AutofacServiceProviderFactory</span><span>(</span><span>)</span><span>)</span>
-    <span>.</span><span><span>ConfigureContainer</span><span><span>&lt;</span>ContainerBuilder<span>></span></span></span><span>(</span><span>(</span>webBuilder<span>,</span> containerBuilder<span>)</span> <span>=></span>
-    <span>{</span>
-        <span>Assembly<span>[</span><span>]</span></span> currentAssemblies <span>=</span> AppDomain<span>.</span>CurrentDomain<span>.</span><span>GetAssemblies</span><span>(</span><span>)</span><span>.</span><span>Where</span><span>(</span>r <span>=></span>
-r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"IGeekFan.FreeKit.Extras"</span><span>)</span><span>||</span>
-r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module1"</span><span>)</span>
+<div><pre><code>        <span>Assembly<span>[</span><span>]</span></span> currentAssemblies <span>=</span> AppDomain<span>.</span>CurrentDomain<span>.</span><span>GetAssemblies</span><span>(</span><span>)</span><span>.</span><span>Where</span><span>(</span>r <span>=></span>
+r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"IGeekFan.FreeKit.Web"</span><span>)</span> 
+<span>||</span> r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module1"</span><span>)</span>
+<span>||</span> r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"Module2"</span><span>)</span>
 <span>)</span><span>.</span><span>ToArray</span><span>(</span><span>)</span><span>;</span>
 
+        containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>UnitOfWorkModule</span><span>(</span>currentAssemblies<span>)</span><span>)</span><span>;</span>
         containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span>currentAssemblies<span>)</span><span>)</span><span>;</span>
-    <span>}</span><span>)</span><span>;</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br></div></div><p>其中<code>FreeKitModule</code>的参数支持<code>params Type[]types</code>或<code>params Assembly[]assemblies</code>,即哪些<a href="https://docs.microsoft.com/zh-cn/dotnet/standard/assembly/" target="_blank" rel="noopener noreferrer">程序集</a>中的类需要注入到依赖注入的集合中。</p>
-<p>2.根据程序集中的某个类获取程序集</p>
-<div><pre><code><span>Assembly<span>[</span><span>]</span></span> currentAssemblies2 <span>=</span> <span>new</span> <span>Assembly<span>[</span><span>]</span></span> <span>{</span> <span>typeof</span><span>(</span><span>FreeKitModule</span><span>)</span><span>.</span>Assembly<span>,</span> <span>typeof</span><span>(</span><span>Module1<span>.</span>Module1Startup</span><span>)</span><span>.</span>Assembly <span>}</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><p>其中<code>FreeKitModule</code>的参数支持<code>params Type[]types</code>或<code>params Assembly[]assemblies</code>,即哪些<a href="https://docs.microsoft.com/zh-cn/dotnet/standard/assembly/" target="_blank" rel="noopener noreferrer">程序集</a>中的类需要注入到依赖注入的集合中。</p>
+<p>2.根据程序集中的某个类获取程序集,直接使用params Assembly[]</p>
+<div><pre><code><span>Assembly<span>[</span><span>]</span></span> currentAssemblies2 <span>=</span> <span>new</span> <span>Assembly<span>[</span><span>]</span></span> <span>{</span> <span>typeof</span><span>(</span><span>Program</span><span>)</span><span>.</span>Assembly<span>,</span> <span>typeof</span><span>(</span><span>Module1<span>.</span>Module1Startup</span><span>)</span><span>.</span>Assembly <span>}</span><span>;</span>
+containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>UnitOfWorkModule</span><span>(</span>currentAssemblies2<span>)</span><span>)</span><span>;</span>
 containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span>currentAssemblies2<span>)</span><span>)</span><span>;</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>3.直接使用 params Assembly[] 的特性，直接作为 FreeKitModule 的参数</p>
-<div><pre><code>containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span> <span>typeof</span><span>(</span><span>FreeKitModule</span><span>)</span><span>.</span>Assembly<span>,</span> <span>typeof</span><span>(</span><span>Program</span><span>)</span><span>.</span>Assembly<span>)</span><span>)</span>
-</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>4，通过 params Type[]，内部解析 Assembly。</p>
-<div><pre><code>containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span><span>typeof</span><span>(</span><span>FreeKitModule</span><span>)</span><span>,</span> <span>typeof</span><span>(</span><span>Program</span><span>)</span><span>)</span><span>)</span>
-</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>其中，此程序集中的类 如果继承了<code>IScopedDependency</code>,<code>ISingletonDependency</code>、<code>ITransientDependency</code>这些接口， 都会按照对应的生命周期注入到依赖注入的集合中 ，可直接使用。</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><p>3.params Type[]，内部解析 Assembly。</p>
+<div><pre><code>containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>UnitOfWorkModule</span><span>(</span><span>typeof</span><span>(</span><span>Program</span><span>)</span><span>,</span> <span>typeof</span><span>(</span><span>Module1<span>.</span>Module1Startup</span><span>)</span><span>)</span><span>)</span>
+containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new</span> <span>FreeKitModule</span><span>(</span><span>typeof</span><span>(</span><span>Program</span><span>)</span><span>,</span> <span>typeof</span><span>(</span><span>Module1<span>.</span>Module1Startup</span><span>)</span><span>)</span><span>)</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br></div></div><p>其中，此程序集中的类 如果继承了<code>IScopedDependency</code>,<code>ISingletonDependency</code>、<code>ITransientDependency</code>这些接口， 都会按照对应的生命周期注入到依赖注入的集合中 ，可直接使用。</p>
 <h3 id="currentuser-当前登录人信息" tabindex="-1"> CurrentUser 当前登录人信息</h3>
-<p>如何使用，先注入<code>IHttpContextAccessor</code></p>
-<div><pre><code>    services<span>.</span><span>AddHttpContextAccessor</span><span>(</span><span>)</span><span>;</span>
-</code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>因为我们无法确定用户 Id 的类型，可能是<code>long</code>,也可能是<code>Guid</code>，ICurrentUser&lt;T&gt;是泛型的，默认有一个实现<code>ICurrentUser:ICurrentUser&lt;string&gt;</code>,所以通过 <code>ICurrentUser</code>，默认Id为string?类型，如果想改变类型，可使用<code>ICurrentUser</code>接口<code>FindUserIdToLong</code>扩展方法，获取<code>long?</code>类型的用户<code>Id</code>,或使用<code>ICurrentUser</code>接口<code>FindUserIdToGuid</code>的扩展方法</p>
+<p>如何使用</p>
+<p>因为我们无法确定用户 Id 的类型，可能是<code>long</code>,也可能是<code>Guid</code>，ICurrentUser&lt;T&gt;是泛型的，默认有一个实现<code>ICurrentUser:ICurrentUser&lt;string&gt;</code>,所以通过 <code>ICurrentUser</code>，默认Id为string?类型，如果想改变类型，可使用<code>ICurrentUser</code>接口<code>FindUserIdToLong</code>扩展方法，获取<code>long?</code>类型的用户<code>Id</code>,或使用<code>ICurrentUser</code>接口<code>FindUserIdToGuid</code>的扩展方法</p>
 <p>此接口定义如下继承了<code>ITransientDependency</code>,所以他是瞬时</p>
 <div><pre><code><span>public</span> <span>interface</span> <span>ICurrentUser<span>&lt;</span>T<span>></span></span> <span>:</span> <span><span>ITransientDependency</span></span>
 <span>{</span>
@@ -2038,14 +2103,19 @@ containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new
     <span><span>string</span></span> UserName <span>{</span> <span>get</span><span>;</span> <span>}</span>
 
     <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
-    <span>/// 昵称</span>
-    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
-    <span><span>string</span><span>?</span></span> NickName <span>{</span> <span>get</span><span>;</span> <span>}</span>
-
-    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
     <span>/// 邮件</span>
     <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
     <span><span>string</span><span>?</span></span> Email <span>{</span> <span>get</span><span>;</span> <span>}</span>
+
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 租户Id</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span>Guid<span>?</span></span> TenantId <span>{</span> <span>get</span><span>;</span> <span>}</span>
+    
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 租户名</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span><span>string</span><span>?</span></span> TenantName <span>{</span> <span>get</span><span>;</span> <span>}</span>
 
     <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
     <span>/// 角色</span>
@@ -2060,16 +2130,36 @@ containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new
 
     <span><span>bool</span></span> <span>IsInRole</span><span>(</span><span><span>string</span></span> roleId<span>)</span><span>;</span>
 <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br></div></div><p>当然可增加一个扩展方法，用于不确定主键类型,所有的方法都调用此方法，需要更改类型，则只用更改此方法即可,比如如果用户Id类型是int类型，可自行创建此扩展类进行处理</p>
-<div><pre><code><span>public</span> <span>static</span> <span>class</span> <span>Extensions</span>
-｛
-    <span>public</span> <span>static</span> <span><span>int</span><span>?</span></span> <span>FindUserId</span><span>(</span><span>this</span> <span>ICurrentUser</span> currentUser<span>)</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br></div></div><p>当然可增加一个扩展方法，用于不确定主键类型,所有的方法都调用此方法，需要更改类型，则只用更改此方法即可,比如如果用户Id类型是long类型，可自行创建此扩展类进行处理</p>
+<div><pre><code><span>namespace</span> <span>IGeekFan<span>.</span>FreeKit<span>.</span>Extras<span>.</span>Security</span>
+<span>{</span>
+    <span>public</span> <span>static</span> <span>class</span> <span>CurrentUserExtensions</span>
     <span>{</span>
-        <span>if</span> <span>(</span>currentUser<span>.</span>Id <span>==</span> <span>null</span><span>)</span> <span>return</span> <span>null</span><span>;</span>
-        <span>return</span> <span>int</span><span>.</span><span>Parse</span><span>(</span>currentUser<span>.</span>Id<span>)</span><span>;</span>
+        <span>public</span> <span>static</span> <span><span>long</span><span>?</span></span> <span>FindUserId</span><span>(</span><span>this</span> <span>ICurrentUser</span> currentUser<span>)</span>
+        <span>{</span>
+            <span>return</span> currentUser<span>.</span><span>FindUserIdToLong</span><span>(</span><span>)</span><span>;</span>
+        <span>}</span>
     <span>}</span>
 <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><h3 id="实体审计类" tabindex="-1"> 实体审计类</h3>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><p>然后在自己的服务类中注入·<code>ICurrentUser</code>接口，如,就可以获取用户的Id，及相关信息</p>
+<div><pre><code><span>public</span> <span>interface</span> <span>IAccountService</span>
+<span>{</span>
+    <span><span>long</span><span>?</span></span> <span>GetUserId</span><span>(</span><span><span>string</span></span> roleId<span>)</span><span>;</span>
+<span>}</span>
+<span>public</span> <span>class</span> <span>AccountService</span><span>:</span><span><span>IAccountService</span></span>
+<span>{</span>
+    <span>private</span> <span>readonly</span> <span>ICurrentUser</span> _currentUser<span>;</span>
+    <span>public</span> <span>AccountService</span><span>(</span><span>ICurrentUser</span> currentUser<span>)</span>
+    <span>{</span>
+        _currentUser <span>=</span> currentUser<span>;</span>
+    <span>}</span>
+    <span>public</span> <span><span>long</span><span>?</span></span> <span>GetUserId</span><span>(</span><span><span>string</span></span> roleId<span>)</span>
+    <span>{</span>
+        <span><span>string</span></span> userId<span>=</span>_currentUser<span>.</span>Id<span>;</span>
+        <span>return</span>  _currentUser<span>.</span><span>FindUserId</span><span>(</span><span>)</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br></div></div><h3 id="实体审计类" tabindex="-1"> 实体审计类</h3>
 <ul>
 <li>FullAuditEntity</li>
 </ul>
@@ -2126,6 +2216,7 @@ containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new
 <h3 id="基于审计类的freesql仓储" tabindex="-1"> 基于审计类的FreeSql仓储</h3>
 <p><code>IAuditBaseRepository&lt;TEntity, TKey&gt;</code>、<code>IAuditBaseRepository&lt;TEntity&gt;</code></p>
 <p>什么是实体审计：记录修改实体的时间，修改实体的用户，创建人，创建的时间，删除人，删除时间等</p>
+<p>(AddFreeKitCore已包含此服务)</p>
 <div><pre><code>services<span>.</span><span>AddCurrentUser</span><span>(</span><span>)</span><span>.</span><span>AddAuditRepostiory</span><span>(</span><span>)</span><span>;</span>
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><p><code>AddAuditRepostiory</code>支持配置用户表的主键类型,默认为Guid,可指定类型，比如<code>AddAuditRepostiory(typeof(Long))</code>,</p>
 <p>用户表主键类型支持情况</p>
@@ -2187,7 +2278,7 @@ containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new
 <span>WHERE</span> <span>(</span><span>"Id"</span> <span>IN</span> <span>(</span><span>'62eeeb97-ab46-67ec-00be-3ffb646bebab'</span><span>,</span><span>'62eeeb97-ab46-67ec-00be-3ffc4461ef3c'</span><span>)</span><span>)</span> <span>AND</span> <span>(</span><span>"IsDeleted"</span> <span>=</span> <span>0</span><span>)</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br></div></div><h3 id="复合主键仓储" tabindex="-1"> 复合主键仓储</h3>
 <ul>
-<li>配置服务</li>
+<li>配置服务(AddFreeKitCore已包含此服务)</li>
 </ul>
 <div><pre><code>services<span>.</span><span>AddCompositeRepostiory</span><span>(</span><span>)</span><span>;</span>
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><ul>
@@ -2228,15 +2319,32 @@ containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new
 <span>limit</span> <span>0</span><span>,</span><span>1</span>
 
 <span>DELETE</span> <span>FROM</span> <span>"UserRole"</span> <span>WHERE</span> <span>(</span><span>"UserId"</span> <span>=</span> <span>1</span> <span>AND</span> <span>"RoleId"</span> <span>=</span> <span>1</span><span>)</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div>]]></content:encoded>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><h3 id="登录jwt" tabindex="-1"> 登录Jwt</h3>
+<p>其中生成Jwt的Claim的类型如下。<a href="https://www.cnblogs.com/igeekfan/p/jwt-aspnetcore.html" target="_blank" rel="noopener noreferrer">JWT+ASP.NET Core集成方案</a></p>
+<div><pre><code>    <span>List<span>&lt;</span>Claim<span>></span></span> claims <span>=</span> <span>new</span><span>(</span><span>)</span>
+    <span>{</span>
+        <span>new</span> <span>Claim</span> <span>(</span>FreeKitClaimType<span>.</span>NameIdentifier<span>,</span> user<span>.</span>Id<span>.</span><span>ToString</span><span>(</span><span>)</span><span>)</span><span>,</span>
+        <span>new</span> <span>Claim</span> <span>(</span>FreeKitClaimType<span>.</span>UserName<span>,</span> user<span>.</span>UserName<span>)</span><span>,</span>
+        <span>new</span> <span>Claim</span> <span>(</span>FreeKitClaimType<span>.</span>Email<span>,</span> user<span>.</span>Email<span>??</span> <span>""</span><span>)</span><span>,</span>
+        <span>new</span> <span>Claim</span> <span>(</span>FreeKitClaimType<span>.</span>Name<span>,</span> user<span>.</span>Name<span>)</span>
+    <span>}</span><span>;</span>
+    <span>if</span> <span>(</span>user<span>.</span>TenantId<span>.</span>HasValue<span>)</span>
+    <span>{</span>
+        claims<span>.</span><span>Add</span><span>(</span><span>new</span> <span>Claim</span><span>(</span>FreeKitClaimType<span>.</span>TenantId<span>,</span> user<span>.</span>TenantId<span>.</span><span>ToString</span><span>(</span><span>)</span> <span>??</span> <span>string</span><span>.</span>Empty<span>)</span><span>)</span><span>;</span>
+    <span>}</span>
+    user<span>.</span>Roles<span>?.</span><span>ToList</span><span>(</span><span>)</span><span>?.</span><span>ForEach</span><span>(</span>r <span>=></span>
+    <span>{</span>
+        claims<span>.</span><span>Add</span><span>(</span><span>new</span> <span>Claim</span><span>(</span>FreeKitClaimType<span>.</span>Role<span>,</span> r<span>.</span>Name<span>)</span><span>)</span><span>;</span>
+    <span>}</span><span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div>]]></content:encoded>
     </item>
     <item>
-      <title>本地化</title>
+      <title>Localization 本地化</title>
       <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Localization.FreeSql.html</link>
       <guid>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Localization.FreeSql.html</guid>
-      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">本地化</source>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Localization 本地化</source>
       <pubDate>Thu, 02 Jun 2022 18:18:50 GMT</pubDate>
-      <content:encoded><![CDATA[<h1 id="本地化" tabindex="-1"> 本地化</h1>
+      <content:encoded><![CDATA[<h1 id="localization-本地化" tabindex="-1"> Localization 本地化</h1>
 <h2 id="igeekfan-localization-freesql" tabindex="-1"> IGeekFan.Localization.FreeSql</h2>
 <p>基于数据库存储的本地化，可以让你的程序支持多语言，会创建二个表。</p>
 <h2 id="localculture-本地化语言" tabindex="-1"> LocalCulture(本地化语言)</h2>
