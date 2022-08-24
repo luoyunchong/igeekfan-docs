@@ -1,4 +1,4 @@
-# 本地化
+# Localization 本地化
 
 ## IGeekFan.Localization.FreeSql
 

@@ -1,8 +1,8 @@
-# aspnetcore identity freesql实现
+# AspNetCore Identity FreeSql的实现
 
 ## IGeekFan.AspNetCore.Identity.FreeSql
 
-是`asp.net core 6` 的`identity`的`freesql`的实现
+是`asp.net core 6` 的`identity`的`freesql`存储的实现
 
 - 支持.NET 6.0
 - 安装包
@@ -164,7 +164,7 @@ public static IServiceProvider RunScopeService(this IServiceProvider serviceProv
     using (IServiceScope serviceScope = serviceProvider.CreateScope())
     {
         var freeSql = serviceScope.ServiceProvider.GetRequiredService<IFreeSql>();
-        using var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        using var dbContext = serviceScope.ServiceProvider.GetRequiredService<AppIdentityDbContext>();
 
         freeSql.CodeFirst.SyncStructure(
             typeof(AppUser),

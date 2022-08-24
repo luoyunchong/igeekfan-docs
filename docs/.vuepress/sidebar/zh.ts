@@ -73,9 +73,9 @@ export const zhSidebarConfig = sidebar({
             children: [
                 'freekit/README.md',
                 'freekit/Core.md',
+                'freekit/Extras.md',
                 'freekit/AspNetCore.Identity.FreeSql.md',
                 'freekit/Email.md',
-                'freekit/Extras.md',
                 'freekit/Modularity.md',
                 'freekit/Localization.FreeSql.md',
             ]

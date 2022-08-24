@@ -1,6 +1,6 @@
 # Docker 配置 Nacos
 
-## 2、创建本地的映射文件
+## 1、创建本地的映射文件
 
 创建目录
 
@@ -30,7 +30,11 @@ db.password=password
 management.endpoints.web.exposure.include=* 
 ```
 
-运行容器：使用`standalone`(单机)模式并开放8848端口，并映射配置文件和日志目录，数据库在application.properties中配置
+## 2、运行容器
+
+使用`standalone`(单机)模式并开放8848端口，并映射配置文件和日志目录，数据库在application.properties中配置
+
+其中 `\`(空格+反斜杠)来支持命令行换行
 
 ```bash
 docker run -d \

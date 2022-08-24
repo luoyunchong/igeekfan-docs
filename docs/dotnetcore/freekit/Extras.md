@@ -1,6 +1,18 @@
-# Extras 扩展包
+# FreeKit Extras 扩展包
 
 该项目是基于 FreeSql 实现的一些扩展包、AOP 事务，当前用户，简化依赖注入
+
+## 一些扩展包
+
+- 审计类
+- 简化 FreeSql 单库的配置：UseConnectionString 扩展方法
+- 基于特性标签的 AOP 事务
+- 基于接口的注入
+- `ICurrentUser` 当前登录人信息
+- 批量注入以 Service 为后缀接口的服务，根据所在的程序集
+- CaseQuery 支持 Get 请求参数 key，大小驼峰转换
+- 基于审计类的FreeSql仓储
+- 复合主键仓储
 
 ## IGeekFan.FreeKit.Extras的依赖项
 
@@ -16,17 +28,61 @@ dotnet add package IGeekFan.FreeKit.Extras
 dotnet add package FreeSql.Provider.Sqlite
 ```
 
-## 一些扩展包
+## 统一注入服务
 
-- 审计类
-- 简化 FreeSql 单库的配置：UseConnectionString 扩展方法
-- 基于特性标签的 AOP 事务
-- 基于接口的注入
-- Security 当前登录人信息
-- 注入以 Service 为后缀接口所在的程序集
-- CaseQuery 支持 Get 请求参数 key，大小驼峰转换
-- 基于审计类的FreeSql仓储
-- 复合主键仓储
+- 1.注入controller `UnitOfWorkActionFilter`
+- 2.`IHttpContextAccessor`、及当前登录人（`ICurrentUser`）信息
+- 3.当前登录人上下文的accessor,方便中间件中获取当前登录人（`ICurrentUser`）信息
+- 4.审计仓储 `IAuditBaseRepository`
+- 5.复合主键仓储 `IBaseRepository<Entiy,TKey,UKey>`
+- 6 FreeSql中的`IBaseRepository`、`IBaseRepository<,>`、`UnitOfWorkManager`
+
+1.统一注入服务
+
+可指定用户主键类型，默认为Guid,支持TKey为`int,long,Guid`。比如：`typeof(long)`
+
+```csharp
+services.AddFreeKitCore();
+```
+
+2.给controller 配置一个filtert,来支持controller级别的 `[Transactional]`特性事务
+
+```csharp
+services.AddControllers(options =>
+{
+    options.Filters.AddService(typeof(UnitOfWorkActionFilter));
+});
+```
+
+3.`UseCurrentUserAccessor`给ICurrentUserAccessor中的CurrentUser赋值,比如中间件租户Id的全局过滤器设置,在`UseAuthentication`后设置此中间件
+
+```csharp
+app.UseAuthorization();
+app.UseAuthentication();
+app.UseCurrentUserAccessor();
+```
+
+4 Autofac 配置
+
+- `UnitOfWorkModule`,自动注入以Service后缀的类，并支持`[Transactional]`特性事务
+- `FreeKitModule`继承三大接口`IScopedDependency` (范围)、`ISingletonDependency` (单例)、`ITransientDependency` (瞬时) 中任一接口，即可自动到容器中
+
+`IGeekFan.FreeKit.Web`,`Module1`,`Module2`为类库的名称
+
+```csharp
+builder.Host
+    .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+    .ConfigureContainer<ContainerBuilder>((webBuilder, containerBuilder) =>
+    {
+           Assembly[] currentAssemblies = AppDomain.CurrentDomain.GetAssemblies().Where(r =>
+r.FullName.Contains("IGeekFan.FreeKit.Web") 
+|| r.FullName.Contains("Module1")
+|| r.FullName.Contains("Module2")
+).ToArray();
+        containerBuilder.RegisterModule(new UnitOfWorkModule(currentAssemblies));
+        containerBuilder.RegisterModule(new FreeKitModule(currentAssemblies));
+    });
+```
 
 ### 审计类
 
@@ -57,27 +113,50 @@ UseConnectionString 扩展方法，DefaultDB 配置 4 代表使用配置串 MySq
     }
 ```
 
+- 扩展方法配置 FreeSql，并设置 `ICurrentUserAccessor` 获取租户Id设置全局过滤器
+
 ```csharp
+public static class ServiceCollectionExtensions
+{
     public static IServiceCollection AddFreeSql(this IServiceCollection services, IConfiguration c)
     {
-        IFreeSql fsql = new FreeSqlBuilder()
-                  .UseConnectionString(c)
-                  .UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower)
-                  .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
-                  .UseMonitorCommand(cmd =>
-                  {
-                      Trace.WriteLine(cmd.CommandText + ";");
-                  })
-                  .Build();
+        Func<IServiceProvider, IFreeSql> fsql = r =>
+        {
+            var currentAccessor = r.GetRequiredService<ICurrentUserAccessor>();
+            IFreeSql fsql = new FreeSqlBuilder()
+                    .UseConnectionString(c)
+                    .UseNameConvert(NameConvertType.PascalCaseToUnderscoreWithLower)
+                    .UseAutoSyncStructure(true) //自动同步实体结构到数据库，FreeSql不会扫描程序集，只有CRUD时才会生成表。
+                    .UseGenerateCommandParameterWithLambda(true)//默认false,针对 lambda 表达式解析,设置成true时方便查看SQL
+                    .UseNoneCommandParameter(true) //默认true,针对insert/update/delete是否参数化
+                    .UseMonitorCommand(cmd =>
+                    {
+                        Console.WriteLine("\r\n线程" + Thread.CurrentThread.ManagedThreadId + ": " + cmd.CommandText)
+                    })
+                    .Build();
 
-        //fsql.GlobalFilter.Apply<ISoftDelete>("IsDeleted", a => a.IsDeleted == false);
+            fsql.GlobalFilter.ApplyOnly<ISoftDelete>("IsDeleted", a => a.IsDeleted == false);
+            fsql.GlobalFilter.ApplyOnlyIf<ITenant>("TenantId", () => currentAccessor.CurrentUser?.TenantId != null, a => a.TenantId == currentAccessor.CurrentUser.TenantId);
+            // 不使用IAuditBaseRepository的审计仓储 操作CRUD时，可使用此方式进行审计类的自动赋值
+            fsql.Aop.AuditValue += (_, e) => { e.AuditValue<Guid>(currentAccessor.CurrentUser); };
 
+            return fsql;
+        };
         services.AddSingleton<IFreeSql>(fsql);
-        services.AddFreeRepository();
-        services.AddScoped<UnitOfWorkManager>();
+        services.AddFreeKitCore();
+        using (IServiceScope scope = services.BuildServiceProvider().CreateScope())
+        {
+            var freeSql = scope.ServiceProvider.GetRequiredService<IFreeSql>();
+            //freeSql.CodeFirst.SyncStructure(ReflexHelper.GetTypesByTableAttribute(typeof(Program)));
+            freeSql.CodeFirst.SyncStructure(typeof(Song));
+        }
 
         return services;
     }
+}
+//Program.cs
+var c = builder.Configuration;
+builder.Services.AddFreeSql(c);
 ```
 
 ### 基于特性标签的 AOP 事务
@@ -164,10 +243,12 @@ public class GroupService : IGroupService
     public void ConfigureContainer(ContainerBuilder builder)
     {
            Assembly[] currentAssemblies = AppDomain.CurrentDomain.GetAssemblies().Where(r =>
-r.FullName.Contains("IGeekFan.FreeKit.Extras")||
-r.FullName.Contains("Module1")
+r.FullName.Contains("IGeekFan.FreeKit.Web") 
+|| r.FullName.Contains("Module1")
+|| r.FullName.Contains("Module2")
 ).ToArray();
         builder.RegisterModule(new UnitOfWorkModule(currentAssemblies));
+        builder.RegisterModule(new FreeKitModule(currentAssemblies));
     }
 ```
 
@@ -179,10 +260,12 @@ builder.Host
     .ConfigureContainer<ContainerBuilder>((webBuilder, containerBuilder) =>
     {
            Assembly[] currentAssemblies = AppDomain.CurrentDomain.GetAssemblies().Where(r =>
-r.FullName.Contains("IGeekFan.FreeKit.Extras")||
-r.FullName.Contains("Module1")
+r.FullName.Contains("IGeekFan.FreeKit.Web") 
+|| r.FullName.Contains("Module1")
+|| r.FullName.Contains("Module2")
 ).ToArray();
-        builder.RegisterModule(new UnitOfWorkModule(currentAssemblies));
+        containerBuilder.RegisterModule(new UnitOfWorkModule(currentAssemblies));
+        containerBuilder.RegisterModule(new FreeKitModule(currentAssemblies));
     });
 ```
 
@@ -243,49 +326,38 @@ public class TestController : Controller
 1.获取所有的程序集合，然后根据 FullName，一般为项目名，过滤具体的程序集
 
 ```csharp
-builder.Host
-    .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-    .ConfigureContainer<ContainerBuilder>((webBuilder, containerBuilder) =>
-    {
         Assembly[] currentAssemblies = AppDomain.CurrentDomain.GetAssemblies().Where(r =>
-r.FullName.Contains("IGeekFan.FreeKit.Extras")||
-r.FullName.Contains("Module1")
+r.FullName.Contains("IGeekFan.FreeKit.Web") 
+|| r.FullName.Contains("Module1")
+|| r.FullName.Contains("Module2")
 ).ToArray();
 
+        containerBuilder.RegisterModule(new UnitOfWorkModule(currentAssemblies));
         containerBuilder.RegisterModule(new FreeKitModule(currentAssemblies));
-    });
 ```
 
 其中`FreeKitModule`的参数支持`params Type[]types`或`params Assembly[]assemblies`,即哪些[程序集](https://docs.microsoft.com/zh-cn/dotnet/standard/assembly/)中的类需要注入到依赖注入的集合中。
 
-2.根据程序集中的某个类获取程序集
+2.根据程序集中的某个类获取程序集,直接使用params Assembly[]
 
 ```csharp
-Assembly[] currentAssemblies2 = new Assembly[] { typeof(FreeKitModule).Assembly, typeof(Module1.Module1Startup).Assembly };
+Assembly[] currentAssemblies2 = new Assembly[] { typeof(Program).Assembly, typeof(Module1.Module1Startup).Assembly };
+containerBuilder.RegisterModule(new UnitOfWorkModule(currentAssemblies2));
 containerBuilder.RegisterModule(new FreeKitModule(currentAssemblies2));
 ```
 
-3.直接使用 params Assembly[] 的特性，直接作为 FreeKitModule 的参数
+3.params Type[]，内部解析 Assembly。
 
 ```csharp
-containerBuilder.RegisterModule(new FreeKitModule( typeof(FreeKitModule).Assembly, typeof(Program).Assembly))
-```
-
-4，通过 params Type[]，内部解析 Assembly。
-
-```csharp
-containerBuilder.RegisterModule(new FreeKitModule(typeof(FreeKitModule), typeof(Program)))
+containerBuilder.RegisterModule(new UnitOfWorkModule(typeof(Program), typeof(Module1.Module1Startup)))
+containerBuilder.RegisterModule(new FreeKitModule(typeof(Program), typeof(Module1.Module1Startup)))
 ```
 
 其中，此程序集中的类 如果继承了`IScopedDependency`,`ISingletonDependency`、`ITransientDependency`这些接口， 都会按照对应的生命周期注入到依赖注入的集合中 ，可直接使用。
 
 ### CurrentUser 当前登录人信息
 
-如何使用，先注入`IHttpContextAccessor`
-
-```csharp
-    services.AddHttpContextAccessor();
-```
+如何使用
 
 因为我们无法确定用户 Id 的类型，可能是`long`,也可能是`Guid`，ICurrentUser\<T\>是泛型的，默认有一个实现`ICurrentUser:ICurrentUser<string>`,所以通过 `ICurrentUser`，默认Id为string?类型，如果想改变类型，可使用`ICurrentUser`接口`FindUserIdToLong`扩展方法，获取`long?`类型的用户`Id`,或使用`ICurrentUser`接口`FindUserIdToGuid`的扩展方法
 
@@ -310,14 +382,19 @@ public interface ICurrentUser<T> : ITransientDependency
     string UserName { get; }
 
     /// <summary>
-    /// 昵称
-    /// </summary>
-    string? NickName { get; }
-
-    /// <summary>
     /// 邮件
     /// </summary>
     string? Email { get; }
+
+    /// <summary>
+    /// 租户Id
+    /// </summary>
+    Guid? TenantId { get; }
+    
+    /// <summary>
+    /// 租户名
+    /// </summary>
+    string? TenantName { get; }
 
     /// <summary>
     /// 角色
@@ -334,15 +411,39 @@ public interface ICurrentUser<T> : ITransientDependency
 }
 ```
 
-当然可增加一个扩展方法，用于不确定主键类型,所有的方法都调用此方法，需要更改类型，则只用更改此方法即可,比如如果用户Id类型是int类型，可自行创建此扩展类进行处理
+当然可增加一个扩展方法，用于不确定主键类型,所有的方法都调用此方法，需要更改类型，则只用更改此方法即可,比如如果用户Id类型是long类型，可自行创建此扩展类进行处理
 
 ```csharp
-public static class Extensions
-｛
-    public static int? FindUserId(this ICurrentUser currentUser)
+namespace IGeekFan.FreeKit.Extras.Security
+{
+    public static class CurrentUserExtensions
     {
-        if (currentUser.Id == null) return null;
-        return int.Parse(currentUser.Id);
+        public static long? FindUserId(this ICurrentUser currentUser)
+        {
+            return currentUser.FindUserIdToLong();
+        }
+    }
+}
+```
+
+然后在自己的服务类中注入·`ICurrentUser`接口，如,就可以获取用户的Id，及相关信息
+
+```csharp
+public interface IAccountService
+{
+    long? GetUserId(string roleId);
+}
+public class AccountService:IAccountService
+{
+    private readonly ICurrentUser _currentUser;
+    public AccountService(ICurrentUser currentUser)
+    {
+        _currentUser = currentUser;
+    }
+    public long? GetUserId(string roleId)
+    {
+        string userId=_currentUser.Id;
+        return  _currentUser.FindUserId();
     }
 }
 ```
@@ -419,6 +520,8 @@ Provider 支持如下
 
 什么是实体审计：记录修改实体的时间，修改实体的用户，创建人，创建的时间，删除人，删除时间等
 
+(AddFreeKitCore已包含此服务)
+
 ```csharp
 services.AddCurrentUser().AddAuditRepostiory();
 ```
@@ -485,7 +588,7 @@ WHERE ("Id" IN ('62eeeb97-ab46-67ec-00be-3ffb646bebab','62eeeb97-ab46-67ec-00be-
 
 ### 复合主键仓储
 
-- 配置服务
+- 配置服务(AddFreeKitCore已包含此服务)
 
 ```csharp
 services.AddCompositeRepostiory();
@@ -534,4 +637,26 @@ WHERE (a."UserId" = 1 AND a."RoleId" = 1)
 limit 0,1
 
 DELETE FROM "UserRole" WHERE ("UserId" = 1 AND "RoleId" = 1)
+```
+
+### 登录Jwt
+
+其中生成Jwt的Claim的类型如下。[JWT+ASP.NET Core集成方案](https://www.cnblogs.com/igeekfan/p/jwt-aspnetcore.html)
+
+```csharp
+    List<Claim> claims = new()
+    {
+        new Claim (FreeKitClaimType.NameIdentifier, user.Id.ToString()),
+        new Claim (FreeKitClaimType.UserName, user.UserName),
+        new Claim (FreeKitClaimType.Email, user.Email?? ""),
+        new Claim (FreeKitClaimType.Name, user.Name)
+    };
+    if (user.TenantId.HasValue)
+    {
+        claims.Add(new Claim(FreeKitClaimType.TenantId, user.TenantId.ToString() ?? string.Empty));
+    }
+    user.Roles?.ToList()?.ForEach(r =>
+    {
+        claims.Add(new Claim(FreeKitClaimType.Role, r.Name));
+    });
 ```
