@@ -64,8 +64,8 @@ app.UseCurrentUserAccessor();
 
 4 Autofac 配置
 
-- `UnitOfWorkModule`,自动注入以Service后缀的类，并支持`[Transactional]`特性事务
-- `FreeKitModule`继承三大接口`IScopedDependency` (范围)、`ISingletonDependency` (单例)、`ITransientDependency` (瞬时) 中任一接口，即可自动到容器中
+- `UnitOfWorkModule`主要功能：自动注入以Service后缀的类，支持接口，类，并支持`[Transactional]`特性事务
+- `FreeKitModule`主要功能:继承三大接口`IScopedDependency` (范围)、`ISingletonDependency` (单例)、`ITransientDependency` (瞬时) 中任一接口，即可自动到容器中，支持接口，类
 
 `IGeekFan.FreeKit.Web`,`Module1`,`Module2`为类库的名称
 
@@ -91,7 +91,7 @@ r.FullName.Contains("IGeekFan.FreeKit.Web")
 
 ### 简化 FreeSql 单库的配置
 
-UseConnectionString 扩展方法，DefaultDB 配置 4 代表使用配置串 MySql。需要安装`FreeSql.Provider.Sqlite`,`DefaultDB`配置的值实际为`FreeSql.DataType`的枚举值
+UseConnectionString 扩展方法，DefaultDB 配置 4 代表使用配置串 Sqlite。需要安装`FreeSql.Provider.Sqlite`,`DefaultDB`配置的值实际为`FreeSql.DataType`的枚举值
 
 - appsettings.json
 
@@ -223,6 +223,31 @@ public class GroupService : IGroupService
     }
 }
 ```
+或
+```
+public class GroupService 
+{
+    private readonly IBaseRepository<LinGroup, long> _groupRepository;
+    private readonly IBaseRepository<LinGroupPermission, long> _groupPermissionRepository;
+
+    public GroupService(IBaseRepository<LinGroup, long> groupRepository,IBaseRepository<LinGroupPermission, long> groupPermissionRepository)
+    {
+        _groupRepository = groupRepository;
+        _groupPermissionRepository = groupPermissionRepository;
+    }
+    /// <summary>
+    /// 删除group拥有的权限、删除group表的数据
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    [Transactional]
+    public virtual async Task DeleteAsync(long id)
+    {
+        await _groupRepository.DeleteAsync(id);
+        await _groupPermissionRepository.DeleteAsync(r => r.GroupId == id);
+    }
+}
+```
 
 如果依旧是 Startup 的模式，可通过 ConfigureContainer 配置服务，其中`ServiceModule`是一个Autofac的Module，此外为Demo
 
@@ -323,6 +348,7 @@ public class TestController : Controller
 
 ```
 
+### 
 1.获取所有的程序集合，然后根据 FullName，一般为项目名，过滤具体的程序集
 
 ```csharp
@@ -411,7 +437,7 @@ public interface ICurrentUser<T> : ITransientDependency
 }
 ```
 
-当然可增加一个扩展方法，用于不确定主键类型,所有的方法都调用此方法，需要更改类型，则只用更改此方法即可,比如如果用户Id类型是long类型，可自行创建此扩展类进行处理
+我们需要增加一个扩展方法，更改用户Id类型，我们只需更改此方法即可,比如如果用户Id类型是long类型，可自行创建此扩展类进行处理
 
 ```csharp
 namespace IGeekFan.FreeKit.Extras.Security
