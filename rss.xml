@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 25 Aug 2022 01:43:18 GMT</pubDate>
-    <lastBuildDate>Thu, 25 Aug 2022 01:43:18 GMT</lastBuildDate>
+    <pubDate>Thu, 25 Aug 2022 14:10:24 GMT</pubDate>
+    <lastBuildDate>Thu, 25 Aug 2022 14:10:24 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>ASP.NET Core</category>
@@ -1977,30 +1977,16 @@ builder<span>.</span>Services<span>.</span><span>AddFreeSql</span><span>(</span>
         <span>await</span> _groupPermissionRepository<span>.</span><span>DeleteAsync</span><span>(</span>r <span>=></span> r<span>.</span>GroupId <span>==</span> id<span>)</span><span>;</span>
     <span>}</span>
 <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br></div></div><p>或</p>
-<div><pre><code>public class GroupService 
-{
-    private readonly IBaseRepository&lt;LinGroup, long> _groupRepository;
-    private readonly IBaseRepository&lt;LinGroupPermission, long> _groupPermissionRepository;
-
-    public GroupService(IBaseRepository&lt;LinGroup, long> groupRepository,IBaseRepository&lt;LinGroupPermission, long> groupPermissionRepository)
-    {
-        _groupRepository = groupRepository;
-        _groupPermissionRepository = groupPermissionRepository;
-    }
-    /// &lt;summary>
-    /// 删除group拥有的权限、删除group表的数据
-    /// &lt;/summary>
-    /// &lt;param name="id">&lt;/param>
-    /// &lt;returns>&lt;/returns>
-    [Transactional]
-    public virtual async Task DeleteAsync(long id)
-    {
-        await _groupRepository.DeleteAsync(id);
-        await _groupPermissionRepository.DeleteAsync(r => r.GroupId == id);
-    }
-}
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br></div></div><p>如果依旧是 Startup 的模式，可通过 ConfigureContainer 配置服务，其中<code>ServiceModule</code>是一个Autofac的Module，此外为Demo</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br></div></div><p>或使用以<code>Service</code>为后缀的类，方法使用 <code>virtual</code> 关键字</p>
+<div><pre><code><span>public</span> <span>class</span> <span>GroupService</span> 
+<span>{</span>
+    <span>[</span><span><span>Transactional</span></span><span>]</span>
+    <span>public</span> <span>virtual</span> <span>async</span> <span>Task</span> <span>DeleteAsync</span><span>(</span><span><span>long</span></span> id<span>)</span>
+    <span>{</span>
+        <span>//事务操作：仓储从依赖注入中获取</span>
+    <span>}</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><p>如果依旧是 Startup 的模式，可通过 ConfigureContainer 配置服务，其中<code>ServiceModule</code>是一个Autofac的Module，此外为Demo</p>
 <ul>
 <li>Program.cs 配置</li>
 </ul>
@@ -2086,7 +2072,7 @@ r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"I
     <span>}</span>
 <span>}</span>
 
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br></div></div><h3 id="" tabindex="-1"> </h3>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br></div></div><h3 id="三种配置方式" tabindex="-1"> 三种配置方式</h3>
 <p>1.获取所有的程序集合，然后根据 FullName，一般为项目名，过滤具体的程序集</p>
 <div><pre><code>        <span>Assembly<span>[</span><span>]</span></span> currentAssemblies <span>=</span> AppDomain<span>.</span>CurrentDomain<span>.</span><span>GetAssemblies</span><span>(</span><span>)</span><span>.</span><span>Where</span><span>(</span>r <span>=></span>
 r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"IGeekFan.FreeKit.Web"</span><span>)</span> 
@@ -2154,7 +2140,7 @@ containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new
 
     <span><span>bool</span></span> <span>IsInRole</span><span>(</span><span><span>string</span></span> roleId<span>)</span><span>;</span>
 <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br></div></div><p>我们需要增加一个扩展方法，更改用户Id类型，我们只需更改此方法即可,比如如果用户Id类型是long类型，可自行创建此扩展类进行处理</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br></div></div><p>我们需要增加一个扩展方法，更改用户Id类型，如果想更改用户Id类型，只需更改此方法即可,比如如果用户Id类型是long类型</p>
 <div><pre><code><span>namespace</span> <span>IGeekFan<span>.</span>FreeKit<span>.</span>Extras<span>.</span>Security</span>
 <span>{</span>
     <span>public</span> <span>static</span> <span>class</span> <span>CurrentUserExtensions</span>
@@ -2170,7 +2156,7 @@ containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new
 <span>{</span>
     <span><span>long</span><span>?</span></span> <span>GetUserId</span><span>(</span><span><span>string</span></span> roleId<span>)</span><span>;</span>
 <span>}</span>
-<span>public</span> <span>class</span> <span>AccountService</span><span>:</span><span><span>IAccountService</span></span>
+<span>public</span> <span>class</span> <span>AccountService</span> <span>:</span> <span><span>IAccountService</span></span>
 <span>{</span>
     <span>private</span> <span>readonly</span> <span>ICurrentUser</span> _currentUser<span>;</span>
     <span>public</span> <span>AccountService</span><span>(</span><span>ICurrentUser</span> currentUser<span>)</span>
