@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 25 Aug 2022 14:10:24 GMT</pubDate>
-    <lastBuildDate>Thu, 25 Aug 2022 14:10:24 GMT</lastBuildDate>
+    <pubDate>Fri, 26 Aug 2022 16:25:54 GMT</pubDate>
+    <lastBuildDate>Fri, 26 Aug 2022 16:25:54 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>ASP.NET Core</category>
@@ -2333,18 +2333,18 @@ containerBuilder<span>.</span><span>RegisterModule</span><span>(</span><span>new
 <p>其中生成Jwt的Claim的类型如下。<a href="https://www.cnblogs.com/igeekfan/p/jwt-aspnetcore.html" target="_blank" rel="noopener noreferrer">JWT+ASP.NET Core集成方案</a></p>
 <div><pre><code>    <span>List<span>&lt;</span>Claim<span>></span></span> claims <span>=</span> <span>new</span><span>(</span><span>)</span>
     <span>{</span>
-        <span>new</span> <span>Claim</span> <span>(</span>FreeKitClaimType<span>.</span>NameIdentifier<span>,</span> user<span>.</span>Id<span>.</span><span>ToString</span><span>(</span><span>)</span><span>)</span><span>,</span>
-        <span>new</span> <span>Claim</span> <span>(</span>FreeKitClaimType<span>.</span>UserName<span>,</span> user<span>.</span>UserName<span>)</span><span>,</span>
-        <span>new</span> <span>Claim</span> <span>(</span>FreeKitClaimType<span>.</span>Email<span>,</span> user<span>.</span>Email<span>??</span> <span>""</span><span>)</span><span>,</span>
-        <span>new</span> <span>Claim</span> <span>(</span>FreeKitClaimType<span>.</span>Name<span>,</span> user<span>.</span>Name<span>)</span>
+        <span>new</span> <span>Claim</span> <span>(</span>FreeKitClaimTypes<span>.</span>NameIdentifier<span>,</span> user<span>.</span>Id<span>.</span><span>ToString</span><span>(</span><span>)</span><span>)</span><span>,</span>
+        <span>new</span> <span>Claim</span> <span>(</span>FreeKitClaimTypes<span>.</span>UserName<span>,</span> user<span>.</span>UserName<span>)</span><span>,</span>
+        <span>new</span> <span>Claim</span> <span>(</span>FreeKitClaimTypes<span>.</span>Email<span>,</span> user<span>.</span>Email<span>??</span> <span>""</span><span>)</span><span>,</span>
+        <span>new</span> <span>Claim</span> <span>(</span>FreeKitClaimTypes<span>.</span>Name<span>,</span> user<span>.</span>Name<span>)</span>
     <span>}</span><span>;</span>
     <span>if</span> <span>(</span>user<span>.</span>TenantId<span>.</span>HasValue<span>)</span>
     <span>{</span>
-        claims<span>.</span><span>Add</span><span>(</span><span>new</span> <span>Claim</span><span>(</span>FreeKitClaimType<span>.</span>TenantId<span>,</span> user<span>.</span>TenantId<span>.</span><span>ToString</span><span>(</span><span>)</span> <span>??</span> <span>string</span><span>.</span>Empty<span>)</span><span>)</span><span>;</span>
+        claims<span>.</span><span>Add</span><span>(</span><span>new</span> <span>Claim</span><span>(</span>FreeKitClaimTypes<span>.</span>TenantId<span>,</span> user<span>.</span>TenantId<span>.</span><span>ToString</span><span>(</span><span>)</span> <span>??</span> <span>string</span><span>.</span>Empty<span>)</span><span>)</span><span>;</span>
     <span>}</span>
     user<span>.</span>Roles<span>?.</span><span>ToList</span><span>(</span><span>)</span><span>?.</span><span>ForEach</span><span>(</span>r <span>=></span>
     <span>{</span>
-        claims<span>.</span><span>Add</span><span>(</span><span>new</span> <span>Claim</span><span>(</span>FreeKitClaimType<span>.</span>Role<span>,</span> r<span>.</span>Name<span>)</span><span>)</span><span>;</span>
+        claims<span>.</span><span>Add</span><span>(</span><span>new</span> <span>Claim</span><span>(</span>FreeKitClaimTypes<span>.</span>Role<span>,</span> r<span>.</span>Name<span>)</span><span>)</span><span>;</span>
     <span>}</span><span>)</span><span>;</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div>]]></content:encoded>
     </item>
