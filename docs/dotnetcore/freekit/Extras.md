@@ -661,17 +661,17 @@ DELETE FROM "UserRole" WHERE ("UserId" = 1 AND "RoleId" = 1)
 ```csharp
     List<Claim> claims = new()
     {
-        new Claim (FreeKitClaimType.NameIdentifier, user.Id.ToString()),
-        new Claim (FreeKitClaimType.UserName, user.UserName),
-        new Claim (FreeKitClaimType.Email, user.Email?? ""),
-        new Claim (FreeKitClaimType.Name, user.Name)
+        new Claim (FreeKitClaimTypes.NameIdentifier, user.Id.ToString()),
+        new Claim (FreeKitClaimTypes.UserName, user.UserName),
+        new Claim (FreeKitClaimTypes.Email, user.Email?? ""),
+        new Claim (FreeKitClaimTypes.Name, user.Name)
     };
     if (user.TenantId.HasValue)
     {
-        claims.Add(new Claim(FreeKitClaimType.TenantId, user.TenantId.ToString() ?? string.Empty));
+        claims.Add(new Claim(FreeKitClaimTypes.TenantId, user.TenantId.ToString() ?? string.Empty));
     }
     user.Roles?.ToList()?.ForEach(r =>
     {
-        claims.Add(new Claim(FreeKitClaimType.Role, r.Name));
+        claims.Add(new Claim(FreeKitClaimTypes.Role, r.Name));
     });
 ```
