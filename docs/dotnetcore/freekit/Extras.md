@@ -223,28 +223,16 @@ public class GroupService : IGroupService
     }
 }
 ```
-或
-```
+
+或使用以`Service`为后缀的类，方法使用 `virtual` 关键字
+
+```csharp
 public class GroupService 
 {
-    private readonly IBaseRepository<LinGroup, long> _groupRepository;
-    private readonly IBaseRepository<LinGroupPermission, long> _groupPermissionRepository;
-
-    public GroupService(IBaseRepository<LinGroup, long> groupRepository,IBaseRepository<LinGroupPermission, long> groupPermissionRepository)
-    {
-        _groupRepository = groupRepository;
-        _groupPermissionRepository = groupPermissionRepository;
-    }
-    /// <summary>
-    /// 删除group拥有的权限、删除group表的数据
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
     [Transactional]
     public virtual async Task DeleteAsync(long id)
     {
-        await _groupRepository.DeleteAsync(id);
-        await _groupPermissionRepository.DeleteAsync(r => r.GroupId == id);
+        //事务操作：仓储从依赖注入中获取
     }
 }
 ```
@@ -348,7 +336,8 @@ public class TestController : Controller
 
 ```
 
-### 
+### 三种配置方式
+
 1.获取所有的程序集合，然后根据 FullName，一般为项目名，过滤具体的程序集
 
 ```csharp
@@ -437,7 +426,7 @@ public interface ICurrentUser<T> : ITransientDependency
 }
 ```
 
-我们需要增加一个扩展方法，更改用户Id类型，我们只需更改此方法即可,比如如果用户Id类型是long类型，可自行创建此扩展类进行处理
+我们需要增加一个扩展方法，更改用户Id类型，如果想更改用户Id类型，只需更改此方法即可,比如如果用户Id类型是long类型
 
 ```csharp
 namespace IGeekFan.FreeKit.Extras.Security
@@ -459,7 +448,7 @@ public interface IAccountService
 {
     long? GetUserId(string roleId);
 }
-public class AccountService:IAccountService
+public class AccountService : IAccountService
 {
     private readonly ICurrentUser _currentUser;
     public AccountService(ICurrentUser currentUser)
@@ -672,17 +661,17 @@ DELETE FROM "UserRole" WHERE ("UserId" = 1 AND "RoleId" = 1)
 ```csharp
     List<Claim> claims = new()
     {
-        new Claim (FreeKitClaimType.NameIdentifier, user.Id.ToString()),
-        new Claim (FreeKitClaimType.UserName, user.UserName),
-        new Claim (FreeKitClaimType.Email, user.Email?? ""),
-        new Claim (FreeKitClaimType.Name, user.Name)
+        new Claim (FreeKitClaimTypes.NameIdentifier, user.Id.ToString()),
+        new Claim (FreeKitClaimTypes.UserName, user.UserName),
+        new Claim (FreeKitClaimTypes.Email, user.Email?? ""),
+        new Claim (FreeKitClaimTypes.Name, user.Name)
     };
     if (user.TenantId.HasValue)
     {
-        claims.Add(new Claim(FreeKitClaimType.TenantId, user.TenantId.ToString() ?? string.Empty));
+        claims.Add(new Claim(FreeKitClaimTypes.TenantId, user.TenantId.ToString() ?? string.Empty));
     }
     user.Roles?.ToList()?.ForEach(r =>
     {
-        claims.Add(new Claim(FreeKitClaimType.Role, r.Name));
+        claims.Add(new Claim(FreeKitClaimTypes.Role, r.Name));
     });
 ```
