@@ -14,7 +14,7 @@
 
 当然，这个只是部分代码，完整代码请查看最下方开源地址，其中 LinCmsAuthorizeAttribute 继承 AuthorizeAttribute，拥有指定角色权限控制，当 Permission 未指定时，当过滤器与 Authorize 功能相同。Module 是指模块，即多个权限，属于同一个模块，方便前台展示为树型结构。Permission 属性的值不可重复。
 
-```
+```cs
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
 public class LinCmsAuthorizeAttribute : AuthorizeAttribute, IAsyncAuthorizationFilter
 {
@@ -60,7 +60,7 @@ public class LinCmsAuthorizeAttribute : AuthorizeAttribute, IAsyncAuthorizationF
 
 在 LinCms.Web 中的 Controller，至于为什么 Permission 为中文，目前的主要原因，此项目用于适配 [Lin-CMS-VUE](https://github.com/TaleLin/lin-cms-vue)项目,所以于平常我们以某个字符串作为权限名不同，但不须大惊小怪，道理相同。
 
-```
+```cs
 [Route("cms/log")]
 [ApiController]
 public class LogController : ControllerBase
@@ -100,7 +100,7 @@ public class LogController : ControllerBase
 
 in xunit test 项目工程中，开始我们的测试
 
-```
+```cs
 [Fact]
 public void GetAssemblyMethodsAttributes()
 {
@@ -127,7 +127,7 @@ public void GetAssemblyMethodsAttributes()
 
 可在输出文本中查看，正是我们想要的东西，最后一行，是其他 Controller 中的内容，而且我们重写了 ToString(),所以我们能看到其属性。
 
-```
+```text
 "LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:查询日志记录的用户","Module:日志","Roles:","Policy:","AuthenticationSchemes:"
 "LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:查询所有日志","Module:日志","Roles:","Policy:","AuthenticationSchemes:"
 "LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:搜索日志","Module:日志","Roles:","Policy:","AuthenticationSchemes:"
@@ -137,7 +137,7 @@ public void GetAssemblyMethodsAttributes()
 
 ## 获取控制器上特性标签
 
-```
+```cs
 /// <summary>
 /// 获取控制器上的LinCmsAuthorizeAttribute
 /// </summary>
@@ -163,14 +163,14 @@ public void GetControllerAttributes()
 
 只有 AdminController 加了此标签，所以只有一行。
 
-```
+```text
 "LinCms.Zero.Authorization.LinCmsAuthorizeAttribute","Permission:","Module:","Roles:Administrator","Policy:","AuthenticationSchemes:"
 ```
 
 此时 Roles 为 Administrator，Permission 及 Module 都是 null，
 这是因为只有 AdminController 中加了 LinGroup.Administrator="Administrator"字符串，在登录过程中，已经给当前登录用户设置了 new Claim(ClaimTypes.Role,user.IsAdmin()?LinGroup.Administrator:user.GroupId.ToString())，即"Administrator,当用户访问 AdminController 中的方法时，LinCmsAuthorize 并没有做相关验证，都是 AuthorizeAttribute，实现了固定角色权限的判断及登录的判断。LinCmsAuthorize 完成了固定权限设置为不同的动态角色后，判断用户是否拥有此权限。
 
-```
+```cs
 [LinCmsAuthorize(Roles = LinGroup.Administrator)]
 public class AdminController : ControllerBase
 {
@@ -181,7 +181,7 @@ public class AdminController : ControllerBase
 ## 参考
 
 - c# – 如何在 asp. net core rc2 中获取控制器的自定义属性 [https://codeday.me/bug/20181207/453278.html](https://codeday.me/bug/20181207/453278.html)
--
+
 
 ## 开源地址
 

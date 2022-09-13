@@ -20,7 +20,8 @@ Lin的定位在于实现一整套 CMS的解决方案，它是一个设计方案�
 - **app.UseAuthorization();** 授权中间件，明确你是否有某个权限。在http请求时，中间件会在带有权限特性标签 **[Authorize]** 的操作，进行权限判断，包括角色，策略等。
 
 该控制器下的操作都必须经过身份验证，
-```
+
+```cs
 [Authorize]
 public class AccountController : Controller
 {
@@ -35,7 +36,8 @@ public class AccountController : Controller
 ```
 
 这样只显示单个方法必须应用授权。
-```
+
+```cs
 public class AccountController : Controller
 {
    public ActionResult Login()
@@ -48,8 +50,10 @@ public class AccountController : Controller
    }
 }
 ```
+
 如果我们通过**AllowAnonymous**特性标签去掉身份验证。Login方法无须进行验证。即可匿名访问。
-```
+
+```cs
 [Authorize]
 public class AccountController : Controller
 {
@@ -69,7 +73,8 @@ public class AccountController : Controller
 我们可以通过给这个特性标签加参数，配置，某个方法，控制器是否有这个角色，如果有此角色才能访问这些资源。
 
 单个角色
-```
+
+```cs
 [Authorize(Roles = "Administrator")]
 public class AdministrationController : Controller
 {
@@ -78,7 +83,7 @@ public class AdministrationController : Controller
 
 多个角色，我们可以这样配置,即用逗号分隔。用户有其中一个角色即可访问。
 
-```
+```cs
 [Authorize(Roles = "HRManager,Finance")]
 public class SalaryController : Controller
 {
@@ -86,7 +91,8 @@ public class SalaryController : Controller
 ```
 
 当某个方法必须同时有二个角色怎么办呢。该控制器只有同时有PowerUser，和ControlPanelUser的角色才能访问这些资源了。
-```
+
+```cs
 [Authorize(Roles = "PowerUser")]
 [Authorize(Roles = "ControlPanelUser")]
 public class ControlPanelController : Controller
@@ -103,14 +109,15 @@ public class ControlPanelController : Controller
 登录时生成的Token,是基于JWT的，其中的Claim的type为**ClaimTypes.Role**（枚举值），角色名称为字符串，与特性标签中的Roles属性值相同。
 如
 
-```
+```cs
 new Claim(ClaimTypes.Role, "Administrator");
 ```
-有多个角色时，**List Claim ** 多加几个 **new Claim(ClaimTypes.Role, "PowerUser");** 也是支持的。user为用户信息，LinGroups为当前用户的分组（多个）
+
+有多个角色时，**List Claim** 多加几个 **new Claim(ClaimTypes.Role, "PowerUser");** 也是支持的。user为用户信息，LinGroups为当前用户的分组（多个）
 
 即如下代码示例，多个分组（角色）
 
-```
+```cs
 var claims = new List<Claim>()
 {
     new Claim(ClaimTypes.NameIdentifier, user.Email ?? ""),
@@ -124,10 +131,9 @@ user.LinGroups?.ForEach(r =>
  });
 ```
 
-
 ### AuthorizeAttribute源码
 
-```
+```cs
  [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
   public class AuthorizeAttribute : Attribute, IAuthorizeData
   {
@@ -155,22 +161,21 @@ user.LinGroups?.ForEach(r =>
 我们可以基于自定义策略的实现更多的权限验证或某些规则验证。
 
 AuthorizeAttribute能做的权限控制如下
+
 - 基于角色级别的权限控制（多个角色，单个角色）
 - 基于声明的授权：可自定义声明特性。
 - 基于策略的授权：
 
-
-##  lin-cms-dotnetcore中的权限设计
+## lin-cms-dotnetcore中的权限设计
 
 说了这么多官方提供的，我们讲一下lin-cms-dotnetcore中的权限设计
 
 完整的表结构如下
 [https://luoyunchong.github.io/igeekfan-docs/dotnetcore/lin-cms/table.html](https://luoyunchong.github.io/igeekfan-docs/dotnetcore/lin-cms/table.html)
 
-
 #### LinCmsAuthorizeAttribute
 
-```
+```cs
  [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true)]
     public class LinCmsAuthorizeAttribute : Attribute, IAsyncAuthorizationFilter
     {
@@ -208,10 +213,12 @@ AuthorizeAttribute能做的权限控制如下
         }
     }
 ```
+
 上面的实现非常简单,LinCmsAuthorizeAttribute继承于Attribute，说明是一个特性标签，有二个属性Permission，Module，代表权限名，模块名（用于区分哪个功能模块），然后将权限名称转化为OperationAuthorizationRequirement，然后调用authorizationService中的方法AuthorizeAsync来完成授权。
 
 接下来，我们在控制器上使用LinCmsAuthorizeAttribute,那么我们
-```
+
+```cs
 [Route("cms/admin/group")]
 [ApiController]
 public class GroupController : ControllerBase
@@ -268,7 +275,8 @@ public class GroupController : ControllerBase
 [获取控制器及方法特性标签](https://igeekfan.gitee.io/igeekfan-docs/dotnetcore/lin-cms/reflex-assembly-get-controller-methods-attribute.html#%E8%8E%B7%E5%8F%96%E6%8E%A7%E5%88%B6%E5%99%A8%E5%8F%8A%E6%96%B9%E6%B3%95%E7%89%B9%E6%80%A7%E6%A0%87%E7%AD%BE)。本质上，是通过反射,扫描当前程序集，会获取到一个List，我们可以在系统启动时把这些数据存到数据库中。
 
  最新的方式是采用此方法，原理都相同。name，module唯一值。存入lin_permission表中，这时就有id值了。lin_group_permission就能用分组关联了。
-```
+
+```cs
 public async Task SeedAsync()
 {
     List<PermissionDefinition> linCmsAttributes = ReflexHelper.GeAssemblyLinCmsAttributes();
@@ -289,9 +297,11 @@ public async Task SeedAsync()
 ```
 
 ### 实现方法级的权限控制源码解析
+
 原理可以看这个文章[ASP.NET Core 认证与授权[7]:动态授权](https://www.cnblogs.com/RainingNight/p/dynamic-authorization-in-asp-net-core.html)中的**自定义授权过滤器**
 
 我们需要了解一下这些类/接口/抽象类
+
 ```
 - IAuthorizationService(interface)
 - AuthorizationService(class)
@@ -299,6 +309,7 @@ public async Task SeedAsync()
 - AuthorizationHandler<TRequirement>(abstract class)
 - PermissionAuthorizationHandler（class 自定义的类,继承AuthorizationHandler）
 ```
+
 ### 总结调用链如下
 
 ```
@@ -319,9 +330,9 @@ IAuditBaseRepository<LinGroupPermission, long>
 使用FreeSql,判断当前用户所在分组是否拥有此权限。
 ```
 
-
 IAuthorizationService是什么呢。我们可以理解为，验证当前用户是否拥有对应的资源权限。系统默认实现了该方法
-```
+
+```cs
 public interface IAuthorizationService
 {
     Task<AuthorizationResult> AuthorizeAsync(ClaimsPrincipal user, object resource, IEnumerable<IAuthorizationRequirement> requirements);
@@ -333,7 +344,7 @@ public interface IAuthorizationService
 AuthorizationService是什么呢.他实现了IAuthorizationService接口.
 通过源码我们知道，它调用 **await authorizationHandler.HandleAsync(authContext);**
 
-```
+```cs
  public async Task<AuthorizationResult> AuthorizeAsync(
   ClaimsPrincipal user,
   object resource,
@@ -361,7 +372,8 @@ AuthorizationService是什么呢.他实现了IAuthorizationService接口.
 ```
 
 IAuthorizationHandler 仅一个接口。
-```
+
+```cs
 public interface IAuthorizationHandler
 {
     /// <summary>
@@ -374,7 +386,8 @@ public interface IAuthorizationHandler
 
 AuthorizationHandler，它继承**IAuthorizationHandler**
 而且他是一个抽象类，默认实现了HandleAsync方法，子类只用实现HandleRequirementAsync即可。
-```
+
+```cs
   public abstract class AuthorizationHandler<TRequirement> : IAuthorizationHandler
     where TRequirement : IAuthorizationRequirement
   {
@@ -393,7 +406,8 @@ AuthorizationHandler，它继承**IAuthorizationHandler**
 我们就可以继承AuthorizationHandler，子类实现从数据库中取数据做对比，其中泛型参数使用系统内置的一个只有Name的类OperationAuthorizationRequirement，当然，如果我们需要更多的参数，可以继承IAuthorizationRequirement，增加更多的参数。
 
 判断当前用户是否不为null,当调用CheckPermissionAsync，判断是否有此权限。
-```
+
+```cs
    public class PermissionAuthorizationHandler : AuthorizationHandler<OperationAuthorizationRequirement>
     {
         private readonly IPermissionService _permissionService;
@@ -418,12 +432,14 @@ AuthorizationHandler，它继承**IAuthorizationHandler**
 ```
 
 另外我们还需要把这个Handler注入到我们的DI中，在ConfigureServices中替换如下服务
-```
+
+```cs
 services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
 ```
 
 其中的PermssionAppService中的实现,检查当前登录的用户的是否有此权限
-```
+
+```cs
 public async Task<bool> CheckPermissionAsync(string permission)
 {
     long[] groups = _currentUser.Groups;
@@ -438,9 +454,11 @@ public async Task<bool> CheckPermissionAsync(string permission)
 ```
 
 ### 更多参考
+
 - [ASP.NET Core 认证与授权[1]:初识认证](https://www.cnblogs.com/RainingNight/p/introduce-basic-authentication-in-asp-net-core.html)
 
-##  开源地址
+## 开源地址
+
 - 后端接口Gitee 链接 [https://gitee.com/igeekfan/lin-cms-dotnetcore](https://gitee.com/igeekfan/lin-cms-dotnetcore)
 - 后端接口GitHub 链接 [https://github.com/luoyunchong/lin-cms-dotnetcore](https://github.com/luoyunchong/lin-cms-dotnetcore)
 - 管理端UI [https://github.com/luoyunchong/lin-cms-vue](https://github.com/luoyunchong/lin-cms-vue)

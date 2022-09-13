@@ -18,7 +18,7 @@
 一直以来，`FreeSql`开发群中，总会有一些开发者来询问`Sqlite`加密的问题，事实上，官方提供的 Sqlite 加密功能是收费的。当连接串上使用`Password`时，会提示授权问题。
 如果底层依赖于`System.Data.SQLite.Core`，
 
-```
+```text
 Could not load file or assembly 'System.Data.SQLite.SEE.License,
 Version=1.0.115.5, Culture=neutral, PublicKeyToken=433d9874d0bb98c5,
 processorArchitecture=MSIL
@@ -26,7 +26,7 @@ processorArchitecture=MSIL
 
 如果底层依赖于`Microsoft.Data.Sqlite` 也会提示
 
-```
+```text
 You specified a password in the connection string, but the native SQLite
 library 'e_sqlite3' doesn't support encryption.
 ```

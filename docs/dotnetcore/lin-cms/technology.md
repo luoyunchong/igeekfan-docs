@@ -20,7 +20,7 @@
 - 健康检查[AspNetCore.HealthChecks.UI.Client](https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks)
 - [GitHub Action](https://help.github.com/en/actions)
 
-### 实践
+## 实践
 
 - DDD(Domain-Driven Design)领域驱动设计
 - Logging（日志）
@@ -33,7 +33,7 @@
 - SOLID Principles（单一职责）
 - Clean Code（代码整洁之道）
 
-### 分层结构（Layers）
+## 分层结构（Layers）
 
 - identityserver4
   - LinCms.IdentityServer4:使用 id4 授权登录

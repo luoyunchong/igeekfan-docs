@@ -1,4 +1,5 @@
 # Newtonsoft.Json基础问题
+
 它是.NET下的一个序列化、反序化的基础类库，更基础的用法还是看别人的吧，这里只说一些遇到的问题。
 
 ## 设置下划线
@@ -6,6 +7,7 @@
 ContractResolver  默认是小驼峰，我想改成下划线方式，遇到了一些问题，dictionary的键未格式化
 
 in controller 创建一个控制器
+
 ```csharp
 [HttpGet("getDictionary")]
 public IDictionary<string, string> GetDictionary()
@@ -17,7 +19,9 @@ public IDictionary<string, string> GetDictionary()
     return dics;
 }
 ```
+
 In Startup.cs
+
 ```csharp
 services
 .AddMvc()
@@ -33,8 +37,8 @@ services
 });
 ```
 
-
 此时运行后，得到的是Key,而不是key，我想他的键都变成下划线方式的小写
+
 ```json
 {
   "Key": "Value",
@@ -43,6 +47,7 @@ services
 ```
 
 其他测试，增加多级，测试正常
+
 ```csharp
 [HttpGet("get")]
 public dynamic Get()
@@ -55,7 +60,9 @@ public dynamic Get()
         };
 }
 ```
+
 此时运行后，满足要求，多层结构也不会影响
+
 ```json
 {
   "content": {
@@ -68,6 +75,7 @@ public dynamic Get()
 
 看了Newtonsoft.Json的github，并在in this repository 搜索Dictionary，看issues中的配置项如下即可满足dictionary的键也转小写,
 ProcessDictionaryKeys 功能：A flag indicating whether dictionary keys should be processed. Defaults to false.
+
 ```csharp
 services
 .AddMvc()
@@ -85,6 +93,7 @@ services
     };
 });
 ```
+
 ```json
 {
   "key": "Value",
@@ -93,8 +102,10 @@ services
 ```
 
 ## 实现时间戳
+
 前台要的格式为  **1562904163734**,只有一个数字，我搜索了一下，也没找到相关的文档，本身这个类库有一些时间戳，不过他们都包含特殊字符，如/Date(1562904163734)/,好像类似这样，他好像在逗我，为啥他要加Date，怕是有毒吧。看到
 他有Converters属性可配置，即配置自己的序列化返回格式。
+
 ```csharp
 services.AddMvc()
 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
@@ -110,6 +121,7 @@ services.AddMvc()
 ```
 
 这里的时间戳是毫秒级别
+
 ```csharp
 /// <summary>
 /// 配合LinCMS中的时间戳 后台只返回 1562904163734
@@ -156,11 +168,9 @@ public class LinCmsTimeConverter : DateTimeConverterBase
 }
 ```
 
-## 参考 
+## 参考
 
 - [https://github.com/JamesNK/Newtonsoft.Json/issues/2088](https://github.com/JamesNK/Newtonsoft.Json/issues/2088)
 - [https://www.newtonsoft.com/json/help/html/P_Newtonsoft_Json_Serialization_NamingStrategy_ProcessDictionaryKeys.htm](https://www.newtonsoft.com/json/help/html/P_Newtonsoft_Json_Serialization_NamingStrategy_ProcessDictionaryKeys.htm)
 - [https://blog.csdn.net/yw1688/article/details/38492583](https://blog.csdn.net/yw1688/article/details/38492583)
 - [https://www.jianshu.com/p/c53b1a2a121d](https://www.jianshu.com/p/c53b1a2a121d)
-
-

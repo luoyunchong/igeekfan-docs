@@ -10,15 +10,18 @@
 手动管理依赖注入过于麻烦,当有多个仓储，服务，无法统一注入，Scrutor能帮助我们简化ASP.NET Core的DI注册。
 
 在ConfigServices中，我们原本需要这样子依次注入仓储，服务和其他接口及实现，当有多个仓储时，这样就过于繁琐。
-```
+
+```cs
 services.AddTransient<IUserRepository, UserRepository>();
 services.AddTransient<IUserService, UserService>();
 services.AddTransient<ICurrentUser, CurrentUser>();
 ```
 
 ## Serivce后缀服务注入DI
+
 当我们有多个Service后缀的服务时，使用以下方法，可将服务扫描只留下以Serivce结尾的类，将其类型注册为提供所有公共接口生成服务，其生命周期为Transient，
-```
+
+```cs
 services.Scan(scan => scan
         //加载Startup这个类所在的程序集
         .FromAssemblyOf<Startup>()
@@ -31,9 +34,12 @@ services.Scan(scan => scan
          );
 
 ```
+
 ## ITransientDependency
+
 新建一个空接口，当其他类继承此接口后，统一注入到DI中，以Transient的生命周期。
-```
+
+```cs
 namespace LinCms.Zero.Dependency
 {
     public interface ITransientDependency
@@ -41,9 +47,10 @@ namespace LinCms.Zero.Dependency
     }
 }
 ```
+
 ## 接口
 
-```
+```cs
 public interface ICurrentUser
 {
     int? Id { get; }
@@ -52,9 +59,11 @@ public interface ICurrentUser
 
     bool? IsAdmin { get; }
 }
- ``` 
+ ```
+
 ## 模拟实现
-```
+
+```cs
     public class CurrentUser : ICurrentUser, ITransientDependency
     {
      
@@ -65,7 +74,8 @@ public interface ICurrentUser
 ```
 
 扫描所有继承ITransientDependency的实现。
-```
+
+```cs
    services.Scan(scan => scan
        // We start out with all types in the assembly of ITransientService
         .FromAssemblyOf<ITransientDependency>()
@@ -84,8 +94,10 @@ public interface ICurrentUser
 ```
 
 ## 如何使用
+
 在其他类中使用此接口
-```
+
+```cs
 [ApiController]
 [Route("cms/user")]
 public class UserController : ControllerBase
@@ -106,8 +118,10 @@ public class UserController : ControllerBase
 ```
 
 ## 统一注入
+
 当然，我们可以统一注入，而非写二次servics.Scan
-```
+
+```cs
 services.Scan(scan => scan
             .FromAssemblyOf<Startup>()
             .AddClasses(classes => classes.Where(t => t.Name.EndsWith("Service",StringComparison.OrdinalIgnoreCase)))
@@ -119,4 +133,3 @@ services.Scan(scan => scan
             .WithTransientLifetime()
       );
 ```
-

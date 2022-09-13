@@ -30,7 +30,7 @@ byte b3 = b1 + b2;
 
 正确的语法
 
-```
+```cs
 byte b3 = (byte)(b1 + b2);
 //或
 int b4 = b1 + b2;
@@ -42,7 +42,7 @@ int b4 = b1 + b2;
 
 UTF8 是统一的编码方式，它是一种变长的编码方式.它可以使用 1~4 个字节表示一个符号，根据不同的符号而变化字节长度
 
-```
+```cs
 byte[] plaintext = Encoding.UTF8.GetBytes("0123456789");
 ```
 
@@ -52,7 +52,7 @@ byte[] plaintext = Encoding.UTF8.GetBytes("0123456789");
 
 如果是字母呢。
 
-```
+```cs
 byte[] plaintext = Encoding.UTF8.GetBytes("ABCDabcd");
 ```
 
@@ -82,7 +82,7 @@ byte[]   plaintext = Encoding.UTF8.GetBytes("中国");
 1. `Encoding.UTF8.GetBytes`能得到数据的十进制的字节数组。
 2. `BitConverter.ToString`支持将十进制的数据转换成 16 进制，中间以`-`分隔，所以需要将中间的`-` `Replace`掉
 
-```
+```cs
 public string ByteToHex(string str)
 {
     byte[] bytes = Encoding.UTF8.GetBytes(str);

@@ -118,7 +118,6 @@ BaseType 有一条数据，TypeCode 为 字符串 category、FullName 文章类�
 
 使用 FreeSql 实现时，如果二个表之间没有导航属性，是更复杂的。
 
-##
 
 ### lin_file 文件存储
 
