@@ -25,13 +25,14 @@ dotnet add package IGeekFan.FreeKit.Email
     "Host": "smtp.163.com",
     "Port": "25",
     "EnableSsl": true,
+    "DisplayName": "天上月官方账号",
     "UserName": "igeekfan@163.com",
     "Password": "",
     "Domain": ""
   },
 ```
 
-2).通过回调函数配置
+2).或通过回调函数配置
 
 ```csharp
     services.AddEmailSender(r =>
@@ -39,6 +40,7 @@ dotnet add package IGeekFan.FreeKit.Email
         r.Host = "smtp.163.com";
         r.Port = 25;
         r.EnableSsl = true;
+        r.DisplayName="天上月官方账号";
         r.UserName = "igeekfan@163.com";
         r.Password = "";
         r.Domain = "";
