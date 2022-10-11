@@ -3,7 +3,7 @@
   <id>https://igeekfan.cn/igeekfan-docs/</id>
   <title>.NET 开发者指北</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
-  <updated>2022-09-13T11:35:38.815Z</updated>
+  <updated>2022-10-11T16:55:44.155Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -1675,7 +1675,7 @@ app<span>.</span>Services<span>.</span><span>RunScopeService</span><span>(</span
     <title type="html">Email 邮件</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Email.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Email.html"/>
-    <updated>2022-07-23T08:22:49.000Z</updated>
+    <updated>2022-10-11T16:54:04.000Z</updated>
     <content type="html"><![CDATA[<h1 id="email-邮件" tabindex="-1"> Email 邮件</h1>
 <h2 id="igeekfan-freekit-email" tabindex="-1"> IGeekFan.FreeKit.Email</h2>
 <p>该包是一个独立的开发包，内部由MailKit实现发送邮件。</p>
@@ -1695,21 +1695,23 @@ app<span>.</span>Services<span>.</span><span>RunScopeService</span><span>(</span
     <span>"Host"</span><span>:</span> <span>"smtp.163.com"</span><span>,</span>
     <span>"Port"</span><span>:</span> <span>"25"</span><span>,</span>
     <span>"EnableSsl"</span><span>:</span> <span>true</span><span>,</span>
+    <span>"DisplayName"</span><span>:</span> <span>"天上月官方账号"</span><span>,</span>
     <span>"UserName"</span><span>:</span> <span>"igeekfan@163.com"</span><span>,</span>
     <span>"Password"</span><span>:</span> <span>""</span><span>,</span>
     <span>"Domain"</span><span>:</span> <span>""</span>
   <span>}</span><span>,</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br></div></div><p>2).通过回调函数配置</p>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br></div></div><p>2).或通过回调函数配置</p>
 <div><pre><code>    services<span>.</span><span>AddEmailSender</span><span>(</span>r <span>=></span>
     <span>{</span>
         r<span>.</span>Host <span>=</span> <span>"smtp.163.com"</span><span>;</span>
         r<span>.</span>Port <span>=</span> <span>25</span><span>;</span>
         r<span>.</span>EnableSsl <span>=</span> <span>true</span><span>;</span>
+        r<span>.</span>DisplayName<span>=</span><span>"天上月官方账号"</span><span>;</span>
         r<span>.</span>UserName <span>=</span> <span>"igeekfan@163.com"</span><span>;</span>
         r<span>.</span>Password <span>=</span> <span>""</span><span>;</span>
         r<span>.</span>Domain <span>=</span> <span>""</span><span>;</span>
     <span>}</span><span>)</span><span>;</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br></div></div><ul>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><ul>
 <li>业务逻辑</li>
 </ul>
 <div><pre><code>    <span>public</span> <span>interface</span> <span>IAccountService</span>
