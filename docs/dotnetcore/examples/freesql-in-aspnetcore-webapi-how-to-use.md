@@ -10,28 +10,32 @@
 代码托管在GitHub上 [https://github.com/luoyunchong/dotnetcore-examples](https://github.com/luoyunchong/dotnetcore-examples/blob/master/ORM/FreeSql/OvOv.FreeSql.Repository/Controllers/BlogController.cs)
 
 ## 参考
-- FreeSql github [https://github.com/2881099/FreeSql](https://github.com/2881099/FreeSql) 
+
+- FreeSql github [https://github.com/dotnetcore/FreeSql](https://github.com/dotnetcore/FreeSql)
 - [关于.net core cli中如何使用dotnet new](https://docs.microsoft.com/zh-cn/dotnet/core/tools/dotnet-new?tabs=netcore22)
 - [使用 ASP.NET Core 创建 Web API](https://docs.microsoft.com/zh-cn/aspnet/core/web-api/?view=aspnetcore-2.2)
 - [Swagger/OpenAPI 生成接口文档](https://docs.microsoft.com/zh-cn/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-2.2)
 - [Swagger GitHub (Swashbuckle.AspNetCore)](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)
 
 ## 项目准备
+
 - Mysql 5.6
 - Visual Studio 2019或2017、Visual Studio code
 - .NET Core 3.1+
 - PowerShell
 - 懂点mvc，该教程不会教你如何使用 ASP .NET Core MVC、RESTful
 
-
 ### 创建项目
+
 使用dotnet 命令行创建一个webapi项目，起名为OvOv.FreeSql
+
 ```
 PS dotnetcore-examples\aspnetcore-freesql> dotnet new webapi -n OvOv.FreeSql
 The template "ASP.NET Core Web API" was created successfully.
 ```
 
 然后cd 到OvOv.FreeSql目录，通过dotnet run 命令运行项目
+
 ```PowerShell
 PS dotnetcore-examples\aspnetcore-freesql> cd .\OvOv.FreeSql\
 PS dotnetcore-examples\aspnetcore-freesql\OvOv.FreeSql> dotnet run
@@ -48,9 +52,10 @@ info: Microsoft.Hosting.Lifetime[0]
       Content root path: D:\code\github\dotnetcore-examples\aspnetcore-freesql\OvOv.FreeSql
 ```
 
-打开浏览器 https://localhost:5001 会出现404
+打开浏览器 <https://localhost:5001> 会出现404
 
-请打开这个地址 https://localhost:5001/api/values ，可看到如下内容。
+请打开这个地址 <https://localhost:5001/api/values> ，可看到如下内容。
+
 ~~~
 ["value1","value2"]
 ~~~
@@ -58,24 +63,28 @@ info: Microsoft.Hosting.Lifetime[0]
 接下来我们来集成FreeSql，我们以最简单的命令和说明，详细内容去官网看具体内容
 
 - 官网文档 [http://freesql.net/doc](http://freesql.net/doc)
+
 ## Install
+
 要先cd到OvOv.FreeSql目录中。
+
 ~~~PowerShell
 PS \aspnetcore-freesql\OvOv.FreeSql> dotnet add package FreeSql
 PS \aspnetcore-freesql\OvOv.FreeSql> dotnet add package FreeSql.Provider.MySql
 ~~~
 
-
 ## code first
-- [关于CodeFirst，官方文档的介绍](https://github.com/2881099/FreeSql/blob/master/Docs/codefirst.md)
+
+- [关于CodeFirst，官方文档的介绍](https://github.com/dotnetcore/FreeSql/blob/master/Docs/codefirst.md)
 
 代码优先，使用过EntityFramework的应该很清楚这一概念，我的理解就是：在分析数据库表关系时，不通过在数据库中设计表，而是直接在代码中声明对应的类，使用导航属性代替外键关联，通过数据表字段与C#中的类库对应，从而自动生成数据表。
 
+## db first
 
-## db first 
 数据库优先：需求分析后，直接设计数据库，通过数据库中的表，直接生成代码，类。
 
 ## 开始
+
 ### 分析需求
 
 我们以code first 为示例，学习如何使用freesql，实现一个简单的博客。将表内容分为博客表（Blog)和评论表（Post)
@@ -99,11 +108,13 @@ PS \aspnetcore-freesql\OvOv.FreeSql> dotnet add package FreeSql.Provider.MySql
 | ReplyTime    | DateTime    | 回复时间 |
 
 建一个Domain文件夹,用于存放数据库表中对应的实体类。
+
 ### 基础介绍
 
-#### 1. Column属性介绍，大家可以看[源码，解析](https://github.com/2881099/FreeSql/blob/f8c3608fdac2933b528605cc46b21b71c79eaacb/FreeSql/DataAnnotations/ColumnAttribute.cs)
+#### 1. Column属性介绍，大家可以看[源码，解析](https://github.com/dotnetcore/FreeSql/blob/f8c3608fdac2933b528605cc46b21b71c79eaacb/FreeSql/DataAnnotations/ColumnAttribute.cs)
 
 1). 比如：Blog表中指定了Title为varchar(50),我们如何通过代码指定了主键，唯一值，字形。
+
 ```csharp
     public class Blog
     {
@@ -113,10 +124,13 @@ PS \aspnetcore-freesql\OvOv.FreeSql> dotnet add package FreeSql.Provider.MySql
         public string Title { get; set; }
     }
 ```
+
 2). Column的命名空间在
+
 ```csharp
 using FreeSql.DataAnnotations;
 ```
+
 更多属性介绍
 | 字段          | 备注                                                                                                                            |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -140,6 +154,7 @@ public class Blog {
   //...
 }
 ```
+
 更多属性介绍
 | 字段                 | 备注                                                                                                                      |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -148,7 +163,7 @@ public class Blog {
 | SelectFilter         | 查询过滤SQL，实现类似 a.IsDeleted = 1 功能                                                                                |
 | DisableSyncStructure | 禁用 CodeFirst 同步结构迁移                                                                                               |
 
-#### 3. 其他的还是看 https://github.com/2881099/FreeSql/blob/master/Docs/codefirst.md
+#### 3. 其他的还是看 <https://github.com/dotnetcore/FreeSql/blob/master/Docs/codefirst.md>
 
 #### Blog.cs
 ~~~csharp

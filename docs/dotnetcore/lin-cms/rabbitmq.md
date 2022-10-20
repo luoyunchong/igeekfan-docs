@@ -12,7 +12,7 @@ EventBus:事件总线，是一个基于观察者模块的事件发布/订阅框�
 
 如果系统启动后在log/log200xxx.txt日志错误原因，RabbitMQ
 
-```
+```txt
 DotNetCore.CAP.BrokerConnectionException: Broker Unreachable
  ---> RabbitMQ.Client.Exceptions.BrokerUnreachableException: None of the specified endpoints were reachable
  ---> RabbitMQ.Client.Exceptions.OperationInterruptedException: The AMQP operation was interrupted: AMQP close-reason, initiated by Peer, code=530, text="- to NOT_ALLOWED access vhost '/admin' refused for user 'admin'", classId=10, methodId=40, cause=

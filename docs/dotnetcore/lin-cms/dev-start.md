@@ -1,10 +1,8 @@
 # 开发起步
 
-
 ## 项目结构
 
 - framework
-   - IGeekFan.Localization.FreeSql：使用FreeSql存储本地化数据
 - identityserver4
    - LinCms.IdentityServer4:使用id4授权登录
 - src

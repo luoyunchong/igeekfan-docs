@@ -34,10 +34,10 @@ Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套**内�
 ## 线上 Demo
 
 - 本项目 swagger 地址 [https://api.igeekfan.cn/swagger/index.html](https://api.igeekfan.cn/swagger/index.html)
-- 用户端 lin-cms-vvlog [https://vvlog.baimocore.cn](https://vvlog.baimocore.cn)
+- 用户端 lin-cms-vvlog [https://vvlog.igeekfan.cn](https://vvlog.igeekfan.cn)
   - 普通用户：710277267@qq.com
   - 密码：123qwe
-- 管理员 lin-cms-vue [https://cms.baimocore.cn/](https://cms.baimocore.cn)
+- 管理员 lin-cms-vue [https://cms.igeekfan.cn/](https://cms.igeekfan.cn)
   - 管理员： admin
   - 密码：123qwe
 
@@ -78,7 +78,7 @@ Lin 已经内置了 CMS 中最为常见的需求：用户管理、权限管理�
 
 ### 相关技术
 
-- 数据库相关：ORM:[FreeSql](https://github.com/2881099/FreeSql)+DataBase:MySQL5.6/MsSqlServer/Oracle/Sqlite/PostgreSQL
+- 数据库相关：ORM:[FreeSql](https://github.com/dotnetcore/FreeSql)+DataBase:MySQL5.6/MsSqlServer/Oracle/Sqlite/PostgreSQL
 - ASP.NET Core 6 +WebAPI+RESTful
 - 简化对象映射：[AutoMapper](https://automapper.org/)
 - 身份认证框架：[IdentityServer4](https://github.com/IdentityServer/IdentityServer4)
