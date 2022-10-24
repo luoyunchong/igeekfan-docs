@@ -4,7 +4,7 @@
 
 - framework
 - identityserver4
-   - LinCms.IdentityServer4:使用id4授权登录
+  - LinCms.IdentityServer4:使用id4授权登录
 - src
   - LinCms.Web：接口API（ASP.NET Core)、中间件，权限验证
   - LinCms.Application:应用服务
@@ -14,7 +14,8 @@
   - LinCms.Plugins 使用单项目实现某个业务的扩展，不需要主要项目结构，可暂时忽略。
 - test
   - LinCms.Test:对仓储，应用服务或工具类进行测试
-```
+
+```txt
 ├─framework
 │  └─src
 │      └─IGeekFan.Localization.FreeSql
@@ -91,6 +92,7 @@
         │  └─Cms
         └─Utils
 ```
+
 ## 相关技术
 
 ### FreeSql
@@ -101,6 +103,4 @@
 
 ### IdentityServer4
 
-
 - [IdentityServer4 在本项目中的应用](/dotnetcore/examples/IdentityServer4.html)
-

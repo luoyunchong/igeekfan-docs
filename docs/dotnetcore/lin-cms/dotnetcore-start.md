@@ -6,8 +6,7 @@
 - 安装开发工具 [Visual Studio 2022](https://visualstudio.microsoft.com/zh-hans/vs/) 或 [Rider](https://www.jetbrains.com/rider/)
 - 安装 MySQL（version 5.7+)及以上版本
 - Redis 4.0.14.2 for Windows [https://github.com/tporadowski/redis/releases](https://github.com/tporadowski/redis/releases)
-- [Rabbitmq](rabbitmq.md)（非必要），默认基于Memory级别，
-
+- [Rabbitmq](rabbitmq.md)（非必要），默认基于Memory级别
 
 ## 获取工程项目
 
@@ -103,7 +102,7 @@ git clone https://github.com/luoyunchong/lin-cms-dotnetcore.git
 
 ![](https://pic.downk.cc/item/5e83fd74504f4bcb04cf5474.png)
 
-这时候会打开二个网页 https://localhost:5001/swagger/index.html，即可看到 swagger 页面。
+这时候会打开二个网页 <https://localhost:5001/swagger/index.html>，即可看到 swagger 页面。
 
 ![](https://pic.downk.cc/item/5e83ffd1504f4bcb04d0f039.jpg)
 

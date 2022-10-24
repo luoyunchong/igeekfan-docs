@@ -19,12 +19,12 @@
 
 开发必备
 
-- [Node.js 10+](https://nodejs.org/en/) 版本即可，我须安装 12.7
+- [Node.js 10+](https://nodejs.org/en/) 版本即可，必须安装 12.7
 - [yarn](https://yarnpkg.com/zh-Hant/docs/install#windows-stable)
 
 如果以下命令有问题，请删除 yarn.lock，node_modules 文件夹后，重新执行 yarn，yarn serve
 
-```
+```bash
 # clone the project
 git clone https://github.com/luoyunchong/lin-cms-vue.git
 
@@ -54,7 +54,7 @@ scp2 方便快速发布，一行命令就能快速发布成功。
 
 根目录新建 deploy 目录，创建 index.js 文件。
 
-```
+```js
 'use strict'
 // 引入scp2模块
 var client = require('scp2');
@@ -80,19 +80,19 @@ client.scp('dist/', {
 
 快速发布，需要安装 scp2
 
-```
+```bash
 cnpm install scp2
 ```
 
 package.json 中增加
 
-```
+```json
   "scripts": {
     "deploy": "yarn build:production && node ./deploy",
 }
 ```
 
-```
+```bash
 yarn deploy
 ```
 

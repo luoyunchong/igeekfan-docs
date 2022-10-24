@@ -1,5 +1,6 @@
 
 # 开源介绍
+
 - 地址：[https://github.com/luoyunchong/lin-cms-dotnetcore](https://github.com/luoyunchong/lin-cms-dotnetcore)
 
 1.什么是cms？
@@ -17,15 +18,17 @@ Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套内容
 4.lin-cms-dotnetcore有哪些特点？
 
 前后端分离，提供后端接口，更少的依赖，后续将实现模块化安装与卸载。
+
 - 用户管理、分组管理、分组权限管理、日志系统、文件上传等
 - 更多功能（自定义扩展-模块系统）
 - 博客模块，类掘金专栏，用户中心，标签、个人专栏、技术频道（首页分类）
 
-
 ## 设计如下
 
 #### 字典管理
-### 我原本想实现这样的功能：
+
+### 我原本想实现这样的功能
+
 BaseType 1 对BaseItem多。
 
 如：标签管理，一个文章下可以设置多个标签，原本需要设计表Tag,字段也大抵为Id,Name,Sort及关联表。
@@ -39,10 +42,10 @@ BaseItem中BaseTypeId为1，ItemCode为编码,ItemName为标签。ItemCode为不
 我们可以通过BaseType、BaseItem来实现，从而简化这些基础数据。
 BaseType有一条数据，TypeCode为 字符串category、FullName文章类别，BaseItem存多个文章类别(Java、大数据、Python、C#等)，编码不同即可。
 
-
 1. 表结构
 
 #### base_type （字典类别管理）
+
 | 字段      | 类型        | 备注     |
 | --------- | ----------- | -------- |
 | id        | int         |
@@ -51,6 +54,7 @@ BaseType有一条数据，TypeCode为 字符串category、FullName文章类别�
 | sort_code | int         | 排序码   |
 
 #### base_item （字典管理）
+
 | 字段         | 类型        | 备注                      |
 | ------------ | ----------- | ------------------------- |
 | id           | int         |
@@ -59,14 +63,13 @@ BaseType有一条数据，TypeCode为 字符串category、FullName文章类别�
 | item_name    | varchar(50) | 字典全称                  |
 | sort_code    | int         | 排序码                    |
 
-
 #### 但现实总是事与愿违
+
 > 后台取文章列表时，想要取出文章对应的分类，手动join时，总觉得join的表会有些奇怪。
 
 当然还有其他原因，**局限性**：
+
 1. 比如使用了这个字典，分类需要增加一个图片字段，就不能满足要求，那怎么办呢，做不了。
 2. 比如标签需要实现这个标签下有多少个文章，通过统计也能实现，
 
 使用FreeSql实现时，如果二个表之间没有导航属性，是更复杂的。
-
-
