@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 20 Oct 2022 16:02:17 GMT</pubDate>
-    <lastBuildDate>Thu, 20 Oct 2022 16:02:17 GMT</lastBuildDate>
+    <pubDate>Mon, 24 Oct 2022 14:16:03 GMT</pubDate>
+    <lastBuildDate>Mon, 24 Oct 2022 14:16:03 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>ASP.NET Core</category>
@@ -6029,7 +6029,7 @@ IAuditBaseRepository&lt;LinGroupPermission, long>
 </ul>
 <h2 id="设计如下" tabindex="-1"> 设计如下</h2>
 <h4 id="字典管理" tabindex="-1"> 字典管理</h4>
-<h3 id="我原本想实现这样的功能" tabindex="-1"> 我原本想实现这样的功能：</h3>
+<h3 id="我原本想实现这样的功能" tabindex="-1"> 我原本想实现这样的功能</h3>
 <p>BaseType 1 对BaseItem多。</p>
 <p>如：标签管理，一个文章下可以设置多个标签，原本需要设计表Tag,字段也大抵为Id,Name,Sort及关联表。
 我们使用BaseType、BaseItem实现。
@@ -7955,21 +7955,21 @@ PS &gt; dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection -
 <li>未登录，不带access_token，直接请求需要登录的接口、管理员接口结果一样。</li>
 </ol>
 <p>返回结果应为：状态码：401 UNAUTHORIZED</p>
-<div><pre><code>{
-    "error_code": 10000,
-    "msg": "认证失败，请检查请求头或者重新登陆",
-    "request": "GET  /cms/admin/authority"
-}
+<div><pre><code><span>{</span>
+    <span>"error_code"</span><span>:</span> <span>10000</span><span>,</span>
+    <span>"msg"</span><span>:</span> <span>"认证失败，请检查请求头或者重新登陆"</span><span>,</span>
+    <span>"request"</span><span>:</span> <span>"GET  /cms/admin/authority"</span>
+<span>}</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><ol start="2">
 <li>携带access_token，但非超级管理员(admin字段为2),访问的方法为角色为超管才有权限的方法。</li>
 </ol>
-<div><pre><code>[LinCmsAuthorize(Roles = LinGroup.Administrator)]
+<div><pre><code><span>[</span><span><span>LinCmsAuthorize</span><span><span>(</span>Roles <span>=</span> LinGroup<span>.</span>Administrator<span>)</span></span></span><span>]</span>
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>返回结果应为：：状态码：401 UNAUTHORIZED</p>
-<div><pre><code>{
-    "error_code": 10000,
-    "msg": "只有超级管理员可操作",
-    "request": "GET  /cms/admin/authority"
-}
+<div><pre><code><span>{</span>
+    <span>"error_code"</span><span>:</span> <span>10000</span><span>,</span>
+    <span>"msg"</span><span>:</span> <span>"只有超级管理员可操作"</span><span>,</span>
+    <span>"request"</span><span>:</span> <span>"GET  /cms/admin/authority"</span>
+<span>}</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><ol start="3">
 <li>携带access_token ，访问只需要登录的接口（/cms/user/auths）</li>
 </ol>
@@ -9791,7 +9791,7 @@ Fsql.Aop.AuditValue += (s, e) =>
 <li>安装开发工具 <a href="https://visualstudio.microsoft.com/zh-hans/vs/" target="_blank" rel="noopener noreferrer">Visual Studio 2022</a> 或 <a href="https://www.jetbrains.com/rider/" target="_blank" rel="noopener noreferrer">Rider</a></li>
 <li>安装 MySQL（version 5.7+)及以上版本</li>
 <li>Redis 4.0.14.2 for Windows <a href="https://github.com/tporadowski/redis/releases" target="_blank" rel="noopener noreferrer">https://github.com/tporadowski/redis/releases</a></li>
-<li><a href="/dotnetcore/lin-cms/rabbitmq.html">Rabbitmq</a>（非必要），默认基于Memory级别，</li>
+<li><a href="/dotnetcore/lin-cms/rabbitmq.html">Rabbitmq</a>（非必要），默认基于Memory级别</li>
 </ul>
 <h2 id="获取工程项目" tabindex="-1"> 获取工程项目</h2>
 <div><pre><code><span>git</span> clone https://github.com/luoyunchong/lin-cms-dotnetcore.git
@@ -9854,7 +9854,7 @@ Fsql.Aop.AuditValue += (s, e) =>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br></div></div><p>如果<code>Service.IdentityServer4</code>设置成了true</p>
 <p>由于将 identityserver4 单独拆成了一个项目，所以需要同时启动二个项目，<strong>右键解决方案，属性。</strong>,选择多个启动项目，勾选二个项目同时启动。如下图所示。</p>
 <p><img src="https://pic.downk.cc/item/5e83fd74504f4bcb04cf5474.png" alt="" loading="lazy"></p>
-<p>这时候会打开二个网页 https://localhost:5001/swagger/index.html，即可看到 swagger 页面。</p>
+<p>这时候会打开二个网页 <a href="https://localhost:5001/swagger/index.html" target="_blank" rel="noopener noreferrer">https://localhost:5001/swagger/index.html</a>，即可看到 swagger 页面。</p>
 <p><img src="https://pic.downk.cc/item/5e83ffd1504f4bcb04d0f039.jpg" alt="" loading="lazy"></p>
 <p>会打开浏览器，访问<a href="https://localhosst:5001/swagger/index.html" target="_blank" rel="noopener noreferrer">https://localhosst:5001/swagger/index.html</a>，会看到 swagger 的文档。
 访问<a href="https://localhosst:5001/swagger/index.html" target="_blank" rel="noopener noreferrer">https://localhosst:5003/swagger/index.html</a> 是 ids4 的接口文档，什么也看不到。</p>
@@ -10593,21 +10593,21 @@ config: {url: "https://localhost:5001/GetOpenIdByToken"}
 <h2 id="快速上手" tabindex="-1"> 快速上手</h2>
 <p>开发必备</p>
 <ul>
-<li><a href="https://nodejs.org/en/" target="_blank" rel="noopener noreferrer">Node.js 10+</a> 版本即可，我须安装 12.7</li>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="noopener noreferrer">Node.js 10+</a> 版本即可，必须安装 12.7</li>
 <li><a href="https://yarnpkg.com/zh-Hant/docs/install#windows-stable" target="_blank" rel="noopener noreferrer">yarn</a></li>
 </ul>
 <p>如果以下命令有问题，请删除 yarn.lock，node_modules 文件夹后，重新执行 yarn，yarn serve</p>
-<div><pre><code># clone the project
-git clone https://github.com/luoyunchong/lin-cms-vue.git
+<div><pre><code><span># clone the project</span>
+<span>git</span> clone https://github.com/luoyunchong/lin-cms-vue.git
 
-# install dependency
-yarn
+<span># install dependency</span>
+<span>yarn</span>
 
-# develop
-yarn serve
+<span># develop</span>
+<span>yarn</span> serve
 
-# deploy
-yarn deploy
+<span># deploy</span>
+<span>yarn</span> deploy
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br></div></div><h2 id="deploy-发布" tabindex="-1"> deploy 发布</h2>
 <p>scp2 方便快速发布，一行命令就能快速发布成功。</p>
 <p>必备条件：（参数）</p>
@@ -10620,34 +10620,34 @@ yarn deploy
 </ul>
 <h2 id="步骤" tabindex="-1"> 步骤</h2>
 <p>根目录新建 deploy 目录，创建 index.js 文件。</p>
-<div><pre><code>'use strict'
-// 引入scp2模块
-var client = require('scp2');
-const ora = require('ora')
-const chalk = require('chalk')
-const spinner = ora('正在发布到生产服务器...')
-spinner.start()
-client.scp('dist/', {
-    "host": "",
-    "username": "",
-    "password": "",
-    "port": "22",
-    "path": "/var/www/lin-cms-vue"
-}, function (err) {
-    spinner.stop()
-    if (!err) {
-        console.log("npm run build-scp2: scp2工具上传完毕,远端服务路径：/var/www/lin-cms-vue")
-    } else {
-        console.log("err", err)
-    }
-})
+<div><pre><code><span>'use strict'</span>
+<span>// 引入scp2模块</span>
+<span>var</span> client <span>=</span> <span>require</span><span>(</span><span>'scp2'</span><span>)</span><span>;</span>
+<span>const</span> ora <span>=</span> <span>require</span><span>(</span><span>'ora'</span><span>)</span>
+<span>const</span> chalk <span>=</span> <span>require</span><span>(</span><span>'chalk'</span><span>)</span>
+<span>const</span> spinner <span>=</span> <span>ora</span><span>(</span><span>'正在发布到生产服务器...'</span><span>)</span>
+spinner<span>.</span><span>start</span><span>(</span><span>)</span>
+client<span>.</span><span>scp</span><span>(</span><span>'dist/'</span><span>,</span> <span>{</span>
+    <span>"host"</span><span>:</span> <span>""</span><span>,</span>
+    <span>"username"</span><span>:</span> <span>""</span><span>,</span>
+    <span>"password"</span><span>:</span> <span>""</span><span>,</span>
+    <span>"port"</span><span>:</span> <span>"22"</span><span>,</span>
+    <span>"path"</span><span>:</span> <span>"/var/www/lin-cms-vue"</span>
+<span>}</span><span>,</span> <span>function</span> <span>(</span><span>err</span><span>)</span> <span>{</span>
+    spinner<span>.</span><span>stop</span><span>(</span><span>)</span>
+    <span>if</span> <span>(</span><span>!</span>err<span>)</span> <span>{</span>
+        console<span>.</span><span>log</span><span>(</span><span>"npm run build-scp2: scp2工具上传完毕,远端服务路径：/var/www/lin-cms-vue"</span><span>)</span>
+    <span>}</span> <span>else</span> <span>{</span>
+        console<span>.</span><span>log</span><span>(</span><span>"err"</span><span>,</span> err<span>)</span>
+    <span>}</span>
+<span>}</span><span>)</span>
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br></div></div><p>快速发布，需要安装 scp2</p>
-<div><pre><code>cnpm install scp2
+<div><pre><code>cnpm <span>install</span> scp2
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>package.json 中增加</p>
-<div><pre><code>  "scripts": {
-    "deploy": "yarn build:production &amp;&amp; node ./deploy",
-}
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><div><pre><code>yarn deploy
+<div><pre><code>  <span>"scripts"</span><span>:</span> <span>{</span>
+    <span>"deploy"</span><span>:</span> <span>"yarn build:production &amp;&amp; node ./deploy"</span><span>,</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br></div></div><div><pre><code><span>yarn</span> deploy
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><h2 id="nginx-配置" tabindex="-1"> nginx 配置</h2>
 <ul>
 <li>vue 使用 history 的配置</li>
