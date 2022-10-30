@@ -3,7 +3,7 @@
   <id>https://igeekfan.cn/igeekfan-docs/</id>
   <title>.NET 开发者指北</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
-  <updated>2022-10-24T14:16:03.826Z</updated>
+  <updated>2022-10-30T15:37:46.551Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -1774,7 +1774,7 @@ app<span>.</span>Services<span>.</span><span>RunScopeService</span><span>(</span
     <title type="html">FreeKit Extras 扩展包</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Extras.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/Extras.html"/>
-    <updated>2022-08-26T16:24:46.000Z</updated>
+    <updated>2022-10-30T15:36:06.000Z</updated>
     <content type="html"><![CDATA[<h1 id="freekit-extras-扩展包" tabindex="-1"> FreeKit Extras 扩展包</h1>
 <p>该项目是基于 FreeSql 实现的一些扩展包、AOP 事务，当前用户，简化依赖注入</p>
 <h2 id="一些扩展包" tabindex="-1"> 一些扩展包</h2>
@@ -1844,11 +1844,27 @@ r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"I
 <li><code>FullAuditEntity&lt;T, U&gt;</code> 包含审计实体基类,包含<strong>创建、修改、删除</strong>加主键等10个字段，其实T为当前主键类型，U为用户表主键类型</li>
 </ul>
 <h3 id="简化-freesql-单库的配置" tabindex="-1"> 简化 FreeSql 单库的配置</h3>
-<p>UseConnectionString 扩展方法，DefaultDB 配置 4 代表使用配置串 Sqlite。需要安装<code>FreeSql.Provider.Sqlite</code>,<code>DefaultDB</code>配置的值实际为<code>FreeSql.DataType</code>的枚举值</p>
+<p><code>UseConnectionString</code> 扩展方法，DefaultDB 配置 4 代表使用配置串 Sqlite。需要安装<code>FreeSql.Provider.Sqlite</code></p>
 <ul>
-<li>appsettings.json</li>
+<li>
+<p><code>DefaultDB</code>配置的值实际为<code>FreeSql.DataType</code>的枚举值,即0代表MySql，1代表SqlServer</p>
+</li>
+<li>
+<p><code>ProviderType</code>：同时安装同一种数据库provider时，通过设置ProviderType，指定具体要求的provider</p>
+</li>
+<li>
+<p>appsettings.json</p>
+</li>
 </ul>
 <div><pre><code><span>"ConnectionStrings"</span><span>:</span> <span>{</span>
+    <span>//"ProviderType": "FreeSql.MySql.MySqlProvider`1,FreeSql.Provider.MySql",</span>
+    <span>//"ProviderType": "FreeSql.MySql.MySqlProvider`1,FreeSql.Provider.MySqlConnector",</span>
+    <span>//"ProviderType": "FreeSql.Odbc.MySql.OdbcMySqlProvider`1,FreeSql.Provider.Odbc",</span>
+    <span>//"ProviderType": "FreeSql.SqlServer.SqlServerProvider`1,FreeSql.Provider.SqlServer",</span>
+    <span>//"ProviderType": "FreeSql.SqlServer.SqlServerProvider`1,FreeSql.Provider.SqlServerForSystem",</span>
+    <span>//"ProviderType": "FreeSql.Oracle.OracleProvider`1,FreeSql.Provider.Oracle",</span>
+    <span>//"ProviderType": "FreeSql.Oracle.OracleProvider`1,FreeSql.Provider.OracleOledb",</span>
+    <span>//"ProviderType": "FreeSql.Odbc.Oracle.OdbcOracleProvider`1,FreeSql.Provider.Odbc",</span>
     <span>"DefaultDB"</span><span>:</span> <span>"4"</span><span>,</span>
     <span>"DataType"</span><span>:</span> <span>{</span>
         <span>"MySql"</span><span>:</span> <span>0</span><span>,</span>
@@ -1863,7 +1879,7 @@ r<span>.</span>FullName<span>.</span><span>Contains</span><span>(</span><span>"I
     <span>"Oracle"</span><span>:</span> <span>"user id=user1;password=123456; data source=//127.0.0.1:1521/ORCL;Pooling=true;Min Pool Size=1"</span><span>,</span>
     <span>"Sqlite"</span><span>:</span> <span>"Data Source=|DataDirectory|/freekit.db; Attachs=freekit.db; Pooling=true;Min Pool Size=1"</span>
     <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br></div></div><ul>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br></div></div><ul>
 <li>扩展方法配置 FreeSql，并设置 <code>ICurrentUserAccessor</code> 获取租户Id设置全局过滤器</li>
 </ul>
 <div><pre><code><span>public</span> <span>static</span> <span>class</span> <span>ServiceCollectionExtensions</span>
@@ -7928,7 +7944,7 @@ PS &gt; dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection -
     <title type="html">认证鉴权状态</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/identityserver4-jwt.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/identityserver4-jwt.html"/>
-    <updated>2022-10-24T14:14:31.000Z</updated>
+    <updated>2022-10-30T15:36:06.000Z</updated>
     <content type="html"><![CDATA[<h1 id="认证鉴权状态" tabindex="-1"> 认证鉴权状态</h1>
 <p>认证分为以下情况：当前角色为管理员，该分组配置了权限，该分组未分配某一方法的权限.</p>
 <p>状态码（StatusCode):401 UnAuthorized</p>
@@ -7958,21 +7974,21 @@ PS &gt; dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection -
 <li>未登录，不带access_token，直接请求需要登录的接口、管理员接口结果一样。</li>
 </ol>
 <p>返回结果应为：状态码：401 UNAUTHORIZED</p>
-<div><pre><code><span>{</span>
-    <span>"error_code"</span><span>:</span> <span>10000</span><span>,</span>
-    <span>"msg"</span><span>:</span> <span>"认证失败，请检查请求头或者重新登陆"</span><span>,</span>
-    <span>"request"</span><span>:</span> <span>"GET  /cms/admin/authority"</span>
-<span>}</span>
+<div><pre><code>{
+    "error_code": 10000,
+    "msg": "认证失败，请检查请求头或者重新登陆",
+    "request": "GET  /cms/admin/authority"
+}
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><ol start="2">
 <li>携带access_token，但非超级管理员(admin字段为2),访问的方法为角色为超管才有权限的方法。</li>
 </ol>
-<div><pre><code><span>[</span><span><span>LinCmsAuthorize</span><span><span>(</span>Roles <span>=</span> LinGroup<span>.</span>Administrator<span>)</span></span></span><span>]</span>
+<div><pre><code>[LinCmsAuthorize(Roles = LinGroup.Administrator)]
 </code></pre><div aria-hidden="true"><span>1</span><br></div></div><p>返回结果应为：：状态码：401 UNAUTHORIZED</p>
-<div><pre><code><span>{</span>
-    <span>"error_code"</span><span>:</span> <span>10000</span><span>,</span>
-    <span>"msg"</span><span>:</span> <span>"只有超级管理员可操作"</span><span>,</span>
-    <span>"request"</span><span>:</span> <span>"GET  /cms/admin/authority"</span>
-<span>}</span>
+<div><pre><code>{
+    "error_code": 10000,
+    "msg": "只有超级管理员可操作",
+    "request": "GET  /cms/admin/authority"
+}
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br></div></div><ol start="3">
 <li>携带access_token ，访问只需要登录的接口（/cms/user/auths）</li>
 </ol>
@@ -9342,7 +9358,7 @@ order by (a.`view_hits` + a.`likes_quantity` * 20 + a.`comment_quantity` * 30) D
     <title type="html">Lin CMS By .NET</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/"/>
-    <updated>2022-10-20T16:01:01.000Z</updated>
+    <updated>2022-10-30T15:36:06.000Z</updated>
     <content type="html"><![CDATA[<p></p>
 <h1 id="lin-cms-by-net" tabindex="-1"> Lin CMS By .NET</h1>
 <h1  align="center">
@@ -9400,20 +9416,21 @@ order by (a.`view_hits` + a.`likes_quantity` * 20 + a.`comment_quantity` * 30) D
 <p>其次，单页面应用程序的体验本身就要好于传统网站。</p>
 <h3 id="框架本身已内置了-cms-常用的功能" tabindex="-1"> 框架本身已内置了 CMS 常用的功能</h3>
 <p>Lin 已经内置了 CMS 中最为常见的需求：用户管理、权限管理、日志系统等。开发者只需要集中精力开发自己的 CMS 业务即可</p>
-<p>更多关于 Lin CMS 的介绍请访问<a href="http://doc.cms.7yue.pro/" target="_blank" rel="noopener noreferrer">Lin CMS 线上文档</a></p>
+<p>更多关于 Lin CMS 的介绍请访问<a href="https://igeekfan.cn" target="_blank" rel="noopener noreferrer">Lin CMS 线上文档</a></p>
 <h2 id="所需基础" tabindex="-1"> 所需基础</h2>
 <p>由于 Lin 采用的是前后端分离的架构，所以你至少需要熟悉 C# 和 Vue。</p>
 <h3 id="后端-c" tabindex="-1"> 后端 C#</h3>
-<p>该项目的 Lin 的服务端框架是基于<a href="https://docs.microsoft.com/zh-cn/dotnet/core/" target="_blank" rel="noopener noreferrer">.NET Core 3.1</a>构建的，所以如果你比较熟悉 Mvc、WebAPI、过滤器等概念，或者是 有.NET Framework 中 Mvc 开发经验，相信你一定很容易写出代码。</p>
+<p>该项目的 Lin 的服务端框架是基于<a href="https://docs.microsoft.com/zh-cn/dotnet/core/" target="_blank" rel="noopener noreferrer">.NET6</a>构建的，所以如果你比较熟悉 Mvc、WebAPI、过滤器等概念，或者是 有.NET Framework 中 Mvc 开发经验，相信你一定很容易写出代码。</p>
 <h3 id="相关技术" tabindex="-1"> 相关技术</h3>
 <ul>
-<li>数据库相关：ORM:<a href="https://github.com/dotnetcore/FreeSql" target="_blank" rel="noopener noreferrer">FreeSql</a>+DataBase:MySQL5.6/MsSqlServer/Oracle/Sqlite/PostgreSQL</li>
+<li>数据库相关：ORM:<a href="https://github.com/dotnetcore/FreeSql" target="_blank" rel="noopener noreferrer">FreeSql</a>+数据库支持:MySQL/MsSqlServer/Oracle/Sqlite/PostgreSQL及更多国产化数据库</li>
 <li>ASP.NET Core 6 +WebAPI+RESTful</li>
 <li>简化对象映射：<a href="https://automapper.org/" target="_blank" rel="noopener noreferrer">AutoMapper</a></li>
 <li>身份认证框架：<a href="https://github.com/IdentityServer/IdentityServer4" target="_blank" rel="noopener noreferrer">IdentityServer4</a></li>
 <li>Json Web 令牌:JWT</li>
-<li>文档 API：Swagger(<a href="https://github.com/domaindrivendev/Swashbuckle.AspNetCore" target="_blank" rel="noopener noreferrer">Swashbuckle.AspNetCore</a>)
+<li>文档 API
 <ul>
+<li>Swagger(<a href="https://github.com/domaindrivendev/Swashbuckle.AspNetCore" target="_blank" rel="noopener noreferrer">Swashbuckle.AspNetCore</a>)</li>
 <li>RapiDoc(<a href="https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc" target="_blank" rel="noopener noreferrer">RapiDoc</a>)</li>
 <li>Knife4jUI(<a href="https://github.com/luoyunchong/IGeekFan.AspNetCore.Knife4jUI" target="_blank" rel="noopener noreferrer">Knife4jUI</a>)</li>
 </ul>
@@ -9471,7 +9488,7 @@ order by (a.`view_hits` + a.`likes_quantity` * 20 + a.`comment_quantity` * 30) D
 </li>
 </ul>
 <h3 id="前端-1" tabindex="-1"> 前端</h3>
-<p>前端需要开发者比较熟悉 Vue 的，另外需要了解 ES6,axios,ElementUi、webpack、Vuex、Vue-Router 等等等</p>
+<p>前端需要开发者比较熟悉 Vue 的，另外需要了解 ES6,Axios,Element Plus、webpack、Vuex、Vue-Router 等等等</p>
 <h2 id="更新日志" tabindex="-1"> 更新日志</h2>
 <p><a href="https://github.com/luoyunchong/lin-cms-dotnetcore/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97" target="_blank" rel="noopener noreferrer">https://github.com/luoyunchong/lin-cms-dotnetcore/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97</a></p>
 ]]></content>
