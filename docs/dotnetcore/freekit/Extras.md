@@ -91,12 +91,23 @@ r.FullName.Contains("IGeekFan.FreeKit.Web")
 
 ### 简化 FreeSql 单库的配置
 
-UseConnectionString 扩展方法，DefaultDB 配置 4 代表使用配置串 Sqlite。需要安装`FreeSql.Provider.Sqlite`,`DefaultDB`配置的值实际为`FreeSql.DataType`的枚举值
+`UseConnectionString` 扩展方法，DefaultDB 配置 4 代表使用配置串 Sqlite。需要安装`FreeSql.Provider.Sqlite`
+
+- `DefaultDB`配置的值实际为`FreeSql.DataType`的枚举值,即0代表MySql，1代表SqlServer
+- `ProviderType`：同时安装同一种数据库provider时，通过设置ProviderType，指定具体要求的provider
 
 - appsettings.json
 
 ```json
 "ConnectionStrings": {
+    //"ProviderType": "FreeSql.MySql.MySqlProvider`1,FreeSql.Provider.MySql",
+    //"ProviderType": "FreeSql.MySql.MySqlProvider`1,FreeSql.Provider.MySqlConnector",
+    //"ProviderType": "FreeSql.Odbc.MySql.OdbcMySqlProvider`1,FreeSql.Provider.Odbc",
+    //"ProviderType": "FreeSql.SqlServer.SqlServerProvider`1,FreeSql.Provider.SqlServer",
+    //"ProviderType": "FreeSql.SqlServer.SqlServerProvider`1,FreeSql.Provider.SqlServerForSystem",
+    //"ProviderType": "FreeSql.Oracle.OracleProvider`1,FreeSql.Provider.Oracle",
+    //"ProviderType": "FreeSql.Oracle.OracleProvider`1,FreeSql.Provider.OracleOledb",
+    //"ProviderType": "FreeSql.Odbc.Oracle.OdbcOracleProvider`1,FreeSql.Provider.Odbc",
     "DefaultDB": "4",
     "DataType": {
         "MySql": 0,

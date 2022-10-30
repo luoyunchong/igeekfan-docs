@@ -76,43 +76,6 @@ pnpm deploy
 .\deploy.ps1
 ```
 
-## 自动发布至 linux
-
-```bash
-npm install scp2 
-```
-
-根目录创建 deploy 文件夹，新增一个 index.js 文件。里面放至如下代码，修改自己的 ip，用户名，密码，目录
-
-```js
-'use strict'
-// 引入scp2模块
-var client = require('scp2');
-const ora = require('ora')
-const spinner = ora('正在发布到生产服务器...')
-spinner.start()
-client.scp('docs/.vuepress/dist/', {
-    "host": "ip",
-    "username": "username",
-    "password": "password",
-    "port": "22",
-    "path": "目录"
-}, function (err) {
-    spinner.stop()
-    if (!err) {
-        console.log("npm run build-scp2: scp2工具上传完毕,远端服务路径：/var/www/html/igeekfan-docs")
-    } else {
-        console.log("err", err)
-    }
-})
-```
-
-执行如下代码
-
-```bash
-yarn deploy:linux
-```
-
 ## nginx 配置 
 
 nginx 相关配置，/etc/nginx/conf.d/新建一个以.conf 为后缀的文件即可。

@@ -66,7 +66,7 @@ Lin CMS 的构筑思想是有其自身特点的。下面我们阐述一些 Lin �
 
 Lin 已经内置了 CMS 中最为常见的需求：用户管理、权限管理、日志系统等。开发者只需要集中精力开发自己的 CMS 业务即可
 
-更多关于 Lin CMS 的介绍请访问[Lin CMS 线上文档](http://doc.cms.7yue.pro/)
+更多关于 Lin CMS 的介绍请访问[Lin CMS 线上文档](https://igeekfan.cn)
 
 ## 所需基础
 
@@ -74,16 +74,17 @@ Lin 已经内置了 CMS 中最为常见的需求：用户管理、权限管理�
 
 ### 后端 C#
 
-该项目的 Lin 的服务端框架是基于[.NET Core 3.1](https://docs.microsoft.com/zh-cn/dotnet/core/)构建的，所以如果你比较熟悉 Mvc、WebAPI、过滤器等概念，或者是 有.NET Framework 中 Mvc 开发经验，相信你一定很容易写出代码。
+该项目的 Lin 的服务端框架是基于[.NET6](https://docs.microsoft.com/zh-cn/dotnet/core/)构建的，所以如果你比较熟悉 Mvc、WebAPI、过滤器等概念，或者是 有.NET Framework 中 Mvc 开发经验，相信你一定很容易写出代码。
 
 ### 相关技术
 
-- 数据库相关：ORM:[FreeSql](https://github.com/dotnetcore/FreeSql)+DataBase:MySQL5.6/MsSqlServer/Oracle/Sqlite/PostgreSQL
+- 数据库相关：ORM:[FreeSql](https://github.com/dotnetcore/FreeSql)+数据库支持:MySQL/MsSqlServer/Oracle/Sqlite/PostgreSQL及更多国产化数据库
 - ASP.NET Core 6 +WebAPI+RESTful
 - 简化对象映射：[AutoMapper](https://automapper.org/)
 - 身份认证框架：[IdentityServer4](https://github.com/IdentityServer/IdentityServer4)
 - Json Web 令牌:JWT
-- 文档 API：Swagger([Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore))
+- 文档 API
+  - Swagger([Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore))
   - RapiDoc([RapiDoc](https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc))
   - Knife4jUI([Knife4jUI](https://github.com/luoyunchong/IGeekFan.AspNetCore.Knife4jUI))
 - 序列化：Newtonsoft.Json
@@ -131,7 +132,7 @@ Lin 已经内置了 CMS 中最为常见的需求：用户管理、权限管理�
 
 ### 前端
 
-前端需要开发者比较熟悉 Vue 的，另外需要了解 ES6,axios,ElementUi、webpack、Vuex、Vue-Router 等等等
+前端需要开发者比较熟悉 Vue 的，另外需要了解 ES6,Axios,Element Plus、webpack、Vuex、Vue-Router 等等等
 
 ## 更新日志
 
