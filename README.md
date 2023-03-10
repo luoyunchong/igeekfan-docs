@@ -39,7 +39,7 @@ pnpm i -D vuepress@next
 ## 文档源码
 
 - [https://github.com/luoyunchong/igeekfan-docs](https://github.com/luoyunchong/igeekfan-docs)
-- [https://gitee.com/igeekfan/igeekfan-docs](httpsgiteegithub.com/igeekfan/igeekfan-docs)
+- [https://gitee.com/igeekfan/igeekfan-docs](https://gitee.com/igeekfan/igeekfan-docs)
 
 ## 部署地址
 
