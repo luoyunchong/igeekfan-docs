@@ -92,6 +92,8 @@ export const zhSidebarConfig = sidebar({
                 'docker/Docker-Nacos.md',
                 'docker/Docker-Portainer.md',
                 'docker/Docker-Redis.md',
+                'docker/Docker-Nginx.md',
+                'docker/Docker-RabbitMQ.md',
                 'docker/Docker-CMS.md',
             ]
         }

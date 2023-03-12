@@ -1,84 +1,82 @@
 # QQ第三方授权登录
+
 ## 安装包
- 
+
  ```
  dotnet add package AspNet.Security.OAuth.QQ
  ```
- 
- - [接上文GitHub第三方授权登录](https://luoyunchong.github.io/igeekfan-docs/dotnetcore/lin-cms/spa-github-login.html)
 
+- [接上文GitHub第三方授权登录](https://luoyunchong.github.io/igeekfan-docs/dotnetcore/lin-cms/spa-github-login.html)
 
- 
  申请过程不介绍了，[申请者资料](https://wiki.connect.qq.com/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C_oauth2-0),个人也是可以申请成功的。
- 
+
  这时候有二个参数就是clientid clientsecret
- 
+
 ```
 APP ID：xxxx
 APP Key：xxxxxx
 ```
 
 其中**平台信息**，这个申请审核通过后，**不要修改，千万不要随便修改**，一修改就要重新审核。
- 
+
 网站回调域:可以随便修改，并且可以写多个，中间用英文逗号分隔即可。
-比如，网站地址填的：https://api.igeekfan.cn，下面如果是localhost，是可以的，但如果是域名,便只能是https://api.igeekfan.cn这个域名下的路径。
- 
-网站回调域配置,后台是运行在https://localhost:5001端口上。
+比如，网站地址填的：<https://api.igeekfan.cn，下面如果是localhost，是可以的，但如果是域名,便只能是https://api.igeekfan.cn>这个域名下的路径。
+
+网站回调域配置,后台是运行在<https://localhost:5001>端口上。
 
  ```
 https://api.igeekfan.cn/signin-qq;https://localhost:5001/signin-qq
  ```
- 
+
 ## 接口介绍
+
 server-side模式，是OAuth2.0认证的一种模式，又称Web Server Flow；
 
 ![image](http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/OAuth_guide_V2_1.png)
 
-获取Authorization Code 
-https://graph.qq.com/oauth2.0/authorize
+获取Authorization Code
+<https://graph.qq.com/oauth2.0/authorize>
 
 通过Authorization Code获取Access Token
-https://graph.qq.com/oauth2.0/token
+<https://graph.qq.com/oauth2.0/token>
 
 获取用户OpenID_OAuth2.0
-https://graph.qq.com/oauth2.0/me
+<https://graph.qq.com/oauth2.0/me>
 
 获取用户个人信息
-https://graph.qq.com/user/get_user_info
-
-
+<https://graph.qq.com/user/get_user_info>
 
 ## [使用Authorization_Code获取Access_Token](https://wiki.connect.qq.com/%E4%BD%BF%E7%94%A8authorization_code%E8%8E%B7%E5%8F%96access_token)
- 
+
 接入流程如下：
+
 1. 先获取Authorization Code；
 2. 通过Authorization Code获取Access Token
- 
- 
+
 1.Step1：获取Authorization Code
 
-GET 
+GET
 
-https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=client_id&redirect_uri=https://localhost:5001/signin-qq&state=123abc
+<https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=client_id&redirect_uri=https://localhost:5001/signin-qq&state=123abc>
 
-具体参数可查看官网。 
+具体参数可查看官网。
 
 state由用户自己创建一个随机数，以防止CSRF攻击。
 
 如果用户成功登录并授权，则会跳转到指定的回调地址，并在redirect_uri地址后带上Authorization Code和原始的state值。如：
 
-https://localhost:5001/signin-qq?code=B6D497755EACE4635115FC82BE24F280&state=123abc
+<https://localhost:5001/signin-qq?code=B6D497755EACE4635115FC82BE24F280&state=123abc>
 
 后台先根据state验证是自己发出的请求，判断是否相同，不相同，则代表非本项目发出的授权登录请求。
-
 
 2. 根据code获取access_token
 
 GET
 
-https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=client_id&client_secret=client_secret&code=B6D497755EACE4635115FC82BE24F280&redirect_uri=https://localhost:5001/signin-qq
+<https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=client_id&client_secret=client_secret&code=B6D497755EACE4635115FC82BE24F280&redirect_uri=https://localhost:5001/signin-qq>
 
-这时候你会得到 
+这时候你会得到
+
 ```
 access_token=1B6E45FA99BA3D6B347713440C9BCEFE&expires_in=7776000&refresh_token=8DB1D48D95C85D3EF593936B8ACE5EE0
 ```
@@ -87,7 +85,7 @@ access_token=1B6E45FA99BA3D6B347713440C9BCEFE&expires_in=7776000&refresh_token=8
 
 GET
 
-https://graph.qq.com/oauth2.0/me?access_token=1B6E45FA99BA3D6B347713440C9BCEFE
+<https://graph.qq.com/oauth2.0/me?access_token=1B6E45FA99BA3D6B347713440C9BCEFE>
 
 openid是此网站上唯一对应用户身份的标识
 
@@ -96,11 +94,11 @@ callback( {"client_id":"101867513","openid":"951560F5C7A5AA9E5E599CF9B4ECFFB2"} 
 ```
 
 ## 获取用户的其他信息
+
 用户信息
 
-https://graph.qq.com/user/get_user_info?access_token=1B6E45FA99BA3D6B347713440C9BCEFE&oauth_consumer_key=YOUR_APP_ID&openid=951560F5C7A5AA9E5E599CF9B4ECFFB2
- 
- 
+<https://graph.qq.com/user/get_user_info?access_token=1B6E45FA99BA3D6B347713440C9BCEFE&oauth_consumer_key=YOUR_APP_ID&openid=951560F5C7A5AA9E5E599CF9B4ECFFB2>
+
 ```json
 {
 "ret": 0, 
@@ -120,8 +118,9 @@ https://graph.qq.com/user/get_user_info?access_token=1B6E45FA99BA3D6B347713440C9
 "figureurl_qq_2": "http://thirdqq.qlogo.cn/g?b=oidb&k=bjXoWmdlu8fk1m80MCkibMg&s=100&t=1559108425", "figureurl_qq": "http://thirdqq.qlogo.cn/g?b=oidb&k=bjXoWmdlu8fk1m80MCkibMg&s=640&t=1559108425"
 }
 ```
- 
+
 ## 代码
+
  ```
 services.AddAuthentication(xxx)
  .AddGitHub(xxx)
@@ -132,10 +131,9 @@ services.AddAuthentication(xxx)
     options.ClientSecret = Configuration["Authentication:QQ:ClientSecret"];
 })
  ```
- 
- 
+
  appsettings.json中配置项
- 
+
  ```
    "Authentication": {
     //下面为新增项
@@ -145,11 +143,11 @@ services.AddAuthentication(xxx)
     }
   }
  ```
- 
- 对，没错，QQ登录，已经结束了。接下来就是把这些用户的信息保存到数据库，生成token的过程。    
- 
- 
+
+ 对，没错，QQ登录，已经结束了。接下来就是把这些用户的信息保存到数据库，生成token的过程。
+
  这里
+
  ```
 [HttpGet("signin-callback")]
 public async Task<IActionResult> Home(string provider, string redirectUrl = "")
@@ -171,10 +169,11 @@ public async Task<IActionResult> Home(string provider, string redirectUrl = "")
     
  }       
  ```
- 
+
  openIdClaimopenIdClaim是唯一值
- 
+
 ### lin_user表
+
 字段| 类型|备注
 ---|---|---
 Id | long|主键
@@ -194,7 +193,7 @@ Credential | varchar(50)|凭证，例如 密码,存OpenId、Id，同一IdentityT
 CreateUserId | long|绑定的用户Id
 
 根据openId,判断lin_user_identity表中是否存在这一第三方授权信息，如果存在，则返回当前用户lin_user表中的id，如果不存在，则创建一个新的用户信息，插入lin_user、lin_user_identity表中。
- 
+
  ```
  
  public async Task<long> SaveQQAsync(ClaimsPrincipal principal, string openId)
@@ -242,11 +241,9 @@ CreateUserId | long|绑定的用户Id
 }
  
  ```
- 
- 
- 
- 
+
 上文中的CreateToken，直接将 authenticateResult.Principal.Claims.ToList()，生成token值，会缺少一些系统需要的值，比如键为ClaimTypes.NameIdentifier，应为用户的id，用户的其他信息，如角色/分组，昵称。不同平台的授权登录，键有所不同，所以这里需要二次处理。
+
 ```
 [HttpGet("signin-callback")]
 public async Task<IActionResult> Home(string provider, string redirectUrl = "")
@@ -281,8 +278,7 @@ public async Task<IActionResult> Home(string provider, string redirectUrl = "")
     return Redirect($"{redirectUrl}?token={token}#login-result");
  }       
  ```
- 
- 前台login-result路由，解析到token值，并保存起来，与用户密码登录后的流程相同。
- 
 
-##  [项目源码](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Controllers/Cms/Oauth2Controller.cs)
+ 前台login-result路由，解析到token值，并保存起来，与用户密码登录后的流程相同。
+
+## [项目源码](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/src/LinCms.Web/Controllers/Cms/Oauth2Controller.cs)
