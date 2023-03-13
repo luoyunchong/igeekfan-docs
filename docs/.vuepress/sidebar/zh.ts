@@ -95,6 +95,7 @@ export const zhSidebarConfig = sidebar({
                 'docker/Docker-Nginx.md',
                 'docker/Docker-RabbitMQ.md',
                 'docker/Docker-CMS.md',
+                'docker/Docker-ASPNETCore.md',
             ]
         }
     ],
