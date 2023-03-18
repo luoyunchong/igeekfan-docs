@@ -3,7 +3,7 @@
   <id>https://igeekfan.cn/igeekfan-docs/</id>
   <title>.NET 开发者指北</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
-  <updated>2023-03-13T06:22:20.356Z</updated>
+  <updated>2023-03-18T08:23:29.930Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -1705,7 +1705,7 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
     <title type="html">AspNetCore Identity FreeSql的实现</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/AspNetCore.Identity.FreeSql.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/freekit/AspNetCore.Identity.FreeSql.html"/>
-    <updated>2022-08-24T20:14:02.000Z</updated>
+    <updated>2023-03-18T08:21:52.000Z</updated>
     <content type="html"><![CDATA[<h1 id="aspnetcore-identity-freesql的实现" tabindex="-1"> AspNetCore Identity FreeSql的实现</h1>
 <h2 id="igeekfan-aspnetcore-identity-freesql" tabindex="-1"> IGeekFan.AspNetCore.Identity.FreeSql</h2>
 <p>是<code>asp.net core 6</code> 的<code>identity</code>的<code>freesql</code>存储的实现</p>
@@ -1812,6 +1812,13 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
                     <span>}</span><span>)</span><span>)</span><span>;</span>
     <span>}</span>
 
+    services<span>.</span><span>AddAuthentication</span><span>(</span>o <span>=></span>
+    <span>{</span>
+        o<span>.</span>DefaultScheme <span>=</span> IdentityConstants<span>.</span>ApplicationScheme<span>;</span>
+        o<span>.</span>DefaultSignInScheme <span>=</span> IdentityConstants<span>.</span>ExternalScheme<span>;</span>
+    <span>}</span><span>)</span>
+    <span>.</span><span>AddIdentityCookies</span><span>(</span>o <span>=></span> <span>{</span> <span>}</span><span>)</span><span>;</span>
+    
     services<span>.</span><span><span>AddIdentityCore</span><span><span>&lt;</span>AppUser<span>></span></span></span><span>(</span>o <span>=></span>
             <span>{</span>
                 o<span>.</span>SignIn<span>.</span>RequireConfirmedEmail <span>=</span> <span>false</span><span>;</span>
@@ -1828,7 +1835,7 @@ root@VM-37-104-ubuntu:/home/ubuntu/<span># cd qiniu-web</span>
 
     <span>return</span> services<span>;</span>
 <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br></div></div><h3 id="软删除" tabindex="-1"> 软删除</h3>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br><span>55</span><br><span>56</span><br><span>57</span><br><span>58</span><br><span>59</span><br></div></div><h3 id="软删除" tabindex="-1"> 软删除</h3>
 <div><pre><code><span>public</span> <span>interface</span> <span>ISoftDelete</span>
 <span>{</span>
     <span><span>bool</span></span> IsDeleted <span>{</span> <span>get</span><span>;</span> <span>set</span><span>;</span> <span>}</span>
@@ -1868,7 +1875,120 @@ builder<span>.</span>Services<span>.</span><span>AddFreeSqlIdentity</span><span>
 <span>//自定义Scope 的Serivce 执行 DbContext中的OnModelCreating</span>
 app<span>.</span>Services<span>.</span><span>RunScopeService</span><span>(</span><span>)</span><span>;</span>
 
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div>]]></content>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br></div></div><div><pre><code><span>[</span><span><span>ApiController</span></span><span>]</span>
+<span>[</span><span><span>Route</span><span><span>(</span><span>"api/[controller]"</span><span>)</span></span></span><span>]</span>
+<span>public</span> <span>class</span> <span>AppUserController</span> <span>:</span> <span><span>ControllerBase</span></span>
+<span>{</span>
+    <span>private</span> <span>readonly</span> <span>ILogger<span>&lt;</span>AppUserController<span>></span></span> _logger<span>;</span>
+    <span>private</span> <span>readonly</span> <span>UserManager<span>&lt;</span>AppUser<span>></span></span> _userManager<span>;</span>
+    <span>private</span> <span>readonly</span> <span>IUserStore<span>&lt;</span>AppUser<span>></span></span> _userStore<span>;</span>
+    <span>private</span> <span>readonly</span> <span>IUserEmailStore<span>&lt;</span>AppUser<span>></span></span> _emailStore<span>;</span>
+    <span>private</span> <span>readonly</span> <span>SignInManager<span>&lt;</span>AppUser<span>></span></span> _signInManager<span>;</span>
+    <span>public</span> <span>AppUserController</span><span>(</span><span>ILogger<span>&lt;</span>AppUserController<span>></span></span> logger<span>,</span> <span>UserManager<span>&lt;</span>AppUser<span>></span></span> userManager<span>,</span> <span>SignInManager<span>&lt;</span>AppUser<span>></span></span> signInManager<span>,</span> <span>IUserStore<span>&lt;</span>AppUser<span>></span></span> userStore<span>)</span>
+    <span>{</span>
+        _logger <span>=</span> logger<span>;</span>
+        _userManager <span>=</span> userManager<span>;</span>
+        _signInManager <span>=</span> signInManager<span>;</span>
+        _userStore <span>=</span> userStore<span>;</span>
+        _emailStore <span>=</span> <span>GetEmailStore</span><span>(</span><span>)</span><span>;</span>
+    <span>}</span>
+    <span>private</span> <span>IUserEmailStore<span>&lt;</span>AppUser<span>></span></span> <span>GetEmailStore</span><span>(</span><span>)</span>
+    <span>{</span>
+        <span>if</span> <span>(</span><span>!</span>_userManager<span>.</span>SupportsUserEmail<span>)</span>
+        <span>{</span>
+            <span>throw</span> <span>new</span> <span>NotSupportedException</span><span>(</span><span>"The default UI requires a user store with email support."</span><span>)</span><span>;</span>
+        <span>}</span>
+        <span>return</span> <span>(</span>IUserEmailStore<span>&lt;</span>AppUser<span>></span><span>)</span>_userStore<span>;</span>
+    <span>}</span>
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 创建用户示例</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>createAppUser<span>"</span></span><span>></span></span><span><span><span>&lt;/</span>param</span><span>></span></span></span>
+    <span>/// <span><span><span>&lt;</span>returns</span><span>></span></span><span><span><span>&lt;/</span>returns</span><span>></span></span></span>
+    <span>/// <span><span><span>&lt;</span>exception</span> <span>cref</span><span><span>=</span><span>"</span>ArgumentException<span>"</span></span><span>></span></span><span><span><span>&lt;/</span>exception</span><span>></span></span></span>
+    <span>[</span>HttpPost<span>]</span>
+    <span>public</span> <span>async</span> <span>Task<span>&lt;</span>IResult<span>></span></span> <span>CreateUserAsync</span><span>(</span><span>[</span><span><span>FromBody</span></span><span>]</span> <span>CreateAppUser</span> createAppUser<span>)</span>
+    <span>{</span>
+        <span>AppUser</span> user <span>=</span> <span>new</span> <span>AppUser</span><span>(</span><span>)</span>
+        <span>{</span>
+            FirstName <span>=</span> createAppUser<span>.</span>FirstName<span>,</span>
+            LastName <span>=</span> createAppUser<span>.</span>LastName<span>,</span>
+            EmailConfirmed <span>=</span> <span>true</span> <span>//直接让邮件激活</span>
+        <span>}</span><span>;</span>
+        <span>await</span> _userStore<span>.</span><span>SetUserNameAsync</span><span>(</span>user<span>,</span> createAppUser<span>.</span>Email<span>,</span> CancellationToken<span>.</span>None<span>)</span><span>;</span>
+        <span>await</span> _emailStore<span>.</span><span>SetEmailAsync</span><span>(</span>user<span>,</span> createAppUser<span>.</span>Email<span>,</span> CancellationToken<span>.</span>None<span>)</span><span>;</span>
+        <span><span>var</span></span> identityResult <span>=</span> <span>await</span> _userManager<span>.</span><span>CreateAsync</span><span>(</span>user<span>,</span> createAppUser<span>.</span>Password<span>)</span><span>;</span>
+
+        <span>if</span> <span>(</span>identityResult<span>.</span>Succeeded<span>)</span>
+        <span>{</span>
+            _logger<span>.</span><span>LogInformation</span><span>(</span><span>"User created a new account with password."</span><span>)</span><span>;</span>
+            <span>//获取userid</span>
+            <span><span>var</span></span> userId <span>=</span> <span>await</span> _userManager<span>.</span><span>GetUserIdAsync</span><span>(</span>user<span>)</span><span>;</span>
+            <span>//生成邮件激活码</span>
+            <span><span>var</span></span> code <span>=</span> <span>await</span> _userManager<span>.</span><span>GenerateEmailConfirmationTokenAsync</span><span>(</span>user<span>)</span><span>;</span>
+            code <span>=</span> WebEncoders<span>.</span><span>Base64UrlEncode</span><span>(</span>Encoding<span>.</span>UTF8<span>.</span><span>GetBytes</span><span>(</span>code<span>)</span><span>)</span><span>;</span>
+            <span>return</span> Results<span>.</span><span>Ok</span><span>(</span><span>"Register Success"</span><span>)</span><span>;</span>
+            <span>//如果邮件 EmailConfirmed 为false时，通过此方式发送激活邮件</span>
+            <span>//await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",</span>
+            <span>//    $"Please confirm your account by &lt;a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here&lt;/a>.");</span>
+        <span>}</span>
+        <span>if</span> <span>(</span>identityResult<span>.</span>Errors <span>==</span> <span>null</span><span>)</span>
+        <span>{</span>
+            <span>throw</span> <span>new</span> <span>ArgumentException</span><span>(</span><span>"identityResult.Errors should not be null."</span><span>)</span><span>;</span>
+        <span>}</span>
+        <span><span>string</span></span> errorMsg <span>=</span> <span>string</span><span>.</span><span>Join</span><span>(</span><span>','</span><span>,</span> identityResult<span>.</span>Errors<span>.</span><span>Select</span><span>(</span>r <span>=></span> r<span>.</span>Description<span>)</span><span>)</span><span>;</span>
+
+        _logger<span>.</span><span>LogInformation</span><span>(</span>errorMsg<span>)</span><span>;</span>
+
+        <span>return</span> Results<span>.</span><span>BadRequest</span><span>(</span>errorMsg<span>)</span><span>;</span>
+    <span>}</span>
+
+    <span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+    <span>/// 登录</span>
+    <span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+    <span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>userLoginInfo<span>"</span></span><span>></span></span><span><span><span>&lt;/</span>param</span><span>></span></span></span>
+    <span>/// <span><span><span>&lt;</span>returns</span><span>></span></span><span><span><span>&lt;/</span>returns</span><span>></span></span></span>
+    <span>[</span><span>HttpPost</span><span>(</span><span>"login"</span><span>)</span><span>]</span>
+    <span>public</span> <span>async</span> <span>Task<span>&lt;</span>IResult<span>></span></span> <span>LoginAsync</span><span>(</span><span>[</span><span><span>FromBody</span></span><span>]</span> <span>UserLoginInput</span> userLoginInfo<span>)</span>
+    <span>{</span>
+        _logger<span>.</span><span>LogInformation</span><span>(</span><span>"JwtLogin Begin"</span><span>)</span><span>;</span>
+        <span><span>var</span></span> result <span>=</span> <span>await</span> _signInManager<span>.</span><span>PasswordSignInAsync</span><span>(</span>userLoginInfo<span>.</span>Email<span>,</span> userLoginInfo<span>.</span>Password<span>,</span> userLoginInfo<span>.</span>RememberMe<span>,</span> <span>lockoutOnFailure</span><span>:</span> <span>false</span><span>)</span><span>;</span>
+
+        <span>if</span> <span>(</span>result<span>.</span>Succeeded<span>)</span>
+        <span>{</span>
+            <span>AppUser</span> user <span>=</span> <span>await</span> _userManager<span>.</span><span>FindByEmailAsync</span><span>(</span>userLoginInfo<span>.</span>Email<span>)</span><span>;</span>
+
+            <span>//创建Token等等</span>
+            <span><span>var</span></span> token <span>=</span> Guid<span>.</span><span>NewGuid</span><span>(</span><span>)</span><span>.</span><span>ToString</span><span>(</span><span>)</span><span>;</span>
+
+            _logger<span>.</span><span>LogInformation</span><span>(</span><span><span>$"User </span><span><span>{</span><span>userLoginInfo</span><span>}</span></span><span>,Login Success"</span></span><span>)</span><span>;</span>
+
+            <span>return</span> Results<span>.</span><span>Ok</span><span>(</span>token<span>)</span><span>;</span>
+        <span>}</span>
+        <span>else</span>
+        <span>{</span>
+            <span>return</span> Results<span>.</span><span>BadRequest</span><span>(</span>result<span>.</span><span>ToString</span><span>(</span><span>)</span><span>)</span><span>;</span>
+        <span>}</span>
+    <span>}</span>
+<span>}</span>
+
+<span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+<span>/// 创建用户实体</span>
+<span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+<span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>FirstName<span>"</span></span><span>></span></span>姓<span><span><span>&lt;/</span>param</span><span>></span></span></span>
+<span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>LastName<span>"</span></span><span>></span></span>名<span><span><span>&lt;/</span>param</span><span>></span></span></span>
+<span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>Email<span>"</span></span><span>></span></span>邮件、登录名<span><span><span>&lt;/</span>param</span><span>></span></span></span>
+<span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>Password<span>"</span></span><span>></span></span>密码<span><span><span>&lt;/</span>param</span><span>></span></span></span>
+<span>public</span> <span>record</span> <span>CreateAppUser</span><span>(</span><span><span>string</span></span> FirstName<span>,</span> <span><span>string</span></span> LastName<span>,</span> <span><span>string</span></span> Email<span>,</span> <span><span>string</span></span> Password<span>)</span><span>;</span>
+
+<span>/// <span><span><span>&lt;</span>summary</span><span>></span></span></span>
+<span>/// </span>
+<span>/// <span><span><span>&lt;/</span>summary</span><span>></span></span></span>
+<span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>Email<span>"</span></span><span>></span></span>邮件、登录名<span><span><span>&lt;/</span>param</span><span>></span></span></span>
+<span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>Password<span>"</span></span><span>></span></span>密码<span><span><span>&lt;/</span>param</span><span>></span></span></span>
+<span>/// <span><span><span>&lt;</span>param</span> <span>name</span><span><span>=</span><span>"</span>RememberMe<span>"</span></span><span>></span></span>记住密码<span><span><span>&lt;/</span>param</span><span>></span></span></span>
+<span>public</span> <span>record</span> <span>UserLoginInput</span><span>(</span><span><span>string</span></span> Email<span>,</span> <span><span>string</span></span> Password<span>,</span> <span><span>bool</span></span> RememberMe<span>)</span><span>;</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br><span>26</span><br><span>27</span><br><span>28</span><br><span>29</span><br><span>30</span><br><span>31</span><br><span>32</span><br><span>33</span><br><span>34</span><br><span>35</span><br><span>36</span><br><span>37</span><br><span>38</span><br><span>39</span><br><span>40</span><br><span>41</span><br><span>42</span><br><span>43</span><br><span>44</span><br><span>45</span><br><span>46</span><br><span>47</span><br><span>48</span><br><span>49</span><br><span>50</span><br><span>51</span><br><span>52</span><br><span>53</span><br><span>54</span><br><span>55</span><br><span>56</span><br><span>57</span><br><span>58</span><br><span>59</span><br><span>60</span><br><span>61</span><br><span>62</span><br><span>63</span><br><span>64</span><br><span>65</span><br><span>66</span><br><span>67</span><br><span>68</span><br><span>69</span><br><span>70</span><br><span>71</span><br><span>72</span><br><span>73</span><br><span>74</span><br><span>75</span><br><span>76</span><br><span>77</span><br><span>78</span><br><span>79</span><br><span>80</span><br><span>81</span><br><span>82</span><br><span>83</span><br><span>84</span><br><span>85</span><br><span>86</span><br><span>87</span><br><span>88</span><br><span>89</span><br><span>90</span><br><span>91</span><br><span>92</span><br><span>93</span><br><span>94</span><br><span>95</span><br><span>96</span><br><span>97</span><br><span>98</span><br><span>99</span><br><span>100</span><br><span>101</span><br><span>102</span><br><span>103</span><br><span>104</span><br><span>105</span><br><span>106</span><br><span>107</span><br><span>108</span><br><span>109</span><br><span>110</span><br><span>111</span><br><span>112</span><br><span>113</span><br></div></div>]]></content>
     <published>2022-06-02T18:18:50.000Z</published>
   </entry>
   <entry>
