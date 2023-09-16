@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Sat, 16 Sep 2023 04:05:31 GMT</pubDate>
-    <lastBuildDate>Sat, 16 Sep 2023 04:05:31 GMT</lastBuildDate>
+    <pubDate>Sat, 16 Sep 2023 05:04:05 GMT</pubDate>
+    <lastBuildDate>Sat, 16 Sep 2023 05:04:05 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>ASP.NET Core</category>
@@ -10951,7 +10951,7 @@ config: {url: "https://localhost:5001/GetOpenIdByToken"}
 <li>本项目 swagger 地址 <a href="https://api.igeekfan.cn/swagger/index.html" target="_blank" rel="noopener noreferrer">https://api.igeekfan.cn/swagger/index.html</a></li>
 <li>用户端 lin-cms-vvlog <a href="https://vvlog.igeekfan.cn" target="_blank" rel="noopener noreferrer">https://vvlog.igeekfan.cn</a>
 <ul>
-<li>普通用户：710277267@qq.com</li>
+<li>普通用户：<a href="mailto:710277267@qq.com">710277267@qq.com</a></li>
 <li>密码：123qwe</li>
 </ul>
 </li>
@@ -10980,7 +10980,7 @@ config: {url: "https://localhost:5001/GetOpenIdByToken"}
 <span>pnpm</span> run serve
 </code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br></div></div><h2 id="nginx-配置" tabindex="-1"> nginx 配置</h2>
 <ul>
-<li>vue 使用 history 的配置</li>
+<li>http 80 部署</li>
 </ul>
 <div><pre><code><span><span>server</span></span> <span>{</span>
     <span><span>listen</span> <span>8080</span></span><span>;</span>
@@ -10998,17 +10998,52 @@ config: {url: "https://localhost:5001/GetOpenIdByToken"}
     <span>}</span>
 
 <span>}</span>
-</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br></div></div><h2 id="配置项" tabindex="-1"> 配置项</h2>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br></div></div><ul>
+<li>https</li>
+</ul>
+<p>目录：<code>/etc/nginx/conf.d</code>
+证书：也放到<code>/etc/nginx/conf.d/cms.igeekfan.cn_nginx</code>目录中</p>
+<div><pre><code><span><span>server</span></span> <span>{</span>  
+    <span><span>listen</span> <span>443</span>  ssl</span><span>;</span>
+    <span><span>server_name</span> cms.igeekfan.cn</span><span>;</span>
+    <span><span>ssl_certificate</span> conf.d/cms.igeekfan.cn_nginx/cms.igeekfan.cn_bundle.crt</span><span>;</span> <span>#证书文件名称</span>
+    <span><span>ssl_certificate_key</span> conf.d/cms.igeekfan.cn_nginx/cms.igeekfan.cn.key</span><span>;</span> <span>#私钥文件名称</span>
+    <span><span>ssl_session_timeout</span> <span>5m</span></span><span>;</span>
+    <span><span>ssl_protocols</span> TLSv1 TLSv1.1 TLSv1.2</span><span>;</span> <span>#请按照这个协议配置</span>
+    <span><span>ssl_ciphers</span> ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE</span><span>;</span> <span>#请按照这个套件配置，配置加密套件，写法遵循 openssl 标准。</span>
+    <span><span>ssl_prefer_server_ciphers</span> <span>on</span></span><span>;</span>
+    <span><span>root</span> /var/www/lin-cms-vue</span><span>;</span>
+    <span><span>location</span> /</span> <span>{</span>
+       <span><span>try_files</span> <span>$uri</span> <span>$uri</span>/ /index.html</span><span>;</span> 
+   <span>}</span>
+        
+    <span><span>error_page</span>   <span>500</span> <span>502</span> <span>503</span> <span>504</span>  /50x.html</span><span>;</span>
+    <span><span>location</span> = /50x.html</span> <span>{</span>
+        <span><span>root</span>   html</span><span>;</span>
+    <span>}</span>
+<span>}</span>
+
+<span><span>server</span></span> <span>{</span>
+    <span><span>listen</span> <span>80</span></span><span>;</span>
+    <span><span>server_name</span> cms.igeekfan.cn</span><span>;</span>
+    <span><span>return</span> <span>301</span> https://<span>$server_name</span><span>$request_uri</span></span><span>;</span>
+<span>}</span>
+</code></pre><div aria-hidden="true"><span>1</span><br><span>2</span><br><span>3</span><br><span>4</span><br><span>5</span><br><span>6</span><br><span>7</span><br><span>8</span><br><span>9</span><br><span>10</span><br><span>11</span><br><span>12</span><br><span>13</span><br><span>14</span><br><span>15</span><br><span>16</span><br><span>17</span><br><span>18</span><br><span>19</span><br><span>20</span><br><span>21</span><br><span>22</span><br><span>23</span><br><span>24</span><br><span>25</span><br></div></div><h2 id="配置项" tabindex="-1"> 配置项</h2>
 <ol>
 <li>配置 api 地址： 打开配置文件 <code>.env.development</code></li>
 </ol>
+<h4 id="lin-cms-vvlog" tabindex="-1"> lin-cms-vvlog</h4>
 <ul>
-<li><code>VUE_APP_BASE_URL</code> 配置后端 api 地址</li>
+<li><code>VUE_APP_BASE_URL</code> 配置后端 api 地址（必填）</li>
 <li><code>VUE_APP_CURRENT_URL</code> 配置当前前端地址，仅用于QQ\微信登录\GitHub快速登录回调地址</li>
 </ul>
-<ol start="2">
-<li>用户名：<strong>admin</strong> 密码 <strong>123qwe</strong></li>
-</ol>
+<p>用户名：<strong>admin</strong> 密码 <strong>123qwe</strong></p>
+<h4 id="lin-cms-vue" tabindex="-1"> lin-cms-vue</h4>
+<ul>
+<li><code>VUE_APP_BASE_URL</code> 配置后端 api 地址（必填）</li>
+<li><code>VUE_APP_VVLOG_URL</code> 配置lin-cms-vvlog运行的地址，方便跳转至lin-cms-vvlog项目</li>
+</ul>
+<p>用户名：<strong>710277267@qq.com</strong> 密码 <strong>123qwe</strong></p>
 ]]></content:encoded>
     </item>
   </channel>
