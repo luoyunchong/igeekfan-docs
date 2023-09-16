@@ -19,88 +19,28 @@
 
 开发必备
 
-- [Node.js 10+](https://nodejs.org/en/) 版本即可，必须安装 12.7
-- [yarn](https://yarnpkg.com/zh-Hant/docs/install#windows-stable)
-
-如果以下命令有问题，请删除 yarn.lock，node_modules 文件夹后，重新执行 yarn，yarn serve
+- [Node.js 16+](https://nodejs.org/en/)
+- [pnpm](https://www.pnpm.cn/)
 
 ```bash
 # clone the project
 git clone https://github.com/luoyunchong/lin-cms-vue.git
 
+npm install -g pnpm
+
 # install dependency
-yarn
+pnpm install
 
 # develop
-yarn serve
-
-# deploy
-yarn deploy
+pnpm run serve
 ```
 
-## deploy 发布
-
-scp2 方便快速发布，一行命令就能快速发布成功。
-
-必备条件：（参数）
-
-- 一台 linux 的服务器，ip
-- 用户名
-- 密码
-- 端口：默认是 22
-- 发布的地址。这里放到/var/www/lin-cms-vue 目录中。
-
-## 步骤
-
-根目录新建 deploy 目录，创建 index.js 文件。
-
-```js
-'use strict'
-// 引入scp2模块
-var client = require('scp2');
-const ora = require('ora')
-const chalk = require('chalk')
-const spinner = ora('正在发布到生产服务器...')
-spinner.start()
-client.scp('dist/', {
-    "host": "",
-    "username": "",
-    "password": "",
-    "port": "22",
-    "path": "/var/www/lin-cms-vue"
-}, function (err) {
-    spinner.stop()
-    if (!err) {
-        console.log("npm run build-scp2: scp2工具上传完毕,远端服务路径：/var/www/lin-cms-vue")
-    } else {
-        console.log("err", err)
-    }
-})
-```
-
-快速发布，需要安装 scp2
-
-```bash
-cnpm install scp2
-```
-
-package.json 中增加
-
-```json
-  "scripts": {
-    "deploy": "yarn build:production && node ./deploy",
-}
-```
-
-```bash
-yarn deploy
-```
 
 ## nginx 配置
 
 - vue 使用 history 的配置
 
-```
+```nginx
 server {
     listen 8080;
     root /var/www/lin-cms-vue;
@@ -121,6 +61,9 @@ server {
 
 ## 配置项
 
-1. 配置 api 地址： 打开配置文件 src/config/index.js 配置 baseUrl ，本地开发阶段配置本地虚拟域名(https://localhost:5001/)，线上部署生产域名。
+1. 配置 api 地址： 打开配置文件 `.env.development` 
+
+- ``VUE_APP_BASE_URL`` 配置后端 api 地址
+- ``VUE_APP_CURRENT_URL`` 配置当前前端地址，仅用于QQ\微信登录\GitHub快速登录回调地址
 
 2. 用户名：**admin** 密码 **123qwe**
