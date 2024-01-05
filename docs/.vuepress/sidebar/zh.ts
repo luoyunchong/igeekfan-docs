@@ -17,7 +17,9 @@ export const zhSidebarConfig = sidebar({
                 'nacos-aspnetcore',
                 'serilog-tutorial',
                 'NET6Startup',
-                'ASPNETCore6-Add-Startup-Clean'
+                'ASPNETCore6-Add-Startup-Clean',
+                'ASPNETCore-Supervisord-Ubuntu',
+                'ASPNETCore-Systemd-Ubuntu'
             ]
         }
     ],
