@@ -156,7 +156,7 @@ firewall-cmd --reload
 
 一般情况下，我们建议使用nginx进行代理
 
-![356361-5afcd9e65421b9e5.webp](./356361-5afcd9e65421b9e5.webp)
+![356361-5afcd9e65421b9e5.webp](./images/356361-5afcd9e65421b9e5.webp)
 
 ```bash
 sudo apt-get install nginx
