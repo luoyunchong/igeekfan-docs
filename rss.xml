@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 05 Jan 2024 14:31:21 GMT</pubDate>
-    <lastBuildDate>Fri, 05 Jan 2024 14:31:21 GMT</lastBuildDate>
+    <pubDate>Sun, 07 Jan 2024 06:28:52 GMT</pubDate>
+    <lastBuildDate>Sun, 07 Jan 2024 06:28:52 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>ASP.NET Core</category>
@@ -7271,16 +7271,57 @@ BaseType 有一条数据，TypeCode 为 字符串 category、FullName 文章类�
 </ol>
 <p>使用 FreeSql 实现时，如果二个表之间没有导航属性，是更复杂的。</p>
 <h3 id="lin-file-文件存储" tabindex="-1"> lin_file 文件存储</h3>
-<p>| 字段           | 类型     | 备注                                     |
-| -------------- | -------- | ---------------------------------------- | ------- |
-| id             |          | bigint                                   | 主键 Id |
-| extension      | varchar  | 后缀                                     |
-| md5            | varchar  | 图片 md5 值，防止上传重复图片            |
-| name           | varchar  | 名称                                     |
-| path           | varchar  | 路径                                     |
-| size           | bigint   | 大小                                     |
-| type           | smallint | 1 local，2 代表七牛云 3 其他表示其他地方 |
-| create_user_id | bigint   | 创建者 ID                                |</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>bigint</td>
+<td>主键 Id</td>
+</tr>
+<tr>
+<td>extension</td>
+<td>varchar</td>
+<td>后缀</td>
+</tr>
+<tr>
+<td>md5</td>
+<td>varchar</td>
+<td>图片 md5 值，防止上传重复图片</td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>path</td>
+<td>varchar</td>
+<td>路径</td>
+</tr>
+<tr>
+<td>size</td>
+<td>bigint</td>
+<td>大小</td>
+</tr>
+<tr>
+<td>type</td>
+<td>smallint</td>
+<td>1 local，2 代表七牛云 3 其他表示其他地方</td>
+</tr>
+<tr>
+<td>create_user_id</td>
+<td>bigint</td>
+<td>创建者 ID</td>
+</tr>
+</tbody>
+</table>
 <h3 id="lin-log-日志记录" tabindex="-1"> lin_log 日志记录</h3>
 <table>
 <thead>

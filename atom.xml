@@ -3,7 +3,7 @@
   <id>https://igeekfan.cn/igeekfan-docs/</id>
   <title>.NET 开发者指北</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
-  <updated>2024-01-05T14:31:21.023Z</updated>
+  <updated>2024-01-07T06:28:52.786Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -6977,7 +6977,7 @@ public async Task&lt;IActionResult> Home(string provider, string redirectUrl = "
     <title type="html">基于 RBAC 实现权限设计</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/table.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/table.html"/>
-    <updated>2022-09-13T11:34:29.000Z</updated>
+    <updated>2024-01-07T06:27:23.000Z</updated>
     <content type="html"><![CDATA[<h1 id="基于-rbac-实现权限设计" tabindex="-1"> 基于 RBAC 实现权限设计</h1>
 <p>功能：实现一个用户设置多个分组，分组可以设置多个权限，权限与后台 API 方法对应，前端菜单绑定权限编码，前端按钮绑定权限编码，从而实现用户可配置权限，从而控制界面上的元素等。</p>
 <h3 id="_1-用户表-lin-user" tabindex="-1"> 1. 用户表 lin_user</h3>
@@ -7276,16 +7276,57 @@ BaseType 有一条数据，TypeCode 为 字符串 category、FullName 文章类�
 </ol>
 <p>使用 FreeSql 实现时，如果二个表之间没有导航属性，是更复杂的。</p>
 <h3 id="lin-file-文件存储" tabindex="-1"> lin_file 文件存储</h3>
-<p>| 字段           | 类型     | 备注                                     |
-| -------------- | -------- | ---------------------------------------- | ------- |
-| id             |          | bigint                                   | 主键 Id |
-| extension      | varchar  | 后缀                                     |
-| md5            | varchar  | 图片 md5 值，防止上传重复图片            |
-| name           | varchar  | 名称                                     |
-| path           | varchar  | 路径                                     |
-| size           | bigint   | 大小                                     |
-| type           | smallint | 1 local，2 代表七牛云 3 其他表示其他地方 |
-| create_user_id | bigint   | 创建者 ID                                |</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>bigint</td>
+<td>主键 Id</td>
+</tr>
+<tr>
+<td>extension</td>
+<td>varchar</td>
+<td>后缀</td>
+</tr>
+<tr>
+<td>md5</td>
+<td>varchar</td>
+<td>图片 md5 值，防止上传重复图片</td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>path</td>
+<td>varchar</td>
+<td>路径</td>
+</tr>
+<tr>
+<td>size</td>
+<td>bigint</td>
+<td>大小</td>
+</tr>
+<tr>
+<td>type</td>
+<td>smallint</td>
+<td>1 local，2 代表七牛云 3 其他表示其他地方</td>
+</tr>
+<tr>
+<td>create_user_id</td>
+<td>bigint</td>
+<td>创建者 ID</td>
+</tr>
+</tbody>
+</table>
 <h3 id="lin-log-日志记录" tabindex="-1"> lin_log 日志记录</h3>
 <table>
 <thead>
