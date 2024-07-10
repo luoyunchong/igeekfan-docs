@@ -3,7 +3,7 @@
   <id>https://igeekfan.cn/igeekfan-docs/</id>
   <title>.NET 开发者指北</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
-  <updated>2024-01-07T06:28:52.786Z</updated>
+  <updated>2024-07-10T14:52:58.541Z</updated>
   <generator>vuepress-plugin-feed2</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -9038,7 +9038,7 @@ ProcessDictionaryKeys 功能：A flag indicating whether dictionary keys should 
     <title type="html">About</title>
     <id>https://igeekfan.cn/igeekfan-docs/about/</id>
     <link href="https://igeekfan.cn/igeekfan-docs/about/"/>
-    <updated>2022-06-03T14:30:48.000Z</updated>
+    <updated>2024-07-10T14:51:39.000Z</updated>
     <content type="html"><![CDATA[<h1 id="about" tabindex="-1"> About</h1>
 <h2 id="欢迎" tabindex="-1"> 欢迎</h2>
 <p>👋 你好，我是 <code>IGeekFan</code> ，我会写<code>c#</code>，会写一点点<code>javascript</code>。</p>
@@ -9072,11 +9072,6 @@ ProcessDictionaryKeys 功能：A flag indicating whether dictionary keys should 
 </ul>
 <p><img src="https://github-readme-stats.vercel.app/api?username=luoyunchong&amp;show_icons=true&amp;theme=radical" alt="Anurag's github stats" loading="lazy">
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=luoyunchong&amp;theme=dark&amp;layout=compact" alt="Most Used Languages" loading="lazy"></p>
-<h2 id="欢迎加入-qq-群" tabindex="-1"> 欢迎加入 QQ 群</h2>
-<img  width="258" height="300" src="/images/qq.png">
-<h2 id="欢迎微信关注-dotnet-搬砖队" tabindex="-1"> 欢迎微信关注 dotNET 搬砖队</h2>
-<p>微信搜索：dotNET 搬砖队</p>
-<img src="/images/wechat.png">
 ]]></content>
     <published>2020-02-28T11:10:31.000Z</published>
   </entry>
