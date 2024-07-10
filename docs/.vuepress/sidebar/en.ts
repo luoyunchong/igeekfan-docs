@@ -4,7 +4,7 @@ export const enSidebarConfig = sidebar({
     '/dotnetcore/examples/': [
         {
             text: '.NET Core示例',
-            collapsable: true,
+            collapsible: true,
             children: [
                 'console-hello-world',
                 'console-news-types',
@@ -20,7 +20,7 @@ export const enSidebarConfig = sidebar({
     ],
     '/dotnetcore/lin-cms/': [{
         text: '起步',
-        collapsable: true,
+        collapsible: true,
         children: [
             'dotnetcore-start.md',
             'cms-start.md',
@@ -34,7 +34,7 @@ export const enSidebarConfig = sidebar({
         ]
     }, {
         text: '.NET Core',
-        collapsable: true,
+        collapsible: true,
         children: [
             'file-upload.md',
             'logger.md',
@@ -46,7 +46,7 @@ export const enSidebarConfig = sidebar({
         ]
     }, {
         text: '开发者文档',
-        collapsable: true,
+        collapsible: true,
         children: [
             'dev-start',
             'newtonsoft-json-question',
@@ -66,13 +66,13 @@ export const enSidebarConfig = sidebar({
             text: '关于',
             prefix: "/about/",
             link: "/about/",
-            collapsable: true
+            collapsible: true
         }
     ],
     '/ai/': [
         {
             text: 'HuggingFace',
-            collapsable: true,
+            collapsible: true,
             children: [
                 'HuggingFace'
             ]
@@ -81,7 +81,7 @@ export const enSidebarConfig = sidebar({
     '/blogs/': [
         {
             text: '技术分享',
-            collapsable: true,
+            collapsible: true,
             children: [
                 'git-emoji',
                 'net-sqlite-encryption',
@@ -92,7 +92,7 @@ export const enSidebarConfig = sidebar({
     '/colorui/': [
         {
             text: 'ColorUI文档',
-            collapsable: true,
+            collapsible: true,
             children: [
                 'docs/button',
                 'docs/text',

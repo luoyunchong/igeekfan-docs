@@ -4,7 +4,7 @@ export const zhSidebarConfig = sidebar({
     '/dotnetcore/examples/': [
         {
             text: '.NET Core示例',
-            collapsable: true,
+            collapsible: true,
             children: [
                 'README.md',
                 'console-hello-world',
@@ -25,7 +25,7 @@ export const zhSidebarConfig = sidebar({
     ],
     '/dotnetcore/lin-cms/': [{
         text: '起步',
-        collapsable: true,
+        collapsible: true,
         children: [
             'README.md',
             'dotnetcore-start.md',
@@ -40,7 +40,7 @@ export const zhSidebarConfig = sidebar({
         ]
     }, {
         text: '.NET Core',
-        collapsable: true,
+        collapsible: true,
         children: [
             'file-upload.md',
             'logger.md',
@@ -52,7 +52,7 @@ export const zhSidebarConfig = sidebar({
         ]
     }, {
         text: '开发者文档',
-        collapsable: true,
+        collapsible: true,
         children: [
             'dev-start',
             'newtonsoft-json-question',
@@ -70,7 +70,7 @@ export const zhSidebarConfig = sidebar({
     '/dotnetcore/': [
         {
             text: 'FreeKit',
-            collapsable: true,
+            collapsible: true,
             link: 'freekit/README.md',
             children: [
                 'freekit/README.md',
@@ -83,7 +83,7 @@ export const zhSidebarConfig = sidebar({
             ]
         }, {
             text: 'Docker',
-            collapsable: true,
+            collapsible: true,
             link: 'docker/README.md',
             children: [
                 'docker/README.md',
@@ -106,13 +106,13 @@ export const zhSidebarConfig = sidebar({
             text: '关于',
             prefix: "/about/",
             link: "/about/",
-            collapsable: true
+            collapsible: true
         }
     ],
     '/blogs/': [
         {
             text: '技术分享',
-            collapsable: true,
+            collapsible: true,
             children: [
                 'README.md',
                 'git-emoji',
@@ -126,7 +126,7 @@ export const zhSidebarConfig = sidebar({
     '/colorui/': [
         {
             text: 'ColorUI文档',
-            collapsable: true,
+            collapsible: true,
             children: [
                 'docs/button',
                 'docs/text',

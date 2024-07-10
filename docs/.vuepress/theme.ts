@@ -49,10 +49,11 @@ export default hopeTheme({
             rss: true,
         },
         mdEnhance: {
-            enableAll: true,
-            presentation: {
-                plugins: ["highlight", "math", "search", "notes", "zoom"],
-            },
+            gfm: true,
+            tabs: true,
+            footnote: true,
+            katex: true,
+            flowchart: true,
         },
     },
 });

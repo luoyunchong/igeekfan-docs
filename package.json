@@ -4,31 +4,25 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "build:vite": "vuepress-vite build docs",
-        "build:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite build docs",
-        "build:webpack": "vuepress-webpack build docs",
-        "build:webpack-debug": "cross-env DEBUG=vuepress* vuepress-webpack build docs",
-        "dev:vite": "vuepress-vite dev docs",
-        "dev:vite-clean": "vuepress-vite dev docs --clean-cache",
-        "dev:vite-debug": "cross-env DEBUG=vuepress* vuepress-vite dev docs",
-        "dev:webpack": "vuepress-webpack dev docs",
-        "dev:webpack-clean": "vuepress-webpack dev docs --clean-cache",
-        "dev:webpack-debug": "cross-env DEBUG=vuepress* vuepress-webpack dev docs",
+        "build": "vuepress build docs",
+        "dev": "vuepress dev docs",
         "lint": "prettier --check --write .",
         "lint:check": "prettier --check .",
         "lint-md": "markdownlint **/*.md --ignore node_modules --fix",
         "test": "echo \"Warning: no test specified\" && exit 0",
         "deploy": "bash deploy.sh",
-        "deploy:linux": "pnpm build:vite&node ./deploy"
+        "deploy:linux": "pnpm build&node ./deploy"
     },
     "dependencies": {
-        "@vuepress/cli": "2.0.0-beta.43",
-        "@vuepress/client": "2.0.0-beta.43",
-        "@vuepress/plugin-docsearch": "2.0.0-beta.43",
+        "@vuepress/bundler-vite": "^2.0.0-rc.7",
         "@vuepress/plugin-google-analytics": "2.0.0-beta.43",
-        "vue": "3.2.33",
-        "vuepress-theme-hope": "2.0.0-beta.53",
-        "vuepress-vite": "2.0.0-beta.43",
-        "vuepress-webpack": "2.0.0-beta.43"
+        "@vuepress/theme-default": "^2.0.0-rc.11",
+        "vue": "^3.4.0",
+        "vuepress": "^2.0.0-rc.7",
+        "vuepress-plugin-md-enhance": "2.0.0-rc.50",
+        "vuepress-theme-hope": "2.0.0-rc.50"
+    },
+    "devDependencies": {
+        "@vuepress/plugin-docsearch": "2.0.0-rc.37"
     }
 }

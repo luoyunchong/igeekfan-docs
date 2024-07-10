@@ -1,4 +1,5 @@
-import { defineUserConfig } from "@vuepress/cli";
+import { defineUserConfig } from 'vuepress'
+import { viteBundler } from '@vuepress/bundler-vite'
 import theme from "./theme";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
@@ -6,6 +7,7 @@ import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 const base = (process.env.BASE as "/" | `/${string}/`) || "/";
 
 export default defineUserConfig({
+    bundler: viteBundler(),
     locales: {
         "/": {
             lang: "zh-CN",
