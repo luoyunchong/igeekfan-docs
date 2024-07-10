@@ -69,6 +69,15 @@ export const enSidebarConfig = sidebar({
             collapsable: true
         }
     ],
+    '/ai/': [
+        {
+            text: 'HuggingFace',
+            collapsable: true,
+            children: [
+                'HuggingFace'
+            ]
+        }
+    ],
     '/blogs/': [
         {
             text: '技术分享',
