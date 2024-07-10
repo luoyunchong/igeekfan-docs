@@ -17,13 +17,11 @@ jobs:
           # if your docs needs submodules, uncomment the following line
           # submodules: true
 
-
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 7
           run_install: true
-
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -38,7 +36,7 @@ jobs:
         env:
           BASE: /igeekfan-docs/
           NODE_OPTIONS: --max_old_space_size=4096
-        run: pnpm run build:vite
+        run: pnpm run build
 
       - name: Deploy Docs
         uses: JamesIves/github-pages-deploy-action@v4
@@ -47,4 +45,3 @@ jobs:
           branch: gh-pages
           clean: true
           folder: docs/.vuepress/dist
-

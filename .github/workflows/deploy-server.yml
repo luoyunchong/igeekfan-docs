@@ -40,7 +40,7 @@ jobs:
       - name: Build Docs
         env:
           NODE_OPTIONS: --max_old_space_size=4096
-        run: pnpm run build:vite
+        run: pnpm run build
 
       # https://github.com/marketplace/actions/ssh-deploy
       - name: Deploy to Server
