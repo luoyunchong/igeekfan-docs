@@ -2,7 +2,7 @@
 # 创建简单Hello World
 
 ## 源码
-代码托管在GitHub上 [https://github.com/luoyunchong/dotnetcore-examples/tree/master/console-hello-world](https://github.com/luoyunchong/dotnetcore-examples/tree/master/console-hello-world)
+代码托管在GitHub上 [https://github.com/luoyunchong/dotnetcore-examples/tree/master/999-Others/console-hello-world](https://github.com/luoyunchong/dotnetcore-examples/tree/master/999-Others/console-hello-world)
 
 ## 相关阅读
 - [C# 和 Visual Studio Code 入门教程](https://docs.microsoft.com/zh-cn/dotnet/core/tutorials/with-visual-studio-code)
