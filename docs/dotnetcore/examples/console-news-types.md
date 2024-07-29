@@ -2,7 +2,7 @@
 
 使用PowerShell的dotnet cli命令行创建控制台项目，测试项目，测试项目引用控制台项目。
 ## 源码
-代码托管在GitHub上 [https://github.com/luoyunchong/dotnetcore-examples/tree/master/console-news-types](https://github.com/luoyunchong/dotnetcore-examples/tree/master/console-news-types)
+代码托管在GitHub上 [https://github.com/luoyunchong/dotnetcore-examples/tree/master/999-Others/console-news-types](https://github.com/luoyunchong/dotnetcore-examples/tree/master/999-Others/console-news-types)
 
 ## 相关参考 
 code :[https://github.com/dotnet/samples/blob/master/core/console-apps/NewTypesMsBuild/README.md](https://github.com/dotnet/samples/blob/master/core/console-apps/NewTypesMsBuild/README.md)
