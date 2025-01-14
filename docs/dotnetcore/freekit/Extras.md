@@ -37,6 +37,12 @@ dotnet add package FreeSql.Provider.Sqlite
 - 5.复合主键仓储 `IBaseRepository<Entiy,TKey,UKey>`
 - 6 FreeSql中的`IBaseRepository`、`IBaseRepository<,>`、`UnitOfWorkManager`
 
+
+0. 注入MediatR
+```
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly(),typeof(Module1Startup).Assembly));
+```
 1.统一注入服务
 
 可指定用户主键类型，默认为Guid,支持TKey为`int,long,Guid`。比如：`typeof(long)`
