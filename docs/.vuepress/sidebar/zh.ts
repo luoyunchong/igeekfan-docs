@@ -123,6 +123,7 @@ export const zhSidebarConfig = sidebar({
       children: [
         "README.md",
         "git-emoji",
+        "fluent-emoji-ms",
         "net-sqlite-encryption",
         "net-encoded-1",
         "delegate",

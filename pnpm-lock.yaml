@@ -20,6 +20,9 @@ importers:
       '@vuepress/theme-default':
         specifier: 2.0.0-rc.37
         version: 2.0.0-rc.37(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31))
+      igeekfan-docs:
+        specifier: 'file:'
+        version: file:(@algolia/client-search@4.24.0)(@types/node@20.14.10)(@types/react@18.3.3)(@vuepress/plugin-feed@2.0.0-rc.37(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31)))(@vuepress/plugin-prismjs@2.0.0-rc.37(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31)))(@vuepress/plugin-pwa@2.0.0-rc.37(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31)))(flowchart.ts@3.0.0)(katex@0.16.11)(markdown-it@14.1.0)(sass@1.77.7)(search-insights@2.15.0)(terser@5.31.2)(twikoo@1.6.38)(yaml@2.4.5)
       vue:
         specifier: ^3.4.31
         version: 3.4.31
@@ -2208,6 +2211,9 @@ packages:
 
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
+
+  'igeekfan-docs@file:':
+    resolution: {directory: '', type: directory}
 
   ignore@5.3.1:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
@@ -6013,6 +6019,68 @@ snapshots:
   idb@7.1.1: {}
 
   ieee754@1.2.1: {}
+
+  igeekfan-docs@file:(@algolia/client-search@4.24.0)(@types/node@20.14.10)(@types/react@18.3.3)(@vuepress/plugin-feed@2.0.0-rc.37(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31)))(@vuepress/plugin-prismjs@2.0.0-rc.37(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31)))(@vuepress/plugin-pwa@2.0.0-rc.37(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31)))(flowchart.ts@3.0.0)(katex@0.16.11)(markdown-it@14.1.0)(sass@1.77.7)(search-insights@2.15.0)(terser@5.31.2)(twikoo@1.6.38)(yaml@2.4.5):
+    dependencies:
+      '@vuepress/bundler-vite': 2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5)
+      '@vuepress/plugin-docsearch': 2.0.0-rc.37(@algolia/client-search@4.24.0)(@types/react@18.3.3)(search-insights@2.15.0)(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31))
+      '@vuepress/plugin-google-analytics': 2.0.0-beta.43
+      '@vuepress/theme-default': 2.0.0-rc.37(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31))
+      vue: 3.4.31
+      vuepress: 2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31)
+      vuepress-plugin-md-enhance: 2.0.0-rc.50(flowchart.ts@3.0.0)(katex@0.16.11)(markdown-it@14.1.0)(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31))
+      vuepress-theme-hope: 2.0.0-rc.50(@vuepress/plugin-docsearch@2.0.0-rc.37(@algolia/client-search@4.24.0)(@types/react@18.3.3)(search-insights@2.15.0)(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31)))(@vuepress/plugin-feed@2.0.0-rc.37(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31)))(@vuepress/plugin-prismjs@2.0.0-rc.37(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31)))(@vuepress/plugin-pwa@2.0.0-rc.37(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31)))(flowchart.ts@3.0.0)(katex@0.16.11)(markdown-it@14.1.0)(twikoo@1.6.38)(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(@types/node@20.14.10)(sass@1.77.7)(terser@5.31.2)(yaml@2.4.5))(vue@3.4.31))
+    transitivePeerDependencies:
+      - '@algolia/client-search'
+      - '@types/node'
+      - '@types/react'
+      - '@types/reveal.js'
+      - '@vue/composition-api'
+      - '@vue/repl'
+      - '@vuepress/bundler-webpack'
+      - '@vuepress/plugin-feed'
+      - '@vuepress/plugin-prismjs'
+      - '@vuepress/plugin-pwa'
+      - '@vuepress/plugin-redirect'
+      - '@vuepress/plugin-search'
+      - '@waline/client'
+      - artalk
+      - artplayer
+      - chart.js
+      - dashjs
+      - echarts
+      - flowchart.ts
+      - hls.js
+      - jiti
+      - katex
+      - kotlin-playground
+      - less
+      - lightningcss
+      - markdown-it
+      - markmap-lib
+      - markmap-toolbar
+      - markmap-view
+      - mathjax-full
+      - mermaid
+      - mpegts.js
+      - nodejs-jieba
+      - react
+      - react-dom
+      - reveal.js
+      - sandpack-vue3
+      - sass
+      - sass-loader
+      - search-insights
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - tsx
+      - twikoo
+      - typescript
+      - vidstack
+      - vuepress-plugin-search-pro
+      - yaml
 
   ignore@5.3.1: {}
 
