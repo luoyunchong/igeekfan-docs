@@ -7,8 +7,6 @@ export const zhSidebarConfig = sidebar({
       collapsible: true,
       children: [
         "README.md",
-        "console-hello-world",
-        "console-news-types",
         "freesql-in-aspnetcore-webapi-how-to-use",
         "freesql-sample-blog-restful-use-automapper",
         "identityserver4",
