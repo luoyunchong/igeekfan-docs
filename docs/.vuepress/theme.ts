@@ -15,7 +15,7 @@ export default hopeTheme({
             navbar: zhNavbarConfig,
             sidebar: zhSidebarConfig,
             footer: "MIT Licensed | Copyright © 2021-present luoyunchong",
-            copyright: '<a href="https://beian.miit.gov.cn/" data-v-c3cf170c="">豫ICP备2025116077号</a>',
+            copyright: '<a href="https://beian.miit.gov.cn/" data-v-c3cf170c="">豫ICP备2025116077号-2</a>',
             displayFooter: true,
             metaLocales: {
                 lastUpdated: "上次编辑于",
@@ -26,7 +26,7 @@ export default hopeTheme({
             navbar: enNavbarConfig,
             sidebar: enSidebarConfig,
             footer: "MIT Licensed | Copyright © 2021-present luoyunchong",
-            copyright: '<a href="https://beian.miit.gov.cn/" data-v-c3cf170c="">豫ICP备2025116077号</a>',
+            copyright: '<a href="https://beian.miit.gov.cn/" data-v-c3cf170c="">豫ICP备2025116077号-2</a>',
             displayFooter: true,
         },
     },

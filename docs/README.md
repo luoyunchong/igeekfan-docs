@@ -35,7 +35,7 @@ features:
   link : /about/
 footer: "MIT Licensed | Copyright © 2021-present igeekfan"
 displayFooter: true
-copyright: '<a href="https://beian.miit.gov.cn/" data-v-c3cf170c="">豫ICP备2025116077号</a>'
+copyright: '<a href="https://beian.miit.gov.cn/" data-v-c3cf170c="">豫ICP备2025116077号-2</a>'
 ---
 <ins class="adsbygoogle"
      style="display:block"
