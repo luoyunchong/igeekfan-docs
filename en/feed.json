@@ -2,7 +2,7 @@
   "version": "https://jsonfeed.org/version/1.1",
   "title": ".NET Devlopement Guide",
   "home_page_url": "https://igeekfan.cn/igeekfan-docs/en/",
-  "feed_url": "https://igeekfan.cn/igeekfan-docs/feed.json",
+  "feed_url": "https://igeekfan.cn/igeekfan-docs/en/feed.json",
   "description": ".NET Devlopement Guide",
   "items": []
 }

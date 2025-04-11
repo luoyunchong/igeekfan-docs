@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://igeekfan.cn/igeekfan-docs/en/atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
   <id>https://igeekfan.cn/igeekfan-docs/en/</id>
   <title>.NET Devlopement Guide</title>
   <subtitle>.NET Devlopement Guide</subtitle>
-  <updated>2024-07-10T14:52:58.542Z</updated>
-  <generator>vuepress-plugin-feed2</generator>
-  <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
+  <rights>&amp;lt;a href=&amp;quot;https://beian.miit.gov.cn/&amp;quot; data-v-c3cf170c=&amp;quot;&amp;quot;&amp;gt;豫ICP备2025116077号-2&amp;lt;/a&amp;gt;</rights>
+  <updated>2025-04-11T15:11:36.132Z</updated>
+  <generator>@vuepress/plugin-feed</generator>
+  <link rel="self" href="https://igeekfan.cn/igeekfan-docs/en/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/en/"/>
 </feed>
