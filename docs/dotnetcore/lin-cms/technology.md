@@ -1,9 +1,8 @@
 # 相关技术
 
 - 数据库相关：ORM:[FreeSql](https://github.com/dotnetcore/FreeSql)+DataBase:MySQL5.6
-- ASP.NET Core3.1+WebAPI+RESTful
+- ASP.NET Core 9+WebAPI+RESTful
 - 简化对象映射：[AutoMapper](https://automapper.org/)
-- 身份认证框架：[IdentityServer4](https://github.com/IdentityServer/IdentityServer4)
 - Json Web 令牌:JWT
 - 文档 API：Swagger([Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore))
 - 序列化：Newtonsoft.Json

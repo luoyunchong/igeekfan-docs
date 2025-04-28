@@ -16,13 +16,6 @@
   - LinCms.Test:对仓储，应用服务或工具类进行测试
 
 ```txt
-├─framework
-│  └─src
-│      └─IGeekFan.Localization.FreeSql
-├─identityserver4
-│  └─LinCms.IdentityServer4
-│      ├─Controllers
-│      ├─IdentityServer4
 ├─src
 │  ├─LinCms.Application
 │  │  ├─Cms

@@ -8,10 +8,10 @@
 ## 博客模块线上地址
 
 - 本项目 swagger 地址 [https://api.igeekfan.cn/swagger/index.html](https://api.igeekfan.cn/swagger/index.html)
-- 用户端 lin-cms-vvlog [https://vvlog.igeekfan.cn](https://vvlog.igeekfan.cn)
+- 用户端 lin-cms-vvlog [https://igeekfan.cn/vvlog](https://igeekfan.cn/vvlog)
   - 普通用户：<710277267@qq.com>
   - 密码：123qwe
-- 管理员 lin-cms-vue [https://cms.igeekfan.cn/](https://cms.igeekfan.cn)
+- 管理员 lin-cms-vue [https://igeekfan.cn/cms/](https://igeekfan.cn/cms)
   - 管理员： admin
   - 密码：123qwe
 
@@ -61,14 +61,14 @@ server {
 - https
 
 目录：`/etc/nginx/conf.d`
-证书：也放到`/etc/nginx/conf.d/cms.igeekfan.cn_nginx`目录中
+证书：也放到`/etc/nginx/conf.d/igeekfan.cn/cms_nginx`目录中
 
 ```nginx
 server {  
     listen 443  ssl;
-    server_name cms.igeekfan.cn;
-    ssl_certificate conf.d/cms.igeekfan.cn_nginx/cms.igeekfan.cn_bundle.crt; #证书文件名称
-    ssl_certificate_key conf.d/cms.igeekfan.cn_nginx/cms.igeekfan.cn.key; #私钥文件名称
+    server_name igeekfan.cn/cms;
+    ssl_certificate conf.d/igeekfan.cn/cms_nginx/igeekfan.cn/cms_bundle.crt; #证书文件名称
+    ssl_certificate_key conf.d/igeekfan.cn/cms_nginx/igeekfan.cn/cms.key; #私钥文件名称
     ssl_session_timeout 5m;
     ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #请按照这个协议配置
     ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; #请按照这个套件配置，配置加密套件，写法遵循 openssl 标准。
@@ -86,7 +86,7 @@ server {
 
 server {
     listen 80;
-    server_name cms.igeekfan.cn;
+    server_name igeekfan.cn/cms;
     return 301 https://$server_name$request_uri;
 }
 ```

@@ -34,10 +34,10 @@ Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套**内�
 ## 线上 Demo
 
 - 本项目 swagger 地址 [https://api.igeekfan.cn/swagger/index.html](https://api.igeekfan.cn/swagger/index.html)
-- 用户端 lin-cms-vvlog [https://vvlog.igeekfan.cn](https://vvlog.igeekfan.cn)
+- 用户端 lin-cms-vvlog [https://igeekfan.cn/vvlog](https://igeekfan.cn/vvlog)
   - 普通用户：710277267@qq.com
   - 密码：123qwe
-- 管理员 lin-cms-vue [https://cms.igeekfan.cn/](https://cms.igeekfan.cn)
+- 管理员 lin-cms-vue [https://igeekfan.cn/cms/](https://igeekfan.cn/cms)
   - 管理员： admin
   - 密码：123qwe
 

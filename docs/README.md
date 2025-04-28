@@ -11,7 +11,7 @@ actions:
 features:
 - title: LinCMS
   icon: branch
-  details:  Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套内容管理系统框架。Lin-CMS 可以有效的帮助开发者提高 CMS 的开发效率
+  details:  Lin-CMS 是一套内容管理系统框架。
   link : /dotnetcore/lin-cms/
 - title: .NET指北
   icon: tag
