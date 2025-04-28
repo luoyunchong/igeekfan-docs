@@ -4,7 +4,7 @@
 
 ## 环境要求
 
-- [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0) 或更高版本
+- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/6.0) 或更高版本
 - 关系型数据库，如 MySql 5.7+, PostgreSQL 12+, SQLServer 2012+, Sqlite3 (默认)
 - Redis (可选，用于分布式缓存和消息队列)
 - IDE (Visual Studio 2022 / VS Code / JetBrains Rider)

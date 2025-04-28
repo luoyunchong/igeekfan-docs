@@ -56,7 +56,7 @@ lin-cms-dotnetcore/
 │   │   ├── Services/                   # Web 层特定服务 (如启动配置)
 │   │   ├── appsettings.json            # 配置文件
 │   │   ├── lin-cms.db                  # Sqlite 数据库文件 (默认)
-│   │   ├── Program.cs                  # 应用启动入口 (.NET 6+)
+│   │   ├── Program.cs                  # 应用启动入口 (.NET 9+)
 │   │   └── LinCmsWebModule.cs          # Web 层模块定义
 │   │
 │   └── LinCms.WorkerService/           # (可选) 后台任务服务

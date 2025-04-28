@@ -4,7 +4,7 @@
 
 是`asp.net core 6` 的`identity`的`freesql`存储的实现
 
-- 支持.NET 6.0
+- 支持.NET 9.0
 - 安装包
 
 ```bash

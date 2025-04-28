@@ -2,7 +2,7 @@
 
 ## 后端 (.NET Core)
 
-- **开发框架**: [.NET 6](https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0) / [.NET 7](https://dotnet.microsoft.com/zh-cn/download/dotnet/7.0)
+- **开发框架**: [.NET 9](https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0) / [.NET 7](https://dotnet.microsoft.com/zh-cn/download/dotnet/7.0)
 - **ORM**: [FreeSql](https://github.com/dotnetcore/FreeSql) - 支持 CodeFirst 模式，灵活强大的国产 ORM。
 - **数据库支持**:
     - MySQL (5.7+)
