@@ -4,7 +4,7 @@
   <title>.NET 开发者指北</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
   <rights>&amp;lt;a href=&amp;quot;https://beian.miit.gov.cn/&amp;quot; data-v-c3cf170c=&amp;quot;&amp;quot;&amp;gt;豫ICP备2025116077号-2&amp;lt;/a&amp;gt;</rights>
-  <updated>2025-04-11T15:54:26.474Z</updated>
+  <updated>2025-04-28T14:21:09.884Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -5280,13 +5280,12 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
     <title type="text">相关技术</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/technology.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/technology.html"/>
-    <updated>2022-10-20T16:01:01.000Z</updated>
+    <updated>2025-04-28T14:18:57.000Z</updated>
     <summary type="html"><![CDATA[
 <ul>
 <li>数据库相关：ORM:<a href="https://github.com/dotnetcore/FreeSql" target="_blank" rel="noopener noreferrer">FreeSql</a>+DataBase:MySQL5.6</li>
-<li><a href="http://ASP.NET" target="_blank" rel="noopener noreferrer">ASP.NET</a> Core3.1+WebAPI+RESTful</li>
+<li><a href="http://ASP.NET" target="_blank" rel="noopener noreferrer">ASP.NET</a> Core 9+WebAPI+RESTful</li>
 <li>简化对象映射：<a href="https://automapper.org/" target="_blank" rel="noopener noreferrer">AutoMapper</a></li>
-<li>身份认证框架：<a href="https://github.com/IdentityServer/IdentityServer4" target="_blank" rel="noopener noreferrer">IdentityServer4</a></li>
 <li>Json Web 令牌:JWT</li>
 <li>文档 API：Swagger(<a href="https://github.com/domaindrivendev/Swashbuckle.AspNetCore" target="_blank" rel="noopener noreferrer">Swashbuckle.AspNetCore</a>)</li>
 <li>序列化：Newtonsoft.Json</li>
@@ -5306,9 +5305,8 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
     <content type="html"><![CDATA[
 <ul>
 <li>数据库相关：ORM:<a href="https://github.com/dotnetcore/FreeSql" target="_blank" rel="noopener noreferrer">FreeSql</a>+DataBase:MySQL5.6</li>
-<li><a href="http://ASP.NET" target="_blank" rel="noopener noreferrer">ASP.NET</a> Core3.1+WebAPI+RESTful</li>
+<li><a href="http://ASP.NET" target="_blank" rel="noopener noreferrer">ASP.NET</a> Core 9+WebAPI+RESTful</li>
 <li>简化对象映射：<a href="https://automapper.org/" target="_blank" rel="noopener noreferrer">AutoMapper</a></li>
-<li>身份认证框架：<a href="https://github.com/IdentityServer/IdentityServer4" target="_blank" rel="noopener noreferrer">IdentityServer4</a></li>
 <li>Json Web 令牌:JWT</li>
 <li>文档 API：Swagger(<a href="https://github.com/domaindrivendev/Swashbuckle.AspNetCore" target="_blank" rel="noopener noreferrer">Swashbuckle.AspNetCore</a>)</li>
 <li>序列化：Newtonsoft.Json</li>
@@ -6735,7 +6733,7 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
     <title type="text">Lin CMS By .NET</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/"/>
-    <updated>2022-10-30T15:36:06.000Z</updated>
+    <updated>2025-04-28T14:18:57.000Z</updated>
     <summary type="html"><![CDATA[<p></p>
 <h1>Lin CMS By .NET</h1>
 <h1 align="center">
@@ -6775,13 +6773,13 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
 <h2>线上 Demo</h2>
 <ul>
 <li>本项目 swagger 地址 <a href="https://api.igeekfan.cn/swagger/index.html" target="_blank" rel="noopener noreferrer">https://api.igeekfan.cn/swagger/index.html</a></li>
-<li>用户端 lin-cms-vvlog <a href="https://vvlog.igeekfan.cn" target="_blank" rel="noopener noreferrer">https://vvlog.igeekfan.cn</a>
+<li>用户端 lin-cms-vvlog <a href="https://igeekfan.cn/vvlog" target="_blank" rel="noopener noreferrer">https://igeekfan.cn/vvlog</a>
 <ul>
 <li>普通用户：710277267@qq.com</li>
 <li>密码：123qwe</li>
 </ul>
 </li>
-<li>管理员 lin-cms-vue <a href="https://cms.igeekfan.cn" target="_blank" rel="noopener noreferrer">https://cms.igeekfan.cn/</a>
+<li>管理员 lin-cms-vue <a href="https://igeekfan.cn/cms" target="_blank" rel="noopener noreferrer">https://igeekfan.cn/cms/</a>
 <ul>
 <li>管理员： admin</li>
 <li>密码：123qwe</li>
@@ -7351,7 +7349,7 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
     <title type="text">开发起步</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/dev-start.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/dev-start.html"/>
-    <updated>2022-10-24T14:14:31.000Z</updated>
+    <updated>2025-04-28T14:18:57.000Z</updated>
     <summary type="html"><![CDATA[
 <h2>项目结构</h2>
 <ul>
@@ -7402,14 +7400,7 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
 </ul>
 </li>
 </ul>
-<div class="language-txt line-numbers-mode" data-highlighter="shiki" data-ext="txt" data-title="txt" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>├─framework</span></span>
-<span class="line"><span>│  └─src</span></span>
-<span class="line"><span>│      └─IGeekFan.Localization.FreeSql</span></span>
-<span class="line"><span>├─identityserver4</span></span>
-<span class="line"><span>│  └─LinCms.IdentityServer4</span></span>
-<span class="line"><span>│      ├─Controllers</span></span>
-<span class="line"><span>│      ├─IdentityServer4</span></span>
-<span class="line"><span>├─src</span></span>
+<div class="language-txt line-numbers-mode" data-highlighter="shiki" data-ext="txt" data-title="txt" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>├─src</span></span>
 <span class="line"><span>│  ├─LinCms.Application</span></span>
 <span class="line"><span>│  │  ├─Cms</span></span>
 <span class="line"><span>│  │  │  ├─Admin</span></span>
@@ -7477,7 +7468,7 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
 <span class="line"><span>        ├─Service</span></span>
 <span class="line"><span>        │  └─Cms</span></span>
 <span class="line"><span>        └─Utils</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>相关技术</h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>相关技术</h2>
 <h3>FreeSql</h3>
 <ul>
 <li>
@@ -7498,11 +7489,11 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
     <title type="text">后端准备</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/dotnetcore-start.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/dotnetcore-start.html"/>
-    <updated>2022-10-24T14:14:31.000Z</updated>
+    <updated>2025-04-28T14:18:57.000Z</updated>
     <summary type="html"><![CDATA[
 <h2>Server 端必备环境</h2>
 <ul>
-<li>安装软件开发包 <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0" target="_blank" rel="noopener noreferrer">.NET SDK 6.0</a></li>
+<li>安装软件开发包 <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/9.0" target="_blank" rel="noopener noreferrer">.NET SDK 9.0</a></li>
 <li>安装开发工具 <a href="https://visualstudio.microsoft.com/zh-hans/vs/" target="_blank" rel="noopener noreferrer">Visual Studio 2022</a> 或 <a href="https://www.jetbrains.com/rider/" target="_blank" rel="noopener noreferrer">Rider</a></li>
 <li>安装 MySQL（version 5.7+)及以上版本</li>
 <li>Redis 4.0.14.2 for Windows <a href="https://github.com/tporadowski/redis/releases" target="_blank" rel="noopener noreferrer">https://github.com/tporadowski/redis/releases</a></li>
@@ -7511,7 +7502,7 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
     <content type="html"><![CDATA[
 <h2>Server 端必备环境</h2>
 <ul>
-<li>安装软件开发包 <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0" target="_blank" rel="noopener noreferrer">.NET SDK 6.0</a></li>
+<li>安装软件开发包 <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/9.0" target="_blank" rel="noopener noreferrer">.NET SDK 9.0</a></li>
 <li>安装开发工具 <a href="https://visualstudio.microsoft.com/zh-hans/vs/" target="_blank" rel="noopener noreferrer">Visual Studio 2022</a> 或 <a href="https://www.jetbrains.com/rider/" target="_blank" rel="noopener noreferrer">Rider</a></li>
 <li>安装 MySQL（version 5.7+)及以上版本</li>
 <li>Redis 4.0.14.2 for Windows <a href="https://github.com/tporadowski/redis/releases" target="_blank" rel="noopener noreferrer">https://github.com/tporadowski/redis/releases</a></li>
@@ -7538,96 +7529,18 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
 <span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "Sqlite"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"Data Source=|DataDirectory|</span><span style="--shiki-light:#005CC5;--shiki-dark:#56B6C2">\\</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">lincms.db; Attachs=lincms.db; Pooling=true;Min Pool Size=1"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
 <span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "CsRedis"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"127.0.0.1:6379,password=,defaultDatabase=0"</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">  },</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>LinCms.IdentityServer4</code> 项目不是必须的，根据<code>LinCms.Web</code>中的<code>appsettings.json</code>配置 项 <code>Service.IdentityServer4</code>设置成了true,LinCms.Web项目中的登录接口才会访问Ids4项目，</p>
-<p>如需运行，则修改数据库配置项</p>
-<p><code>identityserver4/LinCms.IdentityServer4/appsettings.json</code> 数据库配置、同<code>LinCms.Web</code>中的配置项相同</p>
-<div class="language-json line-numbers-mode" data-highlighter="shiki" data-ext="json" data-title="json" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#98C379">  "ConnectionStrings"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: {</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "DefaultDB"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"0"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "DataType"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: {</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">      "MySql"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">0</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">      "SqlServer"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">1</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">      "PostgreSQL"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">2</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">      "Oracle"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">3</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">      "Sqlite"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">4</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    },</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "MySql"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"Data Source=localhost;Port=3308;User ID=root;Password=root;Initial Catalog=lincms;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">  },</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>其中 MariaDB（看做 MySql）,通过<code>Serilog</code>记录日志，需要配置相应的链接串。</p>
-<div class="language-json line-numbers-mode" data-highlighter="shiki" data-ext="json" data-title="json" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">{</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "Name"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"MariaDB"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "Args"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: {</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">        "connectionString"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"Data Source=localhost;Port=3306;User ID=root;Password=root;Initial Catalog=lincms;Charset=utf8mb4;SslMode=none;Max pool size=1;Connection LifeTime=20"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    }</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">}</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>数据迁移</h2>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>数据迁移</h2>
 <p>该项目使用<a href="https://github.com/dotnetcore/FreeSql" target="_blank" rel="noopener noreferrer">FreeSql</a>，会自动根据配置项创建数据库，默认自动迁移数据表结构，初始化种子数据</p>
 <p>默认会创建用户<code>admin</code>，密码<code>123qwe</code></p>
 <h2>visual studio 2022 运行项目</h2>
 <p>双击 LinCms.sln，使用 vs2022 打开项目。右键解决方案，点击生成解决方案。</p>
-<h2>Ids4 服务端</h2>
-<p>默认情况下 <code>Service.IdentityServer4</code>设置成了false，即<code>LinCms.IdentityServer4</code>不需要运行，我们就只需要运行<code>LinCms.Web</code>项目即可</p>
-<div class="language-json line-numbers-mode" data-highlighter="shiki" data-ext="json" data-title="json" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#98C379">  "Service"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: {</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "IdentityServer4"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">false</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "Name"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"LinCms.Web"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "GrantType"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"password"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "ClientId"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"lin-cms-dotnetcore-client-id"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "ClientSecret"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"lin-cms-dotnetcore-client-secrets"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "Authority"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"https://localhost:5003"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "UseHttps"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">true</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">  },</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果<code>Service.IdentityServer4</code>设置成了true</p>
-<p>由于将 identityserver4 单独拆成了一个项目，所以需要同时启动二个项目，<strong>右键解决方案，属性。</strong>,选择多个启动项目，勾选二个项目同时启动。如下图所示。</p>
-<p><img src="https://pic.downk.cc/item/5e83fd74504f4bcb04cf5474.png" alt=""></p>
-<p>这时候会打开二个网页 <a href="https://localhost:5001/swagger/index.html" target="_blank" rel="noopener noreferrer">https://localhost:5001/swagger/index.html</a>，即可看到 swagger 页面。</p>
-<p><img src="https://pic.downk.cc/item/5e83ffd1504f4bcb04d0f039.jpg" alt=""></p>
-<p>会打开浏览器，访问<a href="https://localhosst:5001/swagger/index.html" target="_blank" rel="noopener noreferrer">https://localhosst:5001/swagger/index.html</a>，会看到 swagger 的文档。<br>
-访问<a href="https://localhosst:5001/swagger/index.html" target="_blank" rel="noopener noreferrer">https://localhosst:5003/swagger/index.html</a> 是 ids4 的接口文档，什么也看不到。</p>
+<p>会打开浏览器，访问<a href="https://localhosst:5001/swagger/index.html" target="_blank" rel="noopener noreferrer">https://localhosst:5001/swagger/index.html</a>，会看到 swagger 的文档。</p>
 <p><a href="http://LinCms.Web" target="_blank" rel="noopener noreferrer">LinCms.Web</a> 运行效果：<br>
 <img src="https://ae01.alicdn.com/kf/He52bc4d3708242d2995419bb584e1f53Q.jpg" alt=""></p>
 <h2>部署</h2>
 <ul>
 <li><a href="https://blog.igeekfan.cn/2022/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Ubuntu" target="_blank" rel="noopener noreferrer">部署至 Linux(Ubuntu16.06)</a></li>
 <li><a href="https://blog.igeekfan.cn/2022/06/09/dotnetcore/ASP.NET-Core-Deploy-To-Docker-Ubuntu/" target="_blank" rel="noopener noreferrer">部署至 Linux(Ubuntu16.06)下的 Docker</a></li>
-</ul>
-<h2>部署前准备</h2>
-<p>因为该项目基于 IdentityServer4,实现的授权认证服务，</p>
-<p>开发阶段使用<code>AddDeveloperSigningCredential()</code>方法即可完成签名认证，但是在生产环境，我们必须使用<code>AddSigningCredential()</code>方法并且使用 OpenSSL 生成自己的签名证书</p>
-<p>Startup.cs</p>
-<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" data-title="" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>            services.AddIdentityServer()</span></span>
-<span class="line"><span>#if  DEBUG</span></span>
-<span class="line"><span>                .AddDeveloperSigningCredential()</span></span>
-<span class="line"><span>#endif</span></span>
-<span class="line"><span>#if !DEBUG</span></span>
-<span class="line"><span>                .AddSigningCredential(new X509Certificate2(Path.Combine(AppContext.BaseDirectory,</span></span>
-<span class="line"><span>                        Configuration["Certificates:Path"]),</span></span>
-<span class="line"><span>                    Configuration["Certificates:Password"]))</span></span>
-<span class="line"><span>#endif</span></span>
-<span class="line"><span>                .AddInMemoryIdentityResources(InMemoryConfiguration.GetIdentityResources())</span></span>
-<span class="line"><span>                .AddInMemoryApiResources(InMemoryConfiguration.GetApis())</span></span>
-<span class="line"><span>                .AddInMemoryClients(InMemoryConfiguration.GetClients())</span></span>
-<span class="line"><span>                .AddProfileService&lt;LinCmsProfileService&gt;()</span></span>
-<span class="line"><span>                .AddResourceOwnerValidator&lt;LinCmsResourceOwnerPasswordValidator&gt;();</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>appsettings.Production.json</p>
-<div class="language-json line-numbers-mode" data-highlighter="shiki" data-ext="json" data-title="json" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">{</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">    "Certificates"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">:</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    {</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">        "Path"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">:</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"ids4.pfx"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">,</span></span>
-<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#E06C75">        "Password"</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">:</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379">"123qwe"</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">    }</span></span>
-<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">}</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3>使用 OpenSSL 生成证书</h3>
-<p>官网下载并安装 OpenSSL <a href="https://slproweb.com/products/Win32OpenSSL.html" target="_blank" rel="noopener noreferrer">OpenSSL 官网</a></p>
-<p>下载 Win64 OpenSSL v1.1.1b 版本</p>
-<p>在 OpenSSL 的 bin 文件夹，以管理员身份打开 CMD 执行以下命令：</p>
-<div class="language-txt line-numbers-mode" data-highlighter="shiki" data-ext="txt" data-title="txt" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>openssl req -newkey rsa:2048 -nodes -keyout ids4.key -x509 -days 365 -out ids4.cer</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><p>下面将生成的证书和 Key 封装成一个文件，以便 IdentityServer 可以使用它们去正确地签名 tokens</p>
-<div class="language-txt line-numbers-mode" data-highlighter="shiki" data-ext="txt" data-title="txt" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>openssl pkcs12 -export -in ids4.cer -inkey ids4.key -out ids4.pfx</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div></div></div><h3>(注：在生成的过程中会让我们输入 Export Password)</h3>
-<p>这个 密码与 appsettings.Production.json 配置项相同。</p>
-<p>发布时，把 ids4.pfx，放到项目根目录</p>
-<h2>参考</h2>
-<ul>
-<li><a href="https://www.cnblogs.com/guolianyu/p/9872661.html" target="_blank" rel="noopener noreferrer">IdentityServer4 之 JWT 签名(RSA 加密证书)及验签</a></li>
 </ul>
 ]]></content>
     <published>2020-02-28T11:10:31.000Z</published>
@@ -8802,7 +8715,7 @@ POST 方式（PostMan 去请求）</p>
     <title type="text">前端准备</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/vue-start.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/vue-start.html"/>
-    <updated>2023-09-16T05:02:03.000Z</updated>
+    <updated>2025-04-28T14:18:57.000Z</updated>
     <summary type="html"><![CDATA[
 <h2>开源地址</h2>
 <ul>
@@ -8818,13 +8731,13 @@ POST 方式（PostMan 去请求）</p>
 <h2>博客模块线上地址</h2>
 <ul>
 <li>本项目 swagger 地址 <a href="https://api.igeekfan.cn/swagger/index.html" target="_blank" rel="noopener noreferrer">https://api.igeekfan.cn/swagger/index.html</a></li>
-<li>用户端 lin-cms-vvlog <a href="https://vvlog.igeekfan.cn" target="_blank" rel="noopener noreferrer">https://vvlog.igeekfan.cn</a>
+<li>用户端 lin-cms-vvlog <a href="https://igeekfan.cn/vvlog" target="_blank" rel="noopener noreferrer">https://igeekfan.cn/vvlog</a>
 <ul>
 <li>普通用户：<a href="mailto:710277267@qq.com" target="_blank" rel="noopener noreferrer">710277267@qq.com</a></li>
 <li>密码：123qwe</li>
 </ul>
 </li>
-<li>管理员 lin-cms-vue <a href="https://cms.igeekfan.cn" target="_blank" rel="noopener noreferrer">https://cms.igeekfan.cn/</a>
+<li>管理员 lin-cms-vue <a href="https://igeekfan.cn/cms" target="_blank" rel="noopener noreferrer">https://igeekfan.cn/cms/</a>
 <ul>
 <li>管理员： admin</li>
 <li>密码：123qwe</li>
@@ -8871,12 +8784,12 @@ POST 方式（PostMan 去请求）</p>
 <li>https</li>
 </ul>
 <p>目录：<code>/etc/nginx/conf.d</code><br>
-证书：也放到<code>/etc/nginx/conf.d/cms.igeekfan.cn_nginx</code>目录中</p>
+证书：也放到<code>/etc/nginx/conf.d/igeekfan.cn/cms_nginx</code>目录中</p>
 <div class="language-nginx line-numbers-mode" data-highlighter="shiki" data-ext="nginx" data-title="nginx" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">server</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> {  </span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    listen </span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">443</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">  ssl;</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    server_name </span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">cms.igeekfan.cn;</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    ssl_certificate </span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">conf.d/cms.igeekfan.cn_nginx/cms.igeekfan.cn_bundle.crt; </span><span style="--shiki-light:#6A737D;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#证书文件名称</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    ssl_certificate_key </span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">conf.d/cms.igeekfan.cn_nginx/cms.igeekfan.cn.key; </span><span style="--shiki-light:#6A737D;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#私钥文件名称</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    server_name </span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">igeekfan.cn/cms;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    ssl_certificate </span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">conf.d/igeekfan.cn/cms_nginx/igeekfan.cn/cms_bundle.crt; </span><span style="--shiki-light:#6A737D;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#证书文件名称</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    ssl_certificate_key </span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">conf.d/igeekfan.cn/cms_nginx/igeekfan.cn/cms.key; </span><span style="--shiki-light:#6A737D;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#私钥文件名称</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    ssl_session_timeout </span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">5m</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    ssl_protocols </span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">TLSv1 TLSv1.1 TLSv1.2; </span><span style="--shiki-light:#6A737D;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#请按照这个协议配置</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    ssl_ciphers </span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE; </span><span style="--shiki-light:#6A737D;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic">#请按照这个套件配置，配置加密套件，写法遵循 openssl 标准。</span></span>
@@ -8894,7 +8807,7 @@ POST 方式（PostMan 去请求）</p>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">server</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> {</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    listen </span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66">80</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
-<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    server_name </span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">cms.igeekfan.cn;</span></span>
+<span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    server_name </span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">igeekfan.cn/cms;</span></span>
 <span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#C678DD">    return</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> 301</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF"> https://$</span><span style="--shiki-light:#24292E;--shiki-dark:#E06C75">server_name</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">$</span><span style="--shiki-light:#24292E;--shiki-dark:#E06C75">request_uri</span><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">;</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ABB2BF">}</span></span></code></pre>
 <div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2>配置项</h2>
