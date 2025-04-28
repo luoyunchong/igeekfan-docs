@@ -18,49 +18,64 @@ export const enSidebarConfig = sidebar({
             ]
         }
     ],
-    '/dotnetcore/lin-cms/': [{
-        text: '起步',
-        collapsible: true,
-        children: [
-            'dotnetcore-start.md',
-            'cms-start.md',
-            'technology.md',
-            'vue-start.md',
-            'open-source-road.md',
-            'pm-design-modules.md',
-            'production-design.md',
-            'github-actions.md',
-            'change-sqlserver.md',
-        ]
-    }, {
-        text: '.NET Core',
-        collapsible: true,
-        children: [
-            'file-upload.md',
-            'logger.md',
-            'table.md',
-            'authorize.md',
-            'lincms-scaffolding.md',
-            'autofac.md',
-            'aspnetcore-repository-unitofwork.md'
-        ]
-    }, {
-        text: '开发者文档',
-        collapsible: true,
-        children: [
-            'dev-start',
-            'newtonsoft-json-question',
-            'dependency-injection-scrutor',
-            'dynamic-authorization-in-aspnetcore',
-            'reflex-assembly-get-controller-methods-attribute',
-            'identityserver4-jwt',
-            'stopwords',
-            'spa-github-login',
-            'qq-login',
-            'rabbitmq',
-            'scriban-README.md'
-        ]
-    }],
+    '/dotnetcore/lin-cms/': [
+        {
+            text: 'Getting Started',
+            collapsible: true,
+            children: [
+                'README.md',
+                'backend-quickstart.md',
+                'frontend-quickstart.md',
+                'deployment.md',
+                'faq.md',
+            ]
+        },
+        {
+            text: 'Core Concepts',
+            collapsible: true,
+            children: [
+                'technology-stack.md',
+                'project-structure.md',
+                'database-design.md',
+                'authorize.md',
+                'logger.md',
+                'file-upload.md',
+            ]
+        },
+        {
+            text: 'Advanced Development',
+            collapsible: true,
+            children: [
+                'development-guide.md',
+                'api-reference.md',
+                'lincms-scaffolding.md',
+                'autofac.md',
+                'aspnetcore-repository-unitofwork.md',
+                'newtonsoft-json-question.md',
+                'dependency-injection-scrutor.md',
+                'dynamic-authorization-in-aspnetcore.md',
+                'reflex-assembly-get-controller-methods-attribute.md',
+                'identityserver4-jwt.md',
+                'stopwords.md',
+                'spa-github-login.md',
+                'qq-login.md',
+                'rabbitmq.md',
+                'scriban-README.md'
+            ]
+        },
+        {
+            text: 'Others',
+            collapsible: true,
+            children: [
+                'contributing.md',
+                'github-actions.md',
+                'change-sqlserver.md',
+                'open-source-road.md',
+                'pm-design-modules.md',
+                'production-design.md',
+            ]
+        }
+    ],
     '/about/': [
         {
             text: '关于',
