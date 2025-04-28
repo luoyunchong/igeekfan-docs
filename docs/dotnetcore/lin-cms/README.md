@@ -1,139 +1,161 @@
-﻿﻿
-# Lin CMS By .NET
+﻿﻿# LinCMS.NET 
 
-<h1  align="center">
-  <a href="http://doc.cms.7yue.pro/">
-    <img width="200" src="https://consumerminiaclprd01.blob.core.chinacloudapi.cn/miniappbackground/sfgmember/lin/left-logo.png">
-  </a>
-  <h1>
-  </h1>
-</h1>
+<div align="center">
+  <img width="200" src="https://consumerminiaclprd01.blob.core.chinacloudapi.cn/miniappbackground/sfgmember/lin/left-logo.png">
+</div>
 
-😃 A simple and practical CMS implemented by [ASP.NET Core 6](https://docs.microsoft.com/zh-cn/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0)
+<div align="center">😃 基于ASP.NET Core的简洁实用的CMS开发框架</div>
 
-本项目是完全出于个人喜爱，看到 Lin-cms 有了 python,node.js,社区也有人出了[lin-cms-tp5](https://github.com/ChenJinchuang/lin-cms-tp5)的版本
+## 项目介绍
 
-本项目是 Lin CMS 后端的 [ASP.NET6](https://docs.microsoft.com/zh-cn/dotnet/core/introduction) 的实现，通过 Vue.js 实现的前后端分离 CMS 平台，目前实现简约的权限管理系统、基础字典项管理、随笔专栏，评论点赞，消息通知，标签等仿掘金模块。
+Lin CMS .NET是[Lin-CMS](https://github.com/TaleLin)的.NET实现，采用ASP.NET Core 9.0构建，基于Vue.js的前后端分离CMS平台。项目实现了以下功能：
 
-## 什么是 Lin CMS？
+- 核心权限管理系统
+- 基础字典项管理
+- 随笔专栏系统
+- 评论点赞功能
+- 消息通知中心
+- 标签管理系统
+- 仿掘金社区模块
 
-Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套**内容管理系统框架**。Lin-CMS 可以有效的帮助开发者提高 CMS 的开发效率, 需要前端？请访问[**前端仓库**](https://github.com/TaleLin/lin-cms-vue)。官方团队产品了解请访问[**TaleLin**](https://github.com/TaleLin)
+> LinCMS源于林间有风团队的项目实践，是一套内容管理系统解决方案。该项目是完全开源的.NET Core社区实现版本。
+
+## 线上演示
+
+- API文档：[Swagger](https://api.igeekfan.cn/swagger/index.html)
+- 用户端：[VVLog](https://igeekfan.cn/vvlog)
+  - 普通用户账号：710277267@qq.com
+  - 密码：123qwe
+- 管理端：[CMS后台](https://igeekfan.cn/cms/)
+  - 管理员账号：admin
+  - 密码：123qwe
 
 ## 开源地址
 
-- 后端接口 Gitee 链接 [https://gitee.com/igeekfan/lin-cms-dotnetcore](https://gitee.com/igeekfan/lin-cms-dotnetcore)
-- 后端接口 GitHub 链接 [https://github.com/luoyunchong/lin-cms-dotnetcore](https://github.com/luoyunchong/lin-cms-dotnetcore)
-- 适配管理端 UI [https://github.com/luoyunchong/lin-cms-vue](https://github.com/luoyunchong/lin-cms-vue)
-- 适配用户端 UI [https://github.com/luoyunchong/lin-cms-vvlog](https://github.com/luoyunchong/lin-cms-vvlog)
+- 后端源码：
+  - [GitHub](https://github.com/luoyunchong/lin-cms-dotnetcore)
+  - [Gitee](https://gitee.com/igeekfan/lin-cms-dotnetcore)
+- 前端源码：
+  - 管理后台：[lin-cms-vue](https://github.com/luoyunchong/lin-cms-vue)
+  - 用户前台：[lin-cms-vvlog](https://github.com/luoyunchong/lin-cms-vvlog)
 
-## 线上文档地址(完善中)
+## 项目文档
 
-- [https://luoyunchong.github.io/igeekfan-docs/dotnetcore/lin-cms/](https://luoyunchong.github.io/igeekfan-docs/dotnetcore/lin-cms/)
-- [https://igeekfan.gitee.io/igeekfan-docs/dotnetcore/lin-cms/](https://igeekfan.gitee.io/igeekfan-docs/dotnetcore/lin-cms/)
+- [项目文档](https://luoyunchong.github.io/igeekfan-docs/dotnetcore/lin-cms/)
 
-## 线上 Demo
+## 核心特性
 
-- 本项目 swagger 地址 [https://api.igeekfan.cn/swagger/index.html](https://api.igeekfan.cn/swagger/index.html)
-- 用户端 lin-cms-vvlog [https://igeekfan.cn/vvlog](https://igeekfan.cn/vvlog)
-  - 普通用户：710277267@qq.com
-  - 密码：123qwe
-- 管理员 lin-cms-vue [https://igeekfan.cn/cms/](https://igeekfan.cn/cms)
-  - 管理员： admin
-  - 密码：123qwe
+### 前后端分离架构
 
-## 前端
+LinCMS采用前后端分离的开发模式：
 
-- 在原[开源项目](https://github.com/TaleLin/lin-cms-vue)中增加了博客随笔、标签、随笔评论、关注用户、关注标签、技术频道（标签分类）、插件式功能（目前还没有）
-  ，具体特点查看如下[lin-cms-dotnetcore 功能模块的设计](https://blog.igeekfan.cn/2019/11/24/lin-cms-dotnetcore/design/),开源地址见下方。
+- 后端：ASP.NET Core API，提供数据和业务逻辑
+- 前端：基于Vue的单页面应用，提供交互界面
 
-### Lin CMS 的特点
+相比传统的服务端渲染方式（如Razor），前后端分离模式具有以下优势：
 
-Lin CMS 的构筑思想是有其自身特点的。下面我们阐述一些 Lin 的主要特点。
+- 前端开发者和后端开发者可以专注各自的领域
+- 更流畅的用户体验和更灵活的界面交互
+- 更好的可扩展性和可维护性
 
-### Lin CMS 是一个前后端分离的 CMS 解决方案
+### 完整的权限解决方案
 
-这意味着，Lin 既提供后台的支撑，也有一套对应的前端系统，
+系统内置了完整的RBAC权限管理功能：
 
-首先，传统的网站开发更多的是采用服务端渲染的方式，需用使用一种模板语言在服务端完成页面渲染：比如 Razor 等模板技术。
+- 基于角色的用户分组
+- 细粒度的API权限控制
+- 动态权限分配
+- 操作日志记录
+- 支持第三方OAuth登录（GitHub、Gitee等）
 
-服务端渲染的好处在于可以比较好的支持 SEO，但作为内部使用的 CMS 管理系统，SEO 并不重要。
+### 丰富的扩展功能
 
-但一个不可忽视的事实是，服务器渲染的页面到底是由前端开发者来完成，还是由服务器开发者来完成？其实都不太合适。现在已经没有多少前端开发者是了解这些服务端模板语言的，而服务器开发者本身是不太擅长开发页面的。那还是分开吧，前端用最熟悉的 Vue 写 JS 和 CSS，而服务器只关注自己的 API 即可。
+- 文件上传系统：支持本地存储和七牛云
+- 内容管理系统：标签、分类、文章管理
+- 互动系统：评论、点赞、关注
+- 消息通知：系统消息、互动提醒
 
-其次，单页面应用程序的体验本身就要好于传统网站。
+## 技术栈
 
-### 框架本身已内置了 CMS 常用的功能
+### 后端技术
 
-Lin 已经内置了 CMS 中最为常见的需求：用户管理、权限管理、日志系统等。开发者只需要集中精力开发自己的 CMS 业务即可
+- ASP.NET Core 9.0：Web框架
+- FreeSql：ORM框架，支持多种数据库
+- IdentityServer4：认证授权框架
+- AutoMapper：对象映射
+- Serilog：日志框架
+- CAP：分布式事务和事件总线
 
-更多关于 Lin CMS 的介绍请访问[Lin CMS 线上文档](https://igeekfan.cn)
+### 前端技术
 
-## 所需基础
+- Vue.js：渐进式JavaScript框架
+- Element Plus：UI组件库
+- Vuex：状态管理
+- Vue Router：前端路由
+- Axios：HTTP请求库
 
-由于 Lin 采用的是前后端分离的架构，所以你至少需要熟悉 C# 和 Vue。
+## 快速开始
 
-### 后端 C#
+### 环境要求
 
-该项目的 Lin 的服务端框架是基于[.NET6](https://docs.microsoft.com/zh-cn/dotnet/core/)构建的，所以如果你比较熟悉 Mvc、WebAPI、过滤器等概念，或者是 有.NET Framework 中 Mvc 开发经验，相信你一定很容易写出代码。
+- .NET SDK 9.0+
+- MySQL 5.7+ / SqlServer / PostgreSQL / Oracle / SQLite
+- Node.js 16+（前端开发）
 
-### 相关技术
+### 后端启动
 
-- 数据库相关：ORM:[FreeSql](https://github.com/dotnetcore/FreeSql)+数据库支持:MySQL/MsSqlServer/Oracle/Sqlite/PostgreSQL及更多国产化数据库
-- ASP.NET Core 6 +WebAPI+RESTful
-- 简化对象映射：[AutoMapper](https://automapper.org/)
-- 身份认证框架：[IdentityServer4](https://github.com/IdentityServer/IdentityServer4)
-- Json Web 令牌:JWT
-- 文档 API
-  - Swagger([Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore))
-  - RapiDoc([RapiDoc](https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc))
-  - Knife4jUI([Knife4jUI](https://github.com/luoyunchong/IGeekFan.AspNetCore.Knife4jUI))
-- 序列化：Newtonsoft.Json
-- 测试框架：Xunit
-- 日志 [Serilog](https://github.com/serilog/serilog-aspnetcore)
-- 依赖注入服务[AutoFac](https://github.com/autofac/Autofac.Extensions.DependencyInjection)
-- 通用扩展方法 Z.ExtensionMethods
-- 云存储：七牛云 [MQiniu.Core](https://github.com/Hello-Mango/MQiniu.Core)
-- 分布式事务、EventBus：[DotNeteCore.CAP](https://github.com/dotnetcore/CAP)
-- GitHub 第三方授权登录[AspNet.Security.OAuth.GitHub](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers/tree/dev/src/AspNet.Security.OAuth.GitHub)
-- QQ 第三方授权登录[AspNet.Security.OAuth.QQ](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers/tree/dev/src/AspNet.Security.OAuth.QQ)
-- Gitee 第三方授权登录[AspNet.Security.OAuth.Gitee](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers/tree/dev/src/AspNet.Security.OAuth.Gitee)
-- [Docker](https://docs.docker.com/)
-- [Azure DevOps](https://dev.azure.com/)
-- 健康检查[AspNetCore.HealthChecks.UI.Client](https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks)
-- [GitHub Action](https://help.github.com/en/actions)
+```bash
+# 克隆项目
+git clone https://github.com/luoyunchong/lin-cms-dotnetcore.git
 
-### 实践
+# 进入项目目录
+cd lin-cms-dotnetcore/src/LinCms.Web
 
-- DDD(Domain-Driven Design)领域驱动设计
-- Logging（日志）
-- DevOps(CI/CD,自动化构建)
-- Database Migrations（数据库自动迁移)
-- Authentication(身份认证)
-- Authorization（授权）
-- Separation of Concerns（关注点分离）
-- Repository Pattern（仓储模式）
-- SOLID Principles（单一职责）
-- Clean Code（代码整洁之道）
+# 修改数据库连接
+# 编辑 appsettings.json 中的ConnectionStrings配置
 
-### 分层结构（Layers）
+# 运行项目
+dotnet run
+```
 
-- identityserver4
-  - LinCms.IdentityServer4:使用 id4 授权登录
-- src
-  - LinCms.Web：接口 API（ASP.NET Core)
-  - LinCms.Application:应用服务
-  - LinCms.Application.Contracts:DTO,数据传输对象，应用服务接口
-  - LinCms.Infrastructure:基础设施，数据库持久性的操作
-  - LinCms.Core:该应用的核心，实体类，通用操作类，AOP 扩展，分页对象，基础依赖对象接口，时间扩展方法，当前用户信息，异常类，值对象
-  - LinCms.Plugins 使用单项目实现某个业务的扩展，不是该项目的主要结构，可暂时忽略。
-  - LinCms.Scaffolding [代码生成器](https://igeekfan.gitee.io/igeekfan-docs/dotnetcore/lin-cms/lincms-scaffolding.html)
-- test
-  - LinCms.Test:对仓储，应用服务或工具类进行测试
+详细安装指南请参考[后端准备指南](dotnetcore-start.md)
 
-### 前端
+### 前端启动
 
-前端需要开发者比较熟悉 Vue 的，另外需要了解 ES6,Axios,Element Plus、webpack、Vuex、Vue-Router 等等等
+```bash
+# 克隆项目
+git clone https://github.com/luoyunchong/lin-cms-vue.git
 
-## 更新日志
+# 安装依赖
+pnpm install
 
-[https://github.com/luoyunchong/lin-cms-dotnetcore/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97](https://github.com/luoyunchong/lin-cms-dotnetcore/wiki/%E6%9B%B4%E6%96%B0%E6%97%A5%E5%BF%97)
+# 启动开发服务器
+pnpm run serve
+```
+
+详细安装指南请参考[前端准备指南](vue-start.md)
+
+## 目录结构
+
+```
+├─ src
+│  ├─ LinCms.Web         // API层
+│  ├─ LinCms.Application // 应用服务层
+│  ├─ LinCms.Application.Contracts // 应用服务接口与DTO
+│  ├─ LinCms.Infrastructure // 基础设施层
+│  ├─ LinCms.Core        // 核心领域层
+│  └─ LinCms.Plugins     // 插件扩展
+├─ test
+│  └─ LinCms.Test        // 单元测试
+└─ LinCms.Scaffolding    // 代码生成器
+```
+
+## 社区贡献
+
+欢迎加入LinCMS社区，您可以通过以下方式参与项目：
+
+- 提交Bug或功能请求到[GitHub Issues](https://github.com/luoyunchong/lin-cms-dotnetcore/issues)
+
+## 许可证
+
+本项目采用[MIT许可证](https://github.com/luoyunchong/lin-cms-dotnetcore/blob/master/LICENSE)

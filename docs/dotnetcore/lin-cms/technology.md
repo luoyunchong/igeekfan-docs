@@ -1,47 +1,55 @@
-# 相关技术
+# 技术栈
 
-- 数据库相关：ORM:[FreeSql](https://github.com/dotnetcore/FreeSql)+DataBase:MySQL5.6
-- ASP.NET Core 9+WebAPI+RESTful
-- 简化对象映射：[AutoMapper](https://automapper.org/)
-- Json Web 令牌:JWT
-- 文档 API：Swagger([Swashbuckle.AspNetCore](https://github.com/domaindrivendev/Swashbuckle.AspNetCore))
-- 序列化：Newtonsoft.Json
-- 测试框架：Xunit
-- 日志 NLog
-- 依赖注入服务[AutoFac](https://github.com/autofac/Autofac.Extensions.DependencyInjection)
-- 通用扩展方法 Z.ExtensionMethods
-- 云存储：七牛云 [MQiniu.Core](https://github.com/Hello-Mango/MQiniu.Core)
-- 分布式事务、EventBus：[DotNeteCore.CAP](https://github.com/dotnetcore/CAP)
-- GitHub 第三方授权登录[AspNet.Security.OAuth.GitHub](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers)
-- QQ 第三方授权登录[AspNet.Security.OAuth.QQ](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers)
-- [Docker](https://docs.docker.com/)
-- [Azure DevOps](https://dev.azure.com/)
-- 健康检查[AspNetCore.HealthChecks.UI.Client](https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks)
-- [GitHub Action](https://help.github.com/en/actions)
+## 核心技术
 
-## 实践
+- **后端框架**：ASP.NET Core 9.0 + WebAPI + RESTful
+- **数据访问**：[FreeSql](https://github.com/dotnetcore/FreeSql) - 支持多种数据库
+  - MySQL / SqlServer / PostgreSQL / Oracle / SQLite 等
+- **认证授权**：JWT + [IdentityServer4](https://github.com/IdentityServer/IdentityServer4)
+- **对象映射**：[AutoMapper](https://automapper.org/)
+- **API文档**：
+  - [Swagger (Swashbuckle.AspNetCore)](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)
+  - [RapiDoc](https://github.com/luoyunchong/IGeekFan.AspNetCore.RapiDoc) 
+  - [Knife4jUI](https://github.com/luoyunchong/IGeekFan.AspNetCore.Knife4jUI)
+- **依赖注入**：[AutoFac](https://github.com/autofac/Autofac.Extensions.DependencyInjection)
+- **日志框架**：[Serilog](https://github.com/serilog/serilog-aspnetcore)
+- **模板引擎**：[Scriban](https://github.com/lunet-io/scriban)
 
-- DDD(Domain-Driven Design)领域驱动设计
-- Logging（日志）
-- DevOps(CI/CD,自动化构建)
-- Database Migrations（数据库自动迁移)
-- Authentication(身份认证)
-- Authorization（授权）
-- Separation of Concerns（关注点分离）
-- Repository Pattern（仓储模式）
-- SOLID Principles（单一职责）
-- Clean Code（代码整洁之道）
+## 扩展功能
 
-## 分层结构（Layers）
+- **文件存储**：本地存储 + 七牛云存储 [MQiniu.Core](https://github.com/Hello-Mango/MQiniu.Core)
+- **分布式事务**：[DotNetCore.CAP](https://github.com/dotnetcore/CAP)
+- **第三方登录**：
+  - [GitHub OAuth](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers/tree/dev/src/AspNet.Security.OAuth.GitHub)
+  - [QQ OAuth](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers/tree/dev/src/AspNet.Security.OAuth.QQ)
+  - [Gitee OAuth](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers/tree/dev/src/AspNet.Security.OAuth.Gitee)
+- **容器化**：[Docker](https://docs.docker.com/)
+- **CI/CD**：
+  - [Azure DevOps](https://dev.azure.com/)
+  - [GitHub Actions](https://help.github.com/en/actions)
+- **健康检查**：[AspNetCore.HealthChecks](https://github.com/xabaril/AspNetCore.Diagnostics.HealthChecks)
 
-- identityserver4
-  - LinCms.IdentityServer4:使用 id4 授权登录
-- src
-  - LinCms.Web：接口 API（ASP.NET Core)
-  - LinCms.Application:应用服务
-  - LinCms.Application.Contracts:DTO,数据传输对象，应用服务接口
-  - LinCms.Infrastructure:基础设施，数据库持久性的操作
-  - LinCms.Core:该应用的核心，实体类，通用操作类，AOP 扩展，分页对象，基础依赖对象接口，时间扩展方法，当前用户信息，异常类，值对象
-  - LinCms.Plugins 使用单项目实现某个业务的扩展，不需要主要项目结构，可暂时忽略。
-- test
-  - LinCms.Test:对仓储，应用服务或工具类进行测试
+## 架构实践
+
+- **设计模式**：领域驱动设计 (DDD)
+- **代码质量**：Clean Code、SOLID原则
+- **架构模式**：
+  - 仓储模式 (Repository Pattern)
+  - 关注点分离 (Separation of Concerns)
+  - 单元测试 (Xunit)
+- **DevOps**：CI/CD、自动化构建
+- **数据处理**：数据库自动迁移、审计日志
+
+## 项目分层结构
+
+```
+├─ src
+│  ├─ LinCms.Web               // 接口API层 (ASP.NET Core)
+│  ├─ LinCms.Application       // 应用服务层
+│  ├─ LinCms.Application.Contracts // 应用服务接口与DTO
+│  ├─ LinCms.Infrastructure    // 基础设施层，数据持久化
+│  ├─ LinCms.Core              // 核心领域层
+│  └─ LinCms.Plugins          // 插件模块扩展
+│
+└─ test
+   └─ LinCms.Test             // 测试项目
