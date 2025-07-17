@@ -138,12 +138,5 @@ export const zhSidebarConfig = sidebar({
         "idlebus-freesql",
       ],
     },
-  ],
-  "/colorui/": [
-    {
-      text: "ColorUI文档",
-      collapsible: true,
-      children: ["docs/button", "docs/text"],
-    },
-  ],
+  ]
 });
