@@ -6,8 +6,8 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 11 Jul 2025 07:56:47 GMT</pubDate>
-    <lastBuildDate>Fri, 11 Jul 2025 07:56:47 GMT</lastBuildDate>
+    <pubDate>Thu, 17 Jul 2025 09:42:15 GMT</pubDate>
+    <lastBuildDate>Thu, 17 Jul 2025 09:42:15 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <copyright>&amp;lt;a href=&amp;quot;https://beian.miit.gov.cn/&amp;quot; data-v-c3cf170c=&amp;quot;&amp;quot;&amp;gt;豫ICP备2025116077号-2&amp;lt;/a&amp;gt;</copyright>
@@ -5683,133 +5683,6 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=luoyunchong&amp;theme=dark&amp;layout=compact" alt="Most Used Languages"></p>
 ]]></content:encoded>
       <enclosure url="https://img.shields.io/badge/OS-Win11-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=2bbc8a" type="image/"/>
-    </item>
-    <item>
-      <title>ColorUI</title>
-      <link>https://igeekfan.cn/igeekfan-docs/colorui/docs/</link>
-      <guid>https://igeekfan.cn/igeekfan-docs/colorui/docs/</guid>
-      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">ColorUI</source>
-      <description>ColorUI github https://github.com/weilanwl/ColorUI 特点 * 这是一个css库，相比其他vant-weapp、mpvue都是不一样的,非组件化，主要定位我觉得是美化主题，非组件化，支持uni-app、mpvue，可结合vant-weapp一起使用。 该文档作用 很简单，官方还没出文档，使用起来，需要开发...</description>
-      <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
-      <content:encoded><![CDATA[
-<h2>github</h2>
-<ul>
-<li><a href="https://github.com/weilanwl/ColorUI" target="_blank" rel="noopener noreferrer">https://github.com/weilanwl/ColorUI</a></li>
-</ul>
-<h2>特点</h2>
-<p>*　这是一个css库，相比其他vant-weapp、mpvue都是不一样的,非组件化，主要定位我觉得是美化主题，非组件化，支持uni-app、mpvue，可结合vant-weapp一起使用。</p>
-<h2>该文档作用</h2>
-<p>很简单，官方还没出文档，使用起来，需要开发者自行去看main.css，打开手机看小程序的demo,然后再去找项目源码，我觉得太麻烦，不知道其他人的感受如何。</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Button 按钮</title>
-      <link>https://igeekfan.cn/igeekfan-docs/colorui/docs/button.html</link>
-      <guid>https://igeekfan.cn/igeekfan-docs/colorui/docs/button.html</guid>
-      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Button 按钮</source>
-      <description>Button 按钮</description>
-      <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
-      <content:encoded><![CDATA[
-<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" data-title="" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>&lt;button class="cu-btn"&gt;默认&lt;/button&gt;</span></span>
-<span class="line"><span>&lt;button class="cu-btn round"&gt;圆角&lt;/button&gt;</span></span>
-<span class="line"><span>&lt;button class="cu-btn icon"&gt;</span></span>
-<span class="line"><span>	&lt;text class="cuIcon-emojifill"&gt;&lt;/text&gt;</span></span>
-<span class="line"><span>&lt;/button&gt;</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" data-title="" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>.cu-btn </span></span>
-<span class="line"><span>.cu-btn::after</span></span>
-<span class="line"><span>.cu-btn:not([class*="bg-"]) </span></span>
-<span class="line"><span>.cu-btn[class*="line"] </span></span>
-<span class="line"><span>.cu-btn[class*="line"]::after</span></span>
-<span class="line"><span>.cu-btn.round[class*="line"]::after </span></span>
-<span class="line"><span>.cu-btn[class*="lines"]::after </span></span>
-<span class="line"><span>.cu-btn[class*="bg-"]::after </span></span>
-<span class="line"><span>.cu-btn.sm </span></span>
-<span class="line"><span>.cu-btn.lg </span></span>
-<span class="line"><span>.cu-btn.cuIcon.sm </span></span>
-<span class="line"><span>.cu-btn.cuIcon </span></span>
-<span class="line"><span>button.cuIcon.lg </span></span>
-<span class="line"><span>.cu-btn.shadow-blur::before </span></span>
-<span class="line"><span>.cu-btn.button-hover </span></span>
-<span class="line"><span>.block </span></span>
-<span class="line"><span>.cu-btn.block </span></span>
-<span class="line"><span>.cu-btn[disabled]</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" data-title="" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>.cu-bar.btn-group</span></span>
-<span class="line"><span>.cu-bar.btn-group button</span></span>
-<span class="line"><span>.cu-bar.btn-group button</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
-    </item>
-    <item>
-      <title>Text 文本</title>
-      <link>https://igeekfan.cn/igeekfan-docs/colorui/docs/text.html</link>
-      <guid>https://igeekfan.cn/igeekfan-docs/colorui/docs/text.html</guid>
-      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">Text 文本</source>
-      <description>Text 文本</description>
-      <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
-      <content:encoded><![CDATA[
-<div class="language- line-numbers-mode" data-highlighter="shiki" data-ext="" data-title="" style="--shiki-light:#24292e;--shiki-dark:#abb2bf;--shiki-light-bg:#fff;--shiki-dark-bg:#282c34"><pre class="shiki shiki-themes github-light one-dark-pro vp-code"><code><span class="line"><span>.text-xs </span></span>
-<span class="line"><span>.text-sm </span></span>
-<span class="line"><span>.text-df </span></span>
-<span class="line"><span>.text-lg </span></span>
-<span class="line"><span>.text-xl </span></span>
-<span class="line"><span>.text-xxl </span></span>
-<span class="line"><span>.text-sl </span></span>
-<span class="line"><span>.text-xsl </span></span>
-<span class="line"><span>.text-Abc </span></span>
-<span class="line"><span>.text-ABC </span></span>
-<span class="line"><span>.text-abc </span></span>
-<span class="line"><span>.text-price::before </span></span>
-<span class="line"><span>.text-cut </span></span>
-<span class="line"><span>.text-bold </span></span>
-<span class="line"><span>.text-center </span></span>
-<span class="line"><span>.text-content </span></span>
-<span class="line"><span>.text-left </span></span>
-<span class="line"><span>.text-right</span></span>
-<span class="line"><span>.text-red</span></span>
-<span class="line"><span>.line-red</span></span>
-<span class="line"><span>.lines-red </span></span>
-<span class="line"><span>.text-orange</span></span>
-<span class="line"><span>.line-orange</span></span>
-<span class="line"><span>.lines-orange</span></span>
-<span class="line"><span>.text-yellow</span></span>
-<span class="line"><span>.line-yellow</span></span>
-<span class="line"><span>.lines-yellow </span></span>
-<span class="line"><span>.text-olive</span></span>
-<span class="line"><span>.line-olive</span></span>
-<span class="line"><span>.lines-olive</span></span>
-<span class="line"><span>.text-green</span></span>
-<span class="line"><span>.line-green</span></span>
-<span class="line"><span>.lines-green </span></span>
-<span class="line"><span>.text-cyan</span></span>
-<span class="line"><span>.line-cyan</span></span>
-<span class="line"><span>.lines-cyan </span></span>
-<span class="line"><span>.text-blue</span></span>
-<span class="line"><span>.line-blue</span></span>
-<span class="line"><span>.lines-blue </span></span>
-<span class="line"><span>.text-purple</span></span>
-<span class="line"><span>.line-purple</span></span>
-<span class="line"><span>.lines-purple </span></span>
-<span class="line"><span>.text-mauve</span></span>
-<span class="line"><span>.line-mauve</span></span>
-<span class="line"><span>.lines-mauve </span></span>
-<span class="line"><span>.text-pink</span></span>
-<span class="line"><span>.line-pink</span></span>
-<span class="line"><span>.lines-pink </span></span>
-<span class="line"><span>.text-brown</span></span>
-<span class="line"><span>.line-brown</span></span>
-<span class="line"><span>.lines-brown</span></span>
-<span class="line"><span>.text-grey</span></span>
-<span class="line"><span>.line-grey</span></span>
-<span class="line"><span>.lines-grey </span></span>
-<span class="line"><span>.text-gray</span></span>
-<span class="line"><span>.line-gray</span></span>
-<span class="line"><span>.lines-gray</span></span>
-<span class="line"><span>.text-black</span></span>
-<span class="line"><span>.line-black</span></span>
-<span class="line"><span>.lines-black </span></span>
-<span class="line"><span>.text-white</span></span>
-<span class="line"><span>.line-white</span></span>
-<span class="line"><span>.lines-white</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
     </item>
     <item>
       <title>RESTful+FreeSql+AutoMapper</title>
