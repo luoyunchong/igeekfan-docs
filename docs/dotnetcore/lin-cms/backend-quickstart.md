@@ -4,7 +4,7 @@
 
 ## 环境要求
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/6.0) 或更高版本
+- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) 或更高版本
 - 关系型数据库，如 MySql 5.7+, PostgreSQL 12+, SQLServer 2012+, Sqlite3 (默认)
 - Redis (可选，用于分布式缓存和消息队列)
 - IDE (Visual Studio 2022 / VS Code / JetBrains Rider)
@@ -69,10 +69,7 @@ cd lin-cms-dotnetcore
     cd src/LinCms.Web
 
     # 执行数据库迁移 (如果表结构有变更)
-    dotnet run --sync-structure
-
-    # (可选) 初始化种子数据 (如果需要示例数据)
-    dotnet run --init-db
+    dotnet run 
     ```
     或者直接运行 `src/LinCms.Web` 项目，启动时会自动执行迁移（如果配置了 `SyncStructure` 为 `true`）。
 
