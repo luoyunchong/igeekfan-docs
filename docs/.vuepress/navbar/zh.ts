@@ -5,6 +5,7 @@ export const zhNavbarConfig = navbar([
     { text: '.NET指北', link: '/dotnetcore/examples/' },
     { text: 'FreeKit', link: '/dotnetcore/freekit/' },
     { text: 'Docker', link: '/dotnetcore/docker/' },
+    { text: '导航', link: '/navigation/' },
     { text: '关于', link: '/about/' },
     { text: '博客', link: '/blogs/' },
     {

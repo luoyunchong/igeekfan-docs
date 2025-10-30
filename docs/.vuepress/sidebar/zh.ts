@@ -124,6 +124,15 @@ export const zhSidebarConfig = sidebar({
       collapsible: true,
     },
   ],
+  "/navigation/": [
+    {
+      text: "导航",
+      prefix: "/navigation/",
+      link: "/navigation/",
+      collapsible: true,
+      children: [],
+    },
+  ],
   "/blogs/": [
     {
       text: "技术分享",

@@ -35,5 +35,6 @@
 - <https://www.cnblogs.com/igeekfan>
 - <luoyunchong@foxmail.com>
 
-![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=luoyunchong&show_icons=true&theme=radical)
-![Most Used Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=luoyunchong&theme=dark&layout=compact)
+## 导航
+
+- 查看常用链接与工具：[导航页](/navigation/)
