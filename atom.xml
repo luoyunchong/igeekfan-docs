@@ -4,7 +4,7 @@
   <title>.NET 开发者指北</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
   <rights>&amp;lt;a href=&amp;quot;https://beian.miit.gov.cn/&amp;quot; data-v-c3cf170c=&amp;quot;&amp;quot;&amp;gt;豫ICP备2025116077号-2&amp;lt;/a&amp;gt;</rights>
-  <updated>2025-07-17T09:42:15.774Z</updated>
+  <updated>2025-10-30T11:51:33.030Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -47,12 +47,12 @@
     <title type="text">后端快速入门</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/backend-quickstart.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/backend-quickstart.html"/>
-    <updated>2025-04-28T17:01:11.000Z</updated>
+    <updated>2025-10-30T11:50:30.000Z</updated>
     <summary type="html"><![CDATA[
 <p>本文档将指导你如何在本地运行 <a href="http://LinCMS.NET" target="_blank" rel="noopener noreferrer">LinCMS.NET</a> Core 的后端项目。</p>
 <h2>环境要求</h2>
 <ul>
-<li><a href="https://dotnet.microsoft.com/download/dotnet/6.0" target="_blank" rel="noopener noreferrer">.NET 9 SDK</a> 或更高版本</li>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/9.0" target="_blank" rel="noopener noreferrer">.NET 9 SDK</a> 或更高版本</li>
 <li>关系型数据库，如 MySql 5.7+, PostgreSQL 12+, SQLServer 2012+, Sqlite3 (默认)</li>
 <li>Redis (可选，用于分布式缓存和消息队列)</li>
 <li>IDE (Visual Studio 2022 / VS Code / JetBrains Rider)</li>
@@ -61,7 +61,7 @@
 <p>本文档将指导你如何在本地运行 <a href="http://LinCMS.NET" target="_blank" rel="noopener noreferrer">LinCMS.NET</a> Core 的后端项目。</p>
 <h2>环境要求</h2>
 <ul>
-<li><a href="https://dotnet.microsoft.com/download/dotnet/6.0" target="_blank" rel="noopener noreferrer">.NET 9 SDK</a> 或更高版本</li>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/9.0" target="_blank" rel="noopener noreferrer">.NET 9 SDK</a> 或更高版本</li>
 <li>关系型数据库，如 MySql 5.7+, PostgreSQL 12+, SQLServer 2012+, Sqlite3 (默认)</li>
 <li>Redis (可选，用于分布式缓存和消息队列)</li>
 <li>IDE (Visual Studio 2022 / VS Code / JetBrains Rider)</li>
@@ -104,11 +104,8 @@
 <span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#56B6C2">cd</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> src/LinCms.Web</span></span>
 <span class="line"></span>
 <span class="line"><span style="--shiki-light:#6A737D;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># 执行数据库迁移 (如果表结构有变更)</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">dotnet</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> run</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> --sync-structure</span></span>
-<span class="line"></span>
-<span class="line"><span style="--shiki-light:#6A737D;--shiki-light-font-style:inherit;--shiki-dark:#7F848E;--shiki-dark-font-style:italic"># (可选) 初始化种子数据 (如果需要示例数据)</span></span>
-<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">dotnet</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> run</span><span style="--shiki-light:#005CC5;--shiki-dark:#D19A66"> --init-db</span></span></code></pre>
-<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>或者直接运行 <code>src/LinCms.Web</code> 项目，启动时会自动执行迁移（如果配置了 <code>SyncStructure</code> 为 <code>true</code>）。</li>
+<span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#61AFEF">dotnet</span><span style="--shiki-light:#032F62;--shiki-dark:#98C379"> run</span></span></code></pre>
+<div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>或者直接运行 <code>src/LinCms.Web</code> 项目，启动时会自动执行迁移（如果配置了 <code>SyncStructure</code> 为 <code>true</code>）。</li>
 </ol>
 <h2>运行项目</h2>
 <h3>使用 IDE</h3>
@@ -1247,11 +1244,11 @@ Mapster 通常不需要显式配置简单映射，但如果需要自定义，可
     <title type="text">技术栈</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/technology-stack.html</id>
     <link href="https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/technology-stack.html"/>
-    <updated>2025-04-28T17:01:11.000Z</updated>
+    <updated>2025-10-30T11:50:30.000Z</updated>
     <summary type="html"><![CDATA[
 <h2>后端 (.NET Core)</h2>
 <ul>
-<li><strong>开发框架</strong>: <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0" target="_blank" rel="noopener noreferrer">.NET 9</a> / <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/7.0" target="_blank" rel="noopener noreferrer">.NET 7</a></li>
+<li><strong>开发框架</strong>: <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/9.0" target="_blank" rel="noopener noreferrer">.NET 9</a></li>
 <li><strong>ORM</strong>: <a href="https://github.com/dotnetcore/FreeSql" target="_blank" rel="noopener noreferrer">FreeSql</a> - 支持 CodeFirst 模式，灵活强大的国产 ORM。</li>
 <li><strong>数据库支持</strong>:
 <ul>
@@ -1288,7 +1285,7 @@ Mapster 通常不需要显式配置简单映射，但如果需要自定义，可
     <content type="html"><![CDATA[
 <h2>后端 (.NET Core)</h2>
 <ul>
-<li><strong>开发框架</strong>: <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0" target="_blank" rel="noopener noreferrer">.NET 9</a> / <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/7.0" target="_blank" rel="noopener noreferrer">.NET 7</a></li>
+<li><strong>开发框架</strong>: <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/9.0" target="_blank" rel="noopener noreferrer">.NET 9</a></li>
 <li><strong>ORM</strong>: <a href="https://github.com/dotnetcore/FreeSql" target="_blank" rel="noopener noreferrer">FreeSql</a> - 支持 CodeFirst 模式，灵活强大的国产 ORM。</li>
 <li><strong>数据库支持</strong>:
 <ul>
