@@ -4,7 +4,7 @@
   <title>.NET 开发者指北</title>
   <subtitle>问君能有几多愁？恰似一江春水向东流。</subtitle>
   <rights>&amp;lt;a href=&amp;quot;https://beian.miit.gov.cn/&amp;quot; data-v-c3cf170c=&amp;quot;&amp;quot;&amp;gt;豫ICP备2025116077号-2&amp;lt;/a&amp;gt;</rights>
-  <updated>2025-10-30T11:51:33.030Z</updated>
+  <updated>2025-10-30T12:39:50.039Z</updated>
   <generator>@vuepress/plugin-feed</generator>
   <link rel="self" href="https://igeekfan.cn/igeekfan-docs/atom.xml"/>
   <link rel="alternate" href="https://igeekfan.cn/igeekfan-docs/"/>
@@ -13,6 +13,33 @@
   <contributor>
     <name>Talking Dotnet</name>
   </contributor>
+  <entry>
+    <title type="text">导航</title>
+    <id>https://igeekfan.cn/igeekfan-docs/navigation/</id>
+    <link href="https://igeekfan.cn/igeekfan-docs/navigation/"/>
+    <updated>2025-10-30T12:38:51.000Z</updated>
+    <summary type="html"><![CDATA[
+<p>下面是常用站点与工具的快速入口：</p>
+<ul>
+<li><a href="https://igeekfan.cn/vvlog-pro/#/index" target="_blank" rel="noopener noreferrer">VVLOG Pro - 主页</a> — VVLOG Pro 项目首页。</li>
+<li><a href="https://stackrock.site/" target="_blank" rel="noopener noreferrer">StackRock</a> — 个人/项目展示站点。</li>
+<li><a href="https://igeekfan.cn/hot/" target="_blank" rel="noopener noreferrer">热榜</a> — 站内热门内容聚合页。</li>
+<li><a href="https://igeekfan.cn/tools/#/tools/index" target="_blank" rel="noopener noreferrer">工具集</a> — 常用在线工具集合。</li>
+<li><a href="https://igeekfan.github.io/fluent-emoji-ms/" target="_blank" rel="noopener noreferrer">Fluent Emoji MS</a> — Fluent 风格 Emoji 字体/示例。</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[
+<p>下面是常用站点与工具的快速入口：</p>
+<ul>
+<li><a href="https://igeekfan.cn/vvlog-pro/#/index" target="_blank" rel="noopener noreferrer">VVLOG Pro - 主页</a> — VVLOG Pro 项目首页。</li>
+<li><a href="https://stackrock.site/" target="_blank" rel="noopener noreferrer">StackRock</a> — 个人/项目展示站点。</li>
+<li><a href="https://igeekfan.cn/hot/" target="_blank" rel="noopener noreferrer">热榜</a> — 站内热门内容聚合页。</li>
+<li><a href="https://igeekfan.cn/tools/#/tools/index" target="_blank" rel="noopener noreferrer">工具集</a> — 常用在线工具集合。</li>
+<li><a href="https://igeekfan.github.io/fluent-emoji-ms/" target="_blank" rel="noopener noreferrer">Fluent Emoji MS</a> — Fluent 风格 Emoji 字体/示例。</li>
+</ul>
+<p>如果需要，我可以把此导航页加入站点侧边栏配置示例。</p>
+]]></content>
+    <published>2025-10-30T12:38:51.000Z</published>
+  </entry>
   <entry>
     <title type="text">API 参考</title>
     <id>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/api-reference.html</id>
@@ -6548,7 +6575,7 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
     <title type="text">About</title>
     <id>https://igeekfan.cn/igeekfan-docs/about/</id>
     <link href="https://igeekfan.cn/igeekfan-docs/about/"/>
-    <updated>2024-07-10T14:51:39.000Z</updated>
+    <updated>2025-10-30T12:38:51.000Z</updated>
     <summary type="html"><![CDATA[
 <h2>欢迎</h2>
 <p>👋 你好，我是 <code>IGeekFan</code> ，我会写<code>c#</code>，会写一点点<code>javascript</code>。</p>
@@ -6598,8 +6625,10 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
 <li><a href="https://www.cnblogs.com/igeekfan" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/igeekfan</a></li>
 <li><a href="mailto:luoyunchong@foxmail.com" target="_blank" rel="noopener noreferrer">luoyunchong@foxmail.com</a></li>
 </ul>
-<p><img src="https://github-readme-stats.vercel.app/api?username=luoyunchong&amp;show_icons=true&amp;theme=radical" alt="Anurag's github stats"><br>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=luoyunchong&amp;theme=dark&amp;layout=compact" alt="Most Used Languages"></p>
+<h2>导航</h2>
+<ul>
+<li>查看常用链接与工具：<a href="/navigation/" target="_blank" rel="noopener noreferrer">导航页</a></li>
+</ul>
 ]]></content>
     <published>2020-02-28T11:10:31.000Z</published>
   </entry>

@@ -6,13 +6,32 @@
     <link>https://igeekfan.cn/igeekfan-docs/</link>
     <description>问君能有几多愁？恰似一江春水向东流。</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 30 Oct 2025 11:51:33 GMT</pubDate>
-    <lastBuildDate>Thu, 30 Oct 2025 11:51:33 GMT</lastBuildDate>
+    <pubDate>Thu, 30 Oct 2025 12:39:50 GMT</pubDate>
+    <lastBuildDate>Thu, 30 Oct 2025 12:39:50 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <copyright>&amp;lt;a href=&amp;quot;https://beian.miit.gov.cn/&amp;quot; data-v-c3cf170c=&amp;quot;&amp;quot;&amp;gt;豫ICP备2025116077号-2&amp;lt;/a&amp;gt;</copyright>
     <category>ASP.NET Core</category>
     <category>lin-cms-dotnetcore</category>
+    <item>
+      <title>导航</title>
+      <link>https://igeekfan.cn/igeekfan-docs/navigation/</link>
+      <guid>https://igeekfan.cn/igeekfan-docs/navigation/</guid>
+      <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">导航</source>
+      <description>导航 下面是常用站点与工具的快速入口： VVLOG Pro - 主页 — VVLOG Pro 项目首页。 StackRock — 个人/项目展示站点。 热榜 — 站内热门内容聚合页。 工具集 — 常用在线工具集合。 Fluent Emoji MS — Fluent 风格 Emoji 字体/示例。 如果需要，我可以把此导航页加入站点侧边栏配置示例。</description>
+      <pubDate>Thu, 30 Oct 2025 12:38:51 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p>下面是常用站点与工具的快速入口：</p>
+<ul>
+<li><a href="https://igeekfan.cn/vvlog-pro/#/index" target="_blank" rel="noopener noreferrer">VVLOG Pro - 主页</a> — VVLOG Pro 项目首页。</li>
+<li><a href="https://stackrock.site/" target="_blank" rel="noopener noreferrer">StackRock</a> — 个人/项目展示站点。</li>
+<li><a href="https://igeekfan.cn/hot/" target="_blank" rel="noopener noreferrer">热榜</a> — 站内热门内容聚合页。</li>
+<li><a href="https://igeekfan.cn/tools/#/tools/index" target="_blank" rel="noopener noreferrer">工具集</a> — 常用在线工具集合。</li>
+<li><a href="https://igeekfan.github.io/fluent-emoji-ms/" target="_blank" rel="noopener noreferrer">Fluent Emoji MS</a> — Fluent 风格 Emoji 字体/示例。</li>
+</ul>
+<p>如果需要，我可以把此导航页加入站点侧边栏配置示例。</p>
+]]></content:encoded>
+    </item>
     <item>
       <title>API 参考</title>
       <link>https://igeekfan.cn/igeekfan-docs/dotnetcore/lin-cms/api-reference.html</link>
@@ -5643,7 +5662,7 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
       <link>https://igeekfan.cn/igeekfan-docs/about/</link>
       <guid>https://igeekfan.cn/igeekfan-docs/about/</guid>
       <source url="https://igeekfan.cn/igeekfan-docs/rss.xml">About</source>
-      <description>About 欢迎 👋 你好，我是 IGeekFan ，我会写c#，会写一点点javascript。 推荐项目 联系我 💬 https://github.com/luoyunchong https://www.cnblogs.com/igeekfan luoyunchong@foxmail.com Anurag&amp;apos;s github stats Most...</description>
+      <description>About 欢迎 👋 你好，我是 IGeekFan ，我会写c#，会写一点点javascript。 推荐项目 联系我 💬 https://github.com/luoyunchong https://www.cnblogs.com/igeekfan luoyunchong@foxmail.com 导航 查看常用链接与工具：导航页</description>
       <pubDate>Fri, 28 Feb 2020 11:10:31 GMT</pubDate>
       <content:encoded><![CDATA[
 <h2>欢迎</h2>
@@ -5676,8 +5695,10 @@ steps 字段指定每个 Job 的运行步骤的介绍</p>
 <li><a href="https://www.cnblogs.com/igeekfan" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/igeekfan</a></li>
 <li><a href="mailto:luoyunchong@foxmail.com" target="_blank" rel="noopener noreferrer">luoyunchong@foxmail.com</a></li>
 </ul>
-<p><img src="https://github-readme-stats.vercel.app/api?username=luoyunchong&amp;show_icons=true&amp;theme=radical" alt="Anurag's github stats"><br>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=luoyunchong&amp;theme=dark&amp;layout=compact" alt="Most Used Languages"></p>
+<h2>导航</h2>
+<ul>
+<li>查看常用链接与工具：<a href="/navigation/" target="_blank" rel="noopener noreferrer">导航页</a></li>
+</ul>
 ]]></content:encoded>
       <enclosure url="https://img.shields.io/badge/OS-Win11-informational?style=flat&amp;logo=&lt;LOGO_NAME&gt;&amp;logoColor=white&amp;color=2bbc8a" type="image/"/>
     </item>
