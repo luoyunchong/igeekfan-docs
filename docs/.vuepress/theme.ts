@@ -2,6 +2,9 @@ import { hopeTheme } from "vuepress-theme-hope";
 import { enNavbarConfig, zhNavbarConfig } from "./navbar";
 import { zhSidebarConfig, enSidebarConfig } from "./sidebar";
 
+const icpFooter =
+    'MIT Licensed | Copyright © 2021-present luoyunchong | <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">豫ICP备2025116077号-2</a>';
+
 export default hopeTheme({
     hostname: "https://igeekfan.cn",
     logo: '/logo.png',
@@ -14,8 +17,7 @@ export default hopeTheme({
         "/": {
             navbar: zhNavbarConfig,
             sidebar: zhSidebarConfig,
-            footer: "MIT Licensed | Copyright © 2021-present luoyunchong",
-            copyright: '<a href="https://beian.miit.gov.cn/" data-v-c3cf170c="">豫ICP备2025116077号-2</a>',
+            footer: icpFooter,
             displayFooter: true,
             metaLocales: {
                 lastUpdated: "上次编辑于",
@@ -25,8 +27,7 @@ export default hopeTheme({
         "/en/": {
             navbar: enNavbarConfig,
             sidebar: enSidebarConfig,
-            footer: "MIT Licensed | Copyright © 2021-present luoyunchong",
-            copyright: '<a href="https://beian.miit.gov.cn/" data-v-c3cf170c="">豫ICP备2025116077号-2</a>',
+            footer: icpFooter,
             displayFooter: true,
         },
     },
