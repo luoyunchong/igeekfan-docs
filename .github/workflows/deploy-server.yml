@@ -39,13 +39,24 @@ jobs:
           NODE_OPTIONS: --max_old_space_size=4096
         run: pnpm run build
 
-      # https://github.com/marketplace/actions/ssh-deploy
       - name: Deploy to Server
-        uses: easingthemes/ssh-deploy@v2.1.5
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.DOCS_DEPLOY_SSH_PRIVATE_KEY }}
-          ARGS: "--delete --exclude=.well-known/ --exclude=.user.ini --exclude=*cnb.txt"
-          SOURCE: "docs/.vuepress/dist/"
+          DOCS_DEPLOY_SSH_KEY_B64: ${{ secrets.DOCS_DEPLOY_SSH_KEY_B64 }}
+          DOCS_DEPLOY_KNOWN_HOSTS: ${{ secrets.DOCS_DEPLOY_KNOWN_HOSTS }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
+          REMOTE_TARGET: ${{ secrets.REMOTE_TARGET }}
+        run: |
+          set -euo pipefail
+          install -m 700 -d "$HOME/.ssh"
+          printf '%s' "$DOCS_DEPLOY_SSH_KEY_B64" | base64 --decode > "$HOME/.ssh/docs_deploy"
+          chmod 600 "$HOME/.ssh/docs_deploy"
+          printf '%s\n' "$DOCS_DEPLOY_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/known_hosts"
+          ssh-keygen -y -f "$HOME/.ssh/docs_deploy" > /dev/null
+          rsync -rz --delete \
+            --exclude='.well-known/' \
+            --exclude='.user.ini' \
+            --exclude='*cnb.txt' \
+            -e "ssh -i $HOME/.ssh/docs_deploy -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes" \
+            docs/.vuepress/dist/ "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_TARGET}"
