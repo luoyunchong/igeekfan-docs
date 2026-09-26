@@ -1,13 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 name: Deploy To Server
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the main branch
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy-gh-pages:
@@ -46,8 +43,8 @@ jobs:
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "--delete"
+          SSH_PRIVATE_KEY: ${{ secrets.DOCS_DEPLOY_SSH_PRIVATE_KEY }}
+          ARGS: "--delete --exclude=.well-known/ --exclude=.user.ini --exclude=*cnb.txt"
           SOURCE: "docs/.vuepress/dist/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
