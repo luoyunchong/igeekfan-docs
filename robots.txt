@@ -1,5 +1,0 @@
-
-User-agent:*
-Disallow:
-
-Sitemap: https://igeekfan.cn/igeekfan-docs/sitemap.xml
