@@ -90,7 +90,7 @@ dotnet new globaljson --sdk-version 2.2.300
 
 目前 关于此项目的文档放到 docs 文件夹中，zh-Hans 为中文，这样可支持多语言，欢迎翻译 PR，之后会发布至
 
-- 文档官网 [https://luoyunchong.github.io/vuepress-docs/](https://luoyunchong.github.io/vuepress-docs/)
+- 文档官网 [https://igeekfan.cn/](https://igeekfan.cn/)
 
 将使用 abp vnext 下的 modules 的[docs 模块](https://github.com/abpframework/abp/blob/dev/modules/docs/README.md)。不过 abp vnext 现在也不稳定，0.18.1，还是有各种问题，我还是写基础模块的使用文档吧，后期完善后，发布文档网站。
 
