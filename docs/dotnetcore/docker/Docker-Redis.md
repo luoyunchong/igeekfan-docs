@@ -2,7 +2,7 @@
 
 ## 目录
 
-- [Docker 配置 Redis](#docker-配置-redis)
+- Docker 配置 Redis
   - [目录](#目录)
   - [2.本地配置文件映射](#2本地配置文件映射)
   - [3.启动Docker](#3启动docker)

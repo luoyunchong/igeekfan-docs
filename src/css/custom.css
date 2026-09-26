@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+  --ifm-color-primary: #d36f08;
+  --ifm-color-primary-dark: #bd6307;
+  --ifm-color-primary-darker: #b35d07;
+  --ifm-color-primary-darkest: #944d06;
+  --ifm-color-primary-light: #e57b0a;
+  --ifm-color-primary-lighter: #f18811;
+  --ifm-color-primary-lightest: #f6a244;
+  --ifm-background-color: #fefcf8;
+  --ifm-navbar-background-color: #fdf9f2;
+  --ifm-footer-background-color: #f5efe4;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(9, 60, 74, 0.08);
+  --ifm-font-family-base: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --ifm-heading-font-family: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #f6a244;
+  --ifm-color-primary-dark: #f49a34;
+  --ifm-color-primary-darker: #f39224;
+  --ifm-color-primary-darkest: #d37a0b;
+  --ifm-color-primary-light: #f8aa54;
+  --ifm-color-primary-lighter: #f9b264;
+  --ifm-color-primary-lightest: #fbc88e;
+  --ifm-background-color: #1e2329;
+  --ifm-navbar-background-color: #202831;
+  --ifm-footer-background-color: #1b2129;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
+}
+
+.navbar__title {
+  letter-spacing: 0.02em;
+}
+
+.theme-doc-markdown h1,
+.theme-doc-markdown h2,
+.theme-doc-markdown h3 {
+  letter-spacing: 0.01em;
+}
+
+.theme-doc-markdown {
+  animation: docFadeIn 320ms ease-out;
+}
+
+.theme-doc-markdown h2 img[alt='.NET Bot'] {
+  width: 100px;
+  height: auto;
+  vertical-align: middle;
+}
+
+.theme-doc-markdown h2 img[alt='.NET 20 Years'] {
+  width: 80px;
+  height: auto;
+  vertical-align: middle;
+}
+
+@keyframes docFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -136,7 +136,7 @@ cd lin-cms-dotnetcore/src/LinCms.Web
 dotnet run
 ```
 
-详细安装指南请参考[后端准备指南](dotnetcore-start.md)
+详细安装指南请参考[后端快速开始](backend-quickstart.md)
 
 ### 前端启动
 
@@ -151,7 +151,7 @@ pnpm install
 pnpm run serve
 ```
 
-详细安装指南请参考[前端准备指南](vue-start.md)
+详细安装指南请参考[前端快速开始](frontend-quickstart.md)
 
 ## 目录结构
 

@@ -2,7 +2,7 @@
 
 <div align="center">
 
-## <img src=/images/dotnet-bot_skating.png width=100 /> .NET <img src=/images/dotnet-20-years.png width=80  /> YEARS
+## ![.NET Bot](/images/dotnet-bot_skating.png) .NET ![.NET 20 Years](/images/dotnet-20-years.png) YEARS
 
 **Freekit** 为.NET Core提供了更多的扩展实现
 

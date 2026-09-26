@@ -3,13 +3,13 @@
 ### 目录
 
 - [【翻译】Scriban 是一种快速、强大、安全和轻量级的文本模板语言和.NET 引擎，具有解析 liquid 模板的兼容模式](https://www.cnblogs.com/igeekfan/p/13343331.html)
-- [【翻译】 Scriban language（ 待完成）]()
-- [【翻译】Scriban runtime（ 待完成）]()
+- 【翻译】 Scriban language（待完成）
+- 【翻译】Scriban runtime（待完成）
 - 原文 Github：[https://github.com/lunet-io/scriban#readme](https://github.com/lunet-io/scriban#readme)
 
 [![Build Status](https://github.com/lunet-io/scriban/workflows/ci/badge.svg?branch=master)](https://github.com/lunet-io/scriban/actions) [![Coverage Status](https://coveralls.io/repos/github/lunet-io/scriban/badge.svg?branch=master)](https://coveralls.io/github/lunet-io/scriban?branch=master) [![NuGet](https://img.shields.io/nuget/v/Scriban.svg)](https://www.nuget.org/packages/Scriban/)
 
-<img  width="160px" height="160px" src="./images/scriban.png">
+![Scriban](./images/scriban.png)
 
 Scriban 是一种快速、强大、安全和轻量级的文本模板语言和.NET 引擎，具有解析`liquid`模板的兼容模式
 
@@ -47,7 +47,7 @@ var result = template.Render(new { Products = this.ProductList });
 > **注意**
 >
 > 默认情况下, .NET 对象的属性和方法会自动以小写和`_`命名，这意味着像`MyMethodIsNice`这样的属性将被公开为`my_method_is_nice`.这是默认约定，最初是为了匹配`liquid`模板的行为。
-> 如果要改变此行为，则需要使用 [`MemberRenamer`](doc/runtime.md#member-renamer) 委托
+> 如果要改变此行为，则需要使用 [`MemberRenamer`](https://github.com/scriban/scriban/blob/master/doc/runtime.md#member-renamer) 委托
 
 ## 特性
 
@@ -63,21 +63,21 @@ var result = template.Render(new { Products = this.ProductList });
 - **可扩展的运行时** 提供许多扩展点
 - 支持 `async`/`await` 的脚本支持 (e.g `Template.RenderAsync`)
 - [精确控制空白文本输出](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md#14-whitespace-control)
-- [完整的语言特性](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md) 包括 `if`/`else`/`for`/`while`, [expressions](doc/language.md#8-expressions) (`x = 1 + 2`), conditions... etc.
+- [完整的语言特性](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md) 包括 `if`/`else`/`for`/`while`, [expressions](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md#8-expressions) (`x = 1 + 2`), conditions... etc.
 - [函数调用和管道](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md#89-function-call-expression) (`myvar | string.capitalize`)
   - [自定义函数](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md#7-functions) 通过`func`语句直接将函数自定义到语言中 通过`alias @ directive`可使用**function pointers/delegates**
   - 从 runtime API 绑定 [.NET 自定义函数](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/runtime.md#imports-functions-from-a-net-class)，并提供许多与.NET 对象接口的[选项](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/runtime.md#the-scriptobject) 。
-- [Complex objects (复杂对象)](doc/language.md#5-objects) (javascript/json like objects `x = {mymember: 1}`) and [arrays](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md#6-arrays) (e.g `x = [1,2,3,4]`)
+- [Complex objects (复杂对象)](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md#5-objects) (javascript/json like objects `x = {mymember: 1}`) and [arrays](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md#6-arrays) (e.g `x = [1,2,3,4]`)
 - 通常由`wrap`语句使用可以将 [a block of statements （语句块）](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md#98-wrap-function-arg1argn--end) 传递给函数,
 - 一些[内置函数](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/builtins.md):
   - [`arrays functions`](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/builtins.md#array-functions)
   - [`date`](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/builtins.md#date-functions)
   - [`html`](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/builtins.md#html-functions)
   - [`maths functions`](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/builtins.md#math-functions)
-  - [`object`](doc/builtins.md#object-functions)
+  - [`object`](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/builtins.md#object-functions)
   - [`regex functions`](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/builtins.md#regex-functions)
   - [`string functions`](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/builtins.md#string-functions)
-  - [`timespan`](doc/builtins.md#timespan-functions)
+  - [`timespan`](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/builtins.md#timespan-functions)
 - [Multi-line statements 多行语句](https://github.com/lunet-io/scriban/blob/devel-3.0/doc/language.md#11-code-block) 不必在每行都使用
 
 ```cs

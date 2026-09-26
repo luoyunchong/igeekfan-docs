@@ -106,7 +106,7 @@ docker run -d --name rabbitmq3.7.7 -p 5672:5672 -p 15672:15672 -v `pwd`/data:/va
 docker ps 
 ```
 
-打开浏览器，进入web管理端:<http://Server-IP:15672，用户名密码都是admin>
+打开浏览器，进入 Web 管理端：`http://Server-IP:15672`，用户名和密码均为 `admin`。
 
 ## 开发配置项
 

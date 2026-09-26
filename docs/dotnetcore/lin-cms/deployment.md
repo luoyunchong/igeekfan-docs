@@ -278,4 +278,4 @@ sudo systemctl reload nginx
 考虑使用 GitHub Actions, GitLab CI, Jenkins 等工具实现自动化构建和部署流程，以提高效率和减少错误。
 
 - **GitHub Actions 示例**: 参考项目中的 `.github/workflows` 目录 (如果存在) 或查阅 [GitHub Actions 文档](https://docs.github.com/en/actions)。
-- **文档站点部署脚本**: 项目根目录下的 [`deploy.ps1`](deploy.ps1) 是用于部署本文档站点的示例脚本。
+- **文档站点部署脚本**: 项目根目录下的 [`deploy.ps1`](https://github.com/luoyunchong/igeekfan-docs/blob/main/deploy.ps1) 是用于部署本文档站点的示例脚本。

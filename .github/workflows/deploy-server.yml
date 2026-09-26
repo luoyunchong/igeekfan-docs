@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           # if your docs needs submodules, uncomment the following line
@@ -19,16 +19,16 @@ jobs:
 
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
-          version: 7
+          version: 11.18.0
           run_install: true
 
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: pnpm
 
       - name: Install Deps
@@ -59,4 +59,4 @@ jobs:
             --exclude='.user.ini' \
             --exclude='*cnb.txt' \
             -e "ssh -i $HOME/.ssh/docs_deploy -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes" \
-            docs/.vuepress/dist/ "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_TARGET}"
+            build/ "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_TARGET}"

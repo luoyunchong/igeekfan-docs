@@ -185,4 +185,4 @@ public class AdminController : ControllerBase
 
 ## 开源地址
 
-- [github.com/luoyunchong/lin-cms-dotnetcore](github.com/luoyunchong/lin-cms-dotnetcore)
+- [github.com/luoyunchong/lin-cms-dotnetcore](https://github.com/luoyunchong/lin-cms-dotnetcore)

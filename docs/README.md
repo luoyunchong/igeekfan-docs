@@ -1,42 +1,18 @@
 ---
-home: true
-heroImage: /images/left-logo.png
-actions:
-  - text: 从FreeKit开始 ✨
-    link: /dotnetcore/freekit/
-    type: primary
-  - text: 关于我 💻
-    link: /about/
-    type: default
-features:
-- title: LinCMS
-  icon: branch
-  details:  Lin-CMS 是一套内容管理系统框架。
-  link : /dotnetcore/lin-cms/
-- title: .NET指北
-  icon: tag
-  details: .NET Core 学习示例文档  
-  link : /dotnetcore/examples/
-- title: FreeKit
-  icon: palette
-  details: FreeKit为.NET Core提供了更多的扩展实现，包括FreeSql、ASP.NET Core Identity的FreeSql存储、本地化的FreeSql实现
-  link : /dotnetcore/freekit/
-- title: Blog
-  icon: plugin
-  details: 一些博客技术分享
-  link : /blogs/
-- title: 开发工具
-  icon: support
-  details: Docker
-  link : /dotnetcore/docker/
-- title: 关于我
-  icon: launch
-  details: 一些简单的介绍
-  link : /about/
+title: 文档总览
+slug: /
 ---
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7223766210897652"
-     data-ad-slot="3532742594"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+
+# .NET 开发者指北
+
+这里汇集 FreeKit、Lin CMS、.NET Core 示例、Docker 实践和技术分享。
+
+## 从这里开始
+
+- [FreeKit 指北](./dotnetcore/freekit/README.md)：.NET 扩展库和模块化实践。
+- [Lin CMS](./dotnetcore/lin-cms/README.md)：内容管理系统框架。
+- [.NET Core 示例](./dotnetcore/examples/README.md)：常见开发场景与示例。
+- [Docker](./dotnetcore/docker/README.md)：容器部署和工具使用。
+- [技术分享](./blogs/README.md)：博客和开发经验。
+- [导航](./navigation/README.md)：常用站点与工具。
+- [关于](./about/README.md)：作者介绍。
