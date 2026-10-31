@@ -1,3 +1,5 @@
+[English](README.en.md) | **简体中文**
+
 # .NET 开发者指北
 
 本仓库使用 Docusaurus 构建文档站，界面参考 FreeKitModules 的 `docs-site`。文档内容保存在 `docs/`，站点主题与首页保存在 `src/`。
